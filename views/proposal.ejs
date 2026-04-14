@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta HUP Creative — <%= proposal.client.company %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{hup:'#1400FF',cyan:'#00CFFF',surface:'#111111'},fontFamily:{sans:['Space Grotesk','sans-serif']}}}}</script>
+
+  <style>
+    :root{--blue:#1400FF;--cyan:#00CFFF;--bg:#0a0a0a;--surface:#111111;}
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:#fff;font-family:'Space Grotesk',sans-serif;margin:0;overflow-x:hidden;}
+
+    /* ── Grain ── */
+    .grain::before{
+      content:'';position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.04;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:200px 200px;
+    }
+
+    /* ── Layout ── */
+    .section{padding:6rem 0;}
+    @media(max-width:768px){.section{padding:4rem 0;}}
+    .container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+
+    /* ── Reveals ── */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity 500ms ease-out,transform 500ms ease-out;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* ── Hero ── */
+    .hero-item{opacity:0;transform:translateY(24px);transition:opacity 600ms ease-out,transform 600ms ease-out;}
+    .hero-item.visible{opacity:1;transform:translateY(0);}
+
+    /* Hero gradient mesh background */
+    .hero-bg{
+      position:absolute;inset:0;overflow:hidden;z-index:0;
+    }
+    .hero-orb{
+      position:absolute;border-radius:50%;filter:blur(80px);mix-blend-mode:screen;
+    }
+    .orb1{width:600px;height:600px;background:radial-gradient(circle,#1400FF 0%,transparent 70%);top:-10%;left:-15%;opacity:.55;animation:orb-drift1 12s ease-in-out infinite alternate;}
+    .orb2{width:500px;height:500px;background:radial-gradient(circle,#00CFFF 0%,transparent 70%);top:10%;right:-10%;opacity:.35;animation:orb-drift2 15s ease-in-out infinite alternate;}
+    .orb3{width:400px;height:400px;background:radial-gradient(circle,#7B00FF 0%,transparent 70%);bottom:-10%;left:30%;opacity:.3;animation:orb-drift3 18s ease-in-out infinite alternate;}
+
+    @keyframes orb-drift1{0%{transform:translate(0,0) scale(1);}100%{transform:translate(60px,40px) scale(1.1);}}
+    @keyframes orb-drift2{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-40px,60px) scale(1.15);}}
+    @keyframes orb-drift3{0%{transform:translate(0,0) scale(1);}100%{transform:translate(30px,-50px) scale(0.95);}}
+
+    /* Hero geo accent */
+    .hero-geo{
+      position:absolute;right:8%;top:50%;transform:translateY(-50%);
+      width:320px;height:320px;opacity:.07;
+      animation:geo-spin 30s linear infinite;
+    }
+    @keyframes geo-spin{from{transform:translateY(-50%) rotate(0deg);}to{transform:translateY(-50%) rotate(360deg);}}
+
+    .hero-line{
+      position:absolute;left:0;right:0;bottom:0;height:1px;
+      background:linear-gradient(to right,transparent,#1400FF 30%,#00CFFF 70%,transparent);
+      opacity:.4;
+    }
+
+    /* ── Sec number ── */
+    .sec-num{font-size:clamp(5rem,15vw,10rem);font-weight:700;color:#1a1a1a;line-height:1;user-select:none;}
+
+    /* ── Services ── */
+    .service-item{
+      border:1px solid #222;padding:1.5rem;cursor:default;
+      transition:background 200ms,color 200ms,border-color 200ms;
+      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+    }
+    .service-item:hover{background:var(--blue);border-color:var(--blue);}
+    .service-item:hover .service-arrow{color:#fff;}
+
+    /* ── Holo logo ── */
+    .holo-logo{
+      animation:holo-float 6s ease-in-out infinite;
+      filter:drop-shadow(0 0 30px rgba(0,207,255,.4));
+    }
+    @keyframes holo-float{
+      0%,100%{transform:translateY(0) rotate(-2deg);}
+      50%{transform:translateY(-20px) rotate(2deg);}
+    }
+    @media(max-width:768px){
+      .holo-logo{display:none!important;}
+      .about-grid{grid-template-columns:1fr!important;gap:2rem!important;}
+      .services-grid{grid-template-columns:repeat(2,1fr)!important;}
+    }
+
+    /* ── Portfolio heading ── */
+    .port-section{margin-bottom:5rem;}
+    .port-heading{display:flex;align-items:flex-end;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #1a1a1a;}
+    .port-heading h3{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1;}
+    .port-desc{font-size:.8rem;color:#888;letter-spacing:.04em;line-height:1.5;padding-bottom:2px;}
+    .port-tag{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;}
+
+    /* ── Masonry ── */
+    .masonry{columns:4;column-gap:6px;}
+    .masonry.cols-3{columns:3;}
+    @media(max-width:900px){.masonry{columns:2!important;}}
+    @media(max-width:500px){.masonry{columns:1!important;}}
+
+    .masonry-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;cursor:pointer;}
+    .masonry-item img{width:100%;height:auto;display:block;transition:transform 400ms ease,filter 300ms;}
+    .masonry-item:hover img{transform:scale(1.05);filter:brightness(1.1);}
+
+    /* ── Collapse / ver mais ── */
+    .collapsible-grid{position:relative;max-height:520px;overflow:hidden;transition:max-height 700ms ease;}
+    .collapsible-grid.expanded{max-height:9000px;}
+    .collapsible-grid::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
+      background:linear-gradient(to top,var(--bg) 0%,transparent 100%);
+      pointer-events:none;transition:opacity 400ms;
+    }
+    .collapsible-grid.expanded::after{opacity:0;pointer-events:none;}
+
+    .ver-mais-btn{
+      display:flex;align-items:center;gap:.6rem;
+      margin:1.5rem auto 0;
+      padding:.7rem 1.8rem;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.1);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      color:#fff;font-family:inherit;font-size:.78rem;font-weight:600;
+      letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+      border-radius:4px;
+      transition:background 200ms,border-color 200ms,transform 200ms;
+      position:relative;z-index:2;
+    }
+    .ver-mais-btn:hover{background:rgba(20,0,255,.25);border-color:rgba(20,0,255,.5);transform:scale(1.02);}
+    .ver-mais-btn.hidden{display:none;}
+
+    /* ── Audiovisual cards ── */
+    .av-cards{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+    @media(max-width:640px){.av-cards{grid-template-columns:1fr;}}
+
+    .av-card{
+      position:relative;overflow:hidden;min-height:360px;
+      cursor:pointer;text-decoration:none;display:block;
+    }
+    /* Animated BG strip */
+    .av-card-bg{
+      position:absolute;inset:0;
+      display:flex;gap:4px;
+      filter:blur(14px) brightness(.2) saturate(.5);
+      transform:scale(1.12);
+    }
+    .av-card-bg-col{display:flex;flex-direction:column;gap:4px;flex:0 0 auto;width:33.33%;}
+    .av-card-bg-col img{width:100%;flex:1;object-fit:cover;display:block;}
+
+    /* Animate the columns */
+    .av-card-bg-col:nth-child(1){animation:av-slide-up 18s linear infinite;}
+    .av-card-bg-col:nth-child(2){animation:av-slide-down 22s linear infinite;}
+    .av-card-bg-col:nth-child(3){animation:av-slide-up 15s linear infinite;}
+
+    @keyframes av-slide-up{0%{transform:translateY(0);}100%{transform:translateY(-33%);}}
+    @keyframes av-slide-down{0%{transform:translateY(-33%);}100%{transform:translateY(0);}}
+
+    .av-card:hover .av-card-bg{filter:blur(10px) brightness(.3) saturate(.7);}
+    .av-card-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,0,255,.2) 0%,transparent 60%);}
+    .av-card-content{position:relative;z-index:2;padding:2.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;}
+    .av-card-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;}
+    .av-card-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;text-transform:uppercase;line-height:1;margin:0 0 .75rem;color:#fff;}
+    .av-card-desc{font-size:.85rem;color:#aaa;margin:0 0 2rem;line-height:1.5;}
+    .av-cta{
+      display:inline-flex;align-items:center;gap:.6rem;
+      background:var(--blue);color:#fff;font-family:inherit;font-size:.78rem;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;padding:.7rem 1.4rem;border-radius:3px;
+      align-self:flex-start;transition:filter 200ms,transform 200ms;
+    }
+    .av-cta:hover{filter:brightness(1.2);transform:scale(1.03);}
+    .av-play{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:9px solid #fff;display:inline-block;}
+
+    /* ── Photo tickers ── */
+    .photo-section-wrap{position:relative;}
+
+    .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 3%,black 97%,transparent);}
+    .ticker-track{display:inline-flex;gap:6px;animation:ticker-scroll var(--spd,55s) linear infinite;}
+    .ticker-track.rev{animation-direction:reverse;}
+    @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+    /* Big photo tickers */
+    .photo-ticker-row{margin-bottom:6px;cursor:pointer;}
+    .photo-ticker-row .ticker-track img{
+      height:180px;width:auto;object-fit:cover;flex-shrink:0;display:block;
+      transition:transform 300ms,filter 300ms,box-shadow 300ms;
+      border:2px solid transparent;
+    }
+    .photo-ticker-row .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+    .photo-ticker-row .ticker-track img:hover{
+      transform:scale(1.06);
+      filter:brightness(1.1);
+      border-color:var(--blue);
+      box-shadow:0 0 0 2px var(--blue);
+      cursor:zoom-in;
+    }
+
+    /* Photo filter buttons */
+    .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+    .filter-btn{
+      padding:.35rem .9rem;border:1px solid #333;background:none;color:#666;
+      font-family:inherit;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
+      cursor:pointer;transition:all 200ms;
+    }
+    .filter-btn:hover{border-color:#666;color:#fff;}
+    .filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+
+    /* ── Packaging strip ── */
+    .pkg-strip-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 3%,black 97%,transparent);}
+    .pkg-strip{display:inline-flex;gap:12px;animation:pkg-drift 90s linear infinite;}
+    @keyframes pkg-drift{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+    .pkg-strip-wrap:hover .pkg-strip{animation-play-state:paused;}
+
+    .pkg-card-img{
+      flex-shrink:0;width:260px;height:340px;object-fit:cover;display:block;
+      cursor:zoom-in;
+      transition:transform 400ms ease,filter 300ms,box-shadow 300ms;
+    }
+    .pkg-card-img:hover{transform:scale(1.04) translateY(-6px);box-shadow:0 16px 40px rgba(20,0,255,.3);filter:brightness(1.08);}
+
+    /* ── Logo wall ── */
+    .clients-section{background:#f0f0f0;}
+    .clients-section .sec-num{color:#ddd;}
+    .clients-section h2,.clients-section .label,.clients-section p{color:#111!important;}
+    .clients-section .label{color:var(--blue)!important;}
+
+    .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;align-items:center;justify-items:center;}
+    @media(max-width:768px){.logo-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:480px){.logo-grid{grid-template-columns:repeat(2,1fr);}}
+    .logo-item{display:flex;align-items:center;justify-content:center;padding:.75rem;}
+    .logo-item img{max-height:64px;max-width:140px;width:auto;height:auto;object-fit:contain;transition:transform 200ms;}
+    .logo-item:hover img{transform:scale(1.1);}
+
+    /* ── Package cards ── */
+    .pkg-wrapper{display:grid;gap:1.5rem;}
+    .package-card{
+      background:var(--surface);border-left:3px solid var(--blue);padding:2.5rem;position:relative;
+      opacity:0;transform:translateY(50px) scale(.97);
+      transition:opacity 600ms ease-out,transform 600ms ease-out,box-shadow 300ms;
+    }
+    .package-card.visible{opacity:1;transform:translateY(0) scale(1);}
+    .package-card.recommended{border-left-color:var(--cyan);box-shadow:0 0 0 1px rgba(0,207,255,.12),0 0 50px rgba(0,207,255,.06);}
+    .badge-rec{position:absolute;top:1.25rem;right:1.25rem;background:var(--cyan);color:#000;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem;border-radius:2px;}
+    .package-price{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;line-height:1;}
+    .check-item{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.45rem;}
+    .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;}
+    .pkg-group-title{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#555;margin:1.25rem 0 .5rem;border-top:1px solid #1e1e1e;padding-top:1rem;}
+    .proposal-intro{margin-bottom:3.5rem;padding:2rem 2.5rem;border-left:3px solid var(--blue);background:#0d0d0d;}
+
+    /* ── CTA ── */
+    .cta-btn{display:inline-block;background:var(--blue);color:#fff;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:1rem 2.5rem;border-radius:4px;transition:filter 200ms,transform 200ms;}
+    .cta-btn:hover{filter:brightness(1.2);transform:scale(1.02);}
+
+    /* ── Lightbox ── */
+    #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center;}
+    #lightbox.open{display:flex;}
+    #lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;user-select:none;}
+    #lb-close{position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;opacity:.6;}
+    #lb-close:hover{opacity:1;}
+    #lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;background:none;border:none;opacity:.4;padding:1rem;}
+    #lb-prev:hover,#lb-next:hover{opacity:1;}
+    #lb-prev{left:.5rem;}#lb-next{right:.5rem;}
+    #lb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:#555;font-size:.75rem;letter-spacing:.1em;}
+
+    /* ── label ── */
+    .label{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:500;}
+  </style>
+</head>
+<body class="grain">
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close">✕</button>
+  <button id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">›</button>
+  <div id="lb-count"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     1. HERO
+════════════════════════════════════════════════ -->
+<section style="min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:4rem 2rem;overflow:hidden;">
+
+  <!-- Animated orb background -->
+  <div class="hero-bg">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+  </div>
+
+  <!-- Rotating geometric accent -->
+  <svg class="hero-geo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 10 L190 100 L100 190 L10 100 Z" stroke="white" stroke-width="1"/>
+    <path d="M100 30 L170 100 L100 170 L30 100 Z" stroke="white" stroke-width="0.5" opacity=".5"/>
+    <path d="M100 50 L150 100 L100 150 L50 100 Z" stroke="white" stroke-width="0.5" opacity=".3"/>
+    <circle cx="100" cy="100" r="60" stroke="white" stroke-width="0.5" opacity=".2"/>
+    <circle cx="100" cy="100" r="80" stroke="white" stroke-width="0.3" opacity=".1"/>
+    <line x1="10" y1="100" x2="190" y2="100" stroke="white" stroke-width="0.3" opacity=".2"/>
+    <line x1="100" y1="10" x2="100" y2="190" stroke="white" stroke-width="0.3" opacity=".2"/>
+  </svg>
+
+  <div class="hero-line"></div>
+
+  <!-- Validade -->
+  <div style="position:absolute;top:2rem;right:2rem;color:#444;font-size:.78rem;letter-spacing:.06em;z-index:2;">
+    Válida até <span style="color:#666;"><%= proposal.expiresAt %></span>
+  </div>
+
+  <div style="text-align:center;max-width:800px;width:100%;position:relative;z-index:1;">
+    <div class="hero-item" id="h0" style="margin-bottom:2.5rem;">
+      <% if (assets.logoHup.length) { %>
+        <img src="<%= assets.logoHup.find(l=>l.toLowerCase().includes('branca'))||assets.logoHup[0] %>"
+             alt="HUP Creative" style="height:52px;width:auto;display:inline-block;filter:drop-shadow(0 0 20px rgba(20,0,255,.4));">
+      <% } %>
+    </div>
+    <h1 class="hero-item" id="h1" style="font-size:clamp(2.2rem,6vw,4.5rem);font-weight:700;line-height:1.05;margin:0 0 1.25rem;">
+      Olá, <%= proposal.client.contact %> 👋
+    </h1>
+    <p class="hero-item" id="h2" style="font-size:clamp(1rem,2.5vw,1.3rem);color:#888;margin:0 0 2.5rem;line-height:1.6;">
+      Essa proposta foi preparada especialmente para
+      <span style="color:#fff;font-weight:600;background:linear-gradient(90deg,#1400FF,#00CFFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><%= proposal.client.company %></span>.
+    </p>
+    <div class="hero-item" id="h3" style="color:rgba(255,255,255,.45);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;">
+      Role para ver ↓
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     2. QUEM SOMOS
+════════════════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid #111;overflow:hidden;">
+  <div class="container">
+    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <!-- texto -->
+      <div>
+        <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;">
+          <div class="sec-num reveal">02</div>
+          <p class="label reveal">Quem somos</p>
+        </div>
+        <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 2rem;line-height:1.1;">
+          We Make it<br><span style="color:var(--cyan);">Happen!</span>
+        </h2>
+        <div style="color:#aaa;line-height:1.9;font-size:.92rem;">
+          <p class="reveal" style="margin:0 0 1.25rem;">
+            Somos a nova geração que não conhece o mundo sem internet e acredita na sinergia entre on e off. Somos ligados no 220, múltiplos e simultâneos.
+          </p>
+          <p class="reveal" style="margin:0 0 1.25rem;">
+            A HUP nasceu da necessidade em saber se comunicar numa realidade cada vez mais dinâmica e multimidiática, unindo estratégia e criatividade na personalidade de cada marca.
+          </p>
+          <p class="reveal" style="margin:0;">
+            Oferecemos uma entrega 360°: do planejamento estratégico à produção de fotografia e audiovisual.
+          </p>
+        </div>
+      </div>
+      <!-- holo logo -->
+      <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
+        <img class="holo-logo"
+             src="/assets/Logo_hup/logo_holo.png"
+             alt="HUP Holográfica"
+             style="max-width:340px;width:100%;height:auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     3. O QUE FAZEMOS
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom:3rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">03</div>
+      <p class="label reveal" style="margin-bottom:.5rem;">O que fazemos</p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Serviços</h2>
+    </div>
+    <div class="services-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;">
+      <% ['Criação de Conteúdo','Gestão de Redes Sociais','Planejamento On e Off','Produção Audiovisual','Fotografia','Identidade Visual','Criação de Embalagens','Experiência de Marca'].forEach(s=>{ %>
+        <div class="service-item">
+          <div class="service-arrow" style="font-size:1.4rem;color:var(--cyan);margin-bottom:.75rem;line-height:1;">↗</div>
+          <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;"><%= s %></div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     4. PORTFOLIO
+════════════════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid #111;">
+  <div class="container">
+    <div style="margin-bottom:3.5rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">04</div>
+      <p class="label reveal" style="margin-bottom:.5rem;">Portfólio</p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Nosso Trabalho</h2>
+    </div>
+
+    <!-- 4a. REDES SOCIAIS -->
+    <% if (assets.redesSociais.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Redes Sociais</h3></div>
+        <div class="port-desc">Conteúdo pensado para Instagram e TikTok —<br>vídeos, estáticos e stories que geram resultado.</div>
+      </div>
+      <div class="collapsible-grid" id="cg-redes">
+        <div class="masonry cols-3" data-gallery="redesSociais">
+          <% assets.redesSociais.forEach((img,i)=>{ %>
+            <div class="masonry-item" data-gallery="redesSociais" data-index="<%= i %>"><img src="<%= img %>" alt="" loading="lazy"></div>
+          <% }) %>
+        </div>
+      </div>
+      <% if (assets.redesSociais.length > 8) { %>
+      <div style="text-align:center;">
+        <button class="ver-mais-btn" data-target="cg-redes">Ver mais ↓</button>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+
+    <!-- 4b. E-COMMERCE -->
+    <% if (assets.ecommerce.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>E-commerce</h3></div>
+        <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
+      </div>
+      <div class="collapsible-grid" id="cg-eco">
+        <div class="masonry cols-3" data-gallery="ecommerce">
+          <% assets.ecommerce.forEach((img,i)=>{ %>
+            <div class="masonry-item" data-gallery="ecommerce" data-index="<%= i %>"><img src="<%= img %>" alt="" loading="lazy"></div>
+          <% }) %>
+        </div>
+      </div>
+      <% if (assets.ecommerce.length > 6) { %>
+      <div style="text-align:center;">
+        <button class="ver-mais-btn" data-target="cg-eco">Ver mais ↓</button>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+
+    <!-- 4c. OFF-LINE -->
+    <% if (assets.offline.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Off-line</h3></div>
+        <div class="port-desc">Peças para o mundo físico — banners, flyers,<br>outdoors e materiais impressos.</div>
+      </div>
+      <div class="collapsible-grid" id="cg-off">
+        <div class="masonry cols-3" data-gallery="offline">
+          <% assets.offline.forEach((img,i)=>{ %>
+            <div class="masonry-item" data-gallery="offline" data-index="<%= i %>"><img src="<%= img %>" alt="" loading="lazy"></div>
+          <% }) %>
+        </div>
+      </div>
+      <% if (assets.offline.length > 6) { %>
+      <div style="text-align:center;">
+        <button class="ver-mais-btn" data-target="cg-off">Ver mais ↓</button>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+
+    <!-- 4d. AUDIOVISUAL -->
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Audiovisual</h3></div>
+        <div class="port-desc">Produção completa do roteiro à edição —<br>para redes sociais e tela grande.</div>
+      </div>
+      <div class="av-cards">
+
+        <!-- Card Redes -->
+        <a class="av-card" href="https://youtube.com/playlist?list=PLkVpdYag8wjEOI2IH5-_GqUoVyWm-qt4h&si=MqxlW2GDbIfbsYOb" target="_blank" rel="noopener">
+          <div class="av-card-bg">
+            <%
+              const rAv = assets.audiovisualRedes;
+              const chunk = Math.ceil(rAv.length/3)||1;
+            %>
+            <div class="av-card-bg-col">
+              <% rAv.slice(0,chunk).concat(rAv.slice(0,chunk)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% rAv.slice(chunk,chunk*2).concat(rAv.slice(chunk,chunk*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% rAv.slice(chunk*2).concat(rAv.slice(chunk*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+          </div>
+          <div class="av-card-overlay"></div>
+          <div class="av-card-content">
+            <p class="av-card-tag">Audiovisual</p>
+            <h3 class="av-card-title">Redes<br>Sociais</h3>
+            <p class="av-card-desc">Pensados, gravados e editados<br>para Instagram e TikTok.</p>
+            <span class="av-cta"><span class="av-play"></span>Clique e assista</span>
+          </div>
+        </a>
+
+        <!-- Card Eventos -->
+        <a class="av-card" href="https://youtube.com/playlist?list=PLkVpdYag8wjGlNHhRgibzSKpus5ICzB5J&si=8hcHNUysiUXDH0RH" target="_blank" rel="noopener">
+          <div class="av-card-bg">
+            <%
+              const eAv = assets.audiovisualEventos;
+              const chunkE = Math.ceil(eAv.length/3)||1;
+            %>
+            <div class="av-card-bg-col">
+              <% eAv.slice(0,chunkE).concat(eAv.slice(0,chunkE)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% eAv.slice(chunkE,chunkE*2).concat(eAv.slice(chunkE,chunkE*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% eAv.slice(chunkE*2).concat(eAv.slice(chunkE*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+          </div>
+          <div class="av-card-overlay"></div>
+          <div class="av-card-content">
+            <p class="av-card-tag">Audiovisual</p>
+            <h3 class="av-card-title">Institucionais<br>e Eventos</h3>
+            <p class="av-card-desc">O bom e velho horizontal —<br>das apresentações à TV.</p>
+            <span class="av-cta"><span class="av-play"></span>Clique e assista</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- 4e. FOTOGRAFIA — only animated tickers with filter -->
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Fotografia</h3></div>
+        <div class="port-desc">Captação profissional em 4k — alimentação,<br>produto e institucional.</div>
+      </div>
+
+      <div class="filter-bar" id="photo-filter-bar">
+        <button class="filter-btn active" data-pcat="all">Todos</button>
+        <% if(assets.fotografiaAlimentacao.length){%><button class="filter-btn" data-pcat="alimentacao">Alimentação</button><%}%>
+        <% if(assets.fotografiaInstitucional.length){%><button class="filter-btn" data-pcat="institucional">Institucional</button><%}%>
+        <% if(assets.fotografiaProduto.length){%><button class="filter-btn" data-pcat="produto">Produto</button><%}%>
+      </div>
+
+      <!-- Ticker rows — JS controls visibility based on filter -->
+      <div id="pticker-all">
+        <div class="photo-ticker-row ticker-wrap" data-pcat="all">
+          <div class="ticker-track" style="--spd:60s;">
+            <% const t1=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto]; %>
+            <% [...t1,...t1].forEach((img,i)=>{ %>
+              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="photo-ticker-row ticker-wrap" style="margin-top:6px;" data-pcat="all">
+          <div class="ticker-track rev" style="--spd:48s;">
+            <% const t2=[...assets.fotografiaProduto,...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional]; %>
+            <% [...t2,...t2].forEach((img,i)=>{ %>
+              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="photo-ticker-row ticker-wrap" style="margin-top:6px;" data-pcat="all">
+          <div class="ticker-track" style="--spd:70s;">
+            <% const t3=[...assets.fotografiaInstitucional,...assets.fotografiaProduto,...assets.fotografiaAlimentacao]; %>
+            <% [...t3,...t3].forEach((img,i)=>{ %>
+              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>">
+            <% }) %>
+          </div>
+        </div>
+      </div>
+
+      <div id="pticker-alimentacao" style="display:none;">
+        <div class="photo-ticker-row ticker-wrap">
+          <div class="ticker-track" style="--spd:50s;">
+            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
+              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
+            <% }) %>
+          </div>
+        </div>
+      </div>
+
+      <div id="pticker-institucional" style="display:none;">
+        <div class="photo-ticker-row ticker-wrap">
+          <div class="ticker-track rev" style="--spd:55s;">
+            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
+              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
+            <% }) %>
+          </div>
+        </div>
+        <div class="photo-ticker-row ticker-wrap" style="margin-top:6px;">
+          <div class="ticker-track" style="--spd:65s;">
+            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
+              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
+            <% }) %>
+          </div>
+        </div>
+      </div>
+
+      <div id="pticker-produto" style="display:none;">
+        <div class="photo-ticker-row ticker-wrap">
+          <div class="ticker-track" style="--spd:45s;">
+            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
+              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4f. PACKAGING — large card drift -->
+    <% if (assets.packaging.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
+        <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
+      </div>
+      <div class="pkg-strip-wrap">
+        <div class="pkg-strip">
+          <% [...assets.packaging,...assets.packaging].forEach((img,i)=>{ %>
+            <img class="pkg-card-img" src="<%= img %>" alt="" loading="lazy"
+                 data-pkgsrc="<%= img %>" data-pkgidx="<%= i % assets.packaging.length %>">
+          <% }) %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     5. CLIENTES
+════════════════════════════════════════════════ -->
+<% if (assets.logosClientes.length) { %>
+<section class="section clients-section">
+  <div class="container">
+    <div style="margin-bottom:3rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">05</div>
+      <p class="label reveal" style="margin-bottom:.4rem;">Confiança</p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 .5rem;line-height:1.1;clear:both;color:#111;">Clientes</h2>
+      <p class="reveal" style="color:#666;font-size:.95rem;margin:0;max-width:560px;">
+        Marcas que confiam na HUP para uma solução 360° — da estratégia digital à produção criativa.
+      </p>
+    </div>
+    <div class="logo-grid reveal">
+      <%
+        const _lastKeys = ['flat cambuci','cmsa','gustavo sisant'];
+        const _sorted = assets.logosClientes.slice().sort((a,b)=>{
+          const aL=_lastKeys.some(k=>a.toLowerCase().includes(k));
+          const bL=_lastKeys.some(k=>b.toLowerCase().includes(k));
+          return aL===bL?0:aL?1:-1;
+        });
+      %>
+      <% _sorted.forEach((logo,i)=>{ %>
+        <div class="logo-item"><img src="<%= logo %>" alt="Cliente <%= i+1 %>" loading="lazy"></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- ════════════════════════════════════════════════
+     6. PROPOSTA
+════════════════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid #111;">
+  <div class="container">
+    <div style="margin-bottom:3rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">06</div>
+      <p class="label reveal" style="margin-bottom:.5rem;">Proposta para <%= proposal.client.company %></p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Escolha o seu plano</h2>
+    </div>
+    <div class="proposal-intro reveal">
+      <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin:0 0 .5rem;">Por que investir em comunicação profissional?</p>
+      <p style="color:#888;font-size:.95rem;line-height:1.8;margin:0;max-width:720px;">
+        Presença consistente gera autoridade, atrai clientes e fideliza sua base. Com a HUP, você tem uma equipe 360° cuidando da sua comunicação — do planejamento à captação — enquanto você foca no que importa.
+      </p>
+    </div>
+    <div class="pkg-wrapper" id="packages-grid">
+      <% proposal.packages.forEach((pkg,idx)=>{ %>
+        <div class="package-card <%= pkg.recommended?'recommended':'' %>" data-pkg-idx="<%= idx %>">
+          <% if(pkg.recommended){%><div class="badge-rec">Recomendado</div><%}%>
+          <div style="display:grid;grid-template-columns:1fr auto;align-items:start;gap:1rem;margin-bottom:1.5rem;">
+            <div>
+              <p style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:<%=pkg.recommended?'var(--cyan)':'#555'%>;margin:0 0 .25rem;"><%= pkg.name %></p>
+            </div>
+            <div style="font-size:3rem;color:<%=pkg.recommended?'rgba(0,207,255,.06)':'rgba(20,0,255,.06)'%>;font-weight:700;line-height:1;user-select:none;"><%= pkg.id %></div>
+          </div>
+          <% if(pkg.groups){pkg.groups.forEach(g=>{%>
+            <p class="pkg-group-title"><%= g.title %></p>
+            <% g.items.forEach(item=>{%>
+              <div class="check-item"><span class="check-icon">✓</span><span style="color:#bbb;font-size:.88rem;"><%= item %></span></div>
+            <%})%>
+          <%})}else if(pkg.items){pkg.items.forEach(item=>{%>
+            <div class="check-item"><span class="check-icon">✓</span><span style="color:#bbb;font-size:.88rem;"><%= item %></span></div>
+          <%})}%>
+          <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid #1e1e1e;">
+            <div class="package-price" style="margin-bottom:.35rem;"><%= pkg.price %></div>
+            <p style="color:#666;font-size:.78rem;margin:0 0 1.25rem;">Contrato mínimo de <%= pkg.minMonths %> meses</p>
+            <a href="<%= proposal.cta.meetingLink %>" target="_blank"
+               style="display:inline-block;background:<%=pkg.recommended?'var(--cyan)':'var(--blue)'%>;color:<%=pkg.recommended?'#000':'#fff'%>;font-family:inherit;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.65rem 1.4rem;border-radius:3px;transition:filter 200ms;">
+              Quero este plano ↗
+            </a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     7. CTA FINAL
+════════════════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid #111;text-align:center;">
+  <div class="container" style="max-width:600px;">
+    <p class="label reveal" style="margin-bottom:1rem;">Próximo passo</p>
+    <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 2.5rem;line-height:1.1;">
+      Vamos<br><span style="color:var(--cyan);">Conversar?</span>
+    </h2>
+    <div class="reveal" style="margin-bottom:2rem;">
+      <a href="<%= proposal.cta.meetingLink %>" target="_blank" class="cta-btn">Agendar reunião ↗</a>
+    </div>
+    <div class="reveal" style="color:#444;font-size:.85rem;line-height:2.2;">
+      <% if(proposal.cta.whatsapp){%>
+        <div>WhatsApp: <a href="https://wa.me/<%= proposal.cta.whatsapp.replace(/\D/g,'') %>" style="color:#666;text-decoration:none;" target="_blank"><%= proposal.cta.whatsapp %></a></div>
+      <%}%>
+      <% if(proposal.cta.email){%>
+        <div>E-mail: <a href="mailto:<%= proposal.cta.email %>" style="color:#666;text-decoration:none;"><%= proposal.cta.email %></a></div>
+      <%}%>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid #111;padding:2rem;text-align:center;color:#222;font-size:.72rem;letter-spacing:.06em;">
+  © <%= new Date().getFullYear() %> HUP Creative — hupcreative.cloud
+</footer>
+
+<!-- ════════════════════════════════════════════════
+     JS
+════════════════════════════════════════════════ -->
+<script>
+  const GALLERIES = {
+    redesSociais: <%- JSON.stringify(assets.redesSociais) %>,
+    ecommerce:    <%- JSON.stringify(assets.ecommerce) %>,
+    offline:      <%- JSON.stringify(assets.offline) %>,
+    packaging:    <%- JSON.stringify(assets.packaging) %>,
+  };
+  const FOTO_ALL = [
+    ...<%- JSON.stringify(assets.fotografiaAlimentacao) %>,
+    ...<%- JSON.stringify(assets.fotografiaInstitucional) %>,
+    ...<%- JSON.stringify(assets.fotografiaProduto) %>,
+  ];
+  const FOTO_CATS = {
+    alimentacao: <%- JSON.stringify(assets.fotografiaAlimentacao) %>,
+    institucional: <%- JSON.stringify(assets.fotografiaInstitucional) %>,
+    produto: <%- JSON.stringify(assets.fotografiaProduto) %>,
+  };
+
+  // ── Scroll reveal ──────────────────────────────
+  const revObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});
+  },{threshold:0.06});
+  document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+  // ── Hero entrance ──────────────────────────────
+  ['h0','h1','h2','h3'].forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(el) setTimeout(()=>el.classList.add('visible'),200+i*220);
+  });
+
+  // ── Package stagger ────────────────────────────
+  const pkgObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('visible'),parseInt(e.target.dataset.pkgIdx||0)*220);
+        pkgObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.package-card').forEach(el=>pkgObs.observe(el));
+
+  // ── Package grid responsive ────────────────────
+  function setPackageGrid(){
+    const g=document.getElementById('packages-grid');if(!g)return;
+    const n=g.children.length;
+    g.style.gridTemplateColumns=(window.innerWidth>=768&&n>1)?`repeat(${n},1fr)`:'1fr';
+  }
+  setPackageGrid();
+  window.addEventListener('resize',setPackageGrid);
+
+  // ── Lightbox ───────────────────────────────────
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lb-img');
+  const lbCount=document.getElementById('lb-count');
+  let lbGal=[],lbIdx=0;
+
+  function openLb(gallery,idx){
+    lbGal=gallery;lbIdx=idx;
+    lbImg.src=lbGal[lbIdx];
+    lbCount.textContent=(lbIdx+1)+' / '+lbGal.length;
+    lb.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeLb(){
+    lb.classList.remove('open');
+    document.body.style.overflow='';
+    setTimeout(()=>{lbImg.src='';},300);
+  }
+  function lbNav(d){
+    lbIdx=(lbIdx+d+lbGal.length)%lbGal.length;
+    lbImg.src=lbGal[lbIdx];
+    lbCount.textContent=(lbIdx+1)+' / '+lbGal.length;
+  }
+  document.getElementById('lb-close').onclick=closeLb;
+  lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+  document.getElementById('lb-prev').onclick=()=>lbNav(-1);
+  document.getElementById('lb-next').onclick=()=>lbNav(1);
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')closeLb();
+    if(e.key==='ArrowLeft')lbNav(-1);
+    if(e.key==='ArrowRight')lbNav(1);
+  });
+
+  // Wire masonry clicks
+  document.querySelectorAll('.masonry-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      const gKey=item.dataset.gallery;
+      const gallery=GALLERIES[gKey];
+      if(!gallery)return;
+      openLb(gallery,parseInt(item.dataset.index,10)||0);
+    });
+  });
+
+  // Wire photo ticker clicks
+  document.querySelectorAll('.photo-ticker-row img').forEach(img=>{
+    img.addEventListener('click',()=>{
+      const src=img.dataset.src||img.src.replace(location.origin,'');
+      const idx=FOTO_ALL.indexOf(src);
+      openLb(FOTO_ALL,idx>=0?idx:0);
+    });
+  });
+
+  // Wire packaging clicks
+  document.querySelectorAll('.pkg-card-img').forEach(img=>{
+    img.addEventListener('click',()=>{
+      const idx=parseInt(img.dataset.pkgidx,10)||0;
+      openLb(GALLERIES.packaging,idx%GALLERIES.packaging.length);
+    });
+  });
+
+  // ── Photo filter → switch ticker group ────────
+  document.querySelectorAll('#photo-filter-bar .filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('#photo-filter-bar .filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat=btn.dataset.pcat;
+      ['all','alimentacao','institucional','produto'].forEach(c=>{
+        const el=document.getElementById('pticker-'+c);
+        if(el) el.style.display=(cat===c)?'':'none';
+      });
+    });
+  });
+
+  // ── Ver mais ───────────────────────────────────
+  document.querySelectorAll('.ver-mais-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const target=document.getElementById(btn.dataset.target);
+      if(!target)return;
+      target.classList.add('expanded');
+      btn.classList.add('hidden');
+    });
+  });
+</script>
+</body>
+</html>

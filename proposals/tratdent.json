@@ -1,0 +1,96 @@
+{
+  "slug": "tratdent",
+  "token": "d12da616-41c6-4f98-83c2-af65fd0d0c67",
+  "client": {
+    "contact": "Equipe Tratdent",
+    "company": "Tratdent"
+  },
+  "expiresAt": "2026-05-14",
+  "packages": [
+    {
+      "id": "A",
+      "name": "Pacote A",
+      "price": "R$ 1.750/mês",
+      "minMonths": 3,
+      "recommended": false,
+      "groups": [
+        {
+          "title": "Publicações mensais",
+          "items": [
+            "4 vídeos roteirizados + legendas",
+            "8 publicações estáticas + legendas"
+          ]
+        },
+        {
+          "title": "Captação",
+          "items": [
+            "8 visitas ao ano (não mensais)",
+            "Sessão de até 4h",
+            "Câmera 4k + Teleprompter + iluminação profissional",
+            "Edição dos vídeos para publicação"
+          ]
+        },
+        {
+          "title": "Social media",
+          "items": [
+            "Profissional dedicado, seg–sex 9h–18h",
+            "Agendamento de publicações + resposta a comentários",
+            "Calendário e Trello organizados"
+          ]
+        },
+        {
+          "title": "Artes extras",
+          "items": [
+            "Até 2 artes/mês (digital e impresso)",
+            "Contagem por complexidade"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Pacote B",
+      "price": "R$ 2.100/mês",
+      "minMonths": 3,
+      "recommended": true,
+      "groups": [
+        {
+          "title": "Publicações mensais",
+          "items": [
+            "6 vídeos roteirizados + legendas",
+            "10 publicações estáticas + legendas"
+          ]
+        },
+        {
+          "title": "Captação",
+          "items": [
+            "1 visita/mês",
+            "Sessão de até 3h",
+            "Câmera 4k + Teleprompter + iluminação profissional",
+            "Edição dos vídeos para publicação"
+          ]
+        },
+        {
+          "title": "Social media",
+          "items": [
+            "Profissional dedicado, seg–sex 9h–18h",
+            "Agendamento de publicações + resposta a comentários",
+            "Calendário e Trello organizados"
+          ]
+        },
+        {
+          "title": "Artes extras",
+          "items": [
+            "Até 4 artes/mês (digital e impresso)",
+            "Contagem por complexidade"
+          ]
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/557199999999",
+    "whatsapp": "71 9 9999-9999",
+    "email": "jose@hup.com.br"
+  }
+}
