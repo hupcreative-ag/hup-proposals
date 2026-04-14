@@ -57,8 +57,10 @@ function readProposal(slug) {
 
 // ─── Routes ─────────────────────────────────────────────────────────────────
 
-// Proposal page
-app.get('/proposta/:slug', (req, res) => {
+// Proposal page — suporta /:slug e /proposta/:slug
+app.get('/proposta/:slug', (req, res) => res.redirect(301, `/${req.params.slug}${req.url.includes('?')?req.url.slice(req.url.indexOf('?')):''}` ));
+
+app.get('/:slug', (req, res) => {
   const { slug } = req.params;
   const { token } = req.query;
 
