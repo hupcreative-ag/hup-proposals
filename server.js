@@ -12,8 +12,12 @@ const TRACKING_FILE = path.join(DATA_DIR, 'tracking.json');
 // Garante que o diretório de dados existe
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
-// Static assets
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+// Static assets — cache por 30 dias no browser
+app.use('/assets', express.static(path.join(__dirname, 'assets'), {
+  maxAge: '30d',
+  etag: true,
+  lastModified: true,
+}));
 
 // View engine
 app.set('view engine', 'ejs');
@@ -21,7 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
-const IMAGE_EXTS = /\.(jpe?g|png|gif|webp|avif|svg)$/i;
+const IMAGE_EXTS = /\.(webp|gif|svg|avif)$/i; // apenas WebP otimizados
 
 function readAssets(relDir) {
   const dir = path.join(__dirname, relDir);
