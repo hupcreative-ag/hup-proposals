@@ -199,26 +199,14 @@
     .ticker-track img{height:180px;width:auto;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
     .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
 
-    /* E-commerce banner tickers */
-    .eco-ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);margin-bottom:8px;}
-    .eco-ticker-wrap:hover .eco-ticker-track{animation-play-state:paused;}
-    .eco-ticker-track{display:flex;gap:8px;width:max-content;will-change:transform;}
-    .eco-ticker-track--left {animation:eco-left  30s linear infinite;}
-    .eco-ticker-track--right{animation:eco-right 30s linear infinite;}
-    @keyframes eco-left { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    @keyframes eco-right{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
-    .eco-ticker-track img{height:150px;width:auto;flex-shrink:0;object-fit:cover;display:block;cursor:zoom-in;transition:filter 200ms;}
-    .eco-ticker-track img:hover{filter:brightness(1.07);}
-
     /* E-commerce bento */
-    .eco-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:8px;margin-top:8px;}
-    .eco-bento-item{overflow:hidden;border-radius:6px;cursor:zoom-in;transition:box-shadow 200ms;}
-    .eco-bento-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms;}
-    .eco-bento-item:hover img{transform:scale(1.05);}
+    .eco-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;}
+    .eco-bento-item{overflow:hidden;border-radius:6px;cursor:zoom-in;background:#111;transition:box-shadow 200ms;}
+    .eco-bento-item img{width:100%;height:auto;display:block;transition:transform 300ms;}
+    .eco-bento-item:hover img{transform:scale(1.03);}
     .eco-bento-item:hover{box-shadow:0 8px 24px rgba(0,0,0,.45);}
-    .eco-bento-item:nth-child(1){grid-column:span 2;}
-    .eco-bento-item:nth-child(5){grid-column:span 2;}
-    .eco-bento-item:nth-child(9){grid-column:span 2;}
+    .eco-bento-item.is-banner{grid-column:span 4;}
+    .eco-bento-item.wide{grid-column:span 2;}
 
     /* Photo filter buttons */
     .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
@@ -264,9 +252,8 @@
     .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
 
     @media(max-width:768px){
-      .eco-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
-      .eco-bento-item:nth-child(n){grid-column:span 1;}
-      .eco-bento-item:nth-child(odd){grid-column:span 2;}
+      .eco-bento{grid-template-columns:repeat(2,1fr);}
+      .eco-bento-item.is-banner,.eco-bento-item.wide{grid-column:span 2;}
       .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
     }
 
@@ -474,48 +461,28 @@
 
     <!-- 4b. E-COMMERCE -->
     <% if (assets.ecommerce.length) { %>
-    <%
-      const ecoBanners  = assets.ecommerce.filter(img => /banner|topo/i.test(img));
-      const ecoProducts = assets.ecommerce.filter(img => !/banner|topo/i.test(img));
-    %>
     <div class="port-section reveal">
       <div class="port-heading">
         <div><div class="port-tag">Portfólio</div><h3>E-commerce</h3></div>
         <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
       </div>
-      <% if (ecoBanners.length) { %>
-      <%
-        const half        = Math.ceil(ecoBanners.length / 2);
-        const topBanners  = ecoBanners.slice(0, half);
-        const botBanners  = ecoBanners.slice(half);
-        /* 4× cada metade → loop imperceptível */
-        const topDisplay  = [...topBanners,...topBanners,...topBanners,...topBanners];
-        const botDisplay  = [...botBanners,...botBanners,...botBanners,...botBanners];
-      %>
-      <div class="eco-ticker-wrap">
-        <div class="eco-ticker-track eco-ticker-track--left">
-          <% topDisplay.forEach(img=>{ %>
-            <img src="<%= img %>" alt="" loading="eager"
-                 data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
+      <div class="collapsible-grid" id="cg-eco">
+        <div class="eco-bento">
+          <% let ecoPI = 0; %>
+          <% assets.ecommerce.forEach((img, i) => {
+               const isBanner = /banner|topo/i.test(img);
+               if (!isBanner) ecoPI++;
+               const spanClass = isBanner ? 'is-banner' : (ecoPI % 3 === 1 ? 'wide' : '');
+          %>
+            <div class="eco-bento-item <%= spanClass %>" data-gallery="ecommerce" data-index="<%= i %>">
+              <img src="<%= img %>" alt="" loading="lazy">
+            </div>
           <% }) %>
         </div>
       </div>
-      <div class="eco-ticker-wrap">
-        <div class="eco-ticker-track eco-ticker-track--right">
-          <% botDisplay.forEach(img=>{ %>
-            <img src="<%= img %>" alt="" loading="eager"
-                 data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
-          <% }) %>
-        </div>
-      </div>
-      <% } %>
-      <% if (ecoProducts.length) { %>
-      <div class="eco-bento">
-        <% ecoProducts.forEach((img,i)=>{ %>
-          <div class="eco-bento-item" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
-            <img src="<%= img %>" alt="" loading="lazy">
-          </div>
-        <% }) %>
+      <% if (assets.ecommerce.length > 8) { %>
+      <div style="text-align:center;">
+        <button class="ver-mais-btn" data-target="cg-eco">Ver mais ↓</button>
       </div>
       <% } %>
     </div>
