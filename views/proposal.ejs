@@ -177,29 +177,42 @@
     .av-cta:hover{filter:brightness(1.2);transform:scale(1.03);}
     .av-play{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:9px solid #fff;display:inline-block;}
 
-    /* ── Photo tickers ── */
-    .photo-section-wrap{position:relative;}
-
-    .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 3%,black 97%,transparent);}
-    .ticker-track{display:inline-flex;gap:6px;animation:ticker-scroll var(--spd,55s) linear infinite;}
-    .ticker-track.rev{animation-direction:reverse;}
-    @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-    /* Big photo tickers */
-    .photo-ticker-row{margin-bottom:6px;cursor:pointer;}
-    .photo-ticker-row .ticker-track img{
-      height:180px;width:auto;object-fit:cover;flex-shrink:0;display:block;
-      transition:transform 300ms,filter 300ms,box-shadow 300ms;
-      border:2px solid transparent;
+    /* ── Drag-scroll wrapper (foto + packaging) ── */
+    .scroll-wrap{
+      overflow-x:auto;overflow-y:hidden;
+      cursor:grab;-webkit-overflow-scrolling:touch;
+      scrollbar-width:thin;scrollbar-color:#2a2a2a transparent;
+      mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);
+      padding-bottom:6px;
     }
-    .photo-ticker-row .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
-    .photo-ticker-row .ticker-track img:hover{
-      transform:scale(1.06);
-      filter:brightness(1.1);
-      border-color:var(--blue);
-      box-shadow:0 0 0 2px var(--blue);
-      cursor:zoom-in;
+    .scroll-wrap::-webkit-scrollbar{height:4px;}
+    .scroll-wrap::-webkit-scrollbar-track{background:transparent;}
+    .scroll-wrap::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
+    .scroll-wrap.grabbing{cursor:grabbing;user-select:none;}
+
+    /* 3-row photo grid (drag-scroll) */
+    .photo-grid-3row{
+      display:grid;
+      grid-template-rows:repeat(3,160px);
+      grid-auto-flow:column;
+      grid-auto-columns:max-content;
+      gap:5px;width:max-content;min-width:100%;
     }
+    .photo-grid-3row img{
+      height:160px;width:auto;object-fit:cover;display:block;
+      cursor:zoom-in;border:2px solid transparent;
+      transition:filter 200ms,border-color 200ms;
+    }
+    .photo-grid-3row img:hover{filter:brightness(1.1);border-color:var(--blue);}
+
+    /* Single-row photo scroll (por categoria) */
+    .photo-row{display:flex;gap:5px;width:max-content;min-width:100%;}
+    .photo-row img{
+      height:220px;width:auto;object-fit:cover;flex-shrink:0;display:block;
+      cursor:zoom-in;border:2px solid transparent;
+      transition:filter 200ms,border-color 200ms;
+    }
+    .photo-row img:hover{filter:brightness(1.1);border-color:var(--blue);}
 
     /* Photo filter buttons */
     .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
@@ -211,18 +224,37 @@
     .filter-btn:hover{border-color:#666;color:#fff;}
     .filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 
-    /* ── Packaging strip ── */
-    .pkg-strip-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 3%,black 97%,transparent);}
-    .pkg-strip{display:inline-flex;gap:12px;animation:pkg-drift 90s linear infinite;}
-    @keyframes pkg-drift{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-    .pkg-strip-wrap:hover .pkg-strip{animation-play-state:paused;}
-
-    .pkg-card-img{
-      flex-shrink:0;width:260px;height:340px;object-fit:cover;display:block;
-      cursor:zoom-in;
-      transition:transform 400ms ease,filter 300ms,box-shadow 300ms;
+    /* Packaging scroll */
+    .pkg-row{display:flex;gap:10px;width:max-content;min-width:100%;}
+    .pkg-row img{
+      height:340px;width:auto;object-fit:cover;flex-shrink:0;display:block;
+      cursor:zoom-in;border:2px solid transparent;
+      transition:transform 300ms ease,filter 200ms,border-color 200ms;
     }
-    .pkg-card-img:hover{transform:scale(1.04) translateY(-6px);box-shadow:0 16px 40px rgba(20,0,255,.3);filter:brightness(1.08);}
+    .pkg-row img:hover{transform:scale(1.03) translateY(-4px);filter:brightness(1.06);border-color:var(--blue);}
+
+    /* E-commerce — banners + produtos */
+    .eco-banner-row{display:flex;gap:8px;width:max-content;min-width:100%;}
+    .eco-banner-row img{
+      height:260px;width:auto;flex-shrink:0;object-fit:cover;display:block;
+      cursor:zoom-in;transition:filter 200ms;
+    }
+    .eco-banner-row img:hover{filter:brightness(1.07);}
+    .eco-product-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;
+    }
+    .eco-product-grid img{
+      width:100%;aspect-ratio:3/4;object-fit:cover;display:block;
+      cursor:zoom-in;transition:filter 200ms,transform 200ms;
+    }
+    .eco-product-grid img:hover{filter:brightness(1.07);transform:scale(1.02);}
+    @media(max-width:768px){
+      .photo-grid-3row{grid-template-rows:repeat(3,120px);}
+      .photo-grid-3row img{height:120px;}
+      .photo-row img{height:160px;}
+      .pkg-row img{height:260px;}
+      .eco-product-grid{grid-template-columns:repeat(2,1fr);}
+    }
 
     /* ── Logo wall ── */
     .clients-section{background:#f0f0f0;}
@@ -427,21 +459,29 @@
 
     <!-- 4b. E-COMMERCE -->
     <% if (assets.ecommerce.length) { %>
+    <%
+      const ecoBanners  = assets.ecommerce.filter(img => /banner|topo/i.test(img));
+      const ecoProducts = assets.ecommerce.filter(img => !/banner|topo/i.test(img));
+    %>
     <div class="port-section reveal">
       <div class="port-heading">
         <div><div class="port-tag">Portfólio</div><h3>E-commerce</h3></div>
         <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
       </div>
-      <div class="collapsible-grid" id="cg-eco">
-        <div class="masonry cols-3" data-gallery="ecommerce">
-          <% assets.ecommerce.forEach((img,i)=>{ %>
-            <div class="masonry-item" data-gallery="ecommerce" data-index="<%= i %>"><img src="<%= img %>" alt="" loading="lazy"></div>
+      <% if (ecoBanners.length) { %>
+      <div class="scroll-wrap" style="margin-bottom:8px;">
+        <div class="eco-banner-row">
+          <% ecoBanners.forEach((img,i)=>{ %>
+            <img src="<%= img %>" alt="" loading="lazy" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
           <% }) %>
         </div>
       </div>
-      <% if (assets.ecommerce.length > 6) { %>
-      <div style="text-align:center;">
-        <button class="ver-mais-btn" data-target="cg-eco">Ver mais ↓</button>
+      <% } %>
+      <% if (ecoProducts.length) { %>
+      <div class="eco-product-grid">
+        <% ecoProducts.forEach((img,i)=>{ %>
+          <img src="<%= img %>" alt="" loading="lazy" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
+        <% }) %>
       </div>
       <% } %>
     </div>
@@ -546,66 +586,43 @@
         <% if(assets.fotografiaProduto.length){%><button class="filter-btn" data-pcat="produto">Produto</button><%}%>
       </div>
 
-      <!-- Ticker rows — JS controls visibility based on filter -->
-      <div id="pticker-all">
-        <div class="photo-ticker-row ticker-wrap" data-pcat="all">
-          <div class="ticker-track" style="--spd:60s;">
-            <% const t1=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto]; %>
-            <% [...t1,...t1].forEach((img,i)=>{ %>
-              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>">
-            <% }) %>
-          </div>
-        </div>
-        <div class="photo-ticker-row ticker-wrap" style="margin-top:6px;" data-pcat="all">
-          <div class="ticker-track rev" style="--spd:48s;">
-            <% const t2=[...assets.fotografiaProduto,...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional]; %>
-            <% [...t2,...t2].forEach((img,i)=>{ %>
-              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>">
-            <% }) %>
-          </div>
-        </div>
-        <div class="photo-ticker-row ticker-wrap" style="margin-top:6px;" data-pcat="all">
-          <div class="ticker-track" style="--spd:70s;">
-            <% const t3=[...assets.fotografiaInstitucional,...assets.fotografiaProduto,...assets.fotografiaAlimentacao]; %>
-            <% [...t3,...t3].forEach((img,i)=>{ %>
-              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>">
+      <!-- Scroll galleries — filter controls visibility -->
+      <div id="pgallery-all">
+        <div class="scroll-wrap">
+          <div class="photo-grid-3row">
+            <% const fAll=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto]; %>
+            <% fAll.forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="<%= i<12?'eager':'lazy' %>" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
       </div>
 
-      <div id="pticker-alimentacao" style="display:none;">
-        <div class="photo-ticker-row ticker-wrap">
-          <div class="ticker-track" style="--spd:50s;">
-            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
-              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
+      <div id="pgallery-alimentacao" style="display:none;">
+        <div class="scroll-wrap">
+          <div class="photo-row">
+            <% assets.fotografiaAlimentacao.forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
       </div>
 
-      <div id="pticker-institucional" style="display:none;">
-        <div class="photo-ticker-row ticker-wrap">
-          <div class="ticker-track rev" style="--spd:55s;">
-            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
-              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
-            <% }) %>
-          </div>
-        </div>
-        <div class="photo-ticker-row ticker-wrap" style="margin-top:6px;">
-          <div class="ticker-track" style="--spd:65s;">
-            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
-              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
+      <div id="pgallery-institucional" style="display:none;">
+        <div class="scroll-wrap">
+          <div class="photo-row">
+            <% assets.fotografiaInstitucional.forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
       </div>
 
-      <div id="pticker-produto" style="display:none;">
-        <div class="photo-ticker-row ticker-wrap">
-          <div class="ticker-track" style="--spd:45s;">
-            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
-              <img src="<%= img %>" data-src="<%= img %>" alt="" loading="lazy">
+      <div id="pgallery-produto" style="display:none;">
+        <div class="scroll-wrap">
+          <div class="photo-row">
+            <% assets.fotografiaProduto.forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
@@ -619,11 +636,10 @@
         <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
         <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
       </div>
-      <div class="pkg-strip-wrap">
-        <div class="pkg-strip">
-          <% [...assets.packaging,...assets.packaging].forEach((img,i)=>{ %>
-            <img class="pkg-card-img" src="<%= img %>" alt="" loading="lazy"
-                 data-pkgsrc="<%= img %>" data-pkgidx="<%= i % assets.packaging.length %>">
+      <div class="scroll-wrap">
+        <div class="pkg-row">
+          <% assets.packaging.forEach((img,i)=>{ %>
+            <img src="<%= img %>" alt="" loading="lazy" data-pkgsrc="<%= img %>" data-pkgidx="<%= i %>">
           <% }) %>
         </div>
       </div>
@@ -836,31 +852,54 @@
     });
   });
 
-  // Wire photo ticker clicks
-  document.querySelectorAll('.photo-ticker-row img').forEach(img=>{
+  // ── Drag-to-scroll ─────────────────────────────
+  document.querySelectorAll('.scroll-wrap').forEach(wrap=>{
+    let down=false,startX=0,scrollLeft=0;
+    wrap.addEventListener('mousedown',e=>{
+      down=true;wrap.classList.add('grabbing');
+      startX=e.pageX-wrap.offsetLeft;scrollLeft=wrap.scrollLeft;
+    });
+    wrap.addEventListener('mouseleave',()=>{down=false;wrap.classList.remove('grabbing');});
+    wrap.addEventListener('mouseup',()=>{down=false;wrap.classList.remove('grabbing');});
+    wrap.addEventListener('mousemove',e=>{
+      if(!down)return;e.preventDefault();
+      wrap.scrollLeft=scrollLeft-(e.pageX-wrap.offsetLeft-startX)*1.5;
+    });
+  });
+
+  // Wire foto scroll clicks → lightbox
+  document.querySelectorAll('[data-fotosrc]').forEach(img=>{
     img.addEventListener('click',()=>{
-      const src=img.dataset.src||img.src.replace(location.origin,'');
+      const src=img.dataset.fotosrc;
       const idx=FOTO_ALL.indexOf(src);
       openLb(FOTO_ALL,idx>=0?idx:0);
     });
   });
 
-  // Wire packaging clicks
-  document.querySelectorAll('.pkg-card-img').forEach(img=>{
+  // Wire packaging clicks → lightbox
+  document.querySelectorAll('[data-pkgsrc]').forEach(img=>{
     img.addEventListener('click',()=>{
       const idx=parseInt(img.dataset.pkgidx,10)||0;
-      openLb(GALLERIES.packaging,idx%GALLERIES.packaging.length);
+      openLb(GALLERIES.packaging,idx);
     });
   });
 
-  // ── Photo filter → switch ticker group ────────
+  // Wire ecommerce clicks → lightbox
+  document.querySelectorAll('[data-gallery="ecommerce"]').forEach(img=>{
+    img.addEventListener('click',()=>{
+      const idx=parseInt(img.dataset.index,10)||0;
+      openLb(GALLERIES.ecommerce,idx);
+    });
+  });
+
+  // ── Photo filter → switch gallery group ────────
   document.querySelectorAll('#photo-filter-bar .filter-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       document.querySelectorAll('#photo-filter-bar .filter-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       const cat=btn.dataset.pcat;
       ['all','alimentacao','institucional','produto'].forEach(c=>{
-        const el=document.getElementById('pticker-'+c);
+        const el=document.getElementById('pgallery-'+c);
         if(el) el.style.display=(cat===c)?'':'none';
       });
     });
