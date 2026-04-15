@@ -105,7 +105,8 @@ app.get('/:slug', (req, res) => {
     ...assets.fotografiaProduto,
   ];
 
-  res.render('proposal', { proposal, assets });
+  const view = proposal.type === 'branding' ? 'proposal-branding' : 'proposal';
+  res.render(view, { proposal, assets });
 });
 
 // Admin tracking

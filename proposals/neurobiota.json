@@ -1,0 +1,113 @@
+{
+  "slug": "neurobiota",
+  "token": "nb-brand-2026",
+  "type": "branding",
+  "serviceType": "Branding e Criação",
+  "client": {
+    "contacts": ["Natalia", "Aiêsca", "Rodrigo"],
+    "company": "Neurobiota"
+  },
+  "expiresAt": "2026-05-14",
+  "proposalTitle": "Branding Neurobiota",
+  "proposalIntro": "O que vem a seguir: antes de comunicar, a marca precisa existir. Este bloco cobre a criação completa da identidade visual da Neurobiota, da marca-mãe às linhas Kids e Baby. Com tudo que é necessário para chegar ao mercado com consistência e profissionalismo.",
+  "items": [
+    {
+      "id": "01",
+      "name": "Neurobiota — Guia Simplificado de Marca",
+      "subtitle": "Marca-mãe · documento de referência",
+      "price": "R$ 1.000",
+      "deliverables": [
+        "Criação de logo (tipografia + símbolo)",
+        "Paleta de cores",
+        "Tipografia institucional",
+        "Variações de logo (positivo, negativo, monocromático)",
+        "Regras básicas de uso",
+        "Cartão de visitas",
+        "Assinatura de e-mail"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Neurobiota Kids — Manual Completo de Marca",
+      "subtitle": "Primeira linha a ser lançada · documento completo",
+      "price": "R$ 4.000",
+      "note": "Inclui: apresentação de conceito + 2 revisões gerais",
+      "deliverables": [
+        "Logo da linha",
+        "Tríade da marca",
+        "Tagline",
+        "Golden Circle",
+        "Personality Slide",
+        "Tom de voz",
+        "Paleta de cores",
+        "Tipografias",
+        "Grafismos e elementos visuais",
+        "Selos",
+        "Variações de logo",
+        "Regras de uso",
+        "Aplicações digitais e de embalagem"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Personagens Neurobiota Kids",
+      "subtitle": "Ilustração por especialista",
+      "price": "R$ 3.500",
+      "note": "Ilustrações realizadas pelo mesmo ilustrador do projeto Criamigos.",
+      "deliverables": [
+        "5 personagens originais",
+        "5 variações de pose e expressão por personagem",
+        "Guia de aplicação de cada personagem"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "Neurobiota Baby — Manual Completo de Marca",
+      "subtitle": "Segunda linha · documento completo",
+      "price": "R$ 3.500",
+      "note": "Inclui: apresentação de conceito + 2 revisões gerais",
+      "deliverables": [
+        "Logo da linha",
+        "Tríade da marca",
+        "Tagline",
+        "Golden Circle",
+        "Personality Slide",
+        "Tom de voz",
+        "Paleta de cores",
+        "Tipografias",
+        "Grafismos e elementos visuais",
+        "Selos",
+        "Variações de logo",
+        "Regras de uso",
+        "Aplicações digitais e de embalagem"
+      ]
+    },
+    {
+      "id": "05",
+      "name": "Domínio + Hospedagem",
+      "subtitle": "Configuração pontual",
+      "price": "R$ 450",
+      "gift": true,
+      "note": "Custo dos domínios e hospedagem por conta do cliente, repassado pelo valor de compra.",
+      "deliverables": [
+        "Registro dos domínios",
+        "Configuração de DNS e apontamentos",
+        "Configuração de e-mail profissional"
+      ]
+    }
+  ],
+  "investment": {
+    "total": "R$ 12.000",
+    "cashDiscount": "R$ 11.350",
+    "installments": {
+      "count": 6,
+      "value": "R$ 2.000",
+      "method": "Pix ou boleto"
+    }
+  },
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
