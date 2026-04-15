@@ -177,42 +177,21 @@
     .av-cta:hover{filter:brightness(1.2);transform:scale(1.03);}
     .av-play{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:9px solid #fff;display:inline-block;}
 
-    /* ── Drag-scroll wrapper (foto + packaging) ── */
-    .scroll-wrap{
-      overflow-x:auto;overflow-y:hidden;
-      cursor:grab;-webkit-overflow-scrolling:touch;
-      scrollbar-width:thin;scrollbar-color:#2a2a2a transparent;
-      mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);
-      padding-bottom:6px;
-    }
-    .scroll-wrap::-webkit-scrollbar{height:4px;}
-    .scroll-wrap::-webkit-scrollbar-track{background:transparent;}
-    .scroll-wrap::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
-    .scroll-wrap.grabbing{cursor:grabbing;user-select:none;}
+    /* ── Ticker (foto + eco banners) ── */
+    .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
+    .ticker-track{display:inline-flex;gap:6px;animation:ticker-scroll var(--spd,55s) linear infinite;}
+    .ticker-track.rev{animation-direction:reverse;}
+    @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+    .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+    .ticker-track img{height:180px;width:auto;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
+    .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
 
-    /* 3-row photo grid (drag-scroll) */
-    .photo-grid-3row{
-      display:grid;
-      grid-template-rows:repeat(3,160px);
-      grid-auto-flow:column;
-      grid-auto-columns:max-content;
-      gap:5px;width:max-content;min-width:100%;
-    }
-    .photo-grid-3row img{
-      height:160px;width:auto;object-fit:cover;display:block;
-      cursor:zoom-in;border:2px solid transparent;
-      transition:filter 200ms,border-color 200ms;
-    }
-    .photo-grid-3row img:hover{filter:brightness(1.1);border-color:var(--blue);}
-
-    /* Single-row photo scroll (por categoria) */
-    .photo-row{display:flex;gap:5px;width:max-content;min-width:100%;}
-    .photo-row img{
-      height:220px;width:auto;object-fit:cover;flex-shrink:0;display:block;
-      cursor:zoom-in;border:2px solid transparent;
-      transition:filter 200ms,border-color 200ms;
-    }
-    .photo-row img:hover{filter:brightness(1.1);border-color:var(--blue);}
+    /* E-commerce banner ticker */
+    .eco-ticker-track{display:inline-flex;gap:8px;animation:ticker-scroll 35s linear infinite;}
+    .eco-ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
+    .eco-ticker-wrap:hover .eco-ticker-track{animation-play-state:paused;}
+    .eco-ticker-track img{height:260px;width:auto;flex-shrink:0;object-fit:cover;display:block;cursor:zoom-in;transition:filter 200ms;}
+    .eco-ticker-track img:hover{filter:brightness(1.07);}
 
     /* Photo filter buttons */
     .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
@@ -224,36 +203,46 @@
     .filter-btn:hover{border-color:#666;color:#fff;}
     .filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 
-    /* Packaging scroll */
-    .pkg-row{display:flex;gap:10px;width:max-content;min-width:100%;}
-    .pkg-row img{
-      height:340px;width:auto;object-fit:cover;flex-shrink:0;display:block;
-      cursor:zoom-in;border:2px solid transparent;
-      transition:transform 300ms ease,filter 200ms,border-color 200ms;
-    }
-    .pkg-row img:hover{transform:scale(1.03) translateY(-4px);filter:brightness(1.06);border-color:var(--blue);}
-
-    /* E-commerce — banners + produtos */
-    .eco-banner-row{display:flex;gap:8px;width:max-content;min-width:100%;}
-    .eco-banner-row img{
-      height:260px;width:auto;flex-shrink:0;object-fit:cover;display:block;
-      cursor:zoom-in;transition:filter 200ms;
-    }
-    .eco-banner-row img:hover{filter:brightness(1.07);}
-    .eco-product-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;
-    }
-    .eco-product-grid img{
-      width:100%;aspect-ratio:3/4;object-fit:cover;display:block;
-      cursor:zoom-in;transition:filter 200ms,transform 200ms;
-    }
+    /* E-commerce product grid */
+    .eco-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
+    .eco-product-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;cursor:zoom-in;transition:filter 200ms,transform 200ms;}
     .eco-product-grid img:hover{filter:brightness(1.07);transform:scale(1.02);}
+
+    /* ── Packaging bento ── */
+    .pkg-bento-wrap{
+      overflow-x:auto;cursor:grab;-webkit-overflow-scrolling:touch;
+      scrollbar-width:thin;scrollbar-color:#2a2a2a transparent;
+      mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);
+      padding-bottom:8px;
+    }
+    .pkg-bento-wrap::-webkit-scrollbar{height:4px;}
+    .pkg-bento-wrap::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
+    .pkg-bento-wrap.grabbing{cursor:grabbing;user-select:none;}
+    .pkg-bento{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns:minmax(220px,1fr);
+      grid-template-rows:repeat(2,240px);
+      gap:8px;width:max-content;min-width:100%;
+    }
+    .pkg-bento-card{
+      position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;
+      transition:box-shadow 300ms;
+    }
+    .pkg-bento-card.tall{grid-row:span 2;}
+    .pkg-bento-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
+    .pkg-bento-card:hover img{transform:scale(1.06);}
+    .pkg-bento-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.1) 50%,transparent 100%);
+      opacity:0;transition:opacity 400ms;
+    }
+    .pkg-bento-card:hover .pkg-bento-overlay{opacity:1;}
+    .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
+
     @media(max-width:768px){
-      .photo-grid-3row{grid-template-rows:repeat(3,120px);}
-      .photo-grid-3row img{height:120px;}
-      .photo-row img{height:160px;}
-      .pkg-row img{height:260px;}
       .eco-product-grid{grid-template-columns:repeat(2,1fr);}
+      .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
     }
 
     /* ── Logo wall ── */
@@ -443,7 +432,7 @@
         <div class="port-desc">Conteúdo pensado para Instagram e TikTok —<br>vídeos, estáticos e stories que geram resultado.</div>
       </div>
       <div class="collapsible-grid" id="cg-redes">
-        <div class="masonry cols-3" data-gallery="redesSociais">
+        <div class="masonry" data-gallery="redesSociais">
           <% assets.redesSociais.forEach((img,i)=>{ %>
             <div class="masonry-item" data-gallery="redesSociais" data-index="<%= i %>"><img src="<%= img %>" alt="" loading="lazy"></div>
           <% }) %>
@@ -469,20 +458,28 @@
         <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
       </div>
       <% if (ecoBanners.length) { %>
-      <div class="scroll-wrap" style="margin-bottom:8px;">
-        <div class="eco-banner-row">
-          <% ecoBanners.forEach((img,i)=>{ %>
-            <img src="<%= img %>" alt="" loading="lazy" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
+      <div class="eco-ticker-wrap" style="margin-bottom:8px;">
+        <div class="eco-ticker-track">
+          <% [...ecoBanners,...ecoBanners].forEach((img,i)=>{ %>
+            <img src="<%= img %>" alt="" loading="<%= i<4?'eager':'lazy' %>"
+                 data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
           <% }) %>
         </div>
       </div>
       <% } %>
       <% if (ecoProducts.length) { %>
-      <div class="eco-product-grid">
-        <% ecoProducts.forEach((img,i)=>{ %>
-          <img src="<%= img %>" alt="" loading="lazy" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
-        <% }) %>
+      <div class="collapsible-grid" id="cg-eco">
+        <div class="eco-product-grid">
+          <% ecoProducts.forEach((img,i)=>{ %>
+            <img src="<%= img %>" alt="" loading="lazy" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
+          <% }) %>
+        </div>
       </div>
+      <% if (ecoProducts.length > 6) { %>
+      <div style="text-align:center;">
+        <button class="ver-mais-btn" data-target="cg-eco">Ver mais ↓</button>
+      </div>
+      <% } %>
       <% } %>
     </div>
     <% } %>
@@ -586,22 +583,38 @@
         <% if(assets.fotografiaProduto.length){%><button class="filter-btn" data-pcat="produto">Produto</button><%}%>
       </div>
 
-      <!-- Scroll galleries — filter controls visibility -->
+      <!-- Ticker rows — filter controls visibility -->
       <div id="pgallery-all">
-        <div class="scroll-wrap">
-          <div class="photo-grid-3row">
-            <% const fAll=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto]; %>
-            <% fAll.forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="<%= i<12?'eager':'lazy' %>" data-fotosrc="<%= img %>">
+        <% const fAll=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto]; %>
+        <div class="ticker-wrap" style="margin-bottom:6px;">
+          <div class="ticker-track" style="--spd:60s;">
+            <% [...fAll,...fAll].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap" style="margin-bottom:6px;">
+          <div class="ticker-track rev" style="--spd:48s;">
+            <% const fAll2=[...assets.fotografiaProduto,...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional]; %>
+            <% [...fAll2,...fAll2].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap">
+          <div class="ticker-track" style="--spd:70s;">
+            <% const fAll3=[...assets.fotografiaInstitucional,...assets.fotografiaProduto,...assets.fotografiaAlimentacao]; %>
+            <% [...fAll3,...fAll3].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
       </div>
 
       <div id="pgallery-alimentacao" style="display:none;">
-        <div class="scroll-wrap">
-          <div class="photo-row">
-            <% assets.fotografiaAlimentacao.forEach((img,i)=>{ %>
+        <div class="ticker-wrap">
+          <div class="ticker-track" style="--spd:45s;">
+            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
@@ -609,9 +622,16 @@
       </div>
 
       <div id="pgallery-institucional" style="display:none;">
-        <div class="scroll-wrap">
-          <div class="photo-row">
-            <% assets.fotografiaInstitucional.forEach((img,i)=>{ %>
+        <div class="ticker-wrap" style="margin-bottom:6px;">
+          <div class="ticker-track rev" style="--spd:55s;">
+            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap">
+          <div class="ticker-track" style="--spd:65s;">
+            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
@@ -619,9 +639,9 @@
       </div>
 
       <div id="pgallery-produto" style="display:none;">
-        <div class="scroll-wrap">
-          <div class="photo-row">
-            <% assets.fotografiaProduto.forEach((img,i)=>{ %>
+        <div class="ticker-wrap">
+          <div class="ticker-track" style="--spd:50s;">
+            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
@@ -636,10 +656,14 @@
         <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
         <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
       </div>
-      <div class="scroll-wrap">
-        <div class="pkg-row">
+      <div class="pkg-bento-wrap">
+        <div class="pkg-bento">
           <% assets.packaging.forEach((img,i)=>{ %>
-            <img src="<%= img %>" alt="" loading="lazy" data-pkgsrc="<%= img %>" data-pkgidx="<%= i %>">
+            <div class="pkg-bento-card <%= i%3===0?'tall':'' %>"
+                 data-pkgsrc="<%= img %>" data-pkgidx="<%= i %>">
+              <img src="<%= img %>" alt="" loading="lazy">
+              <div class="pkg-bento-overlay"></div>
+            </div>
           <% }) %>
         </div>
       </div>
@@ -852,8 +876,8 @@
     });
   });
 
-  // ── Drag-to-scroll ─────────────────────────────
-  document.querySelectorAll('.scroll-wrap').forEach(wrap=>{
+  // ── Drag-to-scroll (packaging bento) ──────────
+  document.querySelectorAll('.pkg-bento-wrap').forEach(wrap=>{
     let down=false,startX=0,scrollLeft=0;
     wrap.addEventListener('mousedown',e=>{
       down=true;wrap.classList.add('grabbing');
@@ -876,10 +900,10 @@
     });
   });
 
-  // Wire packaging clicks → lightbox
-  document.querySelectorAll('[data-pkgsrc]').forEach(img=>{
-    img.addEventListener('click',()=>{
-      const idx=parseInt(img.dataset.pkgidx,10)||0;
+  // Wire packaging bento clicks → lightbox
+  document.querySelectorAll('.pkg-bento-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const idx=parseInt(card.dataset.pkgidx,10)||0;
       openLb(GALLERIES.packaging,idx);
     });
   });
