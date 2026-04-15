@@ -740,16 +740,16 @@
             }
             return out;
           }
-          const _al = assets.fotografiaAlimentacao;
-          const _ins = assets.fotografiaInstitucional;
-          const _pr = assets.fotografiaProduto;
+          const _alAll = assets.fotografiaAlimentacao;
+          const _insAll = assets.fotografiaInstitucional;
+          const _prAll = assets.fotografiaProduto;
 
           // Linha 1: alim → inst → prod
-          const fRow1 = interleave(_al, _ins, _pr);
-          // Linha 2: inst → prod → alim (offset diferente para variar a ordem)
-          const fRow2 = interleave(_ins, _pr, _al);
+          const fRow1 = interleave(_alAll, _insAll, _prAll);
+          // Linha 2: inst → prod → alim
+          const fRow2 = interleave(_insAll, _prAll, _alAll);
           // Linha 3: prod → alim → inst
-          const fRow3 = interleave(_pr, _al, _ins);
+          const fRow3 = interleave(_prAll, _alAll, _insAll);
         %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:160s;">
@@ -776,13 +776,13 @@
 
       <div id="pgallery-alimentacao" style="display:none;">
         <%
-          const _al = assets.fotografiaAlimentacao;
-          const _alR = [..._al].reverse();
-          const _alM = [..._al.slice(Math.floor(_al.length/2)),..._al.slice(0,Math.floor(_al.length/2))];
+          const _alCat = assets.fotografiaAlimentacao;
+          const _alR = [..._alCat].reverse();
+          const _alM = [..._alCat.slice(Math.floor(_alCat.length/2)),..._alCat.slice(0,Math.floor(_alCat.length/2))];
         %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:90s;">
-            <% [..._al,..._al].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            <% [..._alCat,..._alCat].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
@@ -799,11 +799,11 @@
 
       <div id="pgallery-institucional" style="display:none;">
         <%
-          const _ins = assets.fotografiaInstitucional;
+          const _insCat = assets.fotografiaInstitucional;
           // Para evitar repeticao visual, cada linha mistura institucional com outras fotos
-          const _insLine1 = [..._ins, ...assets.fotografiaProduto.slice(0, Math.ceil(_ins.length/2))];
-          const _insLine2 = [..._ins].reverse();
-          const _insLine3 = [...assets.fotografiaAlimentacao.slice(0, Math.ceil(_ins.length/2)), ..._ins];
+          const _insLine1 = [..._insCat, ...assets.fotografiaProduto.slice(0, Math.ceil(_insCat.length/2))];
+          const _insLine2 = [..._insCat].reverse();
+          const _insLine3 = [...assets.fotografiaAlimentacao.slice(0, Math.ceil(_insCat.length/2)), ..._insCat];
         %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track rev" style="--spd:110s;">
@@ -824,13 +824,13 @@
 
       <div id="pgallery-produto" style="display:none;">
         <%
-          const _pr = assets.fotografiaProduto;
-          const _prR = [..._pr].reverse();
-          const _prM = [..._pr.slice(Math.floor(_pr.length/2)),..._pr.slice(0,Math.floor(_pr.length/2))];
+          const _prCat = assets.fotografiaProduto;
+          const _prR = [..._prCat].reverse();
+          const _prM = [..._prCat.slice(Math.floor(_prCat.length/2)),..._prCat.slice(0,Math.floor(_prCat.length/2))];
         %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:100s;">
-            <% [..._pr,..._pr].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            <% [..._prCat,..._prCat].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
