@@ -346,6 +346,13 @@
     .branding-card-subtitle{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0;}
     .branding-card-price{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1;color:#fff;white-space:nowrap;}
     .branding-card-price.strikethrough{text-decoration:line-through;color:#444;font-size:clamp(1.2rem,2.5vw,1.8rem);}
+    .branding-card-price:not(.strikethrough){
+      background:linear-gradient(90deg,#fff 0%,var(--cyan) 50%,#fff 100%);
+      background-size:200% auto;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:price-shine 3s linear infinite;
+    }
+    @keyframes price-shine{0%{background-position:200% center;}100%{background-position:-200% center;}}
     .branding-gift-badge{display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;padding:.25rem .75rem;background:rgba(0,207,255,.12);border:1px solid rgba(0,207,255,.3);border-radius:999px;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);animation:gift-blink 1.4s ease-in-out infinite;}
     @keyframes gift-blink{0%,100%{opacity:1;box-shadow:0 0 8px rgba(0,207,255,.4);}50%{opacity:.35;box-shadow:none;}}
     .branding-card-note{font-size:.78rem;color:var(--cyan);margin:.75rem 0 0;font-style:italic;}
