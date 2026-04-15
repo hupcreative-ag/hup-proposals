@@ -68,30 +68,36 @@
     .hero-scroll-arrow{animation:arrow-bounce 1.8s ease-in-out infinite;}
     @keyframes arrow-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
-    /* Hero — pontos hexagonais azuis */
+    /* Hero — pontos hexagonais com luz orbital nas bordas */
     .hero-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
     .hero-dots{
       position:absolute;inset:0;
       background-color:#0a0a0a;
       background-image:
+        /* Camada 1+2: grade hexagonal de pontos */
         radial-gradient(circle at 50% 50%, transparent 1.5px, #0a0a0a 0 8px, transparent 8px),
         radial-gradient(circle at 50% 50%, transparent 1.5px, #0a0a0a 0 8px, transparent 8px),
-        radial-gradient(ellipse at 40% 50%, rgba(20,0,255,.85), transparent 55%),
-        radial-gradient(ellipse at 70% 30%, rgba(0,60,255,.45), transparent 50%);
+        /* Camada 3: vinheta escura central — garante contraste do texto */
+        radial-gradient(ellipse at center, #0a0a0a 18%, transparent 62%),
+        /* Camada 4: luz azul principal orbita as bordas */
+        radial-gradient(ellipse at 0% 0%, rgba(20,0,255,.92), transparent 52%),
+        /* Camada 5: luz azul oposta (180° de fase) */
+        radial-gradient(ellipse at 100% 100%, rgba(20,0,255,.75), transparent 52%);
       background-size:
         10px 17.32px,
         10px 17.32px,
-        300% 300%,
-        250% 250%;
-      background-position: 0 0, 5px 8.66px, 0% 50%, 100% 0%;
-      animation: dots-drift 28s linear infinite;
+        100% 100%,
+        210% 210%,
+        210% 210%;
+      background-position: 0 0, 5px 8.66px, center, 0% 0%, 100% 100%;
+      animation: edge-orbit 14s linear infinite;
     }
-    @keyframes dots-drift{
-      0%  {background-position:0 0,5px 8.66px, 0%   50%, 100%   0%;}
-      25% {background-position:0 0,5px 8.66px, 80%  20%, 20%   80%;}
-      50% {background-position:0 0,5px 8.66px, 100% 80%, 0%  100%;}
-      75% {background-position:0 0,5px 8.66px, 20% 100%, 80%  20%;}
-      100%{background-position:0 0,5px 8.66px, 0%   50%, 100%   0%;}
+    @keyframes edge-orbit{
+      0%  {background-position:0 0,5px 8.66px,center,  0%   0%,  100% 100%;}
+      25% {background-position:0 0,5px 8.66px,center,100%   0%,    0% 100%;}
+      50% {background-position:0 0,5px 8.66px,center,100% 100%,    0%   0%;}
+      75% {background-position:0 0,5px 8.66px,center,  0% 100%,  100%   0%;}
+      100%{background-position:0 0,5px 8.66px,center,  0%   0%,  100% 100%;}
     }
 
     /* Hero geo accent */
