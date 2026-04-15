@@ -199,12 +199,26 @@
     .ticker-track img{height:180px;width:auto;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
     .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
 
-    /* E-commerce banner ticker */
-    .eco-ticker-track{display:inline-flex;gap:8px;animation:ticker-scroll 16s linear infinite;}
-    .eco-ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
+    /* E-commerce banner tickers */
+    .eco-ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);margin-bottom:8px;}
     .eco-ticker-wrap:hover .eco-ticker-track{animation-play-state:paused;}
+    .eco-ticker-track{display:flex;gap:8px;width:max-content;will-change:transform;}
+    .eco-ticker-track--left {animation:eco-left  30s linear infinite;}
+    .eco-ticker-track--right{animation:eco-right 30s linear infinite;}
+    @keyframes eco-left { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    @keyframes eco-right{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
     .eco-ticker-track img{height:150px;width:auto;flex-shrink:0;object-fit:cover;display:block;cursor:zoom-in;transition:filter 200ms;}
     .eco-ticker-track img:hover{filter:brightness(1.07);}
+
+    /* E-commerce bento */
+    .eco-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:8px;margin-top:8px;}
+    .eco-bento-item{overflow:hidden;border-radius:6px;cursor:zoom-in;transition:box-shadow 200ms;}
+    .eco-bento-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms;}
+    .eco-bento-item:hover img{transform:scale(1.05);}
+    .eco-bento-item:hover{box-shadow:0 8px 24px rgba(0,0,0,.45);}
+    .eco-bento-item:nth-child(1){grid-column:span 2;}
+    .eco-bento-item:nth-child(5){grid-column:span 2;}
+    .eco-bento-item:nth-child(9){grid-column:span 2;}
 
     /* Photo filter buttons */
     .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
@@ -216,10 +230,6 @@
     .filter-btn:hover{border-color:#666;color:#fff;}
     .filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 
-    /* E-commerce product grid */
-    .eco-product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;align-items:start;}
-    .eco-product-grid img{width:100%;height:auto;display:block;cursor:zoom-in;transition:filter 200ms,transform 200ms;}
-    .eco-product-grid img:hover{filter:brightness(1.07);transform:scale(1.02);}
 
     /* ── Packaging bento ── */
     .pkg-bento-wrap{
@@ -254,7 +264,9 @@
     .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
 
     @media(max-width:768px){
-      .eco-product-grid{grid-template-columns:repeat(2,1fr);}
+      .eco-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
+      .eco-bento-item:nth-child(n){grid-column:span 1;}
+      .eco-bento-item:nth-child(odd){grid-column:span 2;}
       .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
     }
 
@@ -472,28 +484,39 @@
         <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
       </div>
       <% if (ecoBanners.length) { %>
-      <div class="eco-ticker-wrap" style="margin-bottom:8px;">
-        <div class="eco-ticker-track">
-          <% [...ecoBanners,...ecoBanners].forEach((img,i)=>{ %>
-            <img src="<%= img %>" alt="" loading="<%= i<4?'eager':'lazy' %>"
+      <%
+        const half        = Math.ceil(ecoBanners.length / 2);
+        const topBanners  = ecoBanners.slice(0, half);
+        const botBanners  = ecoBanners.slice(half);
+        /* 4× cada metade → loop imperceptível */
+        const topDisplay  = [...topBanners,...topBanners,...topBanners,...topBanners];
+        const botDisplay  = [...botBanners,...botBanners,...botBanners,...botBanners];
+      %>
+      <div class="eco-ticker-wrap">
+        <div class="eco-ticker-track eco-ticker-track--left">
+          <% topDisplay.forEach(img=>{ %>
+            <img src="<%= img %>" alt="" loading="eager"
+                 data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
+          <% }) %>
+        </div>
+      </div>
+      <div class="eco-ticker-wrap">
+        <div class="eco-ticker-track eco-ticker-track--right">
+          <% botDisplay.forEach(img=>{ %>
+            <img src="<%= img %>" alt="" loading="eager"
                  data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
           <% }) %>
         </div>
       </div>
       <% } %>
       <% if (ecoProducts.length) { %>
-      <div class="collapsible-grid" id="cg-eco">
-        <div class="eco-product-grid">
-          <% ecoProducts.forEach((img,i)=>{ %>
-            <img src="<%= img %>" alt="" loading="lazy" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
-          <% }) %>
-        </div>
+      <div class="eco-bento">
+        <% ecoProducts.forEach((img,i)=>{ %>
+          <div class="eco-bento-item" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
+            <img src="<%= img %>" alt="" loading="lazy">
+          </div>
+        <% }) %>
       </div>
-      <% if (ecoProducts.length > 6) { %>
-      <div style="text-align:center;">
-        <button class="ver-mais-btn" data-target="cg-eco">Ver mais ↓</button>
-      </div>
-      <% } %>
       <% } %>
     </div>
     <% } %>
