@@ -121,9 +121,16 @@
     .masonry-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;cursor:pointer;}
     .masonry-item img{width:100%;height:auto;display:block;transition:transform 400ms ease,filter 300ms;}
     .masonry-item:hover img{transform:scale(1.05);filter:brightness(1.1);}
-    /* Banner spans all columns in masonry context */
-    .masonry-item.is-banner{column-span:all;border-radius:8px;overflow:hidden;}
-    .masonry-item.is-banner img{border-radius:8px;}
+    /* E-commerce grid (produto×1 + banner×2 colunas) */
+    .eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;align-items:start;}
+    .eco-grid-item{overflow:hidden;border-radius:6px;cursor:zoom-in;transition:box-shadow 200ms;}
+    .eco-grid-item img{width:100%;height:auto;display:block;transition:transform 300ms;}
+    .eco-grid-item:hover img{transform:scale(1.03);}
+    .eco-grid-item:hover{box-shadow:0 6px 20px rgba(0,0,0,.4);}
+    .eco-grid-item.is-banner{grid-column:span 2;}
+    @media(max-width:768px){
+      .eco-grid{grid-template-columns:repeat(2,1fr);}
+    }
 
     /* ── Collapse / ver mais ── */
     .collapsible-grid{position:relative;max-height:520px;overflow:hidden;transition:max-height 700ms ease;}
@@ -460,20 +467,21 @@
         <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
       </div>
       <div class="collapsible-grid" id="cg-eco">
-        <div class="masonry">
+        <div class="eco-grid">
           <%
             const ecoBanners  = assets.ecommerce.filter(img => /banner|topo/i.test(img));
             const ecoProducts = assets.ecommerce.filter(img => !/banner|topo/i.test(img));
-            /* intercala: 4 produtos preenchem as 4 colunas → 1 banner full-width → repete */
+            /* 2 produtos (1col cada) + 1 banner (2cols) = 4 colunas por linha */
             const ecoMixed = [];
             let _bi = 0, _pi = 0;
             while (_pi < ecoProducts.length || _bi < ecoBanners.length) {
-              for (let k = 0; k < 4 && _pi < ecoProducts.length; k++) ecoMixed.push({ img: ecoProducts[_pi++], banner: false });
-              if (_bi < ecoBanners.length) ecoMixed.push({ img: ecoBanners[_bi++], banner: true });
+              if (_pi < ecoProducts.length) ecoMixed.push({ img: ecoProducts[_pi++], banner: false });
+              if (_pi < ecoProducts.length) ecoMixed.push({ img: ecoProducts[_pi++], banner: false });
+              if (_bi < ecoBanners.length)  ecoMixed.push({ img: ecoBanners[_bi++],  banner: true  });
             }
           %>
           <% ecoMixed.forEach(item => { %>
-            <div class="masonry-item<%= item.banner ? ' is-banner' : '' %>"
+            <div class="eco-grid-item<%= item.banner ? ' is-banner' : '' %>"
                  data-gallery="ecommerce"
                  data-index="<%= assets.ecommerce.indexOf(item.img) %>">
               <img src="<%= item.img %>" alt="" loading="lazy">
