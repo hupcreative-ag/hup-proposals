@@ -221,28 +221,41 @@
     .eco-product-grid img{width:100%;height:auto;display:block;cursor:zoom-in;transition:filter 200ms,transform 200ms;}
     .eco-product-grid img:hover{filter:brightness(1.07);transform:scale(1.02);}
 
-    /* ── Packaging ticker com cards ── */
-    .pkg-ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
-    .pkg-ticker-track{display:inline-flex;gap:10px;animation:ticker-scroll 50s linear infinite;}
-    .pkg-ticker-wrap:hover .pkg-ticker-track{animation-play-state:paused;}
-    .pkg-ticker-card{
-      flex-shrink:0;width:220px;height:320px;
+    /* ── Packaging bento ── */
+    .pkg-bento-wrap{
+      overflow-x:auto;cursor:grab;-webkit-overflow-scrolling:touch;
+      scrollbar-width:thin;scrollbar-color:#2a2a2a transparent;
+      mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);
+      padding-bottom:8px;
+    }
+    .pkg-bento-wrap::-webkit-scrollbar{height:4px;}
+    .pkg-bento-wrap::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
+    .pkg-bento-wrap.grabbing{cursor:grabbing;user-select:none;}
+    .pkg-bento{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns:minmax(220px,1fr);
+      grid-template-rows:repeat(2,240px);
+      gap:8px;width:max-content;min-width:100%;
+    }
+    .pkg-bento-card{
       position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;
       transition:box-shadow 300ms;
     }
-    .pkg-ticker-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
-    .pkg-ticker-card:hover img{transform:scale(1.06);}
-    .pkg-ticker-overlay{
+    .pkg-bento-card.tall{grid-row:span 2;}
+    .pkg-bento-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
+    .pkg-bento-card:hover img{transform:scale(1.06);}
+    .pkg-bento-overlay{
       position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);
+      background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.1) 50%,transparent 100%);
       opacity:0;transition:opacity 400ms;
     }
-    .pkg-ticker-card:hover .pkg-ticker-overlay{opacity:1;}
-    .pkg-ticker-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
+    .pkg-bento-card:hover .pkg-bento-overlay{opacity:1;}
+    .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
 
     @media(max-width:768px){
       .eco-product-grid{grid-template-columns:repeat(2,1fr);}
-      .pkg-ticker-card{width:160px;height:240px;}
+      .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
     }
 
     /* ── Logo wall ── */
@@ -658,20 +671,20 @@
         <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
         <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
       </div>
-      <div class="pkg-ticker-wrap">
-        <div class="pkg-ticker-track">
+      <div class="pkg-bento-wrap">
+        <div class="pkg-bento">
           <%
             const pkgReordered = [...assets.packaging];
-            const img4 = pkgReordered.splice(3, 1)[0];      // remove image 4 (index 3)
-            const img12 = pkgReordered.splice(10, 1)[0];    // remove image 12 (index 11 → now 10 after splice)
-            pkgReordered.splice(3, 0, img12);                // insert image 12 at position 3
-            pkgReordered.push(img4);                         // image 4 goes to last
-            const pkgDisplay = [...pkgReordered, ...pkgReordered]; // duplicate for seamless loop
+            const img4 = pkgReordered.splice(3, 1)[0];    // remove image 4 (index 3)
+            const img12 = pkgReordered.splice(10, 1)[0];  // remove image 12 (index 11 → now 10 after splice)
+            pkgReordered.splice(3, 0, img12);              // insert image 12 at position 3
+            pkgReordered.push(img4);                       // image 4 vai para o final
           %>
-          <% pkgDisplay.forEach((img,i)=>{ %>
-            <div class="pkg-ticker-card" data-pkgsrc="<%= img %>" data-pkgidx="<%= assets.packaging.indexOf(img) %>">
+          <% pkgReordered.forEach((img,i)=>{ %>
+            <div class="pkg-bento-card <%= i%3===0?'tall':'' %>"
+                 data-pkgsrc="<%= img %>" data-pkgidx="<%= assets.packaging.indexOf(img) %>">
               <img src="<%= img %>" alt="" loading="lazy">
-              <div class="pkg-ticker-overlay"></div>
+              <div class="pkg-bento-overlay"></div>
             </div>
           <% }) %>
         </div>
@@ -885,8 +898,23 @@
     });
   });
 
-  // ── Packaging ticker: click → lightbox ───────
-  document.querySelectorAll('.pkg-ticker-card').forEach(card=>{
+  // ── Drag-to-scroll (packaging bento) ──────────
+  document.querySelectorAll('.pkg-bento-wrap').forEach(wrap=>{
+    let down=false,startX=0,scrollLeft=0;
+    wrap.addEventListener('mousedown',e=>{
+      down=true;wrap.classList.add('grabbing');
+      startX=e.pageX-wrap.offsetLeft;scrollLeft=wrap.scrollLeft;
+    });
+    wrap.addEventListener('mouseleave',()=>{down=false;wrap.classList.remove('grabbing');});
+    wrap.addEventListener('mouseup',()=>{down=false;wrap.classList.remove('grabbing');});
+    wrap.addEventListener('mousemove',e=>{
+      if(!down)return;e.preventDefault();
+      wrap.scrollLeft=scrollLeft-(e.pageX-wrap.offsetLeft-startX)*1.5;
+    });
+  });
+
+  // Wire packaging bento clicks → lightbox
+  document.querySelectorAll('.pkg-bento-card').forEach(card=>{
     card.addEventListener('click',()=>{
       const idx=parseInt(card.dataset.pkgidx,10)||0;
       openLb(GALLERIES.packaging,idx);
