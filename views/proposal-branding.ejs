@@ -248,12 +248,13 @@
 
     /* ── Ticker ── */
     .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
-    .ticker-track{display:inline-flex;gap:6px;animation:ticker-scroll var(--spd,55s) linear infinite;}
+    .ticker-track{display:inline-flex;gap:6px;animation:ticker-scroll var(--spd,55s) linear infinite;will-change:transform;}
     .ticker-track.rev{animation-direction:reverse;}
     @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
     .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
-    .ticker-track img{height:180px;width:auto;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
+    .ticker-track img{height:180px;width:auto;min-width:120px;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
     .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
+    @media(max-width:768px){.ticker-track img{height:130px;min-width:90px;}}
 
     /* Photo filter buttons */
     .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
@@ -299,6 +300,12 @@
 
     @media(max-width:768px){
       .pkg-bento-wrap{overflow-x:visible;mask-image:none;cursor:default;padding-bottom:0;}
+      .pkg-bento-wrap.pkg-collapsed{max-height:520px;overflow:hidden;position:relative;}
+      .pkg-bento-wrap.pkg-collapsed::after{
+        content:'';position:absolute;bottom:0;left:0;right:0;height:180px;
+        background:linear-gradient(to top,var(--bg) 0%,transparent 100%);
+        pointer-events:none;
+      }
       .pkg-bento{
         display:grid;
         grid-template-columns:repeat(2,1fr);
@@ -306,6 +313,7 @@
         grid-auto-flow:row;
         grid-auto-columns:unset;
         width:100%;min-width:unset;
+        gap:6px;
       }
       .pkg-bento-card{aspect-ratio:1/1;border-radius:6px;}
       .pkg-bento-card.tall{grid-row:span 1;}
@@ -748,73 +756,70 @@
       </div>
 
       <div id="pgallery-alimentacao" style="display:none;">
+        <%
+          const _al = assets.fotografiaAlimentacao;
+          const _alR = [..._al].reverse();
+          const _alM = [..._al.slice(Math.floor(_al.length/2)),..._al.slice(0,Math.floor(_al.length/2))];
+        %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:45s;">
-            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._al,..._al].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track rev" style="--spd:55s;">
-            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._alR,..._alR].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap">
           <div class="ticker-track" style="--spd:38s;">
-            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._alM,..._alM].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
       </div>
 
       <div id="pgallery-institucional" style="display:none;">
+        <%
+          const _ins = assets.fotografiaInstitucional;
+          const _insR = [..._ins].reverse();
+          const _insM = [..._ins.slice(Math.floor(_ins.length/2)),..._ins.slice(0,Math.floor(_ins.length/2))];
+        %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track rev" style="--spd:55s;">
-            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._ins,..._ins].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:65s;">
-            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._insR,..._insR].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap">
           <div class="ticker-track rev" style="--spd:48s;">
-            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._insM,..._insM].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
       </div>
 
       <div id="pgallery-produto" style="display:none;">
+        <%
+          const _pr = assets.fotografiaProduto;
+          const _prR = [..._pr].reverse();
+          const _prM = [..._pr.slice(Math.floor(_pr.length/2)),..._pr.slice(0,Math.floor(_pr.length/2))];
+        %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:50s;">
-            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._pr,..._pr].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track rev" style="--spd:42s;">
-            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._prR,..._prR].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap">
           <div class="ticker-track" style="--spd:60s;">
-            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._prM,..._prM].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
       </div>
@@ -827,7 +832,7 @@
         <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
         <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
       </div>
-      <div class="pkg-bento-wrap">
+      <div class="pkg-bento-wrap pkg-collapsed" id="pkg-wrap">
         <div class="pkg-bento">
           <%
             const pkgReordered = [...assets.packaging];
@@ -844,6 +849,9 @@
             </div>
           <% }) %>
         </div>
+      </div>
+      <div style="text-align:center;" id="pkg-ver-mais-wrap">
+        <button class="ver-mais-btn" id="pkg-ver-mais-btn">Ver mais ↓</button>
       </div>
     </div>
     <% } %>
@@ -1171,6 +1179,25 @@
       btn.classList.add('hidden');
     });
   });
+
+  // ── Ver mais packaging (mobile only) ──────────
+  const pkgBtn = document.getElementById('pkg-ver-mais-btn');
+  const pkgWrap = document.getElementById('pkg-wrap');
+  if(pkgBtn && pkgWrap){
+    // só mostra o botão em mobile
+    function syncPkgBtn(){
+      const isMobile = window.innerWidth <= 768;
+      document.getElementById('pkg-ver-mais-wrap').style.display = isMobile ? '' : 'none';
+      if(!isMobile) pkgWrap.classList.remove('pkg-collapsed');
+      else pkgWrap.classList.add('pkg-collapsed');
+    }
+    syncPkgBtn();
+    window.addEventListener('resize', syncPkgBtn);
+    pkgBtn.addEventListener('click',()=>{
+      pkgWrap.classList.remove('pkg-collapsed');
+      document.getElementById('pkg-ver-mais-wrap').style.display='none';
+    });
+  }
 </script>
 </body>
 </html>
