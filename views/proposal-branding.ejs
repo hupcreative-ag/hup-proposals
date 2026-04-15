@@ -161,7 +161,7 @@
     .masonry{columns:4;column-gap:6px;}
     .masonry.cols-3{columns:3;}
     @media(max-width:900px){.masonry{columns:2!important;}}
-    @media(max-width:500px){.masonry{columns:1!important;}}
+    @media(max-width:500px){.masonry{columns:2!important;}}
 
     .masonry-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;cursor:pointer;}
     .masonry-item img{width:100%;height:auto;display:block;transition:transform 400ms ease,filter 300ms;}
@@ -298,7 +298,17 @@
     .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
 
     @media(max-width:768px){
-      .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
+      .pkg-bento-wrap{overflow-x:visible;mask-image:none;cursor:default;padding-bottom:0;}
+      .pkg-bento{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        grid-template-rows:none;
+        grid-auto-flow:row;
+        grid-auto-columns:unset;
+        width:100%;min-width:unset;
+      }
+      .pkg-bento-card{aspect-ratio:1/1;border-radius:6px;}
+      .pkg-bento-card.tall{grid-row:span 1;}
     }
 
     /* ── Logo wall ── */
@@ -738,8 +748,22 @@
       </div>
 
       <div id="pgallery-alimentacao" style="display:none;">
-        <div class="ticker-wrap">
+        <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:45s;">
+            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap" style="margin-bottom:6px;">
+          <div class="ticker-track rev" style="--spd:55s;">
+            <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap">
+          <div class="ticker-track" style="--spd:38s;">
             <% [...assets.fotografiaAlimentacao,...assets.fotografiaAlimentacao].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
@@ -755,8 +779,15 @@
             <% }) %>
           </div>
         </div>
-        <div class="ticker-wrap">
+        <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:65s;">
+            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap">
+          <div class="ticker-track rev" style="--spd:48s;">
             <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
@@ -765,8 +796,22 @@
       </div>
 
       <div id="pgallery-produto" style="display:none;">
-        <div class="ticker-wrap">
+        <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:50s;">
+            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap" style="margin-bottom:6px;">
+          <div class="ticker-track rev" style="--spd:42s;">
+            <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
+            <% }) %>
+          </div>
+        </div>
+        <div class="ticker-wrap">
+          <div class="ticker-track" style="--spd:60s;">
             <% [...assets.fotografiaProduto,...assets.fotografiaProduto].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
