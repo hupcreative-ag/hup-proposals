@@ -729,27 +729,45 @@
 
       <div id="pgallery-all">
         <%
-          const fAll=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto];
-          const fAll2=[...assets.fotografiaProduto,...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional];
-          const fAll3=[...assets.fotografiaInstitucional,...assets.fotografiaProduto,...assets.fotografiaAlimentacao];
+          // Intercala as 3 categorias para nenhuma foto do mesmo ensaio ficar lado a lado
+          function interleave(a, b, c) {
+            const out = [];
+            const max = Math.max(a.length, b.length, c.length);
+            for (let i = 0; i < max; i++) {
+              if (i < a.length) out.push(a[i]);
+              if (i < b.length) out.push(b[i]);
+              if (i < c.length) out.push(c[i]);
+            }
+            return out;
+          }
+          const _al = assets.fotografiaAlimentacao;
+          const _ins = assets.fotografiaInstitucional;
+          const _pr = assets.fotografiaProduto;
+
+          // Linha 1: alim → inst → prod
+          const fRow1 = interleave(_al, _ins, _pr);
+          // Linha 2: inst → prod → alim (offset diferente para variar a ordem)
+          const fRow2 = interleave(_ins, _pr, _al);
+          // Linha 3: prod → alim → inst
+          const fRow3 = interleave(_pr, _al, _ins);
         %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:160s;">
-            <% [...fAll,...fAll].forEach((img,i)=>{ %>
+            <% [...fRow1,...fRow1].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track rev" style="--spd:130s;">
-            <% [...fAll2,...fAll2].forEach((img,i)=>{ %>
+            <% [...fRow2,...fRow2].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
         <div class="ticker-wrap">
           <div class="ticker-track" style="--spd:180s;">
-            <% [...fAll3,...fAll3].forEach((img,i)=>{ %>
+            <% [...fRow3,...fRow3].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
