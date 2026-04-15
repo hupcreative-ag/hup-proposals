@@ -69,12 +69,25 @@
     .sec-num{font-size:clamp(5rem,15vw,10rem);font-weight:700;color:#1a1a1a;line-height:1;user-select:none;}
 
     /* ── Services ── */
+    @keyframes svc-pulse{
+      0%,100%{border-color:#222;background:transparent;box-shadow:none;}
+      50%{border-color:var(--blue);background:rgba(20,0,255,.07);box-shadow:inset 0 0 24px rgba(20,0,255,.08),0 0 12px rgba(20,0,255,.08);}
+    }
     .service-item{
       border:1px solid #222;padding:1.5rem;cursor:default;
-      transition:background 200ms,color 200ms,border-color 200ms;
       clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+      animation:svc-pulse 5s ease-in-out infinite;
+      transition:background 200ms,color 200ms,border-color 200ms;
     }
-    .service-item:hover{background:var(--blue);border-color:var(--blue);}
+    .service-item:nth-child(1){animation-delay:0s;}
+    .service-item:nth-child(2){animation-delay:.6s;}
+    .service-item:nth-child(3){animation-delay:1.2s;}
+    .service-item:nth-child(4){animation-delay:1.8s;}
+    .service-item:nth-child(5){animation-delay:2.4s;}
+    .service-item:nth-child(6){animation-delay:3s;}
+    .service-item:nth-child(7){animation-delay:3.6s;}
+    .service-item:nth-child(8){animation-delay:4.2s;}
+    .service-item:hover{background:var(--blue);border-color:var(--blue);animation:none;}
     .service-item:hover .service-arrow{color:#fff;}
 
     /* ── Holo logo ── */
@@ -187,10 +200,10 @@
     .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
 
     /* E-commerce banner ticker */
-    .eco-ticker-track{display:inline-flex;gap:8px;animation:ticker-scroll 35s linear infinite;}
+    .eco-ticker-track{display:inline-flex;gap:8px;animation:ticker-scroll 16s linear infinite;}
     .eco-ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
     .eco-ticker-wrap:hover .eco-ticker-track{animation-play-state:paused;}
-    .eco-ticker-track img{height:260px;width:auto;flex-shrink:0;object-fit:cover;display:block;cursor:zoom-in;transition:filter 200ms;}
+    .eco-ticker-track img{height:150px;width:auto;flex-shrink:0;object-fit:cover;display:block;cursor:zoom-in;transition:filter 200ms;}
     .eco-ticker-track img:hover{filter:brightness(1.07);}
 
     /* Photo filter buttons */
@@ -204,45 +217,32 @@
     .filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 
     /* E-commerce product grid */
-    .eco-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
-    .eco-product-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;cursor:zoom-in;transition:filter 200ms,transform 200ms;}
+    .eco-product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;align-items:start;}
+    .eco-product-grid img{width:100%;height:auto;display:block;cursor:zoom-in;transition:filter 200ms,transform 200ms;}
     .eco-product-grid img:hover{filter:brightness(1.07);transform:scale(1.02);}
 
-    /* ── Packaging bento ── */
-    .pkg-bento-wrap{
-      overflow-x:auto;cursor:grab;-webkit-overflow-scrolling:touch;
-      scrollbar-width:thin;scrollbar-color:#2a2a2a transparent;
-      mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);
-      padding-bottom:8px;
-    }
-    .pkg-bento-wrap::-webkit-scrollbar{height:4px;}
-    .pkg-bento-wrap::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
-    .pkg-bento-wrap.grabbing{cursor:grabbing;user-select:none;}
-    .pkg-bento{
-      display:grid;
-      grid-auto-flow:column;
-      grid-auto-columns:minmax(220px,1fr);
-      grid-template-rows:repeat(2,240px);
-      gap:8px;width:max-content;min-width:100%;
-    }
-    .pkg-bento-card{
+    /* ── Packaging ticker com cards ── */
+    .pkg-ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
+    .pkg-ticker-track{display:inline-flex;gap:10px;animation:ticker-scroll 50s linear infinite;}
+    .pkg-ticker-wrap:hover .pkg-ticker-track{animation-play-state:paused;}
+    .pkg-ticker-card{
+      flex-shrink:0;width:220px;height:320px;
       position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;
       transition:box-shadow 300ms;
     }
-    .pkg-bento-card.tall{grid-row:span 2;}
-    .pkg-bento-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
-    .pkg-bento-card:hover img{transform:scale(1.06);}
-    .pkg-bento-overlay{
+    .pkg-ticker-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
+    .pkg-ticker-card:hover img{transform:scale(1.06);}
+    .pkg-ticker-overlay{
       position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.1) 50%,transparent 100%);
+      background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);
       opacity:0;transition:opacity 400ms;
     }
-    .pkg-bento-card:hover .pkg-bento-overlay{opacity:1;}
-    .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
+    .pkg-ticker-card:hover .pkg-ticker-overlay{opacity:1;}
+    .pkg-ticker-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
 
     @media(max-width:768px){
       .eco-product-grid{grid-template-columns:repeat(2,1fr);}
-      .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
+      .pkg-ticker-card{width:160px;height:240px;}
     }
 
     /* ── Logo wall ── */
@@ -383,8 +383,9 @@
       </div>
       <!-- holo logo -->
       <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
+        <% const holoSrc = assets.logoHup.find(l=>l.toLowerCase().includes('holo')) || assets.logoHup[0]; %>
         <img class="holo-logo"
-             src="/assets/Logo_hup/logo_holo.png"
+             src="<%= holoSrc %>"
              alt="HUP Holográfica"
              style="max-width:340px;width:100%;height:auto;">
       </div>
@@ -601,14 +602,15 @@
             <% }) %>
           </div>
         </div>
+        <% if(assets.fotografiaInstitucional.length){ %>
         <div class="ticker-wrap">
           <div class="ticker-track" style="--spd:70s;">
-            <% const fAll3=[...assets.fotografiaInstitucional,...assets.fotografiaProduto,...assets.fotografiaAlimentacao]; %>
-            <% [...fAll3,...fAll3].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
+            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
+              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
+        <% } %>
       </div>
 
       <div id="pgallery-alimentacao" style="display:none;">
@@ -656,13 +658,20 @@
         <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
         <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
       </div>
-      <div class="pkg-bento-wrap">
-        <div class="pkg-bento">
-          <% assets.packaging.forEach((img,i)=>{ %>
-            <div class="pkg-bento-card <%= i%3===0?'tall':'' %>"
-                 data-pkgsrc="<%= img %>" data-pkgidx="<%= i %>">
+      <div class="pkg-ticker-wrap">
+        <div class="pkg-ticker-track">
+          <%
+            const pkgReordered = [...assets.packaging];
+            const img4 = pkgReordered.splice(3, 1)[0];      // remove image 4 (index 3)
+            const img12 = pkgReordered.splice(10, 1)[0];    // remove image 12 (index 11 → now 10 after splice)
+            pkgReordered.splice(3, 0, img12);                // insert image 12 at position 3
+            pkgReordered.push(img4);                         // image 4 goes to last
+            const pkgDisplay = [...pkgReordered, ...pkgReordered]; // duplicate for seamless loop
+          %>
+          <% pkgDisplay.forEach((img,i)=>{ %>
+            <div class="pkg-ticker-card" data-pkgsrc="<%= img %>" data-pkgidx="<%= assets.packaging.indexOf(img) %>">
               <img src="<%= img %>" alt="" loading="lazy">
-              <div class="pkg-bento-overlay"></div>
+              <div class="pkg-ticker-overlay"></div>
             </div>
           <% }) %>
         </div>
@@ -876,18 +885,11 @@
     });
   });
 
-  // ── Drag-to-scroll (packaging bento) ──────────
-  document.querySelectorAll('.pkg-bento-wrap').forEach(wrap=>{
-    let down=false,startX=0,scrollLeft=0;
-    wrap.addEventListener('mousedown',e=>{
-      down=true;wrap.classList.add('grabbing');
-      startX=e.pageX-wrap.offsetLeft;scrollLeft=wrap.scrollLeft;
-    });
-    wrap.addEventListener('mouseleave',()=>{down=false;wrap.classList.remove('grabbing');});
-    wrap.addEventListener('mouseup',()=>{down=false;wrap.classList.remove('grabbing');});
-    wrap.addEventListener('mousemove',e=>{
-      if(!down)return;e.preventDefault();
-      wrap.scrollLeft=scrollLeft-(e.pageX-wrap.offsetLeft-startX)*1.5;
+  // ── Packaging ticker: click → lightbox ───────
+  document.querySelectorAll('.pkg-ticker-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const idx=parseInt(card.dataset.pkgidx,10)||0;
+      openLb(GALLERIES.packaging,idx);
     });
   });
 
@@ -900,13 +902,6 @@
     });
   });
 
-  // Wire packaging bento clicks → lightbox
-  document.querySelectorAll('.pkg-bento-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      const idx=parseInt(card.dataset.pkgidx,10)||0;
-      openLb(GALLERIES.packaging,idx);
-    });
-  });
 
   // Wire ecommerce clicks → lightbox
   document.querySelectorAll('[data-gallery="ecommerce"]').forEach(img=>{
