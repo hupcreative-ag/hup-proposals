@@ -199,14 +199,6 @@
     .ticker-track img{height:180px;width:auto;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
     .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
 
-    /* E-commerce bento */
-    .eco-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;}
-    .eco-bento-item{overflow:hidden;border-radius:6px;cursor:zoom-in;background:#111;transition:box-shadow 200ms;}
-    .eco-bento-item img{width:100%;height:auto;display:block;transition:transform 300ms;}
-    .eco-bento-item:hover img{transform:scale(1.03);}
-    .eco-bento-item:hover{box-shadow:0 8px 24px rgba(0,0,0,.45);}
-    .eco-bento-item.is-banner{grid-column:span 4;}
-    .eco-bento-item.wide{grid-column:span 2;}
 
     /* Photo filter buttons */
     .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
@@ -252,8 +244,6 @@
     .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
 
     @media(max-width:768px){
-      .eco-bento{grid-template-columns:repeat(2,1fr);}
-      .eco-bento-item.is-banner,.eco-bento-item.wide{grid-column:span 2;}
       .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
     }
 
@@ -467,20 +457,27 @@
         <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
       </div>
       <div class="collapsible-grid" id="cg-eco">
-        <div class="eco-bento">
-          <% let ecoPI = 0; %>
-          <% assets.ecommerce.forEach((img, i) => {
-               const isBanner = /banner|topo/i.test(img);
-               if (!isBanner) ecoPI++;
-               const spanClass = isBanner ? 'is-banner' : (ecoPI % 3 === 1 ? 'wide' : '');
+        <div class="masonry cols-3">
+          <%
+            const ecoBanners  = assets.ecommerce.filter(img => /banner|topo/i.test(img));
+            const ecoProducts = assets.ecommerce.filter(img => !/banner|topo/i.test(img));
+            /* intercala: 2 produtos → 1 banner → 2 produtos → 1 banner … */
+            const ecoMixed = [];
+            let _bi = 0, _pi = 0;
+            while (_pi < ecoProducts.length || _bi < ecoBanners.length) {
+              if (_pi < ecoProducts.length) ecoMixed.push(ecoProducts[_pi++]);
+              if (_pi < ecoProducts.length) ecoMixed.push(ecoProducts[_pi++]);
+              if (_bi < ecoBanners.length)  ecoMixed.push(ecoBanners[_bi++]);
+            }
           %>
-            <div class="eco-bento-item <%= spanClass %>" data-gallery="ecommerce" data-index="<%= i %>">
+          <% ecoMixed.forEach(img => { %>
+            <div class="masonry-item" data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(img) %>">
               <img src="<%= img %>" alt="" loading="lazy">
             </div>
           <% }) %>
         </div>
       </div>
-      <% if (assets.ecommerce.length > 8) { %>
+      <% if (assets.ecommerce.length > 6) { %>
       <div style="text-align:center;">
         <button class="ver-mais-btn" data-target="cg-eco">Ver mais ↓</button>
       </div>
