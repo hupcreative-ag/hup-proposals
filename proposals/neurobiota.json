@@ -32,6 +32,7 @@
       "subtitle": "Primeira linha a ser lançada · documento completo",
       "price": "R$ 4.000",
       "note": "Inclui: apresentação de conceito + 2 revisões gerais",
+      "obs": "Não inclui fechamento de embalagens.",
       "deliverables": [
         "Logo da linha",
         "Tríade da marca",
@@ -66,6 +67,7 @@
       "subtitle": "Segunda linha · documento completo",
       "price": "R$ 3.500",
       "note": "Inclui: apresentação de conceito + 2 revisões gerais",
+      "obs": "Não inclui fechamento de embalagens.",
       "deliverables": [
         "Logo da linha",
         "Tríade da marca",

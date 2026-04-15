@@ -331,6 +331,7 @@
     .branding-gift-badge{display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;padding:.25rem .75rem;background:rgba(0,207,255,.12);border:1px solid rgba(0,207,255,.3);border-radius:999px;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);animation:gift-blink 1.4s ease-in-out infinite;}
     @keyframes gift-blink{0%,100%{opacity:1;box-shadow:0 0 8px rgba(0,207,255,.4);}50%{opacity:.35;box-shadow:none;}}
     .branding-card-note{font-size:.78rem;color:var(--cyan);margin:.75rem 0 0;font-style:italic;}
+    .branding-card-obs{font-size:.75rem;color:#555;margin:.4rem 0 0;font-style:italic;}
     .check-item{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.45rem;}
     .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;}
     .proposal-intro{margin-bottom:3.5rem;padding:2rem 2.5rem;border-left:3px solid var(--blue);background:#0d0d0d;}
@@ -878,6 +879,9 @@
             <% }) %>
             <% if (item.note) { %>
               <p class="branding-card-note">* <%= item.note %></p>
+            <% } %>
+            <% if (item.obs) { %>
+              <p class="branding-card-obs">* <%= item.obs %></p>
             <% } %>
           </div>
         </div>
