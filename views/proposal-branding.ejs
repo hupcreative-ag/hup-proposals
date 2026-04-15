@@ -346,13 +346,6 @@
     .branding-card-subtitle{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0;}
     .branding-card-price{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1;color:#fff;white-space:nowrap;}
     .branding-card-price.strikethrough{text-decoration:line-through;color:#444;font-size:clamp(1.2rem,2.5vw,1.8rem);}
-    .branding-card-price:not(.strikethrough){
-      background:linear-gradient(90deg,#fff 0%,var(--cyan) 50%,#fff 100%);
-      background-size:200% auto;
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-      animation:price-shine 3s linear infinite;
-    }
-    @keyframes price-shine{0%{background-position:200% center;}100%{background-position:-200% center;}}
     .branding-gift-badge{display:inline-flex;align-items:center;gap:.4rem;margin-top:.4rem;padding:.25rem .75rem;background:rgba(0,207,255,.12);border:1px solid rgba(0,207,255,.3);border-radius:999px;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);animation:gift-blink 1.4s ease-in-out infinite;}
     @keyframes gift-blink{0%,100%{opacity:1;box-shadow:0 0 8px rgba(0,207,255,.4);}50%{opacity:.35;box-shadow:none;}}
     .branding-card-note{font-size:.78rem;color:var(--cyan);margin:.75rem 0 0;font-style:italic;}
@@ -368,7 +361,10 @@
       border:1px solid #1e1e1e;
       display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;
       align-items:center;
+      opacity:0;transform:translateY(50px) scale(.97);
+      transition:opacity 700ms ease-out,transform 700ms ease-out,box-shadow 300ms;
     }
+    .investment-block.visible{opacity:1;transform:translateY(0) scale(1);}
     @media(max-width:768px){.investment-block{grid-template-columns:1fr;}}
     .invest-item{text-align:center;}
     .invest-label{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:#555;margin:0 0 .5rem;}
@@ -542,7 +538,12 @@
     <div class="services-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;">
       <% ['Criação de Conteúdo','Gestão de Redes Sociais','Planejamento On e Off','Produção Audiovisual','Fotografia','Identidade Visual','Criação de Embalagens','Experiência de Marca'].forEach(s=>{ %>
         <div class="service-item">
-          <div class="service-arrow" style="font-size:1.4rem;color:var(--cyan);margin-bottom:.75rem;line-height:1;">↗</div>
+          <div class="service-arrow" style="margin-bottom:.75rem;line-height:1;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="4" y1="18" x2="18" y2="4" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round"/>
+              <polyline points="8,4 18,4 18,14" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
           <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;"><%= s %></div>
         </div>
       <% }) %>
@@ -955,7 +956,7 @@
 
     <!-- Investimento total -->
     <% if (proposal.investment) { %>
-    <div class="investment-block reveal">
+    <div class="investment-block">
       <div class="invest-item">
         <p class="invest-label">Investimento total</p>
         <div class="invest-value"><%= proposal.investment.total %></div>
@@ -1064,6 +1065,20 @@
       words[cur].classList.add('hw-in');
     }, 2200);
   })();
+
+  // ── Investment block entrance ──────────────────
+  const investEl = document.querySelector('.investment-block');
+  if(investEl){
+    const investObs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          setTimeout(()=>e.target.classList.add('visible'), 100);
+          investObs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.1});
+    investObs.observe(investEl);
+  }
 
   // ── Branding cards stagger ─────────────────────
   const brandObs = new IntersectionObserver(entries=>{
