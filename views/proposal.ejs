@@ -36,6 +36,26 @@
     .hero-item{opacity:0;transform:translateY(24px);transition:opacity 600ms ease-out,transform 600ms ease-out;}
     .hero-item.visible{opacity:1;transform:translateY(0);}
 
+    /* ── Hero novo ── */
+    .hero-badge-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.38rem 1rem;border:1px solid #222;border-radius:999px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:2rem;backdrop-filter:blur(8px);}
+    .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;animation:dot-pulse 2s ease-in-out infinite;}
+    @keyframes dot-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
+
+    .hero-main-title{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.05;text-align:center;margin:0 0 1.5rem;width:100%;}
+    .hero-title-sub{display:block;font-size:clamp(1.1rem,2.8vw,1.9rem);font-weight:400;color:#666;letter-spacing:-.01em;}
+    .hero-rotate-slot{display:block;position:relative;height:1.2em;overflow:hidden;margin:.15em 0;}
+    .hero-rotate-slot span{position:absolute;width:100%;text-align:center;background:linear-gradient(90deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;opacity:0;transform:translateY(110%);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1);}
+    .hero-rotate-slot span.hw-in{opacity:1;transform:translateY(0);}
+    .hero-rotate-slot span.hw-out{opacity:0;transform:translateY(-110%);transition:opacity .3s ease,transform .3s ease;}
+
+    .hero-subtitle{font-size:clamp(.9rem,1.8vw,1.1rem);color:#666;line-height:1.75;margin:0 0 2.5rem;text-align:center;}
+    .hero-subtitle strong{color:#bbb;font-weight:500;}
+
+    .hero-scroll-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.6rem 1.4rem;border:1px solid #252525;border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#484848;background:transparent;cursor:pointer;font-family:inherit;transition:border-color 300ms,color 300ms,transform 300ms;}
+    .hero-scroll-btn:hover{border-color:#555;color:#aaa;transform:translateY(2px);}
+    .hero-scroll-arrow{animation:arrow-bounce 1.8s ease-in-out infinite;}
+    @keyframes arrow-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
     /* Hero gradient mesh background */
     .hero-bg{
       position:absolute;inset:0;overflow:hidden;z-index:0;
@@ -349,23 +369,48 @@
     Válida até <span style="color:#666;"><%= proposal.expiresAt %></span>
   </div>
 
-  <div style="text-align:center;max-width:800px;width:100%;position:relative;z-index:1;">
-    <div class="hero-item" id="h0" style="margin-bottom:2.5rem;">
+  <div style="text-align:center;max-width:860px;width:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
+
+    <!-- Logo -->
+    <div class="hero-item" style="margin-bottom:2rem;">
       <% if (assets.logoHup.length) { %>
         <img src="<%= assets.logoHup.find(l=>l.toLowerCase().includes('branca'))||assets.logoHup[0] %>"
-             alt="HUP Creative" style="height:52px;width:auto;display:inline-block;filter:drop-shadow(0 0 20px rgba(20,0,255,.4));">
+             alt="HUP Creative" style="height:48px;width:auto;display:inline-block;filter:drop-shadow(0 0 20px rgba(20,0,255,.45));">
       <% } %>
     </div>
-    <h1 class="hero-item" id="h1" style="font-size:clamp(2.2rem,6vw,4.5rem);font-weight:700;line-height:1.05;margin:0 0 1.25rem;">
-      Olá, <%= proposal.client.contact %> 👋
-    </h1>
-    <p class="hero-item" id="h2" style="font-size:clamp(1rem,2.5vw,1.3rem);color:#888;margin:0 0 2.5rem;line-height:1.6;">
-      Essa proposta foi preparada especialmente para
-      <span style="color:#fff;font-weight:600;background:linear-gradient(90deg,#1400FF,#00CFFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><%= proposal.client.company %></span>.
-    </p>
-    <div class="hero-item" id="h3" style="color:rgba(255,255,255,.45);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;">
-      Role para ver ↓
+
+    <!-- Badge -->
+    <div class="hero-item hero-badge-pill">
+      <span class="hero-badge-dot"></span>
+      01 &nbsp;—&nbsp; Proposta<% if(proposal.serviceType){ %>&nbsp;de&nbsp;<strong style="color:#aaa;font-weight:600;letter-spacing:.06em;"><%= proposal.serviceType %></strong><% } %>
     </div>
+
+    <!-- Título com palavra rotativa -->
+    <h1 class="hero-item hero-main-title">
+      <span class="hero-title-sub"><%= proposal.client.company %>, vamos construir algo</span>
+      <span class="hero-rotate-slot" id="hero-rotate">
+        <span>incrível</span>
+        <span>novo</span>
+        <span>extraordinário</span>
+        <span>inédito</span>
+        <span>inovador</span>
+      </span>
+      <span class="hero-title-sub">juntos?</span>
+    </h1>
+
+    <!-- Subtítulo -->
+    <p class="hero-item hero-subtitle">
+      <strong><%= proposal.client.contact %></strong>, estamos ansiosos<br>para iniciar o seu projeto.
+    </p>
+
+    <!-- Scroll CTA -->
+    <button class="hero-item hero-scroll-btn" onclick="window.scrollBy({top:window.innerHeight*.85,behavior:'smooth'})">
+      Role para ver
+      <svg class="hero-scroll-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none">
+        <path d="M6.5 1.5v10M2 8l4.5 4.5L11 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
   </div>
 </section>
 
@@ -851,10 +896,27 @@
   document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
   // ── Hero entrance ──────────────────────────────
-  ['h0','h1','h2','h3'].forEach((id,i)=>{
-    const el=document.getElementById(id);
-    if(el) setTimeout(()=>el.classList.add('visible'),200+i*220);
+  document.querySelectorAll('.hero-item').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('visible'), 150 + i * 200);
   });
+
+  // ── Hero rotating word ─────────────────────────
+  (function(){
+    const slot = document.getElementById('hero-rotate');
+    if(!slot) return;
+    const words = slot.querySelectorAll('span');
+    if(!words.length) return;
+    let cur = 0;
+    words[0].classList.add('hw-in');
+    setInterval(()=>{
+      words[cur].classList.remove('hw-in');
+      words[cur].classList.add('hw-out');
+      const prev = cur;
+      setTimeout(()=> words[prev].classList.remove('hw-out'), 350);
+      cur = (cur + 1) % words.length;
+      words[cur].classList.add('hw-in');
+    }, 2200);
+  })();
 
   // ── Package stagger ────────────────────────────
   const pkgObs=new IntersectionObserver(entries=>{
