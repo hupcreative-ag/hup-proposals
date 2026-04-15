@@ -728,31 +728,32 @@
       </div>
 
       <div id="pgallery-all">
-        <% const fAll=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto]; %>
+        <%
+          const fAll=[...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional,...assets.fotografiaProduto];
+          const fAll2=[...assets.fotografiaProduto,...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional];
+          const fAll3=[...assets.fotografiaInstitucional,...assets.fotografiaProduto,...assets.fotografiaAlimentacao];
+        %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
-          <div class="ticker-track" style="--spd:60s;">
+          <div class="ticker-track" style="--spd:160s;">
             <% [...fAll,...fAll].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
-          <div class="ticker-track rev" style="--spd:48s;">
-            <% const fAll2=[...assets.fotografiaProduto,...assets.fotografiaAlimentacao,...assets.fotografiaInstitucional]; %>
+          <div class="ticker-track rev" style="--spd:130s;">
             <% [...fAll2,...fAll2].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="<%= i<10?'eager':'lazy' %>" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
-        <% if(assets.fotografiaInstitucional.length){ %>
         <div class="ticker-wrap">
-          <div class="ticker-track" style="--spd:70s;">
-            <% [...assets.fotografiaInstitucional,...assets.fotografiaInstitucional].forEach((img,i)=>{ %>
+          <div class="ticker-track" style="--spd:180s;">
+            <% [...fAll3,...fAll3].forEach((img,i)=>{ %>
               <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
             <% }) %>
           </div>
         </div>
-        <% } %>
       </div>
 
       <div id="pgallery-alimentacao" style="display:none;">
@@ -781,22 +782,24 @@
       <div id="pgallery-institucional" style="display:none;">
         <%
           const _ins = assets.fotografiaInstitucional;
-          const _insR = [..._ins].reverse();
-          const _insM = [..._ins.slice(Math.floor(_ins.length/2)),..._ins.slice(0,Math.floor(_ins.length/2))];
+          // Para evitar repeticao visual, cada linha mistura institucional com outras fotos
+          const _insLine1 = [..._ins, ...assets.fotografiaProduto.slice(0, Math.ceil(_ins.length/2))];
+          const _insLine2 = [..._ins].reverse();
+          const _insLine3 = [...assets.fotografiaAlimentacao.slice(0, Math.ceil(_ins.length/2)), ..._ins];
         %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track rev" style="--spd:110s;">
-            <% [..._ins,..._ins].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            <% [..._insLine1,..._insLine1].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:130s;">
-            <% [..._insR,..._insR].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            <% [..._insLine2,..._insLine2].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap">
           <div class="ticker-track rev" style="--spd:95s;">
-            <% [..._insM,..._insM].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            <% [..._insLine3,..._insLine3].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
       </div>
