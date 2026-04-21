@@ -32,7 +32,19 @@ hup-base.md         → identidade e conteúdo base da HUP
 
 ## Como criar uma nova proposta
 
-### 1. Criar o arquivo JSON em `proposals/<slug>.json`
+### 1. Copiar o template correto
+
+```bash
+# Branding / identidade visual
+cp proposals/_template-branding.json proposals/<slug>.json
+
+# Gestão de redes sociais
+cp proposals/_template-redes.json proposals/<slug>.json
+```
+
+Depois editar o arquivo com os dados do cliente.
+
+### 2. Criar o arquivo JSON em `proposals/<slug>.json`
 
 O `slug` vira a URL: `/neurobiota` → `proposals/neurobiota.json`
 
@@ -210,6 +222,24 @@ Para atualizar fotos novas:
 | `neurobiota` | branding   | Natalia, Aiêsca, Rodrigo | `nb-brand-2026` |
 
 ---
+
+## Estado atual do proposal-branding.ejs (último sync: 2026-04-22)
+
+| Recurso | Estado |
+|---|---|
+| Hero | Logo HUP + badge tipo + título rotativo + subtítulo com múltiplos contatos |
+| Hero fundo | Grade hexagonal com luz orbital azul nas bordas (sem quadrado girando) |
+| Seção 03 serviços | Grid 4 colunas, setas SVG inline cyan (não emoji) |
+| Seção 04 portfólio | Redes / E-commerce / Off-line / Audiovisual / Fotografia / Packaging |
+| Fotografia | 3 linhas de ticker, `splitRows()` garante cada imagem em 1 linha só |
+| Fotografia mobile | Filtros mostram 3 linhas; velocidades ~100–200s |
+| Packaging desktop | Bento horizontal com scroll drag + tall cards |
+| Packaging mobile | Grid 2 colunas, colapsável com "Ver mais" |
+| Masonry mobile | 2 colunas em qualquer tamanho |
+| Seção 06 proposta | Cards de itens com stagger + bloco investimento com animação de entrada |
+| Gift item | Preço riscado + badge "BRINDE" piscando em cyan |
+| Botão "Quero avançar" | Pulsa com glow azul |
+| Múltiplos contatos | `client.contacts` array → "A, B e C" no hero |
 
 ## Padrões visuais (não alterar sem necessidade)
 

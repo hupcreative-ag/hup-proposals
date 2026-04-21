@@ -1,0 +1,64 @@
+{
+  "slug": "SLUG-DO-CLIENTE",
+  "token": "TOKEN-UNICO",
+  "type": "branding",
+  "serviceType": "Branding e Criação",
+  "client": {
+    "contacts": ["Nome1", "Nome2"],
+    "company": "Nome da Empresa"
+  },
+  "expiresAt": "AAAA-MM-DD",
+  "proposalTitle": "Branding NomeEmpresa",
+  "proposalIntro": "Texto introdutório que aparece no topo da seção 06, antes dos itens. Descreve o escopo geral do projeto.",
+  "items": [
+    {
+      "id": "01",
+      "name": "Nome do Entregável",
+      "subtitle": "Categoria · contexto do item",
+      "price": "R$ 0.000",
+      "deliverables": [
+        "Entregável 1",
+        "Entregável 2",
+        "Entregável 3"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Nome do Entregável com Nota",
+      "subtitle": "Categoria · contexto do item",
+      "price": "R$ 0.000",
+      "note": "Inclui: apresentação de conceito + 2 revisões gerais",
+      "obs": "Não inclui fechamento de embalagens.",
+      "deliverables": [
+        "Entregável 1",
+        "Entregável 2"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Item Brinde (preço riscado)",
+      "subtitle": "Configuração pontual",
+      "price": "R$ 000",
+      "gift": true,
+      "note": "Custo repassado pelo valor de compra.",
+      "deliverables": [
+        "Entregável 1",
+        "Entregável 2"
+      ]
+    }
+  ],
+  "investment": {
+    "total": "R$ 00.000",
+    "cashDiscount": "R$ 00.000",
+    "installments": {
+      "count": 6,
+      "value": "R$ 0.000",
+      "method": "Pix ou boleto"
+    }
+  },
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
