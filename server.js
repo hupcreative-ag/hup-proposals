@@ -61,8 +61,8 @@ function readProposal(slug) {
 
 // ─── Routes ─────────────────────────────────────────────────────────────────
 
-// Home institucional
-app.get('/', (req, res) => {
+// Home institucional — acessível em /hup (sem token)
+app.get('/hup', (req, res) => {
   const assets = {
     logoHup:                  readAssets('assets/Logo_hup'),
     logosClientes:            readAssets('assets/Logos_clientes'),
