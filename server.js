@@ -61,6 +61,24 @@ function readProposal(slug) {
 
 // ─── Routes ─────────────────────────────────────────────────────────────────
 
+// Home institucional
+app.get('/', (req, res) => {
+  const assets = {
+    logoHup:                  readAssets('assets/Logo_hup'),
+    logosClientes:            readAssets('assets/Logos_clientes'),
+    redesSociais:             readAssets('assets/Redes_sociais'),
+    ecommerce:                readAssets('assets/Ecommerce'),
+    offline:                  readAssets('assets/Offline'),
+    audiovisualEventos:       readAssets('assets/Audiovisual/eventos_e_inst'),
+    audiovisualRedes:         readAssets('assets/Audiovisual/redes'),
+    fotografiaAlimentacao:    readAssets('assets/Fotografia/Alimentacao'),
+    fotografiaInstitucional:  readAssets('assets/Fotografia/institucional'),
+    fotografiaProduto:        readAssets('assets/Fotografia/Produto'),
+    packaging:                readAssets('assets/packaging'),
+  };
+  res.render('home', { assets });
+});
+
 // Proposal page — suporta /:slug e /proposta/:slug
 app.get('/proposta/:slug', (req, res) => res.redirect(301, `/${req.params.slug}${req.url.includes('?')?req.url.slice(req.url.indexOf('?')):''}` ));
 
