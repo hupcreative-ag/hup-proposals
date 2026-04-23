@@ -289,6 +289,13 @@
     .compare-card--featured:hover{
       box-shadow:0 0 0 1px rgba(34,197,94,.3), 0 24px 70px rgba(34,197,94,.14);
     }
+    .compare-card--blue{
+      border-color:rgba(20,0,255,.35);
+      box-shadow:0 0 0 1px rgba(20,0,255,.08), 0 16px 48px rgba(20,0,255,.06);
+    }
+    .compare-card--blue:hover{
+      box-shadow:0 0 0 1px rgba(20,0,255,.2), 0 20px 56px rgba(20,0,255,.1);
+    }
 
     /* Recommended badge */
     .compare-badge{
@@ -314,6 +321,7 @@
       margin-top:1.4rem;
     }
     .compare-card--featured .compare-plan-id{color:var(--green);}
+    .compare-card--blue .compare-plan-id{color:rgba(20,0,255,.7);}
 
     .compare-plan-name{
       font-family:'Poppins',sans-serif;
@@ -335,6 +343,9 @@
     .compare-card--featured .compare-price-block{
       border-color:rgba(34,197,94,.2);
     }
+    .compare-card--blue .compare-price-block{
+      border-color:rgba(20,0,255,.18);
+    }
     .compare-price{
       font-size:clamp(2rem,4vw,2.8rem);
       font-weight:700;
@@ -346,12 +357,17 @@
       background:linear-gradient(135deg,#fff 30%,var(--green));
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
     }
+    .compare-card--blue .compare-price{
+      background:linear-gradient(135deg,#fff 40%,var(--cyan));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
     .compare-installments{
       font-size:.82rem;
       color:#555;
       line-height:1.5;
     }
     .compare-card--featured .compare-installments{color:#888;}
+    .compare-card--blue .compare-installments{color:#666;}
 
     /* Sections */
     .compare-sections{
@@ -422,6 +438,11 @@
       border-color:rgba(34,197,94,.2);
       color:#6ee7b7;
     }
+    .compare-card--blue .compare-section:not(.compare-section--excluded) .compare-chip{
+      background:rgba(20,0,255,.06);
+      border-color:rgba(20,0,255,.2);
+      color:var(--cyan);
+    }
     .compare-section--excluded .compare-chip{
       background:transparent;
       border-color:#1e1e1e;
@@ -459,6 +480,15 @@
     }
     .compare-card--featured .compare-cta:hover{
       background:#16a34a;border-color:#16a34a;animation:none;
+    }
+    .compare-card--blue .compare-cta{
+      border-color:rgba(20,0,255,.4);
+      color:#6666cc;
+    }
+    .compare-card--blue .compare-cta:hover{
+      background:rgba(20,0,255,.15);
+      border-color:var(--blue);
+      color:#aaaaff;
     }
 
     /* ── Intro bloco ── */
@@ -876,7 +906,7 @@
     <!-- Comparison grid -->
     <div class="compare-grid">
       <% proposal.plans.forEach((plan, planIdx) => { %>
-        <div class="compare-card<%= plan.recommended ? ' compare-card--featured' : '' %>" data-plan-idx="<%= planIdx %>">
+        <div class="compare-card<%= plan.recommended ? ' compare-card--featured' : ' compare-card--blue' %>" data-plan-idx="<%= planIdx %>">
           <% if (plan.recommended) { %>
             <div class="compare-badge">✦ Recomendado</div>
           <% } %>

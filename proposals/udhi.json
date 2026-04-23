@@ -43,7 +43,26 @@
         {
           "name": "Entregáveis",
           "description": "Todos os arquivos organizados por finalidade e formato.",
-          "chips": ["Fonte em AI e PDF", "Pacote PNG", "SVG e WebP", "Manual em PDF"],
+          "chips": [
+            "Conceito criativo",
+            "Logotipo principal",
+            "Variações de logo",
+            "Paleta de cores",
+            "Tipografia",
+            "Elementos gráficos",
+            "Manual de marca PDF",
+            "Cartão de visita",
+            "Papel timbrado",
+            "Envelope",
+            "Assinatura de e-mail",
+            "3–5 posts para feed",
+            "3–5 templates stories",
+            "Avatar para redes",
+            "Capas de perfil",
+            "Arquivos-fonte AI e PDF",
+            "Pacote PNG",
+            "SVG e WebP"
+          ],
           "included": true
         }
       ]
@@ -80,7 +99,22 @@
         {
           "name": "Entregáveis",
           "description": "Mesmos formatos do plano completo: arquivos-fonte em AI e PDF, pacote PNG, pacote digital em SVG e WebP, e o manual da marca em PDF.",
-          "chips": ["Fonte em AI e PDF", "Pacote PNG", "SVG e WebP", "Manual em PDF"],
+          "chips": [
+            "Conceito criativo",
+            "Logotipo principal",
+            "Variações de logo",
+            "Paleta de cores",
+            "Tipografia",
+            "Elementos gráficos",
+            "Manual de marca PDF",
+            "3–5 posts para feed",
+            "3–5 templates stories",
+            "Avatar para redes",
+            "Capas de perfil",
+            "Arquivos-fonte AI e PDF",
+            "Pacote PNG",
+            "SVG e WebP"
+          ],
           "included": true
         }
       ]
