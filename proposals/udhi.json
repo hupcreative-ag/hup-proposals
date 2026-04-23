@@ -1,0 +1,94 @@
+{
+  "slug": "udhi",
+  "token": "udhi-brand-2026",
+  "type": "branding-compare",
+  "serviceType": "Branding e Criação",
+  "client": {
+    "contacts": ["Udhi"],
+    "company": "Udhi Ferreira"
+  },
+  "expiresAt": "2026-05-22",
+  "proposalTitle": "Identidade Visual Udhi Ferreira",
+  "proposalIntro": "Criamos marcas que as pessoas reconhecem, lembram e recomendam. Para a Udhi Ferreira Dermatologia, desenvolvemos duas opções de investimento — você escolhe o que faz mais sentido para esse momento.",
+  "plans": [
+    {
+      "id": "01",
+      "name": "Identidade Completa",
+      "recommended": true,
+      "investment": {
+        "total": "R$ 1.950",
+        "installments": { "count": 3, "value": "R$ 650", "method": "Pix ou boleto" }
+      },
+      "sections": [
+        {
+          "name": "Identidade Visual",
+          "description": "É aqui que a marca nasce. Desenvolvemos um conceito criativo — a ideia central que vai dar sentido e personalidade a tudo que for criado. A partir dele, desenhamos o logotipo principal e suas variações de uso (versão reduzida, horizontal e monocromática), definimos a paleta de cores com os valores exatos de cada tom, escolhemos a tipografia que vai representar a sua voz visual e criamos elementos gráficos de apoio — texturas, formas, ícones — que tornam o seu universo visual único e reconhecível.",
+          "included": true
+        },
+        {
+          "name": "Manual de Marca",
+          "description": "Um documento completo que funciona como o guia oficial da sua marca. Nele, está tudo que qualquer pessoa precisa saber para usar a sua identidade corretamente: como aplicar o logo em diferentes fundos, quais combinações de cores são permitidas, qual é a tipografia principal e como ela se hierarquiza, além das regras e das situações em que a marca não deve ser usada. Com o manual, você garante que a marca se mantenha consistente — seja você usando, seja outro designer ou fornecedor.",
+          "included": true
+        },
+        {
+          "name": "Aplicações Físicas",
+          "description": "A identidade visual aplicada nos materiais do dia a dia do negócio. Entregamos o design de cartão de visita, papel timbrado, envelope e assinatura de e-mail — tudo desenvolvido dentro da linguagem visual criada, pronto para ser enviado para gráfica ou usado digitalmente.",
+          "included": true
+        },
+        {
+          "name": "Digital",
+          "description": "Sua marca nas redes sociais, com consistência. Criamos de 3 a 5 layouts de templates para feed e stories — peças que você pode replicar e adaptar para qualquer publicação, mantendo a identidade visual em todas as postagens. Também entregamos o avatar e as capas de perfil para as principais plataformas.",
+          "included": true
+        },
+        {
+          "name": "Entregáveis",
+          "description": "Todos os arquivos organizados por finalidade e formato.",
+          "chips": ["Fonte em AI e PDF", "Pacote PNG", "SVG e WebP", "Manual em PDF"],
+          "included": true
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Identidade Digital",
+      "recommended": false,
+      "investment": {
+        "total": "R$ 1.550",
+        "installments": { "count": 3, "value": "R$ 517", "method": "Pix ou boleto" }
+      },
+      "sections": [
+        {
+          "name": "Identidade Visual",
+          "description": "Mesma entrega do plano completo: conceito criativo, logotipo principal e variações, paleta de cores, tipografia e elementos gráficos de suporte. A construção da marca segue o mesmo processo e nível de cuidado.",
+          "included": true
+        },
+        {
+          "name": "Manual de Marca",
+          "description": "Mesmo documento de referência do plano completo: regras de uso do logo, cores, tipografia, hierarquia visual, proibições e orientações de aplicação — tudo em PDF organizado e pronto para consulta.",
+          "included": true
+        },
+        {
+          "name": "Aplicações Físicas",
+          "description": "Não incluso neste plano. Cartão de visita, papel timbrado, envelope e assinatura de e-mail não fazem parte desta proposta. Podem ser adicionados futuramente como projeto separado.",
+          "included": false
+        },
+        {
+          "name": "Digital",
+          "description": "Mesma entrega do plano completo: de 3 a 5 layouts de templates para feed e stories, avatar e capas de perfil para redes sociais.",
+          "included": true
+        },
+        {
+          "name": "Entregáveis",
+          "description": "Mesmos formatos do plano completo: arquivos-fonte em AI e PDF, pacote PNG, pacote digital em SVG e WebP, e o manual da marca em PDF.",
+          "chips": ["Fonte em AI e PDF", "Pacote PNG", "SVG e WebP", "Manual em PDF"],
+          "included": true
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}

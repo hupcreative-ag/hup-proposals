@@ -123,7 +123,11 @@ app.get('/:slug', (req, res) => {
     ...assets.fotografiaProduto,
   ];
 
-  const view = proposal.type === 'branding' ? 'proposal-branding' : 'proposal';
+  const VIEWS = {
+    'branding': 'proposal-branding',
+    'branding-compare': 'proposal-branding-compare',
+  };
+  const view = VIEWS[proposal.type] || 'proposal';
   res.render(view, { proposal, assets });
 });
 
