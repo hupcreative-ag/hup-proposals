@@ -1,0 +1,98 @@
+{
+  "slug": "plenae",
+  "token": "plenae-2026",
+  "type": "branding",
+  "serviceType": "Branding e Criação",
+  "client": {
+    "contacts": ["Natália", "Ayesca"],
+    "company": "Plenae"
+  },
+  "expiresAt": "2026-05-28",
+  "proposalTitle": "Branding Plenae",
+  "proposalIntro": "Duas clínicas. Uma família de marcas. Este escopo cobre a criação completa da identidade visual da Plenae Adulto — do zero, com toda a profundidade estratégica que uma clínica referência merece — e a extensão para a Plenae Kids, com identidade própria, lúdica e coerente com a marca-mãe. Tudo que vocês precisam para chegar ao mercado com consistência, profissionalismo e personalidade.",
+  "items": [
+    {
+      "id": "01",
+      "name": "PLENAE — Identidade Visual Completa",
+      "subtitle": "Clínica Adulto · construção de marca do zero",
+      "price": "R$ 3.500",
+      "note": "Inclui: apresentação de conceito + 2 rodadas de revisão geral",
+      "deliverables": [
+        "Tríade da marca",
+        "Tagline",
+        "Golden Circle",
+        "Personality Slide",
+        "Tom de voz",
+        "Logo principal (símbolo + logotipo, horizontal e vertical)",
+        "Variações: colorida, monocromática, P&B, positivo/negativo",
+        "Versão reduzida",
+        "Paleta de cores",
+        "Tipografia oficial + hierarquia",
+        "Padrão visual (estilo de foto, ícones, linguagem gráfica)",
+        "Manual de marca completo",
+        "Arquivos finais (AI, PDF, PNG, JPG)"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "PLENAE — Elementos Gráficos e Papelaria",
+      "subtitle": "Clínica Adulto · materiais de identidade",
+      "price": "R$ 1.500",
+      "deliverables": [
+        "Conjunto de ícones exclusivos",
+        "Pattern e texturas da marca",
+        "Cartão de visita",
+        "Papel timbrado",
+        "Envelope",
+        "Pasta institucional",
+        "Receituário médico"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "PLENAE KIDS — Identidade Visual",
+      "subtitle": "Clínica Infantil · extensão de marca",
+      "price": "R$ 2.500",
+      "note": "Inclui: apresentação de conceito + 2 rodadas de revisão geral",
+      "deliverables": [
+        "Adaptação da logo com "Kids"",
+        "Variações: colorida, monocromática, P&B, positivo/negativo",
+        "Versão reduzida",
+        "Paleta de cores própria (complementar à Plenae adulto, tons infantis)",
+        "Elementos ilustrativos exclusivos",
+        "Padrão visual (estilo de foto, ícones, linguagem gráfica)",
+        "Manual de extensão de marca",
+        "Arquivos finais (AI, PDF, PNG, JPG)"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "PLENAE KIDS — Elementos Gráficos e Papelaria",
+      "subtitle": "Clínica Infantil · materiais de identidade",
+      "price": "R$ 1.000",
+      "deliverables": [
+        "Conjunto de ícones exclusivos",
+        "Pattern e texturas da marca",
+        "Cartão de visita",
+        "Papel timbrado",
+        "Envelope",
+        "Pasta institucional",
+        "Receituário médico"
+      ]
+    }
+  ],
+  "investment": {
+    "total": "R$ 8.500",
+    "cashDiscount": "R$ 8.000",
+    "installments": {
+      "count": 6,
+      "value": "R$ 1.420",
+      "method": "Pix ou boleto"
+    }
+  },
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
