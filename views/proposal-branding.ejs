@@ -920,7 +920,7 @@
             </div>
             <div style="text-align:right;flex-shrink:0;">
               <div class="branding-card-id"><%= item.id %></div>
-              <div class="branding-card-price<%= item.gift ? ' strikethrough' : '' %>"><%= item.price %></div>
+              <% if (item.price) { %><div class="branding-card-price<%= item.gift ? ' strikethrough' : '' %>"><%= item.price %></div><% } %>
               <% if (item.gift) { %>
                 <div style="display:flex;justify-content:flex-end;margin-top:.4rem;">
                   <span class="branding-gift-badge">🎁 brinde</span>
@@ -951,12 +951,14 @@
         <div class="invest-value"><%= proposal.investment.total %></div>
         <p class="invest-sub">Valor completo do projeto</p>
       </div>
+      <% if (proposal.investment.cashDiscount) { %>
       <div class="invest-divider"></div>
       <div class="invest-item">
         <p class="invest-label">À vista com desconto</p>
         <div class="invest-value" style="color:var(--cyan);"><%= proposal.investment.cashDiscount %></div>
         <p class="invest-sub">Pagamento único</p>
       </div>
+      <% } %>
       <div class="invest-divider"></div>
       <div class="invest-item">
         <p class="invest-label">Parcelado em até <%= proposal.investment.installments.count %>x</p>

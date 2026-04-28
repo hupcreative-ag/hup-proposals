@@ -15,7 +15,6 @@
       "id": "01",
       "name": "PLENAE — Identidade Visual Completa",
       "subtitle": "Clínica Adulto · construção de marca do zero",
-      "price": "R$ 3.500",
       "note": "Inclui: apresentação de conceito + 2 rodadas de revisão geral",
       "deliverables": [
         "Tríade da marca",
@@ -37,7 +36,6 @@
       "id": "02",
       "name": "PLENAE — Elementos Gráficos e Papelaria",
       "subtitle": "Clínica Adulto · materiais de identidade",
-      "price": "R$ 1.500",
       "deliverables": [
         "Conjunto de ícones exclusivos",
         "Pattern e texturas da marca",
@@ -52,7 +50,6 @@
       "id": "03",
       "name": "PLENAE KIDS — Identidade Visual",
       "subtitle": "Clínica Infantil · extensão de marca",
-      "price": "R$ 2.500",
       "note": "Inclui: apresentação de conceito + 2 rodadas de revisão geral",
       "deliverables": [
         "Adaptação da logo com "Kids"",
@@ -69,7 +66,6 @@
       "id": "04",
       "name": "PLENAE KIDS — Elementos Gráficos e Papelaria",
       "subtitle": "Clínica Infantil · materiais de identidade",
-      "price": "R$ 1.000",
       "deliverables": [
         "Conjunto de ícones exclusivos",
         "Pattern e texturas da marca",
@@ -83,11 +79,10 @@
   ],
   "investment": {
     "total": "R$ 8.500",
-    "cashDiscount": "R$ 8.000",
     "installments": {
-      "count": 6,
-      "value": "R$ 1.420",
-      "method": "Pix ou boleto"
+      "count": 4,
+      "value": "R$ 2.125",
+      "method": "Transferência ou boleto"
     }
   },
   "cta": {
