@@ -1,0 +1,62 @@
+{
+  "slug": "pharmed",
+  "token": "pharmed-2026",
+  "type": "conteudo",
+  "serviceType": "Criação de Conteúdo",
+  "client": {
+    "contact": "Pedro",
+    "company": "Pharmed Cursos"
+  },
+  "expiresAt": "2026-05-25",
+  "cards": [
+    {
+      "id": "01",
+      "icon": "video",
+      "name": "Edição de 40 Videoaulas",
+      "price": "R$ 7.000",
+      "priceLabel": "Investimento total",
+      "deliverables": [
+        "Decupagem completa do material bruto, com seleção de takes e organização da timeline",
+        "Tratamento de vídeo (correção de cor, enquadramento e estabilização) e áudio (noise reduction, equalização e masterização)",
+        "Inserção de vinheta de abertura e encerramento com identidade da Pharmed",
+        "Composição de slides em PIP, com variações de layout: slide sobre vídeo e vídeo sobre slide",
+        "Legenda completa sincronizada em todo o vídeo (formato SRT e gravada no vídeo)"
+      ]
+    },
+    {
+      "id": "02",
+      "icon": "camera",
+      "name": "Captação e Edição para Redes Sociais",
+      "deliverables": [
+        "Captação com equipamento profissional: câmera, iluminação de estúdio, microfone e teleprompter",
+        "Edição e finalização com color grading alinhado à identidade visual da Pharmed",
+        "Trilhas musicais com licença para uso web inclusa",
+        "Fotografias de capa editadas para cada vídeo (arquivos entregues ao cliente)"
+      ],
+      "options": [
+        { "name": "Turno de 3h · 3 vídeos", "price": "R$ 850" },
+        { "name": "Turno de 4h · 5 vídeos", "price": "R$ 1.100" }
+      ]
+    },
+    {
+      "id": "03",
+      "icon": "social",
+      "name": "Gestão de Marca e Redes Sociais",
+      "price": "R$ 1.650",
+      "priceLabel": "Pacote mensal",
+      "badge": "Captação promocional inclusa: turno de 3h para 4 vídeos por R$ 450",
+      "deliverables": [
+        "Planejamento mensal com acompanhamento diário: 12 publicações em formatos variados",
+        "Edição de 4 vídeos mensais + criação de legendas estratégicas",
+        "Criação de 8 publicações estáticas mensais + redação de legendas",
+        "Social media dedicado: programação e gestão de comentários, seg–sex, 9h–17h",
+        "Até 2 artes extras mensais para uso geral (online e offline), conforme complexidade"
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
