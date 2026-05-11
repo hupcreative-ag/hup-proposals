@@ -65,8 +65,8 @@
     .hero-line{position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(to right,transparent,#1400FF 30%,#00CFFF 70%,transparent);opacity:.4;}
 
     /* Hero meta row */
-    .hero-meta{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;letter-spacing:.06em;color:#444;margin-bottom:2.5rem;}
-    .hero-meta-sep{width:1px;height:12px;background:#222;flex-shrink:0;}
+    .hero-meta{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;letter-spacing:.06em;color:#888;margin-bottom:2.5rem;}
+    .hero-meta-sep{width:1px;height:12px;background:#333;flex-shrink:0;}
 
     /* Hero scroll btn — azul neon */
     .hero-scroll-btn{
@@ -245,30 +245,40 @@
     .content-card:hover{border-color:#2a2a2a;box-shadow:0 24px 64px rgba(0,0,0,.45);}
     .content-card::before{content:'';position:absolute;inset:0;border-radius:10px;background:radial-gradient(ellipse at top left,rgba(20,0,255,.06) 0%,transparent 60%);pointer-events:none;}
 
-    .card-icon-wrap{width:56px;height:56px;border-radius:12px;background:rgba(20,0,255,.1);border:1px solid rgba(20,0,255,.25);display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;flex-shrink:0;}
-    .card-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1.75rem;}
-    .card-num{font-size:3.5rem;font-weight:700;color:rgba(20,0,255,.06);line-height:1;user-select:none;flex-shrink:0;margin-top:-.25rem;}
-    .card-title{font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1.2;}
+    /* Número decorativo no canto do card */
+    .card-watermark{position:absolute;top:.75rem;right:1.5rem;font-size:5rem;font-weight:700;color:rgba(20,0,255,.05);line-height:1;user-select:none;pointer-events:none;}
 
-    .card-deliverables{border-top:1px solid #1a1a1a;padding-top:1.5rem;margin-top:1.5rem;}
+    /* Header: ícone alinhado com título */
+    .card-icon-wrap{width:52px;height:52px;border-radius:12px;background:rgba(20,0,255,.12);border:1px solid rgba(20,0,255,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
+    .card-title{font-size:clamp(1rem,2vw,1.3rem);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1.25;}
+    @media(max-width:480px){.card-header{gap:.75rem;}.card-title{font-size:1rem;}}
+
+    .card-deliverables{border-top:1px solid #222;padding-top:1.5rem;margin-top:1.5rem;}
     .check-item{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.55rem;}
     .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;}
 
-    .card-price-block{border-top:1px solid #1a1a1a;padding-top:1.5rem;margin-top:1.75rem;}
-    .card-price-label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#555;margin:0 0 .4rem;}
+    .card-price-block{border-top:1px solid #222;padding-top:1.5rem;margin-top:1.75rem;}
+    .card-price-label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#999;margin:0 0 .4rem;}
     .card-price{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:#fff;line-height:1;}
 
-    /* Sub-opções lado a lado */
-    .card-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem;border-top:1px solid #1a1a1a;padding-top:1.5rem;margin-top:1.75rem;}
-    @media(max-width:500px){.card-options{grid-template-columns:1fr;}}
-    .card-option{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;padding:1.25rem 1.5rem;text-align:center;transition:border-color 250ms,background 250ms,transform 200ms;cursor:default;}
+    /* Sub-opções — turnos de captação */
+    .card-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem;border-top:1px solid #222;padding-top:1.5rem;margin-top:1.75rem;}
+    @media(max-width:480px){.card-options{grid-template-columns:1fr;gap:.75rem;}}
+    .card-option{
+      background:#0d0d0d;border:1px solid #252525;border-radius:10px;
+      padding:1.5rem;text-align:center;
+      transition:border-color 250ms,background 250ms,transform 200ms;cursor:default;
+    }
     .card-option:hover{border-color:rgba(20,0,255,.5);background:rgba(20,0,255,.07);transform:translateY(-2px);}
-    .card-option-name{font-size:.75rem;color:#777;letter-spacing:.04em;line-height:1.4;margin:0 0 .8rem;}
-    .card-option-price{font-size:1.7rem;font-weight:700;color:var(--cyan);line-height:1;}
+    .card-option-duration{font-size:2.6rem;font-weight:800;color:#fff;line-height:1;margin-bottom:.2rem;font-family:'Poppins',sans-serif;}
+    .card-option-videos{font-size:.78rem;color:#aaa;letter-spacing:.05em;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #1e1e1e;}
+    .card-option-price{font-size:1.6rem;font-weight:700;color:var(--cyan);line-height:1;}
+    .card-option-label{font-size:.6rem;color:#666;letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;}
 
     /* Badge promo */
-    .card-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.55rem 1rem;background:rgba(0,207,255,.07);border:1px solid rgba(0,207,255,.25);border-radius:6px;font-size:.78rem;color:var(--cyan);line-height:1.4;}
-    .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);flex-shrink:0;animation:dot-pulse 2s ease-in-out infinite;}
+    .card-badge{display:flex;align-items:flex-start;gap:.6rem;margin-top:1.5rem;padding:.75rem 1rem;background:rgba(0,207,255,.07);border:1px solid rgba(0,207,255,.25);border-radius:8px;font-size:.82rem;color:#e0f7ff;line-height:1.55;}
+    .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);flex-shrink:0;margin-top:.35rem;animation:dot-pulse 2s ease-in-out infinite;}
 
     /* ── CTA ── */
     .cta-btn{display:inline-block;background:var(--blue);color:#fff;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:1rem 2.5rem;border-radius:4px;transition:filter 200ms,transform 200ms;}
@@ -311,8 +321,8 @@
   <div class="hero-line"></div>
 
   <!-- Validade (canto) -->
-  <div style="position:absolute;top:2rem;right:2rem;color:#333;font-size:.72rem;letter-spacing:.06em;z-index:2;">
-    Válida até <span style="color:#555;"><%= proposal.expiresAt %></span>
+  <div style="position:absolute;top:2rem;right:2rem;color:#666;font-size:.72rem;letter-spacing:.06em;z-index:2;">
+    Válida até <span style="color:#999;"><%= proposal.expiresAt %></span>
   </div>
 
   <div style="text-align:center;max-width:780px;width:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
@@ -339,11 +349,11 @@
 
     <!-- Meta -->
     <div class="hero-item hero-meta">
-      <span style="color:#888;font-weight:500;letter-spacing:.04em;"><%= proposal.client.contact %></span>
+      <span style="color:#ccc;font-weight:500;letter-spacing:.04em;"><%= proposal.client.contact %></span>
       <span class="hero-meta-sep"></span>
-      <span>Emitida em <span id="emission-date" style="color:#666;"></span></span>
+      <span style="color:#888;">Emitida em <span id="emission-date" style="color:#bbb;"></span></span>
       <span class="hero-meta-sep"></span>
-      <span>Válida até <span style="color:#666;"><%= proposal.expiresAt %></span></span>
+      <span style="color:#888;">Válida até <span style="color:#bbb;"><%= proposal.expiresAt %></span></span>
     </div>
 
     <!-- Scroll btn — azul neon -->
@@ -683,10 +693,12 @@
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
 
-    <div style="margin-bottom:3.5rem;">
-      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">06</div>
-      <p class="label reveal" style="margin-bottom:.5rem;">Proposta para <%= proposal.client.company %></p>
-      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Orçamento</h2>
+    <div style="margin-bottom:3.5rem;display:flex;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;">
+      <div class="sec-num reveal" style="line-height:.85;flex-shrink:0;">06</div>
+      <div class="reveal" style="padding-bottom:.35rem;">
+        <p class="label" style="margin:0 0 .4rem;">Proposta para <%= proposal.client.company %></p>
+        <h2 style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;">Orçamento</h2>
+      </div>
     </div>
 
     <!-- SVG gradient defs -->
@@ -703,25 +715,28 @@
       <% proposal.cards.forEach((card, idx) => { %>
       <div class="content-card" data-card-idx="<%= idx %>">
 
+        <!-- Número decorativo (fundo) -->
+        <div class="card-watermark"><%= card.id %></div>
+
+        <!-- Header: ícone + título alinhados -->
         <div class="card-header">
-          <!-- Ícone por tipo -->
           <div class="card-icon-wrap">
             <% if (card.icon === 'video') { %>
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1.5" y="5.5" width="17" height="17" rx="2" stroke="url(#icon-g)" stroke-width="1.6"/>
                 <path d="M18.5 10.5L26.5 7v14l-8-3.5V10.5z" stroke="url(#icon-g)" stroke-width="1.6" stroke-linejoin="round"/>
                 <line x1="6" y1="10" x2="6" y2="18" stroke="url(#icon-g)" stroke-width="1.6" stroke-linecap="round"/>
                 <line x1="9.5" y1="8" x2="9.5" y2="20" stroke="url(#icon-g)" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
             <% } else if (card.icon === 'camera') { %>
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 9c0-1.1.9-2 2-2h3.5l2.5-3h8l2.5 3H24c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V9z" stroke="url(#icon-g)" stroke-width="1.6"/>
                 <circle cx="14" cy="16" r="4.5" stroke="url(#icon-g)" stroke-width="1.6"/>
                 <circle cx="14" cy="16" r="1.5" fill="url(#icon-g)"/>
                 <circle cx="22" cy="10" r="1" fill="url(#icon-g)"/>
               </svg>
             <% } else if (card.icon === 'social') { %>
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="2" y="16" width="5" height="10" rx="1" stroke="url(#icon-g)" stroke-width="1.6"/>
                 <rect x="11.5" y="9" width="5" height="17" rx="1" stroke="url(#icon-g)" stroke-width="1.6"/>
                 <rect x="21" y="3" width="5" height="23" rx="1" stroke="url(#icon-g)" stroke-width="1.6"/>
@@ -729,11 +744,7 @@
               </svg>
             <% } %>
           </div>
-
-          <div style="flex:1;">
-            <div class="card-num"><%= card.id %></div>
-            <h3 class="card-title"><%= card.name %></h3>
-          </div>
+          <h3 class="card-title"><%= card.name %></h3>
         </div>
 
         <!-- Deliverables -->
@@ -743,7 +754,7 @@
               <span class="check-icon">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5l3.5 3.5 6.5-7" stroke="#1400FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <span style="color:#bbb;font-size:.88rem;line-height:1.6;"><%= d %></span>
+              <span style="color:#ccc;font-size:.88rem;line-height:1.6;"><%= d %></span>
             </div>
           <% }) %>
         </div>
@@ -764,17 +775,18 @@
           </div>
         <% } %>
 
-        <!-- Sub-opções lado a lado -->
+        <!-- Sub-opções — turnos de captação -->
         <% if (card.options && card.options.length) { %>
           <div class="card-options">
             <% card.options.forEach(opt => { %>
               <div class="card-option">
-                <p class="card-option-name"><%= opt.name %></p>
+                <div class="card-option-duration"><%= opt.duration %></div>
+                <div class="card-option-videos"><%= opt.videos %> incluídos</div>
                 <div class="card-option-price"><%= opt.price %></div>
+                <div class="card-option-label">por turno</div>
               </div>
             <% }) %>
           </div>
-          <p style="font-size:.7rem;color:#444;letter-spacing:.06em;margin:.9rem 0 0;text-align:center;">por turno de captação</p>
         <% } %>
 
       </div>

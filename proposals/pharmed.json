@@ -34,8 +34,8 @@
         "Fotografias de capa editadas para cada vídeo (arquivos entregues ao cliente)"
       ],
       "options": [
-        { "name": "Turno de 3h · 3 vídeos", "price": "R$ 850" },
-        { "name": "Turno de 4h · 5 vídeos", "price": "R$ 1.100" }
+        { "duration": "3h", "videos": "3 vídeos", "price": "R$ 850" },
+        { "duration": "4h", "videos": "5 vídeos", "price": "R$ 1.100" }
       ]
     },
     {
@@ -44,7 +44,7 @@
       "name": "Gestão de Marca e Redes Sociais",
       "price": "R$ 1.650",
       "priceLabel": "Pacote mensal",
-      "badge": "Captação promocional inclusa: turno de 3h para 4 vídeos por R$ 450",
+      "badge": "Captação com valor promocional durante contrato: turno de 3h para 4 vídeos por R$ 450",
       "deliverables": [
         "Planejamento mensal com acompanhamento diário: 12 publicações em formatos variados",
         "Edição de 4 vídeos mensais + criação de legendas estratégicas",
