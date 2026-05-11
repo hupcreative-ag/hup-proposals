@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Poppins:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend({colors:{hup:'#1400FF',cyan:'#00CFFF',surface:'#111111'},fontFamily:{sans:['Space Grotesk','sans-serif']}})}}</script>
   <script>tailwind.config={theme:{extend:{colors:{hup:'#1400FF',cyan:'#00CFFF',surface:'#111111'},fontFamily:{sans:['Space Grotesk','sans-serif']}}}}</script>
 
   <style>
@@ -40,7 +41,7 @@
     .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;animation:dot-pulse 2s ease-in-out infinite;}
     @keyframes dot-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
 
-    /* Hero background — hex dots + orbital edge glow */
+    /* Hero bg */
     .hero-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
     .hero-dots{
       position:absolute;inset:0;
@@ -64,16 +65,174 @@
     }
     .hero-line{position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(to right,transparent,#1400FF 30%,#00CFFF 70%,transparent);opacity:.4;}
 
+    /* Hero meta row */
+    .hero-meta{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;letter-spacing:.06em;color:#444;margin-bottom:2.5rem;}
+    .hero-meta-sep{width:1px;height:12px;background:#222;flex-shrink:0;}
+
+    /* Hero scroll btn — azul neon */
+    .hero-scroll-btn{
+      display:inline-flex;align-items:center;gap:.6rem;
+      padding:.65rem 1.6rem;
+      border:1px solid rgba(20,0,255,.6);border-radius:999px;
+      font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+      color:#fff;background:rgba(20,0,255,.18);
+      cursor:pointer;font-family:inherit;
+      backdrop-filter:blur(6px);
+      transition:background 250ms,border-color 250ms,box-shadow 250ms,transform 200ms;
+    }
+    .hero-scroll-btn:hover{
+      background:rgba(20,0,255,.35);
+      border-color:var(--blue);
+      box-shadow:0 0 22px rgba(20,0,255,.45);
+      transform:translateY(2px);
+    }
+    .hero-scroll-arrow{animation:arrow-bounce 1.8s ease-in-out infinite;}
+    @keyframes arrow-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
     /* ── Sec number ── */
     .sec-num{font-size:clamp(5rem,15vw,10rem);font-weight:700;color:#1a1a1a;line-height:1;user-select:none;}
 
-    /* ── About ── */
+    /* ── Services ── */
+    @keyframes svc-pulse{
+      0%,100%{border-color:#222;background:transparent;box-shadow:none;}
+      50%{border-color:var(--blue);background:rgba(20,0,255,.07);box-shadow:inset 0 0 24px rgba(20,0,255,.08),0 0 12px rgba(20,0,255,.08);}
+    }
+    .service-item{
+      border:1px solid #222;padding:1.5rem;cursor:default;
+      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+      animation:svc-pulse 5s ease-in-out infinite;
+      transition:background 200ms,color 200ms,border-color 200ms;
+    }
+    .service-item:nth-child(1){animation-delay:0s;}
+    .service-item:nth-child(2){animation-delay:.6s;}
+    .service-item:nth-child(3){animation-delay:1.2s;}
+    .service-item:nth-child(4){animation-delay:1.8s;}
+    .service-item:nth-child(5){animation-delay:2.4s;}
+    .service-item:nth-child(6){animation-delay:3s;}
+    .service-item:nth-child(7){animation-delay:3.6s;}
+    .service-item:nth-child(8){animation-delay:4.2s;}
+    .service-item:hover{background:var(--blue);border-color:var(--blue);animation:none;}
+    .service-item:hover .service-arrow{color:#fff;}
+
+    /* ── Holo logo ── */
     .holo-logo{animation:holo-float 6s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(0,207,255,.4));}
     @keyframes holo-float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-20px) rotate(2deg);}}
     @media(max-width:768px){
       .holo-logo{display:none!important;}
       .about-grid{grid-template-columns:1fr!important;gap:2rem!important;}
+      .services-grid{grid-template-columns:repeat(2,1fr)!important;}
     }
+
+    /* ── Portfolio heading ── */
+    .port-section{margin-bottom:5rem;}
+    .port-heading{display:flex;align-items:flex-end;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #1a1a1a;}
+    .port-heading h3{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1;}
+    .port-desc{font-size:.8rem;color:#888;letter-spacing:.04em;line-height:1.5;padding-bottom:2px;}
+    .port-tag{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;}
+
+    /* ── Masonry ── */
+    .masonry{columns:4;column-gap:6px;}
+    .masonry.cols-3{columns:3;}
+    @media(max-width:900px){.masonry{columns:2!important;}}
+    @media(max-width:500px){.masonry{columns:2!important;}}
+    .masonry-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;cursor:pointer;}
+    .masonry-item img{width:100%;height:auto;display:block;transition:transform 400ms ease,filter 300ms;}
+    .masonry-item:hover img{transform:scale(1.05);filter:brightness(1.1);}
+
+    /* E-commerce grid */
+    .eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;}
+    .eco-grid-item{overflow:hidden;border-radius:6px;cursor:zoom-in;aspect-ratio:1/1;transition:box-shadow 200ms;}
+    .eco-grid-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 300ms;}
+    .eco-grid-item:hover img{transform:scale(1.05);}
+    .eco-grid-item:hover{box-shadow:0 6px 20px rgba(0,0,0,.5);}
+    .eco-grid-item.span-2{grid-column:span 2;aspect-ratio:2/1;}
+    .eco-grid-item.span-3{grid-column:span 3;aspect-ratio:3/1;}
+    .eco-grid-item.span-4{grid-column:span 4;aspect-ratio:4/1;}
+    @media(max-width:768px){
+      .eco-grid{grid-template-columns:repeat(2,1fr);}
+      .eco-grid-item.span-2,.eco-grid-item.span-3,.eco-grid-item.span-4{grid-column:span 2;aspect-ratio:2/1;}
+    }
+
+    /* ── Collapse ── */
+    .collapsible-grid{position:relative;max-height:520px;overflow:hidden;transition:max-height 700ms ease;}
+    .collapsible-grid.expanded{max-height:9000px;}
+    .collapsible-grid::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--bg) 0%,transparent 100%);pointer-events:none;transition:opacity 400ms;}
+    .collapsible-grid.expanded::after{opacity:0;pointer-events:none;}
+    .ver-mais-btn{display:flex;align-items:center;gap:.6rem;margin:1.5rem auto 0;padding:.7rem 1.8rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-family:inherit;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:background 200ms,border-color 200ms,transform 200ms;position:relative;z-index:2;}
+    .ver-mais-btn:hover{background:rgba(20,0,255,.25);border-color:rgba(20,0,255,.5);transform:scale(1.02);}
+    .ver-mais-btn.hidden{display:none;}
+
+    /* ── Audiovisual cards ── */
+    .av-cards{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+    @media(max-width:640px){.av-cards{grid-template-columns:1fr;}}
+    .av-card{position:relative;overflow:hidden;min-height:360px;cursor:pointer;text-decoration:none;display:block;}
+    .av-card-bg{position:absolute;inset:0;display:flex;gap:4px;filter:blur(14px) brightness(.2) saturate(.5);transform:scale(1.12);}
+    .av-card-bg-col{display:flex;flex-direction:column;gap:4px;flex:0 0 auto;width:33.33%;}
+    .av-card-bg-col img{width:100%;flex:1;object-fit:cover;display:block;}
+    .av-card-bg-col:nth-child(1){animation:av-slide-up 18s linear infinite;}
+    .av-card-bg-col:nth-child(2){animation:av-slide-down 22s linear infinite;}
+    .av-card-bg-col:nth-child(3){animation:av-slide-up 15s linear infinite;}
+    @keyframes av-slide-up{0%{transform:translateY(0);}100%{transform:translateY(-33%);}}
+    @keyframes av-slide-down{0%{transform:translateY(-33%);}100%{transform:translateY(0);}}
+    .av-card:hover .av-card-bg{filter:blur(10px) brightness(.3) saturate(.7);}
+    .av-card-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,0,255,.2) 0%,transparent 60%);}
+    .av-card-content{position:relative;z-index:2;padding:2.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;}
+    .av-card-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;}
+    .av-card-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;text-transform:uppercase;line-height:1;margin:0 0 .75rem;color:#fff;}
+    .av-card-desc{font-size:.85rem;color:#aaa;margin:0 0 2rem;line-height:1.5;}
+    .av-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--blue);color:#fff;font-family:inherit;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.7rem 1.4rem;border-radius:3px;align-self:flex-start;transition:filter 200ms,transform 200ms;}
+    .av-cta:hover{filter:brightness(1.2);transform:scale(1.03);}
+    .av-play{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:9px solid #fff;display:inline-block;}
+
+    /* ── Ticker ── */
+    .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
+    .ticker-track{display:inline-flex;gap:6px;animation:ticker-scroll var(--spd,55s) linear infinite;will-change:transform;}
+    .ticker-track.rev{animation-direction:reverse;}
+    @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+    .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+    .ticker-track img{height:180px;width:auto;min-width:120px;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
+    .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
+    @media(max-width:768px){.ticker-track img{height:130px;min-width:90px;}}
+
+    /* Photo filters */
+    .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+    .filter-btn{padding:.35rem .9rem;border:1px solid #333;background:none;color:#666;font-family:inherit;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all 200ms;}
+    .filter-btn:hover{border-color:#666;color:#fff;}
+    .filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+
+    /* ── Packaging bento ── */
+    .pkg-bento-wrap{overflow-x:auto;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#2a2a2a transparent;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);padding-bottom:8px;}
+    .pkg-bento-wrap::-webkit-scrollbar{height:4px;}
+    .pkg-bento-wrap::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
+    .pkg-bento-wrap.grabbing{cursor:grabbing;user-select:none;}
+    .pkg-bento{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);grid-template-rows:repeat(2,240px);gap:8px;width:max-content;min-width:100%;}
+    .pkg-bento-card{position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;transition:box-shadow 300ms;}
+    .pkg-bento-card.tall{grid-row:span 2;}
+    .pkg-bento-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
+    .pkg-bento-card:hover img{transform:scale(1.06);}
+    .pkg-bento-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.1) 50%,transparent 100%);opacity:0;transition:opacity 400ms;}
+    .pkg-bento-card:hover .pkg-bento-overlay{opacity:1;}
+    .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
+    @media(max-width:768px){
+      .pkg-bento-wrap{overflow-x:visible;mask-image:none;cursor:default;padding-bottom:0;}
+      .pkg-bento-wrap.pkg-collapsed{max-height:520px;overflow:hidden;position:relative;}
+      .pkg-bento-wrap.pkg-collapsed::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to top,var(--bg) 0%,transparent 100%);pointer-events:none;}
+      .pkg-bento{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:none;grid-auto-flow:row;grid-auto-columns:unset;width:100%;min-width:unset;gap:6px;}
+      .pkg-bento-card{aspect-ratio:1/1;border-radius:6px;}
+      .pkg-bento-card.tall{grid-row:span 1;}
+    }
+
+    /* ── Logo wall ── */
+    .clients-section{background:#f0f0f0;}
+    .clients-section .sec-num{color:#ddd;}
+    .clients-section h2,.clients-section .label,.clients-section p{color:#111!important;}
+    .clients-section .label{color:var(--blue)!important;}
+    .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;align-items:center;justify-items:center;}
+    @media(max-width:768px){.logo-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:480px){.logo-grid{grid-template-columns:repeat(2,1fr);}}
+    .logo-item{display:flex;align-items:center;justify-content:center;padding:.75rem;}
+    .logo-item img{max-height:64px;max-width:140px;width:auto;height:auto;object-fit:contain;transition:transform 200ms;}
+    .logo-item:hover img{transform:scale(1.1);}
 
     /* ── Content cards ── */
     .content-cards{display:grid;gap:2rem;}
@@ -85,56 +244,32 @@
     }
     .content-card.visible{opacity:1;transform:translateY(0) scale(1);}
     .content-card:hover{border-color:#2a2a2a;box-shadow:0 24px 64px rgba(0,0,0,.45);}
-    .content-card::before{
-      content:'';position:absolute;inset:0;border-radius:10px;
-      background:radial-gradient(ellipse at top left,rgba(20,0,255,.06) 0%,transparent 60%);
-      pointer-events:none;
-    }
+    .content-card::before{content:'';position:absolute;inset:0;border-radius:10px;background:radial-gradient(ellipse at top left,rgba(20,0,255,.06) 0%,transparent 60%);pointer-events:none;}
 
-    .card-icon-wrap{
-      width:56px;height:56px;border-radius:12px;
-      background:rgba(20,0,255,.1);border:1px solid rgba(20,0,255,.25);
-      display:flex;align-items:center;justify-content:center;
-      margin-bottom:1.75rem;flex-shrink:0;
-    }
-
+    .card-icon-wrap{width:56px;height:56px;border-radius:12px;background:rgba(20,0,255,.1);border:1px solid rgba(20,0,255,.25);display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;flex-shrink:0;}
     .card-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1.75rem;}
     .card-num{font-size:3.5rem;font-weight:700;color:rgba(20,0,255,.06);line-height:1;user-select:none;flex-shrink:0;margin-top:-.25rem;}
     .card-title{font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1.2;}
 
     .card-deliverables{border-top:1px solid #1a1a1a;padding-top:1.5rem;margin-top:1.5rem;}
     .check-item{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.55rem;}
-    .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;font-size:.9rem;}
+    .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;}
 
     .card-price-block{border-top:1px solid #1a1a1a;padding-top:1.5rem;margin-top:1.75rem;}
     .card-price-label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#555;margin:0 0 .4rem;}
     .card-price{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:#fff;line-height:1;}
 
-    /* Sub-option cards (Card 2) */
+    /* Sub-opções lado a lado */
     .card-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem;border-top:1px solid #1a1a1a;padding-top:1.5rem;margin-top:1.75rem;}
     @media(max-width:500px){.card-options{grid-template-columns:1fr;}}
-    .card-option{
-      background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;padding:1.25rem 1.5rem;
-      text-align:center;transition:border-color 250ms,background 250ms,transform 200ms;cursor:default;
-    }
+    .card-option{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;padding:1.25rem 1.5rem;text-align:center;transition:border-color 250ms,background 250ms,transform 200ms;cursor:default;}
     .card-option:hover{border-color:rgba(20,0,255,.5);background:rgba(20,0,255,.07);transform:translateY(-2px);}
     .card-option-name{font-size:.75rem;color:#777;letter-spacing:.04em;line-height:1.4;margin:0 0 .8rem;}
     .card-option-price{font-size:1.7rem;font-weight:700;color:var(--cyan);line-height:1;}
 
-    /* Promo badge (Card 3) */
-    .card-badge{
-      display:inline-flex;align-items:center;gap:.5rem;
-      margin-top:1.25rem;padding:.55rem 1rem;
-      background:rgba(0,207,255,.07);border:1px solid rgba(0,207,255,.25);
-      border-radius:6px;font-size:.78rem;color:var(--cyan);line-height:1.4;
-    }
+    /* Badge promo */
+    .card-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.55rem 1rem;background:rgba(0,207,255,.07);border:1px solid rgba(0,207,255,.25);border-radius:6px;font-size:.78rem;color:var(--cyan);line-height:1.4;}
     .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);flex-shrink:0;animation:dot-pulse 2s ease-in-out infinite;}
-
-    /* ── Hero scroll btn ── */
-    .hero-scroll-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.6rem 1.4rem;border:1px solid #252525;border-radius:999px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#484848;background:transparent;cursor:pointer;font-family:inherit;transition:border-color 300ms,color 300ms,transform 300ms;}
-    .hero-scroll-btn:hover{border-color:#555;color:#aaa;transform:translateY(2px);}
-    .hero-scroll-arrow{animation:arrow-bounce 1.8s ease-in-out infinite;}
-    @keyframes arrow-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
     /* ── CTA ── */
     .cta-btn{display:inline-block;background:var(--blue);color:#fff;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:1rem 2.5rem;border-radius:4px;transition:filter 200ms,transform 200ms;}
@@ -142,32 +277,46 @@
     .cta-btn-pulse{animation:cta-pulse 1.6s ease-in-out infinite;}
     @keyframes cta-pulse{0%,100%{box-shadow:0 0 0 0 rgba(20,0,255,.6),0 0 20px rgba(20,0,255,.3);}50%{box-shadow:0 0 0 10px rgba(20,0,255,0),0 0 30px rgba(20,0,255,.15);}}
 
+    /* ── Lightbox ── */
+    #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center;}
+    #lightbox.open{display:flex;}
+    #lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;user-select:none;}
+    #lb-close{position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;opacity:.6;}
+    #lb-close:hover{opacity:1;}
+    #lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;background:none;border:none;opacity:.4;padding:1rem;}
+    #lb-prev:hover,#lb-next:hover{opacity:1;}
+    #lb-prev{left:.5rem;}#lb-next{right:.5rem;}
+    #lb-count{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:#555;font-size:.75rem;letter-spacing:.1em;}
+
     /* ── label ── */
     .label{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:500;}
-
-    /* Meta row */
-    .hero-meta{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.75rem;letter-spacing:.06em;color:#444;margin-bottom:2.5rem;}
-    .hero-meta-sep{width:1px;height:12px;background:#222;}
   </style>
 </head>
 <body class="grain">
 
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close">✕</button>
+  <button id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">›</button>
+  <div id="lb-count"></div>
+</div>
+
 <!-- ════════════════════════════════════════════════
-     1. HERO — Conteúdo (conciso)
+     1. HERO — Conciso
 ════════════════════════════════════════════════ -->
 <section style="min-height:85vh;display:flex;align-items:center;justify-content:center;position:relative;padding:5rem 2rem;overflow:hidden;">
 
-  <div class="hero-bg">
-    <div class="hero-dots"></div>
-  </div>
+  <div class="hero-bg"><div class="hero-dots"></div></div>
   <div class="hero-line"></div>
 
   <!-- Validade (canto) -->
-  <div style="position:absolute;top:2rem;right:2rem;color:#333;font-size:.72rem;letter-spacing:.06em;z-index:2;text-align:right;">
+  <div style="position:absolute;top:2rem;right:2rem;color:#333;font-size:.72rem;letter-spacing:.06em;z-index:2;">
     Válida até <span style="color:#555;"><%= proposal.expiresAt %></span>
   </div>
 
-  <div style="text-align:center;max-width:760px;width:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
+  <div style="text-align:center;max-width:780px;width:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
 
     <!-- Logo -->
     <div class="hero-item" style="margin-bottom:3rem;">
@@ -189,16 +338,16 @@
       <span style="background:linear-gradient(90deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;">conteúdo que impacta.</span>
     </h1>
 
-    <!-- Cliente + datas -->
+    <!-- Meta -->
     <div class="hero-item hero-meta">
       <span style="color:#888;font-weight:500;letter-spacing:.04em;"><%= proposal.client.contact %></span>
       <span class="hero-meta-sep"></span>
-      <span>Emitida em <span id="emission-date" style="color:#555;"></span></span>
+      <span>Emitida em <span id="emission-date" style="color:#666;"></span></span>
       <span class="hero-meta-sep"></span>
-      <span>Válida até <span style="color:#555;"><%= proposal.expiresAt %></span></span>
+      <span>Válida até <span style="color:#666;"><%= proposal.expiresAt %></span></span>
     </div>
 
-    <!-- Scroll -->
+    <!-- Scroll btn — azul neon -->
     <button class="hero-item hero-scroll-btn" onclick="window.scrollBy({top:window.innerHeight*.85,behavior:'smooth'})">
       Ver proposta
       <svg class="hero-scroll-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -237,25 +386,311 @@
       </div>
       <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
         <% const holoSrc = assets.logoHup.find(l=>l.toLowerCase().includes('holo')) || assets.logoHup[0]; %>
-        <img class="holo-logo" src="<%= holoSrc %>" alt="HUP Holográfica" style="max-width:320px;width:100%;height:auto;">
+        <img class="holo-logo" src="<%= holoSrc %>" alt="HUP Holográfica" style="max-width:340px;width:100%;height:auto;">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════
-     3. ENTREGAS — Cards de conteúdo
+     3. O QUE FAZEMOS
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div style="margin-bottom:3rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">03</div>
+      <p class="label reveal" style="margin-bottom:.5rem;">O que fazemos</p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Serviços</h2>
+    </div>
+    <div class="services-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;">
+      <% ['Criação de Conteúdo','Gestão de Redes Sociais','Planejamento On e Off','Produção Audiovisual','Fotografia','Identidade Visual','Criação de Embalagens','Experiência de Marca'].forEach(s=>{ %>
+        <div class="service-item">
+          <div class="service-arrow" style="margin-bottom:.75rem;line-height:1;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="4" y1="18" x2="18" y2="4" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round"/>
+              <polyline points="8,4 18,4 18,14" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;"><%= s %></div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     4. PORTFOLIO
+════════════════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid #111;">
+  <div class="container">
+    <div style="margin-bottom:3.5rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">04</div>
+      <p class="label reveal" style="margin-bottom:.5rem;">Portfólio</p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Nosso Trabalho</h2>
+    </div>
+
+    <!-- 4a. REDES SOCIAIS -->
+    <% if (assets.redesSociais.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Redes Sociais</h3></div>
+        <div class="port-desc">Conteúdo pensado para Instagram e TikTok —<br>vídeos, estáticos e stories que geram resultado.</div>
+      </div>
+      <div class="collapsible-grid" id="cg-redes">
+        <div class="masonry" data-gallery="redesSociais">
+          <% assets.redesSociais.forEach((img,i)=>{ %>
+            <div class="masonry-item" data-gallery="redesSociais" data-index="<%= i %>"><img src="<%= img %>" alt="" loading="lazy"></div>
+          <% }) %>
+        </div>
+      </div>
+      <% if (assets.redesSociais.length > 8) { %>
+      <div style="text-align:center;"><button class="ver-mais-btn" data-target="cg-redes">Ver mais ↓</button></div>
+      <% } %>
+    </div>
+    <% } %>
+
+    <!-- 4b. E-COMMERCE -->
+    <% if (assets.ecommerce.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>E-commerce</h3></div>
+        <div class="port-desc">Imagens e artes focadas em conversão —<br>do produto à vitrine digital.</div>
+      </div>
+      <div class="collapsible-grid" id="cg-eco">
+        <div class="eco-grid">
+          <%
+            const ecoBanners  = assets.ecommerce.filter(img => /banner|topo/i.test(img));
+            const ecoProducts = assets.ecommerce.filter(img => !/banner|topo/i.test(img));
+            const ecoMixed = [];
+            let _bi = 0, _pi = 0;
+            while (_pi < ecoProducts.length || _bi < ecoBanners.length) {
+              const pL = ecoProducts.length - _pi;
+              const bL = ecoBanners.length  - _bi;
+              if (pL >= 2 && bL > 0) {
+                ecoMixed.push({ img: ecoProducts[_pi++], span: 1 });
+                ecoMixed.push({ img: ecoProducts[_pi++], span: 1 });
+                ecoMixed.push({ img: ecoBanners[_bi++],  span: 2 });
+              } else if (pL === 1 && bL > 0) {
+                ecoMixed.push({ img: ecoProducts[_pi++], span: 1 });
+                ecoMixed.push({ img: ecoBanners[_bi++],  span: 3 });
+              } else if (pL === 0 && bL >= 2) {
+                ecoMixed.push({ img: ecoBanners[_bi++], span: 2 });
+                ecoMixed.push({ img: ecoBanners[_bi++], span: 2 });
+              } else if (pL === 0 && bL === 1) {
+                ecoMixed.push({ img: ecoBanners[_bi++], span: 4 });
+              } else {
+                while (_pi < ecoProducts.length) ecoMixed.push({ img: ecoProducts[_pi++], span: 1 });
+                break;
+              }
+            }
+          %>
+          <% ecoMixed.forEach(item => { %>
+            <div class="eco-grid-item<%= item.span > 1 ? ' span-' + item.span : '' %>"
+                 data-gallery="ecommerce" data-index="<%= assets.ecommerce.indexOf(item.img) %>">
+              <img src="<%= item.img %>" alt="" loading="lazy">
+            </div>
+          <% }) %>
+        </div>
+      </div>
+      <% if (assets.ecommerce.length > 6) { %>
+      <div style="text-align:center;"><button class="ver-mais-btn" data-target="cg-eco">Ver mais ↓</button></div>
+      <% } %>
+    </div>
+    <% } %>
+
+    <!-- 4c. OFF-LINE -->
+    <% if (assets.offline.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Off-line</h3></div>
+        <div class="port-desc">Peças para o mundo físico — banners, flyers,<br>outdoors e materiais impressos.</div>
+      </div>
+      <div class="collapsible-grid" id="cg-off">
+        <div class="masonry cols-3" data-gallery="offline">
+          <% assets.offline.forEach((img,i)=>{ %>
+            <div class="masonry-item" data-gallery="offline" data-index="<%= i %>"><img src="<%= img %>" alt="" loading="lazy"></div>
+          <% }) %>
+        </div>
+      </div>
+      <% if (assets.offline.length > 6) { %>
+      <div style="text-align:center;"><button class="ver-mais-btn" data-target="cg-off">Ver mais ↓</button></div>
+      <% } %>
+    </div>
+    <% } %>
+
+    <!-- 4d. AUDIOVISUAL -->
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Audiovisual</h3></div>
+        <div class="port-desc">Produção completa do roteiro à edição —<br>para redes sociais e tela grande.</div>
+      </div>
+      <div class="av-cards">
+        <a class="av-card" href="https://youtube.com/playlist?list=PLkVpdYag8wjEOI2IH5-_GqUoVyWm-qt4h&si=MqxlW2GDbIfbsYOb" target="_blank" rel="noopener">
+          <div class="av-card-bg">
+            <% const rAv = assets.audiovisualRedes; const chunk = Math.ceil(rAv.length/3)||1; %>
+            <div class="av-card-bg-col"><% rAv.slice(0,chunk).concat(rAv.slice(0,chunk)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %></div>
+            <div class="av-card-bg-col"><% rAv.slice(chunk,chunk*2).concat(rAv.slice(chunk,chunk*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %></div>
+            <div class="av-card-bg-col"><% rAv.slice(chunk*2).concat(rAv.slice(chunk*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %></div>
+          </div>
+          <div class="av-card-overlay"></div>
+          <div class="av-card-content">
+            <p class="av-card-tag">Audiovisual</p>
+            <h3 class="av-card-title">Redes<br>Sociais</h3>
+            <p class="av-card-desc">Pensados, gravados e editados<br>para Instagram e TikTok.</p>
+            <span class="av-cta"><span class="av-play"></span>Clique e assista</span>
+          </div>
+        </a>
+        <a class="av-card" href="https://youtube.com/playlist?list=PLkVpdYag8wjGlNHhRgibzSKpus5ICzB5J&si=8hcHNUysiUXDH0RH" target="_blank" rel="noopener">
+          <div class="av-card-bg">
+            <% const eAv = assets.audiovisualEventos; const chunkE = Math.ceil(eAv.length/3)||1; %>
+            <div class="av-card-bg-col"><% eAv.slice(0,chunkE).concat(eAv.slice(0,chunkE)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %></div>
+            <div class="av-card-bg-col"><% eAv.slice(chunkE,chunkE*2).concat(eAv.slice(chunkE,chunkE*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %></div>
+            <div class="av-card-bg-col"><% eAv.slice(chunkE*2).concat(eAv.slice(chunkE*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %></div>
+          </div>
+          <div class="av-card-overlay"></div>
+          <div class="av-card-content">
+            <p class="av-card-tag">Audiovisual</p>
+            <h3 class="av-card-title">Institucionais<br>e Eventos</h3>
+            <p class="av-card-desc">O bom e velho horizontal —<br>das apresentações à TV.</p>
+            <span class="av-cta"><span class="av-play"></span>Clique e assista</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 4e. FOTOGRAFIA -->
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Fotografia</h3></div>
+        <div class="port-desc">Captação profissional em 4k — alimentação,<br>produto e institucional.</div>
+      </div>
+      <div class="filter-bar" id="photo-filter-bar">
+        <button class="filter-btn active" data-pcat="all">Todos</button>
+        <% if(assets.fotografiaAlimentacao.length){%><button class="filter-btn" data-pcat="alimentacao">Alimentação</button><%}%>
+        <% if(assets.fotografiaInstitucional.length){%><button class="filter-btn" data-pcat="institucional">Institucional</button><%}%>
+        <% if(assets.fotografiaProduto.length){%><button class="filter-btn" data-pcat="produto">Produto</button><%}%>
+      </div>
+      <%
+        function splitRows(arr, n) {
+          const rows = Array.from({length: n}, () => []);
+          arr.forEach((img, i) => rows[i % n].push(img));
+          return rows;
+        }
+        const _poolAll = [];
+        const _a = assets.fotografiaAlimentacao;
+        const _b = assets.fotografiaInstitucional;
+        const _c = assets.fotografiaProduto;
+        const _maxAll = Math.max(_a.length, _b.length, _c.length);
+        for (let i = 0; i < _maxAll; i++) {
+          if (i < _a.length) _poolAll.push(_a[i]);
+          if (i < _b.length) _poolAll.push(_b[i]);
+          if (i < _c.length) _poolAll.push(_c[i]);
+        }
+        const _allRows = splitRows(_poolAll, 3);
+      %>
+      <div id="pgallery-all">
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track" style="--spd:187s;"><% [..._allRows[0],..._allRows[0]].forEach((img,i)=>{ %><img src="<%= img %>" alt="" loading="<%= i<6?'eager':'lazy' %>" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track" style="--spd:210s;"><% [..._allRows[2],..._allRows[2]].forEach((img,i)=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap"><div class="ticker-track rev" style="--spd:152s;"><% [..._allRows[1],..._allRows[1]].forEach((img,i)=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+      </div>
+      <div id="pgallery-alimentacao" style="display:none;">
+        <% const _alRows = splitRows(assets.fotografiaAlimentacao, 3); %>
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track" style="--spd:105s;"><% [..._alRows[0],..._alRows[0]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track" style="--spd:88s;"><% [..._alRows[2],..._alRows[2]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap"><div class="ticker-track rev" style="--spd:128s;"><% [..._alRows[1],..._alRows[1]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+      </div>
+      <div id="pgallery-institucional" style="display:none;">
+        <% const _insRows = splitRows(assets.fotografiaInstitucional, 3); %>
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track rev" style="--spd:128s;"><% [..._insRows[0],..._insRows[0]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track rev" style="--spd:111s;"><% [..._insRows[2],..._insRows[2]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap"><div class="ticker-track" style="--spd:152s;"><% [..._insRows[1],..._insRows[1]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+      </div>
+      <div id="pgallery-produto" style="display:none;">
+        <% const _prRows = splitRows(assets.fotografiaProduto, 3); %>
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track" style="--spd:117s;"><% [..._prRows[0],..._prRows[0]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap" style="margin-bottom:6px;"><div class="ticker-track" style="--spd:140s;"><% [..._prRows[2],..._prRows[2]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+        <div class="ticker-wrap"><div class="ticker-track rev" style="--spd:99s;"><% [..._prRows[1],..._prRows[1]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %></div></div>
+      </div>
+    </div>
+
+    <!-- 4f. PACKAGING -->
+    <% if (assets.packaging.length) { %>
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
+        <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
+      </div>
+      <div class="pkg-bento-wrap pkg-collapsed" id="pkg-wrap">
+        <div class="pkg-bento">
+          <%
+            const pkgReordered = [...assets.packaging];
+            const img4 = pkgReordered.splice(3, 1)[0];
+            const img12 = pkgReordered.splice(10, 1)[0];
+            pkgReordered.splice(3, 0, img12);
+            pkgReordered.push(img4);
+          %>
+          <% pkgReordered.forEach((img,i)=>{ %>
+            <div class="pkg-bento-card <%= i%3===0?'tall':'' %>"
+                 data-pkgsrc="<%= img %>" data-pkgidx="<%= assets.packaging.indexOf(img) %>">
+              <img src="<%= img %>" alt="" loading="lazy">
+              <div class="pkg-bento-overlay"></div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+      <div style="text-align:center;" id="pkg-ver-mais-wrap">
+        <button class="ver-mais-btn" id="pkg-ver-mais-btn">Ver mais ↓</button>
+      </div>
+    </div>
+    <% } %>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     5. CLIENTES
+════════════════════════════════════════════════ -->
+<% if (assets.logosClientes.length) { %>
+<section class="section clients-section">
+  <div class="container">
+    <div style="margin-bottom:3rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">05</div>
+      <p class="label reveal" style="margin-bottom:.4rem;">Confiança</p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 .5rem;line-height:1.1;clear:both;color:#111;">Clientes</h2>
+      <p class="reveal" style="color:#666;font-size:.95rem;margin:0;max-width:560px;">
+        Marcas que confiam na HUP para uma solução 360° — da estratégia digital à produção criativa.
+      </p>
+    </div>
+    <div class="logo-grid reveal">
+      <%
+        const _lastKeys = ['flat cambuci','cmsa','gustavo sisant'];
+        const _sorted = assets.logosClientes.slice().sort((a,b)=>{
+          const aL=_lastKeys.some(k=>a.toLowerCase().includes(k));
+          const bL=_lastKeys.some(k=>b.toLowerCase().includes(k));
+          return aL===bL?0:aL?1:-1;
+        });
+      %>
+      <% _sorted.forEach((logo,i)=>{ %>
+        <div class="logo-item"><img src="<%= logo %>" alt="Cliente <%= i+1 %>" loading="lazy"></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- ════════════════════════════════════════════════
+     6. ORÇAMENTO — Cards de entrega
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
 
     <div style="margin-bottom:3.5rem;">
-      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">03</div>
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">06</div>
       <p class="label reveal" style="margin-bottom:.5rem;">Proposta para <%= proposal.client.company %></p>
-      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Entregas</h2>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Orçamento</h2>
     </div>
 
-    <!-- SVG gradient defs (reutilizado pelos ícones) -->
+    <!-- SVG gradient defs -->
     <svg width="0" height="0" style="position:absolute;overflow:hidden;" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="icon-g" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -266,12 +701,11 @@
     </svg>
 
     <div class="content-cards">
-
       <% proposal.cards.forEach((card, idx) => { %>
       <div class="content-card" data-card-idx="<%= idx %>">
 
         <div class="card-header">
-          <!-- Ícone SVG por tipo -->
+          <!-- Ícone por tipo -->
           <div class="card-icon-wrap">
             <% if (card.icon === 'video') { %>
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -323,7 +757,7 @@
           </div>
         <% } %>
 
-        <!-- Badge promo (Card 3) -->
+        <!-- Badge promo -->
         <% if (card.badge) { %>
           <div class="card-badge">
             <span class="badge-dot"></span>
@@ -331,7 +765,7 @@
           </div>
         <% } %>
 
-        <!-- Sub-opções (Card 2) -->
+        <!-- Sub-opções lado a lado -->
         <% if (card.options && card.options.length) { %>
           <div class="card-options">
             <% card.options.forEach(opt => { %>
@@ -346,10 +780,9 @@
 
       </div>
       <% }) %>
-
     </div>
 
-    <!-- CTA imediato após os cards -->
+    <!-- Botão após cards -->
     <div style="text-align:center;margin-top:3.5rem;">
       <a href="<%= proposal.cta.meetingLink %>" target="_blank"
          class="cta-btn-pulse"
@@ -362,7 +795,7 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     4. CTA FINAL
+     7. CTA FINAL
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;text-align:center;">
   <div class="container" style="max-width:600px;">
@@ -392,12 +825,23 @@
      JS
 ════════════════════════════════════════════════ -->
 <script>
+  const GALLERIES = {
+    redesSociais: <%- JSON.stringify(assets.redesSociais) %>,
+    ecommerce:    <%- JSON.stringify(assets.ecommerce) %>,
+    offline:      <%- JSON.stringify(assets.offline) %>,
+    packaging:    <%- JSON.stringify(assets.packaging) %>,
+  };
+  const FOTO_ALL = [
+    ...<%- JSON.stringify(assets.fotografiaAlimentacao) %>,
+    ...<%- JSON.stringify(assets.fotografiaInstitucional) %>,
+    ...<%- JSON.stringify(assets.fotografiaProduto) %>,
+  ];
+
   // ── Data de emissão ────────────────────────────
   (function(){
     const el = document.getElementById('emission-date');
     if(!el) return;
-    const d = new Date();
-    el.textContent = d.toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
+    el.textContent = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
   })();
 
   // ── Scroll reveal ──────────────────────────────
@@ -421,6 +865,81 @@
     });
   },{threshold:0.06});
   document.querySelectorAll('.content-card').forEach(el=>cardObs.observe(el));
+
+  // ── Lightbox ───────────────────────────────────
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lb-img');
+  const lbCount=document.getElementById('lb-count');
+  let lbGal=[],lbIdx=0;
+  function openLb(gallery,idx){lbGal=gallery;lbIdx=idx;lbImg.src=lbGal[lbIdx];lbCount.textContent=(lbIdx+1)+' / '+lbGal.length;lb.classList.add('open');document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';setTimeout(()=>{lbImg.src='';},300);}
+  function lbNav(d){lbIdx=(lbIdx+d+lbGal.length)%lbGal.length;lbImg.src=lbGal[lbIdx];lbCount.textContent=(lbIdx+1)+' / '+lbGal.length;}
+  document.getElementById('lb-close').onclick=closeLb;
+  lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+  document.getElementById('lb-prev').onclick=()=>lbNav(-1);
+  document.getElementById('lb-next').onclick=()=>lbNav(1);
+  document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);});
+
+  // Wire gallery clicks
+  document.querySelectorAll('.masonry-item').forEach(item=>{
+    item.addEventListener('click',()=>{const g=GALLERIES[item.dataset.gallery];if(!g)return;openLb(g,parseInt(item.dataset.index,10)||0);});
+  });
+  document.querySelectorAll('[data-gallery="ecommerce"]').forEach(img=>{
+    img.addEventListener('click',()=>openLb(GALLERIES.ecommerce,parseInt(img.dataset.index,10)||0));
+  });
+  document.querySelectorAll('[data-fotosrc]').forEach(img=>{
+    img.addEventListener('click',()=>{const idx=FOTO_ALL.indexOf(img.dataset.fotosrc);openLb(FOTO_ALL,idx>=0?idx:0);});
+  });
+  document.querySelectorAll('.pkg-bento-card').forEach(card=>{
+    card.addEventListener('click',()=>openLb(GALLERIES.packaging,parseInt(card.dataset.pkgidx,10)||0));
+  });
+
+  // ── Drag-to-scroll (packaging) ─────────────────
+  document.querySelectorAll('.pkg-bento-wrap').forEach(wrap=>{
+    let down=false,startX=0,scrollLeft=0;
+    wrap.addEventListener('mousedown',e=>{down=true;wrap.classList.add('grabbing');startX=e.pageX-wrap.offsetLeft;scrollLeft=wrap.scrollLeft;});
+    wrap.addEventListener('mouseleave',()=>{down=false;wrap.classList.remove('grabbing');});
+    wrap.addEventListener('mouseup',()=>{down=false;wrap.classList.remove('grabbing');});
+    wrap.addEventListener('mousemove',e=>{if(!down)return;e.preventDefault();wrap.scrollLeft=scrollLeft-(e.pageX-wrap.offsetLeft-startX)*1.5;});
+  });
+
+  // ── Photo filter ───────────────────────────────
+  document.querySelectorAll('#photo-filter-bar .filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('#photo-filter-bar .filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat=btn.dataset.pcat;
+      ['all','alimentacao','institucional','produto'].forEach(c=>{
+        const el=document.getElementById('pgallery-'+c);
+        if(el) el.style.display=(cat===c)?'':'none';
+      });
+    });
+  });
+
+  // ── Ver mais ───────────────────────────────────
+  document.querySelectorAll('.ver-mais-btn[data-target]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const target=document.getElementById(btn.dataset.target);
+      if(!target)return;
+      target.classList.add('expanded');
+      btn.classList.add('hidden');
+    });
+  });
+
+  // ── Ver mais packaging (mobile) ────────────────
+  const pkgBtn=document.getElementById('pkg-ver-mais-btn');
+  const pkgWrap=document.getElementById('pkg-wrap');
+  if(pkgBtn&&pkgWrap){
+    function syncPkgBtn(){
+      const isMobile=window.innerWidth<=768;
+      document.getElementById('pkg-ver-mais-wrap').style.display=isMobile?'':'none';
+      if(!isMobile)pkgWrap.classList.remove('pkg-collapsed');
+      else pkgWrap.classList.add('pkg-collapsed');
+    }
+    syncPkgBtn();
+    window.addEventListener('resize',syncPkgBtn);
+    pkgBtn.addEventListener('click',()=>{pkgWrap.classList.remove('pkg-collapsed');document.getElementById('pkg-ver-mais-wrap').style.display='none';});
+  }
 </script>
 </body>
 </html>
