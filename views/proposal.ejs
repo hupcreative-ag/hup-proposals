@@ -330,13 +330,29 @@
       transition:opacity 600ms ease-out,transform 600ms ease-out,box-shadow 300ms;
     }
     .package-card.visible{opacity:1;transform:translateY(0) scale(1);}
-    .package-card.recommended{border-left-color:var(--cyan);box-shadow:0 0 0 1px rgba(0,207,255,.12),0 0 50px rgba(0,207,255,.06);}
+    .package-card.recommended{
+      border-left-color:var(--cyan);
+      background:linear-gradient(145deg,#0c1a20 0%,#0f1f1a 30%,#111111 70%);
+      box-shadow:0 0 0 1px rgba(0,207,255,.18),0 0 80px rgba(0,207,255,.07),0 12px 48px rgba(0,0,0,.5);
+    }
     .badge-rec{position:absolute;top:1.25rem;right:1.25rem;background:var(--cyan);color:#000;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem;border-radius:2px;}
     .package-price{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;line-height:1;}
     .check-item{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.45rem;}
-    .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;}
+    .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;font-size:.9rem;}
     .pkg-group-title{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#555;margin:1.25rem 0 .5rem;border-top:1px solid #1e1e1e;padding-top:1rem;}
     .proposal-intro{margin-bottom:3.5rem;padding:2rem 2.5rem;border-left:3px solid var(--blue);background:#0d0d0d;}
+
+    /* Delta items — diferenciais do plano superior */
+    .check-delta{
+      background:rgba(0,207,255,.06);
+      border-left:2px solid rgba(0,207,255,.35);
+      border-radius:3px;
+      padding:.3rem .6rem .3rem .5rem;
+      margin-left:-.5rem;
+      margin-bottom:.5rem;
+    }
+    .check-delta .check-icon{color:var(--cyan);}
+    .check-delta .check-text{color:#d6f6ff;}
 
     /* ── CTA ── */
     .cta-btn{display:inline-block;background:var(--blue);color:#fff;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:1rem 2.5rem;border-radius:4px;transition:filter 200ms,transform 200ms;}
@@ -842,19 +858,29 @@
           <div style="display:grid;grid-template-columns:1fr auto;align-items:start;gap:1rem;margin-bottom:1.5rem;">
             <div>
               <p style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:<%=pkg.recommended?'var(--cyan)':'#555'%>;margin:0 0 .25rem;"><%= pkg.name %></p>
+              <% if(pkg.recommended){ %>
+                <p style="font-size:.75rem;color:rgba(0,207,255,.55);margin:.35rem 0 0;letter-spacing:.04em;">Mais completo · melhor custo-benefício</p>
+              <% } %>
             </div>
-            <div style="font-size:3rem;color:<%=pkg.recommended?'rgba(0,207,255,.06)':'rgba(20,0,255,.06)'%>;font-weight:700;line-height:1;user-select:none;"><%= pkg.id %></div>
+            <div style="font-size:3rem;color:<%=pkg.recommended?'rgba(0,207,255,.1)':'rgba(20,0,255,.06)'%>;font-weight:700;line-height:1;user-select:none;"><%= pkg.id %></div>
           </div>
           <% if(pkg.groups){pkg.groups.forEach(g=>{%>
             <p class="pkg-group-title"><%= g.title %></p>
-            <% g.items.forEach(item=>{%>
-              <div class="check-item"><span class="check-icon">✓</span><span style="color:#bbb;font-size:.88rem;"><%= item %></span></div>
+            <% g.items.forEach(item=>{
+              const isObj = typeof item === 'object' && item !== null;
+              const text = isObj ? item.text : item;
+              const isDelta = isObj && item.delta;
+            %>
+              <div class="check-item<%= isDelta ? ' check-delta' : '' %>">
+                <span class="check-icon"><%= isDelta ? '↑' : '✓' %></span>
+                <span class="<%= isDelta ? 'check-text' : '' %>" style="font-size:.88rem;<%= !isDelta ? 'color:#bbb;' : '' %>"><%= text %></span>
+              </div>
             <%})%>
           <%})}else if(pkg.items){pkg.items.forEach(item=>{%>
             <div class="check-item"><span class="check-icon">✓</span><span style="color:#bbb;font-size:.88rem;"><%= item %></span></div>
           <%})}%>
-          <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid #1e1e1e;">
-            <div class="package-price" style="margin-bottom:.35rem;"><%= pkg.price %></div>
+          <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid <%= pkg.recommended?'rgba(0,207,255,.15)':'#1e1e1e' %>;">
+            <div class="package-price" style="margin-bottom:.35rem;color:<%=pkg.recommended?'var(--cyan)':'#fff'%>;"><%= pkg.price %></div>
             <p style="color:#666;font-size:.78rem;margin:0 0 1.25rem;">Contrato mínimo de <%= pkg.minMonths %> meses</p>
             <a href="<%= proposal.cta.meetingLink %>" target="_blank"
                style="display:inline-block;background:<%=pkg.recommended?'var(--cyan)':'var(--blue)'%>;color:<%=pkg.recommended?'#000':'#fff'%>;font-family:inherit;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.65rem 1.4rem;border-radius:3px;transition:filter 200ms;">

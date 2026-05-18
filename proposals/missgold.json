@@ -19,8 +19,7 @@
           "title": "Publicações mensais",
           "items": [
             "12 publicações mensais em formatos variados",
-            "Edição de 04 vídeos + criação de legendas",
-            "Planejamento e criação de 08 publicações estáticas + criação de legendas"
+            "Edição de 04 vídeos + criação de legendas"
           ]
         },
         {
@@ -57,15 +56,15 @@
           "title": "Publicações mensais",
           "items": [
             "12 publicações mensais em formatos variados",
-            "Edição de até 06 vídeos + criação de legendas",
-            "Planejamento e criação de 10 publicações estáticas + criação de legendas"
+            { "text": "Edição de até 06 vídeos + criação de legendas", "delta": true }
           ]
         },
         {
           "title": "Captação",
           "items": [
-            "01 visita ao mês para captação de vídeos e fotos",
-            "Captação em até 03h com câmera + acessórios profissionais"
+            { "text": "01 visita ao mês para captação de vídeos e fotos", "delta": true },
+            "Captação em até 03h com câmera + acessórios profissionais",
+            "Edição de vídeos para publicação no perfil"
           ]
         },
         {
@@ -78,7 +77,7 @@
         {
           "title": "Artes extras",
           "items": [
-            "Até 4 artes extras (online e offline) para utilização geral",
+            { "text": "Até 4 artes extras (online e offline) para utilização geral", "delta": true },
             "Contagem depende da complexidade de cada entrega"
           ]
         }
