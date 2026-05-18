@@ -1,0 +1,93 @@
+{
+  "slug": "missgold",
+  "token": "missgold-2026",
+  "serviceType": "Gestão de Redes Sociais",
+  "client": {
+    "contact": "Rafa e Iago",
+    "company": "Miss Gold"
+  },
+  "expiresAt": "2026-06-18",
+  "packages": [
+    {
+      "id": "01",
+      "name": "Plano 01",
+      "price": "R$ 2.300/mês",
+      "minMonths": 3,
+      "recommended": false,
+      "groups": [
+        {
+          "title": "Publicações mensais",
+          "items": [
+            "12 publicações mensais em formatos variados",
+            "Edição de 04 vídeos + criação de legendas",
+            "Planejamento e criação de 08 publicações estáticas + criação de legendas"
+          ]
+        },
+        {
+          "title": "Captação",
+          "items": [
+            "08 visitas ao ano para captação de vídeos e fotos",
+            "Captação em até 03h com câmera 4k + acessórios profissionais",
+            "Edição de vídeos para publicação no perfil"
+          ]
+        },
+        {
+          "title": "Social media",
+          "items": [
+            "Profissional dedicado a programar publicações e responder comentários",
+            "Atendimento de segunda à sexta, das 09h às 17h"
+          ]
+        },
+        {
+          "title": "Artes extras",
+          "items": [
+            "Criação de 1 arte extra/mês"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Plano 02",
+      "price": "R$ 2.700/mês",
+      "minMonths": 3,
+      "recommended": true,
+      "groups": [
+        {
+          "title": "Publicações mensais",
+          "items": [
+            "12 publicações mensais em formatos variados",
+            "Edição de até 06 vídeos + criação de legendas",
+            "Planejamento e criação de 10 publicações estáticas + criação de legendas"
+          ]
+        },
+        {
+          "title": "Captação",
+          "items": [
+            "01 visita ao mês para captação de vídeos e fotos",
+            "Captação em até 03h com câmera + acessórios profissionais"
+          ]
+        },
+        {
+          "title": "Social media",
+          "items": [
+            "Profissional dedicado a programar publicações e responder comentários",
+            "Atendimento de segunda à sexta, das 09h às 17h"
+          ]
+        },
+        {
+          "title": "Artes extras",
+          "items": [
+            "Até 4 artes extras (online e offline) para utilização geral",
+            "Contagem depende da complexidade de cada entrega"
+          ]
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
