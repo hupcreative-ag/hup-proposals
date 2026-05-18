@@ -309,6 +309,25 @@
       .pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}
     }
 
+    /* ── Packaging scroll arrows ── */
+    .pkg-scroll-arrow{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:40px;height:40px;border-radius:50%;
+      background:rgba(10,10,10,.75);backdrop-filter:blur(8px);
+      border:1px solid #333;color:#fff;font-size:1.5rem;line-height:1;
+      cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;
+      transition:background 200ms,border-color 200ms,opacity 200ms;
+      padding:0;
+    }
+    .pkg-scroll-arrow:hover{background:var(--blue);border-color:var(--blue);}
+    .pkg-scroll-arrow.hidden{opacity:0;pointer-events:none;}
+    .pkg-scroll-left{left:-16px;}
+    .pkg-scroll-right{right:-16px;}
+    @media(max-width:768px){
+      .pkg-scroll-left{left:4px;}
+      .pkg-scroll-right{right:4px;}
+    }
+
     /* ── Logo wall ── */
     .clients-section{background:#f0f0f0;}
     .clients-section .sec-num{color:#ddd;}
@@ -780,7 +799,10 @@
         <div><div class="port-tag">Portfólio</div><h3>Packaging</h3></div>
         <div class="port-desc">Design de embalagem que seduz na prateleira<br>e reforça a identidade da marca.</div>
       </div>
-      <div class="pkg-bento-wrap">
+      <div style="position:relative;">
+        <button class="pkg-scroll-arrow pkg-scroll-left" aria-label="Anterior">‹</button>
+        <button class="pkg-scroll-arrow pkg-scroll-right" aria-label="Próximo">›</button>
+      <div class="pkg-bento-wrap" id="pkg-bento-wrap">
         <div class="pkg-bento">
           <%
             const pkgReordered = [...assets.packaging];
@@ -797,6 +819,7 @@
             </div>
           <% }) %>
         </div>
+      </div>
       </div>
     </div>
     <% } %>
@@ -1087,6 +1110,23 @@
       });
     });
   });
+
+  // ── Packaging scroll arrows ────────────────────
+  (function(){
+    const wrap = document.getElementById('pkg-bento-wrap');
+    const btnL = document.querySelector('.pkg-scroll-left');
+    const btnR = document.querySelector('.pkg-scroll-right');
+    if(!wrap || !btnL || !btnR) return;
+    const STEP = 480;
+    function update(){
+      btnL.classList.toggle('hidden', wrap.scrollLeft <= 4);
+      btnR.classList.toggle('hidden', wrap.scrollLeft >= wrap.scrollWidth - wrap.clientWidth - 4);
+    }
+    btnL.addEventListener('click',()=>{ wrap.scrollBy({left:-STEP,behavior:'smooth'}); });
+    btnR.addEventListener('click',()=>{ wrap.scrollBy({left:STEP,behavior:'smooth'}); });
+    wrap.addEventListener('scroll', update, {passive:true});
+    update();
+  })();
 
   // ── Ver mais ───────────────────────────────────
   document.querySelectorAll('.ver-mais-btn').forEach(btn=>{
