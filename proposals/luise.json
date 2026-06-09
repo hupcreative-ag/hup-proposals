@@ -31,7 +31,7 @@
           "included": true,
           "name": "Landing page completa",
           "description": "Página única projetada do zero para a sua identidade profissional — hero com foto, apresentação com suporte a vídeo, seção de serviços, feedbacks de pacientes, seus diferenciais e um botão direto para agendamento.",
-          "chips": ["Hero com foto profissional", "Apresentação com vídeo", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
+          "chips": ["Hero com foto profissional", "Apresentação pessoal", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
         },
         {
           "included": true,
@@ -62,8 +62,8 @@
         {
           "included": true,
           "name": "Landing page completa",
-          "description": "Tudo do Plano 01 — hero com foto, apresentação com vídeo, seção de serviços, feedbacks de pacientes, diferenciais e CTA de agendamento.",
-          "chips": ["Hero com foto profissional", "Apresentação com vídeo", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
+          "description": "Tudo do Plano 01 — hero com foto, apresentação pessoal, seção de serviços, feedbacks de pacientes, diferenciais e CTA de agendamento.",
+          "chips": ["Hero com foto profissional", "Apresentação pessoal", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
         },
         {
           "included": true,
