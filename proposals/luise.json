@@ -1,0 +1,117 @@
+{
+  "slug": "luise",
+  "token": "luise-site-2026",
+  "type": "branding-compare",
+  "serviceType": "Criação de Site",
+  "client": {
+    "contacts": ["Luise"],
+    "company": "Luise Antunes"
+  },
+  "expiresAt": "2026-07-09",
+  "proposalTitle": "Site para Luise Antunes",
+  "proposalIntro": "Criamos sites que vão além do visual — são ferramentas de trabalho. Para você, farmacêutica clínica, o site precisa transmitir confiança, apresentar seus serviços com clareza e facilitar o contato com quem mais importa: seus pacientes.",
+  "plans": [
+    {
+      "id": "01",
+      "name": "Site Institucional",
+      "recommended": false,
+      "investment": {
+        "total": "R$ 1.500",
+        "installments": {
+          "count": 2,
+          "value": "R$ 750",
+          "method": "Pix ou cartão"
+        }
+      },
+      "sections": [
+        {
+          "included": true,
+          "name": "Landing page completa",
+          "description": "Página única com todas as seções essenciais da sua presença digital.",
+          "chips": ["Hero com foto profissional", "Apresentação com vídeo", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
+        },
+        {
+          "included": true,
+          "name": "Domínio e hospedagem",
+          "description": "Compra e configuração de 1 domínio .com.br + hospedagem no sistema da agência inclusa no plano.",
+          "chips": ["Domínio .com.br cobrado à parte (~R$ 60/ano)"]
+        },
+        {
+          "included": false,
+          "name": "Sistema de agendamento com anamnese",
+          "description": "Disponível no Plano 02."
+        },
+        {
+          "included": false,
+          "name": "Site-apps e ferramentas clínicas",
+          "description": "Disponível no Plano 02."
+        },
+        {
+          "included": false,
+          "name": "E-mail profissional",
+          "description": "Disponível no Plano 02."
+        },
+        {
+          "included": false,
+          "name": "Hospedagem premium com backup",
+          "description": "Disponível no Plano 02."
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Site + Sistema de Agendamento",
+      "recommended": true,
+      "investment": {
+        "total": "R$ 2.000",
+        "installments": {
+          "count": 3,
+          "value": "R$ 666,67",
+          "method": "Pix ou cartão"
+        }
+      },
+      "sections": [
+        {
+          "included": true,
+          "name": "Tudo do Plano 01",
+          "description": "Landing page completa com hero, apresentação, serviços, feedbacks, diferenciais e CTA.",
+          "chips": ["Hero com foto profissional", "Apresentação com vídeo", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
+        },
+        {
+          "included": true,
+          "name": "Sistema de pré-agendamento com anamnese",
+          "description": "Formulário interativo e visualmente fluido — a anamnese preenchida chega direto no seu e-mail.",
+          "chips": ["Visual fluido e interativo", "Envio automático por e-mail"]
+        },
+        {
+          "included": true,
+          "name": "Site-apps e ferramentas clínicas",
+          "description": "Questionários clínicos, calculadoras e aplicações sob medida — possibilidades expandidas conforme você precisar.",
+          "chips": ["Questionários clínicos", "Calculadoras", "Aplicações personalizadas"]
+        },
+        {
+          "included": true,
+          "name": "E-mail profissional",
+          "description": "Endereço com o seu domínio (ex: contato@luisefarma.com.br) configurado do zero."
+        },
+        {
+          "included": true,
+          "name": "Hospedagem premium individual",
+          "description": "Servidor dedicado com backup automático. R$ 537,22 por 4 anos, valor único — cobrado à parte.",
+          "chips": ["Backup automático", "Servidor individual", "4 anos de cobertura"]
+        },
+        {
+          "included": true,
+          "name": "Domínio e configuração completa",
+          "description": "Compra e configuração do domínio .com.br — cobrado à parte (~R$ 60/ano).",
+          "chips": ["Domínio .com.br (~R$ 60/ano)"]
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
