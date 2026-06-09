@@ -549,14 +549,14 @@
       01 &nbsp;—&nbsp; Proposta<% if(proposal.serviceType){ %>&nbsp;de&nbsp;<strong style="color:#aaa;font-weight:600;letter-spacing:.06em;"><%= proposal.serviceType %></strong><% } %>
     </div>
 
+    <%
+      const _heroSub = proposal.heroTitleSub || (proposal.client.company + ', uma marca');
+      const _heroWords = proposal.heroWords || ['icônica','memorável','poderosa','distinta','única'];
+    %>
     <h1 class="hero-item hero-main-title">
-      <span class="hero-title-sub"><%= proposal.client.company %>, uma marca</span>
+      <span class="hero-title-sub"><%= _heroSub %></span>
       <span class="hero-rotate-slot" id="hero-rotate">
-        <span>icônica</span>
-        <span>memorável</span>
-        <span>poderosa</span>
-        <span>distinta</span>
-        <span>única</span>
+        <% _heroWords.forEach(w => { %><span><%= w %></span><% }) %>
       </span>
     </h1>
 
@@ -568,9 +568,10 @@
       } else {
         contactStr = contacts.slice(0, -1).join(', ') + ' e ' + contacts[contacts.length - 1];
       }
+      const _heroSubtitle = proposal.heroSubtitle || ('estamos ansiosos<br>para dar vida à sua marca.');
     %>
     <p class="hero-item hero-subtitle">
-      <strong><%= contactStr %></strong>, estamos ansiosos<br>para dar vida à sua marca.
+      <strong><%= contactStr %></strong>, <%- _heroSubtitle %>
     </p>
 
     <button class="hero-item hero-scroll-btn" onclick="window.scrollBy({top:window.innerHeight*.85,behavior:'smooth'})">
