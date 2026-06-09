@@ -30,34 +30,19 @@
         {
           "included": true,
           "name": "Landing page completa",
-          "description": "Página única com todas as seções essenciais da sua presença digital.",
+          "description": "Página única projetada do zero para a sua identidade profissional — hero com foto, apresentação com suporte a vídeo, seção de serviços, feedbacks de pacientes, seus diferenciais e um botão direto para agendamento.",
           "chips": ["Hero com foto profissional", "Apresentação com vídeo", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
         },
         {
           "included": true,
-          "name": "Domínio e hospedagem",
-          "description": "Compra e configuração de 1 domínio .com.br + hospedagem no sistema da agência inclusa no plano.",
-          "chips": ["Domínio .com.br cobrado à parte (~R$ 60/ano)"]
+          "name": "Hospedagem inclusa",
+          "description": "O site fica hospedado no servidor da agência durante a vigência do plano — sem custo adicional de hospedagem para você."
         },
         {
-          "included": false,
-          "name": "Sistema de agendamento com anamnese",
-          "description": "Disponível no Plano 02."
-        },
-        {
-          "included": false,
-          "name": "Site-apps e ferramentas clínicas",
-          "description": "Disponível no Plano 02."
-        },
-        {
-          "included": false,
-          "name": "E-mail profissional",
-          "description": "Disponível no Plano 02."
-        },
-        {
-          "included": false,
-          "name": "Hospedagem premium com backup",
-          "description": "Disponível no Plano 02."
+          "included": true,
+          "name": "Domínio .com.br",
+          "description": "Compramos e configuramos o seu domínio personalizado (ex: luiseantunes.com.br). Valor cobrado à parte, em média R$ 60/ano diretamente ao registrador.",
+          "chips": ["~R$ 60/ano cobrado à parte"]
         }
       ]
     },
@@ -76,38 +61,38 @@
       "sections": [
         {
           "included": true,
-          "name": "Tudo do Plano 01",
-          "description": "Landing page completa com hero, apresentação, serviços, feedbacks, diferenciais e CTA.",
+          "name": "Landing page completa",
+          "description": "Tudo do Plano 01 — hero com foto, apresentação com vídeo, seção de serviços, feedbacks de pacientes, diferenciais e CTA de agendamento.",
           "chips": ["Hero com foto profissional", "Apresentação com vídeo", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
         },
         {
           "included": true,
-          "name": "Sistema de pré-agendamento com anamnese",
-          "description": "Formulário interativo e visualmente fluido — a anamnese preenchida chega direto no seu e-mail.",
-          "chips": ["Visual fluido e interativo", "Envio automático por e-mail"]
+          "name": "Sistema de anamnese",
+          "description": "Formulário de anamnese online integrado ao site — visual fluido e interativo, preenchido pelo paciente antes da consulta. Cada resposta chega automaticamente no seu e-mail, organizada e pronta para uso.",
+          "chips": ["Formulário interativo", "Envio automático por e-mail"]
         },
         {
           "included": true,
           "name": "Site-apps e ferramentas clínicas",
-          "description": "Questionários clínicos, calculadoras e aplicações sob medida — possibilidades expandidas conforme você precisar.",
-          "chips": ["Questionários clínicos", "Calculadoras", "Aplicações personalizadas"]
+          "description": "Além da anamnese, o plano abre espaço para aplicações sob medida integradas ao site: questionários clínicos, calculadoras de dose, rastreadores de sintomas — qualquer ferramenta que faça sentido para a sua rotina.",
+          "chips": ["Questionários clínicos", "Calculadoras", "Ferramentas sob medida"]
         },
         {
           "included": true,
           "name": "E-mail profissional",
-          "description": "Endereço com o seu domínio (ex: contato@luisefarma.com.br) configurado do zero."
+          "description": "Configuramos um endereço de e-mail com o seu domínio (ex: contato@luiseantunes.com.br) — transmite credibilidade em cada comunicação com pacientes e parceiros."
         },
         {
           "included": true,
           "name": "Hospedagem premium individual",
-          "description": "Servidor dedicado com backup automático. R$ 537,22 por 4 anos, valor único — cobrado à parte.",
-          "chips": ["Backup automático", "Servidor individual", "4 anos de cobertura"]
+          "description": "Servidor dedicado exclusivamente para o seu site, com backup automático e suporte prioritário. Valor único de R$ 537,22 para 4 anos de cobertura — cobrado à parte.",
+          "chips": ["Servidor individual", "Backup automático", "4 anos · R$ 537,22 cobrado à parte"]
         },
         {
           "included": true,
-          "name": "Domínio e configuração completa",
-          "description": "Compra e configuração do domínio .com.br — cobrado à parte (~R$ 60/ano).",
-          "chips": ["Domínio .com.br (~R$ 60/ano)"]
+          "name": "Domínio .com.br",
+          "description": "Compramos e configuramos o seu domínio personalizado. Valor cobrado à parte, em média R$ 60/ano diretamente ao registrador.",
+          "chips": ["~R$ 60/ano cobrado à parte"]
         }
       ]
     }
