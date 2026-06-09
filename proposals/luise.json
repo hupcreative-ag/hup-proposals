@@ -23,7 +23,7 @@
         "installments": {
           "count": 2,
           "value": "R$ 750",
-          "method": "Pix ou cartão"
+          "method": "Pix ou boleto"
         }
       },
       "sections": [
@@ -55,7 +55,7 @@
         "installments": {
           "count": 3,
           "value": "R$ 666,67",
-          "method": "Pix ou cartão"
+          "method": "Pix ou boleto"
         }
       },
       "sections": [
