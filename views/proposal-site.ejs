@@ -763,8 +763,8 @@
                 <div class="extra-svc-original"><%= item.originalPrice %></div>
               <% } %>
               <div class="extra-svc-price"><%= item.price %></div>
-              <% if (item.originalPrice) { %>
-                <div><span class="extra-svc-discount">com desconto</span></div>
+              <% if (item.installments) { %>
+                <div class="extra-svc-price-label" style="color:#3a3a3a;"><%= item.installments %></div>
               <% } else { %>
                 <div class="extra-svc-price-label">Investimento total</div>
               <% } %>
