@@ -101,7 +101,8 @@
     {
       "id": "A",
       "name": "Audiovisual para Curso",
-      "price": "R$ 2.500",
+      "originalPrice": "R$ 3.200",
+      "price": "R$ 2.600",
       "deliverables": [
         "Captação em 02 meia-diárias de 04 horas cada, em locações distintas",
         "Captação em qualidade 4K com iluminação e áudio profissionais",
