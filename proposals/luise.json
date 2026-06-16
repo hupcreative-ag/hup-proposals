@@ -97,6 +97,35 @@
       ]
     }
   ],
+  "extras": [
+    {
+      "id": "A",
+      "name": "Audiovisual para Curso",
+      "price": "R$ 2.500",
+      "deliverables": [
+        "Captação em 02 meia-diárias de 04 horas cada, em locações distintas",
+        "Captação em qualidade 4K com iluminação e áudio profissionais",
+        "Decupagem completa do material bruto — tratamento de vídeo (correção de cor, enquadramento e estabilização) e áudio (noise reduction, equalização e masterização)",
+        "Criação e inserção de vinheta de abertura e encerramento com identidade do curso",
+        "Edição com inserção de slides em PIP, textos de destaque em tela e cortes para vídeos em laboratório",
+        "Legenda completa sincronizada em todo o vídeo (formato SRT e gravada no vídeo)",
+        "Exportação em FHD para a plataforma"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Material Visual para Curso",
+      "price": "R$ 650",
+      "deliverables": [
+        "Criação de Key Visual para o curso: paleta de cores, tipografias, elementos visuais e backgrounds",
+        "Criação de imagens para landing page",
+        "Criação de 02 cards para redes sociais",
+        "Criação de 02 stories para redes sociais",
+        "Criação de 04 capas de vídeo para a plataforma",
+        "Criação de 01 imagem de capa para a página do curso na plataforma"
+      ]
+    }
+  ],
   "cta": {
     "meetingLink": "https://wa.me/5571993386304",
     "whatsapp": "71 9 9338-6304",
