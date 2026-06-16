@@ -127,6 +127,7 @@ app.get('/:slug', (req, res) => {
     'branding': 'proposal-branding',
     'branding-compare': 'proposal-branding-compare',
     'conteudo': 'proposal-conteudo',
+    'site': 'proposal-site',
   };
   const view = VIEWS[proposal.type] || 'proposal';
   res.render(view, { proposal, assets });
