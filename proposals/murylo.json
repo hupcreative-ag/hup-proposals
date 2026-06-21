@@ -1,0 +1,52 @@
+{
+  "slug": "murylo",
+  "token": "murylo-foto-2026",
+  "type": "foto",
+  "serviceType": "Fotografia Institucional",
+  "client": {
+    "contact": "Murylo",
+    "company": "Murylo Candido"
+  },
+  "expiresAt": "2026-07-21",
+  "options": [
+    {
+      "id": "01",
+      "name": "Opção 1 — 2 Horas",
+      "price": "R$ 1.100",
+      "installments": "2x no Pix ou boleto",
+      "note": "Consultar valor para cartão de crédito",
+      "deliverables": [
+        "2h de sessão fotográfica",
+        "Equipamento de iluminação profissional incluso",
+        "Locação a definir pelo cliente",
+        "Edição completa: pele, cor e ajustes gerais"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Opção 2 — 3 Horas",
+      "price": "R$ 1.450",
+      "installments": "2x no Pix ou boleto",
+      "note": "Consultar valor para cartão de crédito",
+      "recommended": true,
+      "deliverables": [
+        "3h de sessão fotográfica",
+        "Equipamento de iluminação profissional incluso",
+        "Locação a definir pelo cliente",
+        "Mais tempo para explorar variações de cenário, looks e ângulos",
+        "Edição completa: pele, cor e ajustes gerais"
+      ]
+    }
+  ],
+  "included": [
+    "Equipamento de iluminação profissional",
+    "Edição profissional sem limite de quantidade de fotos",
+    "Média de 150 fotos editadas (varia conforme volume produzido no dia)",
+    "Entrega em até 6 dias úteis via link do Google Drive"
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
