@@ -44,12 +44,9 @@
     .hero-title-sub{display:block;font-family:'Poppins',sans-serif;font-size:clamp(1.4rem,3.2vw,2.4rem);font-weight:700;color:#fff;letter-spacing:-.01em;}
     .hero-rotate-slot{display:block;position:relative;height:1.22em;overflow:hidden;margin:.12em 0;width:100%;}
     .hero-rotate-slot span{
-      position:absolute;left:0;right:0;
-      text-align:center;
-      font-family:'Poppins',sans-serif;
-      font-size:clamp(3rem,7.5vw,6.5rem);
-      font-weight:800;font-style:italic;
-      white-space:nowrap;overflow:hidden;
+      position:absolute;left:0;right:0;text-align:center;
+      font-family:'Poppins',sans-serif;font-size:clamp(3rem,7.5vw,6.5rem);
+      font-weight:800;font-style:italic;white-space:nowrap;overflow:hidden;
       background:linear-gradient(90deg,var(--blue),var(--cyan));
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
       opacity:0;transform:translateY(110%);
@@ -69,36 +66,25 @@
     /* Hero background */
     .hero-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
     .hero-dots{
-      position:absolute;inset:0;
-      background-color:#0a0a0a;
+      position:absolute;inset:0;background-color:#0a0a0a;
       background-image:
         radial-gradient(circle at 50% 50%, transparent 1.5px, #0a0a0a 0 8px, transparent 8px),
         radial-gradient(circle at 50% 50%, transparent 1.5px, #0a0a0a 0 8px, transparent 8px),
         radial-gradient(ellipse at center, #0a0a0a 18%, transparent 62%),
         radial-gradient(ellipse at 0% 0%, rgba(20,0,255,.92), transparent 52%),
         radial-gradient(ellipse at 100% 100%, rgba(20,0,255,.75), transparent 52%);
-      background-size:
-        10px 17.32px,
-        10px 17.32px,
-        100% 100%,
-        210% 210%,
-        210% 210%;
-      background-position: 0 0, 5px 8.66px, center, 0% 0%, 100% 100%;
-      animation: edge-orbit 14s linear infinite;
+      background-size:10px 17.32px,10px 17.32px,100% 100%,210% 210%,210% 210%;
+      background-position:0 0,5px 8.66px,center,0% 0%,100% 100%;
+      animation:edge-orbit 14s linear infinite;
     }
     @keyframes edge-orbit{
-      0%  {background-position:0 0,5px 8.66px,center,  0%   0%,  100% 100%;}
-      25% {background-position:0 0,5px 8.66px,center,100%   0%,    0% 100%;}
-      50% {background-position:0 0,5px 8.66px,center,100% 100%,    0%   0%;}
-      75% {background-position:0 0,5px 8.66px,center,  0% 100%,  100%   0%;}
-      100%{background-position:0 0,5px 8.66px,center,  0%   0%,  100% 100%;}
+      0%  {background-position:0 0,5px 8.66px,center,  0%   0%,100% 100%;}
+      25% {background-position:0 0,5px 8.66px,center,100%   0%,  0% 100%;}
+      50% {background-position:0 0,5px 8.66px,center,100% 100%,  0%   0%;}
+      75% {background-position:0 0,5px 8.66px,center,  0% 100%,100%   0%;}
+      100%{background-position:0 0,5px 8.66px,center,  0%   0%,100% 100%;}
     }
-
-    .hero-line{
-      position:absolute;left:0;right:0;bottom:0;height:1px;
-      background:linear-gradient(to right,transparent,#1400FF 30%,#00CFFF 70%,transparent);
-      opacity:.4;
-    }
+    .hero-line{position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(to right,transparent,#1400FF 30%,#00CFFF 70%,transparent);opacity:.4;}
 
     /* ── Sec number ── */
     .sec-num{font-size:clamp(5rem,15vw,10rem);font-weight:700;color:#1a1a1a;line-height:1;user-select:none;}
@@ -113,16 +99,11 @@
       clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
       animation:svc-pulse 5s ease-in-out infinite;
     }
-    .service-item:nth-child(1){animation-delay:0s;}
-    .service-item:nth-child(2){animation-delay:.6s;}
-    .service-item:nth-child(3){animation-delay:1.2s;}
-    .service-item:nth-child(4){animation-delay:1.8s;}
-    .service-item:nth-child(5){animation-delay:2.4s;}
-    .service-item:nth-child(6){animation-delay:3s;}
-    .service-item:nth-child(7){animation-delay:3.6s;}
-    .service-item:nth-child(8){animation-delay:4.2s;}
+    .service-item:nth-child(1){animation-delay:0s;}.service-item:nth-child(2){animation-delay:.6s;}
+    .service-item:nth-child(3){animation-delay:1.2s;}.service-item:nth-child(4){animation-delay:1.8s;}
+    .service-item:nth-child(5){animation-delay:2.4s;}.service-item:nth-child(6){animation-delay:3s;}
+    .service-item:nth-child(7){animation-delay:3.6s;}.service-item:nth-child(8){animation-delay:4.2s;}
     .service-item:hover{background:var(--blue);border-color:var(--blue);animation:none;}
-    .service-item:hover .service-arrow{color:#fff;}
 
     /* ── Holo logo ── */
     .holo-logo{animation:holo-float 6s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(0,207,255,.4));}
@@ -133,12 +114,41 @@
       .services-grid{grid-template-columns:repeat(2,1fr)!important;}
     }
 
-    /* ── Portfolio ── */
+    /* ── Portfolio heading ── */
     .port-section{margin-bottom:5rem;}
     .port-heading{display:flex;align-items:flex-end;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #1a1a1a;}
     .port-heading h3{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1;}
     .port-desc{font-size:.8rem;color:#888;letter-spacing:.04em;line-height:1.5;padding-bottom:2px;}
     .port-tag{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;}
+
+    /* ── Masonry ── */
+    .masonry{columns:4;column-gap:6px;}
+    .masonry.cols-3{columns:3;}
+    @media(max-width:900px){.masonry{columns:2!important;}}
+    .masonry-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;cursor:zoom-in;}
+    .masonry-item img{width:100%;height:auto;display:block;transition:transform 400ms ease,filter 300ms;}
+    .masonry-item:hover img{transform:scale(1.04);filter:brightness(1.1);}
+
+    /* ── Collapsible ── */
+    .collapsible-grid{position:relative;max-height:640px;overflow:hidden;transition:max-height 700ms ease;}
+    .collapsible-grid.expanded{max-height:9000px;}
+    .collapsible-grid::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
+      background:linear-gradient(to top,var(--bg) 0%,transparent 100%);
+      pointer-events:none;transition:opacity 400ms;
+    }
+    .collapsible-grid.expanded::after{opacity:0;pointer-events:none;}
+
+    .ver-mais-btn{
+      display:flex;align-items:center;gap:.6rem;margin:1.5rem auto 0;
+      padding:.7rem 1.8rem;background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);
+      color:#fff;font-family:inherit;font-size:.78rem;font-weight:600;
+      letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:4px;
+      transition:background 200ms,border-color 200ms,transform 200ms;position:relative;z-index:2;
+    }
+    .ver-mais-btn:hover{background:rgba(20,0,255,.25);border-color:rgba(20,0,255,.5);transform:scale(1.02);}
+    .ver-mais-btn.hidden{display:none;}
 
     /* ── Ticker ── */
     .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
@@ -146,19 +156,40 @@
     .ticker-track.rev{animation-direction:reverse;}
     @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
     .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
-    .ticker-track img{height:200px;width:auto;min-width:140px;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
+    .ticker-track img{height:240px;width:auto;min-width:160px;object-fit:cover;flex-shrink:0;display:block;border:2px solid transparent;transition:filter 200ms,border-color 200ms;cursor:zoom-in;}
     .ticker-track img:hover{filter:brightness(1.1);border-color:var(--blue);}
-    @media(max-width:768px){.ticker-track img{height:140px;min-width:100px;}}
+    @media(max-width:768px){.ticker-track img{height:160px;min-width:110px;}}
 
     /* Photo filter buttons */
-    .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
-    .filter-btn{
-      padding:.35rem .9rem;border:1px solid #333;background:none;color:#666;
-      font-family:inherit;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
-      cursor:pointer;transition:all 200ms;
-    }
+    .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+    .filter-btn{padding:.35rem .9rem;border:1px solid #333;background:none;color:#666;font-family:inherit;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all 200ms;}
     .filter-btn:hover{border-color:#666;color:#fff;}
     .filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+
+    /* ── Audiovisual cards ── */
+    .av-cards{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+    @media(max-width:640px){.av-cards{grid-template-columns:1fr;}}
+    .av-card{position:relative;overflow:hidden;min-height:360px;cursor:pointer;text-decoration:none;display:block;}
+    .av-card-bg{
+      position:absolute;inset:0;display:flex;gap:4px;
+      filter:blur(14px) brightness(.2) saturate(.5);transform:scale(1.12);
+    }
+    .av-card-bg-col{display:flex;flex-direction:column;gap:4px;flex:0 0 auto;width:33.33%;}
+    .av-card-bg-col img{width:100%;flex:1;object-fit:cover;display:block;}
+    .av-card-bg-col:nth-child(1){animation:av-slide-up 18s linear infinite;}
+    .av-card-bg-col:nth-child(2){animation:av-slide-down 22s linear infinite;}
+    .av-card-bg-col:nth-child(3){animation:av-slide-up 15s linear infinite;}
+    @keyframes av-slide-up{0%{transform:translateY(0);}100%{transform:translateY(-33%);}}
+    @keyframes av-slide-down{0%{transform:translateY(-33%);}100%{transform:translateY(0);}}
+    .av-card:hover .av-card-bg{filter:blur(10px) brightness(.3) saturate(.7);}
+    .av-card-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,0,255,.2) 0%,transparent 60%);}
+    .av-card-content{position:relative;z-index:2;padding:2.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;}
+    .av-card-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;}
+    .av-card-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;text-transform:uppercase;line-height:1;margin:0 0 .75rem;color:#fff;}
+    .av-card-desc{font-size:.85rem;color:#aaa;margin:0 0 2rem;line-height:1.5;}
+    .av-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--blue);color:#fff;font-family:inherit;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.7rem 1.4rem;border-radius:3px;align-self:flex-start;transition:filter 200ms,transform 200ms;}
+    .av-cta:hover{filter:brightness(1.2);transform:scale(1.03);}
+    .av-play{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:9px solid #fff;display:inline-block;}
 
     /* ── Clientes ── */
     .clients-section{background:#f0f0f0;}
@@ -168,63 +199,42 @@
     .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;align-items:center;justify-items:center;}
     @media(max-width:768px){.logo-grid{grid-template-columns:repeat(3,1fr);}}
     @media(max-width:480px){.logo-grid{grid-template-columns:repeat(2,1fr);}}
-    .logo-item{display:flex;align-items:center;justify-content:center;padding:.75rem;}
     .logo-item img{max-height:64px;max-width:140px;width:auto;height:auto;object-fit:contain;transition:transform 200ms;}
     .logo-item:hover img{transform:scale(1.1);}
 
     /* ── Foto option cards ── */
-    .foto-options-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;
-    }
+    .foto-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
     @media(max-width:640px){.foto-options-grid{grid-template-columns:1fr;}}
-
     .foto-option-card{
-      background:var(--surface);
-      border:1px solid #1e1e1e;
-      border-left:3px solid #222;
-      padding:2.5rem;
-      position:relative;
+      background:var(--surface);border:1px solid #1e1e1e;border-left:3px solid #222;
+      padding:2.5rem;position:relative;
       opacity:0;transform:translateY(40px) scale(.98);
-      transition:opacity 600ms ease-out,transform 600ms ease-out,box-shadow 300ms;
+      transition:opacity 600ms ease-out,transform 600ms ease-out;
     }
     .foto-option-card.visible{opacity:1;transform:translateY(0) scale(1);}
     .foto-option-card.recommended{border-left-color:var(--blue);border-color:#1e2a4a;}
-
     .foto-option-badge{
-      position:absolute;top:1.25rem;right:1.25rem;
-      font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
-      padding:.22rem .7rem;border-radius:999px;
-      background:rgba(20,0,255,.15);border:1px solid rgba(20,0,255,.3);color:var(--cyan);
-      font-weight:700;
+      position:absolute;top:1.25rem;right:1.25rem;font-size:.6rem;letter-spacing:.18em;
+      text-transform:uppercase;padding:.22rem .7rem;border-radius:999px;
+      background:rgba(20,0,255,.15);border:1px solid rgba(20,0,255,.3);color:var(--cyan);font-weight:700;
     }
-
     .foto-option-id{font-size:2.8rem;color:rgba(20,0,255,.06);font-weight:700;line-height:1;user-select:none;margin-bottom:.25rem;}
-    .foto-option-name{font-size:clamp(1rem,1.8vw,1.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:0 0 1.75rem;line-height:1.2;color:#fff;}
-    .foto-option-price{font-size:clamp(2.2rem,4.5vw,3.2rem);font-weight:700;line-height:1;color:#fff;margin:0 0 .4rem;}
+    .foto-option-name{font-size:clamp(1rem,1.8vw,1.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:0 0 1.75rem;line-height:1.2;}
+    .foto-option-price{font-size:clamp(2.2rem,4.5vw,3.2rem);font-weight:700;line-height:1;margin:0 0 .4rem;}
     .foto-option-installment{font-size:.75rem;color:#555;margin:0 0 1.5rem;}
     .foto-option-note{font-size:.72rem;color:#444;font-style:italic;}
-
     .check-item{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.45rem;}
     .check-icon{color:var(--blue);flex-shrink:0;margin-top:2px;}
-
     .foto-divider{border:none;border-top:1px solid #1e1e1e;margin:1.5rem 0;}
 
     /* ── Included block ── */
     .foto-included{
-      padding:2rem 2.5rem;
-      background:rgba(20,0,255,.04);
-      border:1px solid rgba(20,0,255,.12);
-      margin-top:0;
-      opacity:0;transform:translateY(30px);
-      transition:opacity 600ms ease-out,transform 600ms ease-out;
+      padding:2rem 2.5rem;background:rgba(20,0,255,.04);border:1px solid rgba(20,0,255,.12);
+      opacity:0;transform:translateY(30px);transition:opacity 600ms ease-out,transform 600ms ease-out;
     }
     .foto-included.visible{opacity:1;transform:translateY(0);}
-    .foto-included-title{
-      font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin:0 0 1.25rem;
-    }
-    .foto-included-grid{
-      display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem .5rem;
-    }
+    .foto-included-title{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin:0 0 1.25rem;}
+    .foto-included-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem .5rem;}
     @media(max-width:640px){.foto-included-grid{grid-template-columns:1fr;}}
 
     /* ── CTA ── */
@@ -260,37 +270,25 @@
 </div>
 
 <!-- ════════════════════════════════════════════════
-     1. HERO — Fotografia Institucional
+     1. HERO
 ════════════════════════════════════════════════ -->
 <section style="min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:4rem 2rem;overflow:hidden;">
-
-  <div class="hero-bg">
-    <div class="hero-dots"></div>
-  </div>
-
+  <div class="hero-bg"><div class="hero-dots"></div></div>
   <div class="hero-line"></div>
-
   <div style="position:absolute;top:2rem;right:2rem;color:#444;font-size:.78rem;letter-spacing:.06em;z-index:2;">
     Válida até <span style="color:#666;"><%= proposal.expiresAt %></span>
   </div>
-
   <div style="text-align:center;max-width:860px;width:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
-
-    <!-- Logo -->
     <div class="hero-item" style="margin-bottom:3.5rem;">
       <% if (assets.logoHup.length) { %>
         <img src="<%= assets.logoHup.find(l=>l.toLowerCase().includes('branca'))||assets.logoHup[0] %>"
              alt="HUP Creative" style="height:82px;width:auto;display:inline-block;filter:drop-shadow(0 0 28px rgba(20,0,255,.5));">
       <% } %>
     </div>
-
-    <!-- Badge -->
     <div class="hero-item hero-badge-pill">
       <span class="hero-badge-dot"></span>
       01 &nbsp;—&nbsp; Proposta de&nbsp;<strong style="color:#aaa;font-weight:600;letter-spacing:.06em;"><%= proposal.serviceType %></strong>
     </div>
-
-    <!-- Título com palavra rotativa -->
     <h1 class="hero-item hero-main-title">
       <span class="hero-title-sub"><%= proposal.client.contact %>, sua imagem</span>
       <span class="hero-rotate-slot" id="hero-rotate">
@@ -300,18 +298,15 @@
         <span>poderosa</span>
       </span>
     </h1>
-
     <p class="hero-item hero-subtitle">
       <strong><%= proposal.client.contact %></strong>, estamos prontos para capturar<br>quem você é — com luz, técnica e intenção.
     </p>
-
     <button class="hero-item hero-scroll-btn" onclick="window.scrollBy({top:window.innerHeight*.85,behavior:'smooth'})">
       Role para ver
       <svg class="hero-scroll-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none">
         <path d="M6.5 1.5v10M2 8l4.5 4.5L11 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-
   </div>
 </section>
 
@@ -330,30 +325,21 @@
           We Make it<br><span style="color:var(--cyan);">Happen!</span>
         </h2>
         <div style="color:#aaa;line-height:1.9;font-size:.92rem;">
-          <p class="reveal" style="margin:0 0 1.25rem;">
-            Somos a nova geração que não conhece o mundo sem internet e acredita na sinergia entre on e off. Somos ligados no 220, múltiplos e simultâneos.
-          </p>
-          <p class="reveal" style="margin:0 0 1.25rem;">
-            A HUP nasceu da necessidade em saber se comunicar numa realidade cada vez mais dinâmica e multimidiática, unindo estratégia e criatividade na personalidade de cada marca.
-          </p>
-          <p class="reveal" style="margin:0;">
-            Oferecemos uma entrega 360°: do planejamento estratégico à produção de fotografia e audiovisual.
-          </p>
+          <p class="reveal" style="margin:0 0 1.25rem;">Somos a nova geração que não conhece o mundo sem internet e acredita na sinergia entre on e off. Somos ligados no 220, múltiplos e simultâneos.</p>
+          <p class="reveal" style="margin:0 0 1.25rem;">A HUP nasceu da necessidade em saber se comunicar numa realidade cada vez mais dinâmica e multimidiática, unindo estratégia e criatividade na personalidade de cada marca.</p>
+          <p class="reveal" style="margin:0;">Oferecemos uma entrega 360°: do planejamento estratégico à produção de fotografia e audiovisual.</p>
         </div>
       </div>
       <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
         <% const holoSrc = assets.logoHup.find(l=>l.toLowerCase().includes('holo')) || assets.logoHup[0]; %>
-        <img class="holo-logo"
-             src="<%= holoSrc %>"
-             alt="HUP Holográfica"
-             style="max-width:340px;width:100%;height:auto;">
+        <img class="holo-logo" src="<%= holoSrc %>" alt="HUP Holográfica" style="max-width:340px;width:100%;height:auto;">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════
-     3. O QUE FAZEMOS
+     3. SERVIÇOS
 ════════════════════════════════════════════════ -->
 <section class="section">
   <div class="container">
@@ -365,7 +351,7 @@
     <div class="services-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;">
       <% ['Criação de Conteúdo','Gestão de Redes Sociais','Planejamento On e Off','Produção Audiovisual','Fotografia','Identidade Visual','Criação de Embalagens','Experiência de Marca'].forEach(s=>{ %>
         <div class="service-item">
-          <div class="service-arrow" style="margin-bottom:.75rem;line-height:1;">
+          <div style="margin-bottom:.75rem;">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <line x1="4" y1="18" x2="18" y2="4" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round"/>
               <polyline points="8,4 18,4 18,14" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -379,7 +365,7 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     4. PORTFOLIO — Fotografia
+     4. PORTFOLIO
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
@@ -389,12 +375,10 @@
       <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Nosso Trabalho</h2>
     </div>
 
+    <!-- 4a. FOTOGRAFIA -->
     <div class="port-section reveal">
       <div class="port-heading">
-        <div>
-          <div class="port-tag">Portfólio</div>
-          <h3>Fotografia</h3>
-        </div>
+        <div><div class="port-tag">Portfólio</div><h3>Fotografia</h3></div>
         <div class="port-desc">Captação profissional em studio e locação —<br>institucional, produto e alimentação.</div>
       </div>
 
@@ -411,64 +395,86 @@
           arr.forEach((img, i) => rows[i % n].push(img));
           return rows;
         }
-        const _poolAll = [];
         const _a = assets.fotografiaAlimentacao;
         const _b = assets.fotografiaInstitucional;
         const _c = assets.fotografiaProduto;
+        const _poolAll = [];
         const _maxAll = Math.max(_a.length, _b.length, _c.length);
         for (let i = 0; i < _maxAll; i++) {
           if (i < _a.length) _poolAll.push(_a[i]);
           if (i < _b.length) _poolAll.push(_b[i]);
           if (i < _c.length) _poolAll.push(_c[i]);
         }
-        const _allRows = splitRows(_poolAll, 3);
+        const _allRows = splitRows(_poolAll, 4);
       %>
 
+      <!-- Institucional: masonry grid + 4 tickers -->
+      <div id="pgallery-institucional">
+        <div class="collapsible-grid" id="cg-institucional">
+          <div class="masonry cols-3">
+            <% assets.fotografiaInstitucional.forEach((img,i)=>{ %>
+              <div class="masonry-item" data-gallery="institucional" data-index="<%= i %>">
+                <img src="<%= img %>" alt="" loading="<%= i<9?'eager':'lazy' %>">
+              </div>
+            <% }) %>
+          </div>
+        </div>
+        <% if(assets.fotografiaInstitucional.length > 9) { %>
+        <div style="text-align:center;">
+          <button class="ver-mais-btn" data-target="cg-institucional">Ver mais ↓</button>
+        </div>
+        <% } %>
+
+        <% const _insRows = splitRows(assets.fotografiaInstitucional, 4); %>
+        <div style="margin-top:2rem;">
+          <div class="ticker-wrap" style="margin-bottom:6px;">
+            <div class="ticker-track rev" style="--spd:132s;">
+              <% [..._insRows[0],..._insRows[0]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            </div>
+          </div>
+          <div class="ticker-wrap" style="margin-bottom:6px;">
+            <div class="ticker-track" style="--spd:108s;">
+              <% [..._insRows[1],..._insRows[1]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            </div>
+          </div>
+          <div class="ticker-wrap" style="margin-bottom:6px;">
+            <div class="ticker-track rev" style="--spd:155s;">
+              <% [..._insRows[2],..._insRows[2]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            </div>
+          </div>
+          <div class="ticker-wrap">
+            <div class="ticker-track" style="--spd:96s;">
+              <% [..._insRows[3],..._insRows[3]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Todos: 4 tickers misturados -->
       <div id="pgallery-all" style="display:none;">
         <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:187s;">
-            <% [..._allRows[0],..._allRows[0]].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="<%= i<6?'eager':'lazy' %>" data-fotosrc="<%= img %>">
-            <% }) %>
+            <% [..._allRows[0],..._allRows[0]].forEach((img,i)=>{ %><img src="<%= img %>" alt="" loading="<%= i<6?'eager':'lazy' %>" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap" style="margin-bottom:6px;">
-          <div class="ticker-track rev" style="--spd:210s;">
-            <% [..._allRows[2],..._allRows[2]].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
+          <div class="ticker-track rev" style="--spd:214s;">
+            <% [..._allRows[1],..._allRows[1]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
-        <div class="ticker-wrap">
+        <div class="ticker-wrap" style="margin-bottom:6px;">
           <div class="ticker-track" style="--spd:152s;">
-            <% [..._allRows[1],..._allRows[1]].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>">
-            <% }) %>
-          </div>
-        </div>
-      </div>
-
-      <div id="pgallery-institucional">
-        <% const _insRows = splitRows(assets.fotografiaInstitucional, 3); %>
-        <div class="ticker-wrap" style="margin-bottom:6px;">
-          <div class="ticker-track rev" style="--spd:128s;">
-            <% [..._insRows[0],..._insRows[0]].forEach((img,i)=>{ %>
-              <img src="<%= img %>" alt="" loading="<%= i<6?'eager':'lazy' %>" data-fotosrc="<%= img %>">
-            <% }) %>
-          </div>
-        </div>
-        <div class="ticker-wrap" style="margin-bottom:6px;">
-          <div class="ticker-track" style="--spd:111s;">
-            <% [..._insRows[2],..._insRows[2]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+            <% [..._allRows[2],..._allRows[2]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
         <div class="ticker-wrap">
-          <div class="ticker-track rev" style="--spd:152s;">
-            <% [..._insRows[1],..._insRows[1]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
+          <div class="ticker-track rev" style="--spd:98s;">
+            <% [..._allRows[3],..._allRows[3]].forEach(img=>{ %><img src="<%= img %>" alt="" loading="lazy" data-fotosrc="<%= img %>"><% }) %>
           </div>
         </div>
       </div>
 
+      <!-- Alimentação: 3 tickers -->
       <div id="pgallery-alimentacao" style="display:none;">
         <% const _alRows = splitRows(assets.fotografiaAlimentacao, 3); %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
@@ -488,6 +494,7 @@
         </div>
       </div>
 
+      <!-- Produto: 3 tickers -->
       <div id="pgallery-produto" style="display:none;">
         <% const _prRows = splitRows(assets.fotografiaProduto, 3); %>
         <div class="ticker-wrap" style="margin-bottom:6px;">
@@ -506,8 +513,71 @@
           </div>
         </div>
       </div>
-
     </div>
+
+    <!-- 4b. AUDIOVISUAL -->
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Audiovisual</h3></div>
+        <div class="port-desc">Produção completa do roteiro à edição —<br>para redes sociais e tela grande.</div>
+      </div>
+      <div class="av-cards">
+
+        <!-- Card Redes -->
+        <a class="av-card" href="https://youtube.com/playlist?list=PLkVpdYag8wjEOI2IH5-_GqUoVyWm-qt4h&si=MqxlW2GDbIfbsYOb" target="_blank" rel="noopener">
+          <div class="av-card-bg">
+            <%
+              const rAv = assets.audiovisualRedes;
+              const chunkR = Math.ceil(rAv.length/3)||1;
+            %>
+            <div class="av-card-bg-col">
+              <% rAv.slice(0,chunkR).concat(rAv.slice(0,chunkR)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% rAv.slice(chunkR,chunkR*2).concat(rAv.slice(chunkR,chunkR*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% rAv.slice(chunkR*2).concat(rAv.slice(chunkR*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+          </div>
+          <div class="av-card-overlay"></div>
+          <div class="av-card-content">
+            <p class="av-card-tag">Audiovisual</p>
+            <h3 class="av-card-title">Redes<br>Sociais</h3>
+            <p class="av-card-desc">Pensados, gravados e editados<br>para Instagram e TikTok.</p>
+            <span class="av-cta"><span class="av-play"></span>Clique e assista</span>
+          </div>
+        </a>
+
+        <!-- Card Eventos -->
+        <a class="av-card" href="https://youtube.com/playlist?list=PLkVpdYag8wjGlNHhRgibzSKpus5ICzB5J&si=8hcHNUysiUXDH0RH" target="_blank" rel="noopener">
+          <div class="av-card-bg">
+            <%
+              const eAv = assets.audiovisualEventos;
+              const chunkE = Math.ceil(eAv.length/3)||1;
+            %>
+            <div class="av-card-bg-col">
+              <% eAv.slice(0,chunkE).concat(eAv.slice(0,chunkE)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% eAv.slice(chunkE,chunkE*2).concat(eAv.slice(chunkE,chunkE*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+            <div class="av-card-bg-col">
+              <% eAv.slice(chunkE*2).concat(eAv.slice(chunkE*2)).forEach(img=>{ %><img src="<%= img %>" alt="" loading="eager"><% }) %>
+            </div>
+          </div>
+          <div class="av-card-overlay"></div>
+          <div class="av-card-content">
+            <p class="av-card-tag">Audiovisual</p>
+            <h3 class="av-card-title">Institucionais<br>e Eventos</h3>
+            <p class="av-card-desc">O bom e velho horizontal —<br>das apresentações à TV.</p>
+            <span class="av-cta"><span class="av-play"></span>Clique e assista</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -535,7 +605,9 @@
         });
       %>
       <% _sorted.forEach((logo,i)=>{ %>
-        <div class="logo-item"><img src="<%= logo %>" alt="Cliente <%= i+1 %>" loading="lazy"></div>
+        <div class="logo-item" style="display:flex;align-items:center;justify-content:center;padding:.75rem;">
+          <img src="<%= logo %>" alt="Cliente <%= i+1 %>" loading="lazy">
+        </div>
       <% }) %>
     </div>
   </div>
@@ -553,7 +625,6 @@
       <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Escolha sua sessão</h2>
     </div>
 
-    <!-- Option cards -->
     <div class="foto-options-grid">
       <% proposal.options.forEach((opt, idx) => { %>
         <div class="foto-option-card <%= opt.recommended ? 'recommended' : '' %>" data-opt-idx="<%= idx %>">
@@ -574,14 +645,11 @@
           <hr class="foto-divider">
           <div class="foto-option-price"><%= opt.price %></div>
           <p class="foto-option-installment"><%= opt.installments %></p>
-          <% if (opt.note) { %>
-            <p class="foto-option-note"><%= opt.note %></p>
-          <% } %>
+          <% if (opt.note) { %><p class="foto-option-note"><%= opt.note %></p><% } %>
         </div>
       <% }) %>
     </div>
 
-    <!-- O que está incluso em ambas -->
     <div class="foto-included" id="foto-included-block">
       <p class="foto-included-title">O que está incluso em ambas as opções</p>
       <div class="foto-included-grid">
@@ -635,6 +703,11 @@
      JS
 ════════════════════════════════════════════════ -->
 <script>
+  const FOTO_CATS = {
+    institucional: <%- JSON.stringify(assets.fotografiaInstitucional) %>,
+    alimentacao:   <%- JSON.stringify(assets.fotografiaAlimentacao) %>,
+    produto:       <%- JSON.stringify(assets.fotografiaProduto) %>,
+  };
   const FOTO_ALL = [
     ...<%- JSON.stringify(assets.fotografiaAlimentacao) %>,
     ...<%- JSON.stringify(assets.fotografiaInstitucional) %>,
@@ -670,7 +743,7 @@
     }, 2200);
   })();
 
-  // ── Option cards entrance stagger ─────────────
+  // ── Option cards entrance ─────────────────────
   const optObs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -726,11 +799,21 @@
     if(e.key==='ArrowRight')lbNav(1);
   });
 
+  // Masonry items → lightbox (navega dentro da categoria)
+  document.querySelectorAll('.masonry-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      const gKey = item.dataset.gallery;
+      const gallery = FOTO_CATS[gKey] || FOTO_ALL;
+      openLb(gallery, parseInt(item.dataset.index,10)||0);
+    });
+  });
+
+  // Ticker foto items → lightbox
   document.querySelectorAll('[data-fotosrc]').forEach(img=>{
     img.addEventListener('click',()=>{
-      const src=img.dataset.fotosrc;
-      const idx=FOTO_ALL.indexOf(src);
-      openLb(FOTO_ALL,idx>=0?idx:0);
+      const src = img.dataset.fotosrc;
+      const idx = FOTO_ALL.indexOf(src);
+      openLb(FOTO_ALL, idx>=0?idx:0);
     });
   });
 
@@ -745,6 +828,16 @@
         const el = document.getElementById('pgallery-'+c);
         if(el) el.style.display = (cat===c) ? '' : 'none';
       });
+    });
+  });
+
+  // ── Ver mais (masonry collapsible) ────────────
+  document.querySelectorAll('.ver-mais-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const target = document.getElementById(btn.dataset.target);
+      if(!target) return;
+      target.classList.add('expanded');
+      btn.classList.add('hidden');
     });
   });
 </script>
