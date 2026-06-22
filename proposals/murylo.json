@@ -25,6 +25,22 @@
     },
     {
       "id": "02",
+      "name": "Sessão Dupla",
+      "duration": "3 horas · duas pessoas",
+      "price": "R$ 1.300",
+      "installments": "3x no Pix ou boleto",
+      "note": "Consultar valor para cartão de crédito",
+      "deliverables": [
+        "3h de sessão fotográfica para duas pessoas",
+        "Equipamento de iluminação profissional incluso",
+        "Locação a definir pelo cliente",
+        "Fotos conjuntas e individuais de cada pessoa",
+        "Edição individual: ajustes de pele, cor e luz feitos separadamente para cada pessoa",
+        "Entrega organizada em pastas por perfil no Google Drive"
+      ]
+    },
+    {
+      "id": "03",
       "name": "Sessão Completa",
       "duration": "3h30",
       "price": "R$ 1.450",

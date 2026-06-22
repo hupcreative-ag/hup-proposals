@@ -203,8 +203,9 @@
     .logo-item:hover img{transform:scale(1.1);}
 
     /* ── Foto option cards ── */
-    .foto-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
-    @media(max-width:640px){.foto-options-grid{grid-template-columns:1fr;}}
+    .foto-options-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem;}
+    @media(max-width:960px){.foto-options-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:580px){.foto-options-grid{grid-template-columns:1fr;}}
     .foto-option-card{
       background:var(--surface);border:1px solid #1e1e1e;border-left:3px solid #222;
       padding:2.5rem;position:relative;
