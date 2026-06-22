@@ -11,7 +11,8 @@
   "options": [
     {
       "id": "01",
-      "name": "Opção 1 — 2 Horas",
+      "name": "Sessão Essencial",
+      "duration": "2 horas",
       "price": "R$ 1.100",
       "installments": "2x no Pix ou boleto",
       "note": "Consultar valor para cartão de crédito",
@@ -24,13 +25,14 @@
     },
     {
       "id": "02",
-      "name": "Opção 2 — 3 Horas",
+      "name": "Sessão Completa",
+      "duration": "3h30",
       "price": "R$ 1.450",
-      "installments": "2x no Pix ou boleto",
+      "installments": "3x no Pix ou boleto",
       "note": "Consultar valor para cartão de crédito",
       "recommended": true,
       "deliverables": [
-        "3h de sessão fotográfica",
+        "3h30 de sessão fotográfica",
         "Equipamento de iluminação profissional incluso",
         "Locação a definir pelo cliente",
         "Mais tempo para explorar variações de cenário, looks e ângulos",
