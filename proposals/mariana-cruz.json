@@ -8,6 +8,7 @@
     "company": "Mariana Cruz Ginecologia e Obstetrícia"
   },
   "expiresAt": "2026-08-06",
+  "heroTitleSub": "Dra. Mariana Cruz",
   "proposalTitle": "Identidade Visual Mariana Cruz",
   "proposalIntro": "Criamos marcas que as pessoas reconhecem, lembram e recomendam. Para a Dra. Mariana Cruz, desenvolvemos duas opções de investimento para a criação de marca — você escolhe o que faz mais sentido para esse momento.",
   "plans": [
@@ -79,7 +80,7 @@
         },
         {
           "name": "Digital",
-          "description": "Mesma entrega do plano completo: de 3 a 5 layouts de templates para feed e stories, avatar e capas de perfil para redes sociais.",
+          "description": "Mesma entrega do plano completo: 3 layouts de templates para feed e stories, avatar e capas de perfil para redes sociais.",
           "included": true
         },
         {
@@ -100,7 +101,7 @@
   "contentPlans": [
     {
       "id": "01",
-      "name": "Plano 01",
+      "name": "Gestão de Conteúdo",
       "priceOriginal": "R$ 1.750",
       "price": "R$ 1.500",
       "priceLabel": "Investimento mensal",
@@ -126,7 +127,7 @@
     },
     {
       "id": "02",
-      "name": "Plano 02",
+      "name": "Gestão de Conteúdo + Captação Mensal",
       "priceOriginal": "R$ 2.150",
       "price": "R$ 1.800",
       "priceLabel": "Investimento mensal",
