@@ -410,6 +410,26 @@
       font-style:italic;
     }
 
+    /* Section topic list */
+    .compare-section-items{
+      list-style:none;margin:.65rem 0 0;padding:0;
+      display:flex;flex-direction:column;gap:.4rem;
+    }
+    .compare-section-items li{
+      display:flex;gap:.55rem;align-items:flex-start;
+      font-size:.83rem;color:#999;line-height:1.55;
+    }
+    .compare-section-items li::before{
+      content:'';width:4px;height:4px;border-radius:50%;
+      background:var(--slate);flex-shrink:0;margin-top:.6rem;
+    }
+    .compare-section--excluded .compare-section-items li{
+      color:#2e2e2e;font-style:italic;
+    }
+    .compare-section--excluded .compare-section-items li::before{
+      background:#333;
+    }
+
     /* Included / excluded icon */
     .section-icon{
       width:16px;height:16px;flex-shrink:0;
@@ -998,6 +1018,11 @@
                   <%= sec.name %>
                 </h4>
                 <p class="compare-section-desc"><%= sec.description %></p>
+                <% if (sec.items && sec.items.length) { %>
+                  <ul class="compare-section-items">
+                    <% sec.items.forEach(item => { %><li><%= item %></li><% }) %>
+                  </ul>
+                <% } %>
                 <% if (sec.chips && sec.chips.length) { %>
                   <div class="compare-chips">
                     <% sec.chips.forEach(chip => { %>
