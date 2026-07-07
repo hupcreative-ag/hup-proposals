@@ -1,0 +1,167 @@
+{
+  "slug": "mariana-cruz",
+  "token": "mariana-cruz-2026",
+  "type": "branding-conteudo",
+  "serviceType": "Branding e Gestão de Redes Sociais",
+  "client": {
+    "contacts": ["Mariana Cruz"],
+    "company": "Mariana Cruz Ginecologia e Obstetrícia"
+  },
+  "expiresAt": "2026-08-06",
+  "proposalTitle": "Identidade Visual Mariana Cruz",
+  "proposalIntro": "Criamos marcas que as pessoas reconhecem, lembram e recomendam. Para a Dra. Mariana Cruz, desenvolvemos duas opções de investimento para a criação de marca — você escolhe o que faz mais sentido para esse momento.",
+  "plans": [
+    {
+      "id": "01",
+      "name": "Identidade Completa",
+      "recommended": true,
+      "investment": {
+        "total": "R$ 1.950",
+        "installments": { "count": 3, "value": "R$ 650", "method": "Pix ou boleto" }
+      },
+      "sections": [
+        {
+          "name": "Identidade Visual",
+          "description": "É aqui que a marca nasce. Desenvolvemos um conceito criativo — a ideia central que vai dar sentido e personalidade a tudo que for criado. A partir dele, desenhamos o logotipo principal e suas variações de uso (versão reduzida, horizontal e monocromática), definimos a paleta de cores com os valores exatos de cada tom, escolhemos a tipografia que vai representar a sua voz visual e criamos elementos gráficos de apoio — texturas, formas, ícones — que tornam o seu universo visual único e reconhecível.",
+          "included": true
+        },
+        {
+          "name": "Manual de Marca",
+          "description": "Um documento completo que funciona como o guia oficial da sua marca. Nele, está tudo que qualquer pessoa precisa saber para usar a sua identidade corretamente: como aplicar o logo em diferentes fundos, quais combinações de cores são permitidas, qual é a tipografia principal e como ela se hierarquiza, além das regras e das situações em que a marca não deve ser usada. Com o manual, você garante que a marca se mantenha consistente — seja você usando, seja outro designer ou fornecedor.",
+          "included": true
+        },
+        {
+          "name": "Aplicações Físicas",
+          "description": "A identidade visual aplicada nos materiais do dia a dia do negócio. Entregamos o design de cartão de visita, papel timbrado, envelope e assinatura de e-mail — tudo desenvolvido dentro da linguagem visual criada, pronto para ser enviado para gráfica ou usado digitalmente.",
+          "included": true
+        },
+        {
+          "name": "Digital",
+          "description": "Sua marca nas redes sociais, com consistência. Criamos de 3 a 5 layouts de templates para feed e stories — mantendo a identidade visual em todas as postagens. Também entregamos o avatar e as capas de perfil para as principais plataformas.",
+          "included": true
+        },
+        {
+          "name": "Entregáveis",
+          "description": "Todos os arquivos organizados por finalidade e formato.",
+          "chips": [
+            "Arquivos-fonte AI e PDF",
+            "Pacote PNG",
+            "SVG e WebP",
+            "Manual da marca em PDF"
+          ],
+          "included": true
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Identidade Digital",
+      "recommended": false,
+      "investment": {
+        "total": "R$ 1.550",
+        "installments": { "count": 2, "value": "R$ 775", "method": "Pix ou boleto" }
+      },
+      "sections": [
+        {
+          "name": "Identidade Visual",
+          "description": "Mesma entrega do plano completo: conceito criativo, logotipo principal e variações, paleta de cores, tipografia e elementos gráficos de suporte. A construção da marca segue o mesmo processo e nível de cuidado.",
+          "included": true
+        },
+        {
+          "name": "Manual de Marca",
+          "description": "Documento com regras de uso do logo, cores, tipografia, hierarquia visual, proibições e orientações de aplicação — tudo em PDF organizado e pronto para consulta.",
+          "included": true
+        },
+        {
+          "name": "Aplicações Físicas",
+          "description": "Não incluso neste plano. Cartão de visita, papel timbrado, envelope e assinatura de e-mail não fazem parte desta proposta.",
+          "included": false
+        },
+        {
+          "name": "Digital",
+          "description": "Mesma entrega do plano completo: de 3 a 5 layouts de templates para feed e stories, avatar e capas de perfil para redes sociais.",
+          "included": true
+        },
+        {
+          "name": "Entregáveis",
+          "description": "Mesmos formatos do plano completo: arquivos-fonte em AI e PDF, pacote PNG, pacote digital em SVG e WebP, e o manual da marca em PDF.",
+          "chips": [
+            "Arquivos-fonte AI e PDF",
+            "Pacote PNG",
+            "SVG e WebP",
+            "Manual da marca em PDF"
+          ],
+          "included": true
+        }
+      ]
+    }
+  ],
+  "contentIntro": "Esse orçamento é de gestão diária, com produção de conteúdo e publicação.",
+  "contentPlans": [
+    {
+      "id": "01",
+      "name": "Plano 01",
+      "priceOriginal": "R$ 1.750",
+      "price": "R$ 1.500",
+      "priceLabel": "Investimento mensal",
+      "groups": [
+        {
+          "title": "Planejamento mensal de perfil com acompanhamento diário",
+          "items": [
+            "12 publicações mensais de conteúdo em formatos variados, respeitando a identidade visual do profissional",
+            "Criação de 4 roteiros para captação",
+            "Edição de 4 vídeos + criação de legendas",
+            "Planejamento e criação de 8 publicações estáticas (carrosséis e cards) + criação de legendas",
+            "Edição de vídeos para publicação no perfil"
+          ]
+        },
+        {
+          "title": "Serviço de Social Media",
+          "items": [
+            "Profissional dedicado a aprovar conteúdo via WhatsApp e programar publicações — atendimento de segunda a sexta, das 9h às 17h",
+            "Criação de 1 arte extra"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Plano 02",
+      "priceOriginal": "R$ 2.150",
+      "price": "R$ 1.800",
+      "priceLabel": "Investimento mensal",
+      "groups": [
+        {
+          "title": "Planejamento mensal de perfil com acompanhamento diário",
+          "items": [
+            "12 publicações mensais de conteúdo em formatos variados, respeitando a identidade visual do profissional",
+            "Criação de 4 roteiros para captação",
+            "Edição de 4 vídeos + criação de legendas",
+            "Planejamento e criação de 8 publicações estáticas (carrosséis e cards) + criação de legendas",
+            "Edição de vídeos para publicação no perfil"
+          ]
+        },
+        {
+          "title": "01 Visita ao mês para captação de vídeos e fotos para redes sociais",
+          "highlight": true,
+          "items": [
+            "Captação em 3h com câmera 4K + iluminação + teleprompter e áudio profissional"
+          ]
+        },
+        {
+          "title": "Serviço de Social Media",
+          "items": [
+            "Profissional dedicado a aprovar conteúdo via WhatsApp e programar publicações — atendimento de segunda a sexta, das 9h às 17h",
+            "Criação de 1 arte extra"
+          ]
+        }
+      ]
+    }
+  ],
+  "ctaNote": "Os valores de identidade visual podem variar a depender do plano de gestão e criação de conteúdo contratado.",
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}

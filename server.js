@@ -126,6 +126,7 @@ app.get('/:slug', (req, res) => {
   const VIEWS = {
     'branding': 'proposal-branding',
     'branding-compare': 'proposal-branding-compare',
+    'branding-conteudo': 'proposal-branding-conteudo',
     'conteudo': 'proposal-conteudo',
     'site': 'proposal-site',
     'foto': 'proposal-foto',
