@@ -1,0 +1,55 @@
+{
+  "slug": "lorrayne-camargo",
+  "token": "lorrayne-2026",
+  "type": "conteudo",
+  "serviceType": "Captação de Conteúdo",
+  "client": {
+    "contact": "Lorrayne",
+    "company": "Lorrayne Camargo"
+  },
+  "expiresAt": "2026-08-08",
+  "cards": [
+    {
+      "id": "01",
+      "icon": "camera",
+      "name": "Captação e Edição para Redes Sociais",
+      "deliverables": [
+        "Captação com câmera profissional 4K Sony, certificada para uso cinematográfico",
+        "Iluminação profissional e microfone tipo lapela",
+        "Teleprompter para leitura natural de texto na câmera",
+        "Edição e finalização com color grading alinhado à identidade visual",
+        "Trilhas musicais com licença para uso web e tráfego pago",
+        "Fotografias de capa editadas para cada vídeo, com arquivos entregues à cliente",
+        "Envio dos vídeos editados, com prazo a alinhar"
+      ],
+      "options": [
+        { "duration": "3h", "videos": "4 vídeos", "price": "R$ 1.000" },
+        { "duration": "4h", "videos": "6 vídeos", "price": "R$ 1.260" },
+        { "duration": "5h", "videos": "8 vídeos", "price": "R$ 1.500" }
+      ]
+    },
+    {
+      "id": "02",
+      "icon": "video",
+      "name": "Roteirização de Vídeos",
+      "deliverables": [
+        "Roteirização com profissional de planejamento e copy",
+        "Roteiro em texto a partir de temáticas alinhadas previamente",
+        "3 opções de início e CTA para cada roteiro",
+        "Alinhamento e fechamento dos roteiros com o profissional responsável"
+      ],
+      "badge": "Após aprovação do material, a captação é marcada em conjunto com a cliente.",
+      "optionsLabel": "por pacote",
+      "options": [
+        { "duration": "4", "videos": "roteiros", "price": "R$ 350" },
+        { "duration": "6", "videos": "roteiros", "price": "R$ 480" },
+        { "duration": "8", "videos": "roteiros", "price": "R$ 580" }
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
