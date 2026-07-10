@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proposta HUP Creative — <%= proposal.client.company %></title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Proposta HUP Creative — <%= proposal.client.company %>">
+  <meta property="og:description" content="<%= proposal.serviceType %> · Proposta comercial exclusiva para <%= proposal.client.company %>.">
+  <meta property="og:image" content="https://proposta.hup.com.br/assets/Logo_hup/logo_holo.webp">
+  <meta property="og:url" content="https://proposta.hup.com.br/<%= proposal.slug %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Proposta HUP Creative — <%= proposal.client.company %>">
+  <meta name="twitter:description" content="<%= proposal.serviceType %> · Proposta comercial exclusiva para <%= proposal.client.company %>.">
+  <meta name="twitter:image" content="https://proposta.hup.com.br/assets/Logo_hup/logo_holo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Poppins:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
