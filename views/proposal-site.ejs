@@ -160,7 +160,20 @@
     /* ════════════════════════════════
        PLAN CARDS — novo formato
     ════════════════════════════════ */
-    .plan-stack{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:4rem;}
+    .proposal-columns{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:start;}
+    @media(max-width:900px){.proposal-columns{grid-template-columns:1fr;gap:0;}}
+    .proposal-col-label{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#666;margin:0 0 1.1rem;}
+    .proposal-col--extra .proposal-col-label{color:rgba(0,207,255,.7);}
+    @media(min-width:901px){
+      .proposal-columns .plan-card,.proposal-columns .extra-svc-card{padding:2.25rem 2rem;}
+      .proposal-columns .plan-header,.proposal-columns .extra-svc-header{grid-template-columns:1fr;gap:.85rem;}
+      .proposal-columns .plan-price-col,.proposal-columns .extra-svc-price-col{text-align:left;}
+      .proposal-columns .extra-svc-deliverables{grid-template-columns:1fr;gap:.7rem;}
+      .proposal-columns .site-map{grid-template-columns:1fr;}
+    }
+
+    .plan-stack{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:0;}
+    .proposal-col{margin-bottom:4rem;}
 
     .plan-card{
       border:1px solid #1c1c1c;
@@ -202,7 +215,7 @@
     .plan-card--rec .plan-header{border-bottom-color:rgba(0,207,255,.1);}
     @media(max-width:600px){.plan-header{grid-template-columns:1fr;gap:1.25rem;}}
 
-    .plan-id-tag{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#333;margin-bottom:.45rem;}
+    .plan-id-tag{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#777;margin-bottom:.45rem;}
     .plan-card--rec .plan-id-tag{color:var(--cyan);}
 
     .plan-name{
@@ -222,8 +235,8 @@
       background:linear-gradient(135deg,#fff 30%,var(--cyan));
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
     }
-    .plan-installments{font-size:.78rem;color:#3a3a3a;white-space:nowrap;}
-    .plan-card--rec .plan-installments{color:#555;}
+    .plan-installments{font-size:.78rem;color:#8a8a8a;white-space:nowrap;}
+    .plan-card--rec .plan-installments{color:#aaa;}
 
     /* Feature rows */
     .plan-features{display:flex;flex-direction:column;gap:2px;margin-bottom:2.5rem;}
@@ -248,17 +261,36 @@
     }
     .plan-card--rec .feat-check{background:rgba(0,207,255,.08);border-color:rgba(0,207,255,.22);color:var(--cyan);}
 
-    .feat-name{font-size:.9rem;font-weight:600;color:#ccc;letter-spacing:.01em;}
+    .feat-name{font-size:.9rem;font-weight:600;color:#e2e2e2;letter-spacing:.01em;}
 
-    .feat-desc{font-size:.83rem;color:#4a4a4a;line-height:1.75;padding-left:2.3rem;margin-bottom:.65rem;}
-    .plan-card--rec .feat-desc{color:#555;}
+    .feat-desc{font-size:.83rem;color:#9a9a9a;line-height:1.75;padding-left:2.3rem;margin-bottom:.65rem;}
+    .plan-card--rec .feat-desc{color:#aeaeae;}
 
     .feat-chips{display:flex;flex-wrap:wrap;gap:.35rem;padding-left:2.3rem;}
     .feat-chip{
-      font-size:.64rem;color:#383838;letter-spacing:.04em;
-      padding:.2rem .55rem;border:1px solid #1e1e1e;border-radius:3px;
+      font-size:.66rem;color:#a8a8a8;letter-spacing:.04em;
+      padding:.22rem .6rem;border:1px solid #333;border-radius:3px;background:rgba(255,255,255,.03);
     }
-    .plan-card--rec .feat-chip{border-color:rgba(0,207,255,.12);color:rgba(0,207,255,.5);}
+    .plan-card--rec .feat-chip{border-color:rgba(0,207,255,.25);color:rgba(0,207,255,.85);background:rgba(0,207,255,.06);}
+
+    /* Site-map: seções reais do site (usado no primeiro feature de cada plano) */
+    .site-map-caption{font-size:.72rem;color:#777;letter-spacing:.03em;padding-left:2.3rem;margin:.15rem 0 .7rem;}
+    .site-map{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;padding-left:2.3rem;margin-bottom:.65rem;}
+    @media(max-width:480px){.site-map{grid-template-columns:1fr;}}
+    .site-map-item{
+      display:flex;align-items:center;gap:.7rem;
+      padding:.65rem .9rem;border-radius:7px;
+      border:1px solid #262626;background:rgba(255,255,255,.025);
+      transition:border-color 200ms,background 200ms;
+    }
+    .site-map-item:hover{border-color:#3a3a3a;background:rgba(255,255,255,.045);}
+    .plan-card--rec .site-map-item{border-color:rgba(0,207,255,.15);background:rgba(0,207,255,.03);}
+    .plan-card--rec .site-map-item:hover{border-color:rgba(0,207,255,.32);background:rgba(0,207,255,.06);}
+    .site-map-num{
+      font-size:.66rem;font-weight:700;color:var(--cyan);letter-spacing:.03em;
+      flex-shrink:0;width:1.7rem;text-align:center;
+    }
+    .site-map-label{font-size:.82rem;color:#dcdcdc;font-weight:500;letter-spacing:.005em;line-height:1.3;}
 
     /* CTA dentro do card */
     .plan-cta-btn{
@@ -299,7 +331,7 @@
     }
     @media(max-width:600px){.extra-svc-header{grid-template-columns:1fr;gap:1.25rem;}}
 
-    .extra-svc-id{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#333;margin-bottom:.45rem;}
+    .extra-svc-id{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#777;margin-bottom:.45rem;}
     .extra-svc-name{font-family:'Poppins',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;margin:0;color:#fff;line-height:1.1;}
 
     .extra-svc-price-col{text-align:right;}
@@ -307,14 +339,14 @@
     .extra-svc-price{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;line-height:1;margin-bottom:.3rem;background:linear-gradient(135deg,#fff 40%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     .extra-svc-original{font-size:clamp(.95rem,1.8vw,1.2rem);font-weight:500;color:#555;text-decoration:line-through;text-decoration-color:#555;margin-bottom:.25rem;letter-spacing:.01em;}
     .extra-svc-discount{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;background:var(--cyan);padding:.15rem .55rem;border-radius:3px;margin-top:.3rem;}
-    .extra-svc-price-label{font-size:.7rem;color:#333;letter-spacing:.08em;}
+    .extra-svc-price-label{font-size:.7rem;color:#888;letter-spacing:.08em;}
 
     .extra-svc-deliverables{
       display:grid;grid-template-columns:1fr 1fr;gap:.8rem 4rem;
     }
     @media(max-width:640px){.extra-svc-deliverables{grid-template-columns:1fr;}}
 
-    .extra-svc-item{display:flex;gap:.75rem;align-items:flex-start;font-size:.86rem;color:#555;line-height:1.6;}
+    .extra-svc-item{display:flex;gap:.75rem;align-items:flex-start;font-size:.86rem;color:#b4b4b4;line-height:1.6;}
     .extra-svc-check{
       width:18px;height:18px;flex-shrink:0;margin-top:2px;border-radius:4px;
       background:rgba(20,0,255,.08);border:1px solid rgba(20,0,255,.18);
@@ -700,100 +732,107 @@
       <p style="color:#888;font-size:.95rem;line-height:1.8;margin:0;max-width:720px;"><%= proposal.proposalIntro %></p>
     </div>
 
-    <div class="plan-stack">
-      <% proposal.plans.forEach((plan, planIdx) => {
-           const includedSections = plan.sections.filter(s => s.included);
-      %>
-        <div class="plan-card<%= plan.recommended ? ' plan-card--rec' : '' %>" data-plan-idx="<%= planIdx %>">
-          <% if (plan.recommended) { %>
-            <div class="plan-rec-badge">✦ Recomendado</div>
-          <% } %>
+    <div class="proposal-columns">
+      <div class="proposal-col proposal-col--main">
+        <p class="proposal-col-label">Pacote principal</p>
+        <div class="plan-stack">
+          <% proposal.plans.forEach((plan, planIdx) => {
+               const includedSections = plan.sections.filter(s => s.included);
+          %>
+            <div class="plan-card<%= plan.recommended ? ' plan-card--rec' : '' %>" data-plan-idx="<%= planIdx %>">
+              <% if (plan.recommended) { %>
+                <div class="plan-rec-badge">✦ Recomendado</div>
+              <% } %>
 
-          <div class="plan-header">
-            <div>
-              <p class="plan-id-tag">Plano <%= plan.id %></p>
-              <h3 class="plan-name"><%= plan.name %></h3>
-            </div>
-            <div class="plan-price-col">
-              <div class="plan-price"><%= plan.investment.total %></div>
-              <div class="plan-installments"><%= plan.investment.installments.count %>× de <%= plan.investment.installments.value %> · <%= plan.investment.installments.method %></div>
-            </div>
-          </div>
-
-          <div class="plan-features">
-            <% includedSections.forEach(sec => { %>
-              <div class="plan-feature">
-                <div class="feat-top">
-                  <span class="feat-check">✓</span>
-                  <span class="feat-name"><%= sec.name %></span>
+              <div class="plan-header">
+                <div>
+                  <p class="plan-id-tag">Plano <%= plan.id %></p>
+                  <h3 class="plan-name"><%= plan.name %></h3>
                 </div>
-                <p class="feat-desc"><%= sec.description %></p>
-                <% if (sec.chips && sec.chips.length) { %>
-                  <div class="feat-chips">
-                    <% sec.chips.forEach(chip => { %>
-                      <span class="feat-chip"><%= chip %></span>
-                    <% }) %>
+                <div class="plan-price-col">
+                  <div class="plan-price"><%= plan.investment.total %></div>
+                  <div class="plan-installments"><%= plan.investment.installments.count %>× de <%= plan.investment.installments.value %> · <%= plan.investment.installments.method %></div>
+                </div>
+              </div>
+
+              <div class="plan-features">
+                <% includedSections.forEach((sec, secIdx) => { %>
+                  <div class="plan-feature">
+                    <div class="feat-top">
+                      <span class="feat-check">✓</span>
+                      <span class="feat-name"><%= sec.name %></span>
+                    </div>
+                    <p class="feat-desc"><%= sec.description %></p>
+                    <% if (sec.chips && sec.chips.length) { %>
+                      <% if (secIdx === 0) { %>
+                        <p class="site-map-caption">O que a página vai conter:</p>
+                        <div class="site-map">
+                          <% sec.chips.forEach((chip, chipIdx) => { %>
+                            <div class="site-map-item">
+                              <span class="site-map-num"><%= String(chipIdx+1).padStart(2,'0') %></span>
+                              <span class="site-map-label"><%= chip %></span>
+                            </div>
+                          <% }) %>
+                        </div>
+                      <% } else { %>
+                        <div class="feat-chips">
+                          <% sec.chips.forEach(chip => { %>
+                            <span class="feat-chip"><%= chip %></span>
+                          <% }) %>
+                        </div>
+                      <% } %>
+                    <% } %>
                   </div>
-                <% } %>
+                <% }) %>
               </div>
-            <% }) %>
-          </div>
 
-          <a href="<%= proposal.cta.meetingLink %>" target="_blank" class="plan-cta-btn">
-            <%= plan.recommended ? 'Quero este plano ↗' : 'Escolher este plano ↗' %>
-          </a>
+              <a href="<%= proposal.cta.meetingLink %>" target="_blank" class="plan-cta-btn">
+                <%= plan.recommended ? 'Quero este plano ↗' : 'Escolher este plano ↗' %>
+              </a>
+            </div>
+          <% }) %>
         </div>
-      <% }) %>
+      </div>
+
+      <% if (proposal.extras && proposal.extras.length) { %>
+      <div class="proposal-col proposal-col--extra">
+        <p class="proposal-col-label">Serviço adicional</p>
+        <div class="extra-svc-stack">
+          <% proposal.extras.forEach((item, idx) => { %>
+            <div class="extra-svc-card" data-extra-idx="<%= idx %>">
+              <div class="extra-svc-header">
+                <div>
+                  <p class="extra-svc-id">Adicional <%= item.id %></p>
+                  <h3 class="extra-svc-name"><%= item.name %></h3>
+                </div>
+                <div class="extra-svc-price-col">
+                  <% if (item.originalPrice) { %>
+                    <div class="extra-svc-original"><%= item.originalPrice %></div>
+                  <% } %>
+                  <div class="extra-svc-price"><%= item.price %></div>
+                  <% if (item.installments) { %>
+                    <div class="extra-svc-price-label"><%= item.installments %></div>
+                  <% } else { %>
+                    <div class="extra-svc-price-label">Investimento total</div>
+                  <% } %>
+                </div>
+              </div>
+              <div class="extra-svc-deliverables">
+                <% item.deliverables.forEach(d => { %>
+                  <div class="extra-svc-item">
+                    <span class="extra-svc-check">✓</span>
+                    <span><%= d %></span>
+                  </div>
+                <% }) %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
     </div>
   </div>
 </section>
-
-<!-- ════════════════════════════════════════════════
-     7. SERVIÇOS ADICIONAIS
-════════════════════════════════════════════════ -->
-<% if (proposal.extras && proposal.extras.length) { %>
-<section class="section" style="border-top:1px solid #111;">
-  <div class="container">
-    <div style="margin-bottom:3rem;">
-      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">07</div>
-      <p class="label reveal" style="margin-bottom:.5rem;">Serviços adicionais</p>
-      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Mais do que um site</h2>
-    </div>
-
-    <div class="extra-svc-stack">
-      <% proposal.extras.forEach((item, idx) => { %>
-        <div class="extra-svc-card" data-extra-idx="<%= idx %>">
-          <div class="extra-svc-header">
-            <div>
-              <p class="extra-svc-id">Adicional <%= item.id %></p>
-              <h3 class="extra-svc-name"><%= item.name %></h3>
-            </div>
-            <div class="extra-svc-price-col">
-              <% if (item.originalPrice) { %>
-                <div class="extra-svc-original"><%= item.originalPrice %></div>
-              <% } %>
-              <div class="extra-svc-price"><%= item.price %></div>
-              <% if (item.installments) { %>
-                <div class="extra-svc-price-label" style="color:#3a3a3a;"><%= item.installments %></div>
-              <% } else { %>
-                <div class="extra-svc-price-label">Investimento total</div>
-              <% } %>
-            </div>
-          </div>
-          <div class="extra-svc-deliverables">
-            <% item.deliverables.forEach(d => { %>
-              <div class="extra-svc-item">
-                <span class="extra-svc-check">✓</span>
-                <span><%= d %></span>
-              </div>
-            <% }) %>
-          </div>
-        </div>
-      <% }) %>
-    </div>
-  </div>
-</section>
-<% } %>
 
 <!-- ════════════════════════════════════════════════
      8. CTA FINAL
