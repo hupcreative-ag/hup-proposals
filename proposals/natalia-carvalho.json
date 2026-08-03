@@ -1,0 +1,73 @@
+{
+  "slug": "natalia-carvalho",
+  "token": "natalia-site-2026",
+  "type": "site",
+  "serviceType": "Criação de sistema de Site",
+  "client": {
+    "contacts": ["Dra. Natália"],
+    "company": "Dra. Natália Carvalho"
+  },
+  "expiresAt": "2026-09-03",
+  "heroTitleSub": "Dra. Natália Carvalho, um site",
+  "heroWords": ["elegante", "acolhedor", "profissional", "confiável", "seu"],
+  "heroSubtitle": "estamos ansiosos<br>para transformar a sua apresentação profissional.",
+  "proposalTitle": "Criação de sistema de Site",
+  "proposalIntro": "Criamos sites que vão além do visual — são ferramentas de trabalho. Para você, o site precisa transmitir confiança, apresentar seus serviços com clareza e facilitar o contato com quem mais importa: seus pacientes.",
+  "plans": [
+    {
+      "id": "01",
+      "name": "Landing Page Profissional",
+      "recommended": false,
+      "investment": {
+        "total": "R$ 1.500",
+        "installments": {
+          "count": 3,
+          "value": "R$ 500",
+          "method": "Pix ou boleto"
+        }
+      },
+      "sections": [
+        {
+          "included": true,
+          "name": "Landing page completa",
+          "description": "Página única projetada do zero para a sua identidade profissional — hero com foto profissional, apresentação pessoal com suporte a imagens e vídeo incorporado, seção de serviços, feedbacks de pacientes, seus diferenciais em tópicos e um CTA direto para agendamento.",
+          "chips": ["Hero com foto profissional", "Apresentação pessoal (texto, imagens e vídeo)", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais em tópicos", "CTA de agendamento"]
+        },
+        {
+          "included": true,
+          "name": "Hospedagem inclusa",
+          "description": "O site fica hospedado no servidor da agência por 24 meses, sem nenhum custo adicional de hospedagem para você.",
+          "chips": ["24 meses inclusos"]
+        },
+        {
+          "included": true,
+          "name": "Domínio .com.br",
+          "description": "Compramos e configuramos o seu domínio personalizado (ex: nataliacarvalho.com.br). Valor cobrado à parte, em média R$ 60/ano diretamente ao registrador.",
+          "chips": ["~R$ 60/ano cobrado à parte"]
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "id": "A",
+      "name": "Landing Pages de Serviço (avulsas)",
+      "price": "R$ 400 a R$ 700",
+      "installments": "Por landing, conforme complexidade · disponível a qualquer momento",
+      "deliverables": [
+        "Hero com título e imagens do serviço",
+        "Apresentação dinâmica do serviço",
+        "Seção de diferenciais",
+        "Feedbacks de pacientes",
+        "Blocos de conteúdo personalizáveis",
+        "CTA de agendamento",
+        "Roda no domínio e na hospedagem já contratados no pacote principal, sem custo extra de infraestrutura"
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}

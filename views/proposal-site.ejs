@@ -355,8 +355,9 @@
   <div class="hero-bg"><div class="hero-dots"></div></div>
   <div class="hero-line"></div>
 
-  <div style="position:absolute;top:2rem;right:2rem;color:#444;font-size:.78rem;letter-spacing:.06em;z-index:2;">
-    Válida até <span style="color:#666;"><%= proposal.expiresAt %></span>
+  <div style="position:absolute;top:2rem;right:2rem;color:#444;font-size:.78rem;letter-spacing:.06em;z-index:2;text-align:right;line-height:1.8;">
+    <div>Emitida em <span id="emission-date" style="color:#666;"></span></div>
+    <div>Válida até <span style="color:#666;"><%= proposal.expiresAt %></span></div>
   </div>
 
   <div style="text-align:center;max-width:860px;width:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
@@ -824,6 +825,13 @@
 <script>
   const GALLERIES={redesSociais:<%- JSON.stringify(assets.redesSociais) %>,ecommerce:<%- JSON.stringify(assets.ecommerce) %>,offline:<%- JSON.stringify(assets.offline) %>,packaging:<%- JSON.stringify(assets.packaging) %>};
   const FOTO_ALL=[...<%- JSON.stringify(assets.fotografiaAlimentacao) %>,...<%- JSON.stringify(assets.fotografiaInstitucional) %>,...<%- JSON.stringify(assets.fotografiaProduto) %>];
+
+  // Data de emissão
+  (function(){
+    const el=document.getElementById('emission-date');
+    if(!el)return;
+    el.textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+  })();
 
   // Scroll reveal
   const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});},{threshold:0.06});
