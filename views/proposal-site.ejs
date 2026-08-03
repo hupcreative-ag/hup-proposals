@@ -436,15 +436,17 @@
   </div>
 </section>
 
+<% let sn = 1; %>
 <!-- ════════════════════════════════════════════════
-     2. QUEM SOMOS
+     2. QUEM SOMOS (oculto se proposal.existingClient)
 ════════════════════════════════════════════════ -->
+<% if (!proposal.existingClient) { sn++; %>
 <section class="section" style="border-top:1px solid #111;overflow:hidden;">
   <div class="container">
     <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
       <div>
         <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;">
-          <div class="sec-num reveal">02</div>
+          <div class="sec-num reveal"><%= String(sn).padStart(2,'0') %></div>
           <p class="label reveal">Quem somos</p>
         </div>
         <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 2rem;line-height:1.1;">
@@ -463,14 +465,16 @@
     </div>
   </div>
 </section>
+<% } %>
 
 <!-- ════════════════════════════════════════════════
      3. O QUE FAZEMOS
 ════════════════════════════════════════════════ -->
+<% sn++; %>
 <section class="section">
   <div class="container">
     <div style="margin-bottom:3rem;">
-      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">03</div>
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;"><%= String(sn).padStart(2,'0') %></div>
       <p class="label reveal" style="margin-bottom:.5rem;">O que fazemos</p>
       <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Serviços</h2>
     </div>
@@ -493,10 +497,11 @@
 <!-- ════════════════════════════════════════════════
      4. PORTFOLIO
 ════════════════════════════════════════════════ -->
+<% sn++; %>
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div style="margin-bottom:3.5rem;">
-      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">04</div>
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;"><%= String(sn).padStart(2,'0') %></div>
       <p class="label reveal" style="margin-bottom:.5rem;">Portfólio</p>
       <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">Nosso Trabalho</h2>
     </div>
@@ -688,13 +693,13 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     5. CLIENTES
+     5. CLIENTES (marcas) — oculto se proposal.existingClient
 ════════════════════════════════════════════════ -->
-<% if (assets.logosClientes.length) { %>
+<% if (!proposal.existingClient && assets.logosClientes.length) { sn++; %>
 <section class="section clients-section">
   <div class="container">
     <div style="margin-bottom:3rem;">
-      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">05</div>
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;"><%= String(sn).padStart(2,'0') %></div>
       <p class="label reveal" style="margin-bottom:.4rem;">Confiança</p>
       <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 .5rem;line-height:1.1;clear:both;color:#111;">Clientes</h2>
       <p class="reveal" style="color:#666;font-size:.95rem;margin:0;max-width:560px;">Marcas que confiam na HUP para uma solução 360° — da estratégia digital à produção criativa.</p>
@@ -719,10 +724,11 @@
 <!-- ════════════════════════════════════════════════
      6. PLANOS DE SITE
 ════════════════════════════════════════════════ -->
+<% sn++; %>
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div style="margin-bottom:3rem;">
-      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;">06</div>
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;"><%= String(sn).padStart(2,'0') %></div>
       <p class="label reveal" style="margin-bottom:.5rem;">Proposta para <%= proposal.client.company %></p>
       <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;"><%= proposal.proposalTitle %></h2>
     </div>

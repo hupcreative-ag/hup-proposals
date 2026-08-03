@@ -2,6 +2,7 @@
   "slug": "natalia-carvalho",
   "token": "natalia-site-2026",
   "type": "site",
+  "existingClient": true,
   "serviceType": "Criação de sistema de Site",
   "client": {
     "contacts": ["Dra. Natália"],
