@@ -20,10 +20,10 @@
       "name": "Landing Page Profissional",
       "recommended": false,
       "investment": {
-        "total": "R$ 1.500",
+        "total": "R$ 1.700",
         "installments": {
           "count": 3,
-          "value": "R$ 500",
+          "value": "R$ 566,67",
           "method": "Pix ou boleto"
         }
       },

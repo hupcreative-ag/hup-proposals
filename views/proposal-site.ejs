@@ -277,6 +277,13 @@
     .site-map-caption{font-size:.72rem;color:#777;letter-spacing:.03em;padding-left:2.3rem;margin:.15rem 0 .7rem;}
     .site-map{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;padding-left:2.3rem;margin-bottom:.65rem;}
     @media(max-width:480px){.site-map{grid-template-columns:1fr;}}
+
+    /* Mobile: cartão + indent recuados demais estreitavam o texto — reduz para dar mais largura */
+    @media(max-width:640px){
+      .plan-card,.extra-svc-card{padding:1.75rem 1.25rem;}
+      .plan-feature{padding:1.1rem .25rem;}
+      .feat-desc,.feat-chips,.site-map-caption,.site-map{padding-left:0;}
+    }
     .site-map-item{
       display:flex;align-items:center;gap:.7rem;
       padding:.65rem .9rem;border-radius:7px;
