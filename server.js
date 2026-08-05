@@ -130,6 +130,7 @@ app.get('/:slug', (req, res) => {
     'conteudo': 'proposal-conteudo',
     'site': 'proposal-site',
     'foto': 'proposal-foto',
+    'audiovisual': 'proposal-audiovisual',
   };
   const view = VIEWS[proposal.type] || 'proposal';
   res.render(view, { proposal, assets });

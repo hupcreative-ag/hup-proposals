@@ -1,0 +1,102 @@
+{
+  "slug": "giulia-soster",
+  "token": "giulia-av-2026",
+  "type": "audiovisual",
+  "serviceType": "Produção Audiovisual",
+  "client": {
+    "contact": "Giulia Soster",
+    "company": "Giulia Soster"
+  },
+  "expiresAt": "2026-09-04",
+  "proposalIntro": "Captação e edição audiovisual pensadas para o seu projeto acadêmico — imagens em 4K, ar aéreo com drone e áudio profissional, com edição finalizada em até 10 minutos.",
+  "items": [
+    {
+      "id": "01",
+      "icon": "camera",
+      "name": "Filmagem em diária (10h)",
+      "subtitle": "Captação principal",
+      "qty": 2,
+      "unitLabel": "diárias",
+      "unitPrice": "R$ 1.100",
+      "lineTotal": "R$ 2.200",
+      "deliverables": [
+        "Câmera 4K + microfones sem fio",
+        "Iluminação profissional",
+        "Gimbal estabilizador",
+        "Suporte geral"
+      ]
+    },
+    {
+      "id": "02",
+      "icon": "drone",
+      "name": "Filmagem com drone em diária",
+      "subtitle": "Imagens aéreas",
+      "qty": 2,
+      "unitLabel": "diárias",
+      "unitPrice": "R$ 300",
+      "lineTotal": "R$ 600",
+      "deliverables": [
+        "5 voos por dia",
+        "Drone de última geração — qualidade 4K"
+      ]
+    },
+    {
+      "id": "03",
+      "icon": "video",
+      "name": "Edição de 01 vídeo de até 10 min",
+      "subtitle": "Pós-produção",
+      "qty": 1,
+      "unitLabel": "vídeo",
+      "unitPrice": "R$ 750",
+      "lineTotal": "R$ 750",
+      "deliverables": [
+        "Tratamento de luz e cor",
+        "Aquisição de trilha sonora com direito de uso reservado",
+        "Inserção de textos e legendas",
+        "Edição com transições e finalização com marcas e créditos, caso solicitado"
+      ]
+    },
+    {
+      "id": "04",
+      "icon": "audio",
+      "name": "Gravação de áudio",
+      "subtitle": "Captação sonora",
+      "qty": 2,
+      "unitLabel": "diárias",
+      "unitPrice": "Incluso",
+      "lineTotal": "Incluso",
+      "deliverables": [
+        "Gravador profissional ZOOM H5",
+        "Mini shotgun, entrada XLR e P2"
+      ]
+    },
+    {
+      "id": "05",
+      "icon": "mic",
+      "name": "Locação de shotgun longa distância",
+      "subtitle": "Equipamento adicional",
+      "qty": 2,
+      "unitLabel": "diárias",
+      "unitPrice": "R$ 250",
+      "lineTotal": "R$ 500",
+      "deliverables": [
+        "Shotgun Sennheiser 416 para acoplar no gravador"
+      ]
+    }
+  ],
+  "infos": [
+    "Este orçamento contempla captação de segunda a sexta.",
+    "Equipe com 01 filmmaker + assistente de produção para cada diária.",
+    "A captação com drone contempla gravação em locais que exigem pré-autorização, podendo ou não gravar em pontos específicos.",
+    "Prazo de entrega do material editado: até 6 dias úteis após a captação e envio das informações necessárias.",
+    "Este orçamento contempla o envio do material bruto."
+  ],
+  "investment": {
+    "total": "R$ 4.050"
+  },
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
