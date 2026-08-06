@@ -857,6 +857,56 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
+     7. OUTROS PROJETOS EM ABERTO (orçamentos independentes,
+        não vinculados ao pacote de site — mesma vitrine)
+════════════════════════════════════════════════ -->
+<% if (proposal.otherProjects && proposal.otherProjects.length) { sn++; %>
+<section class="section" style="border-top:1px solid #111;">
+  <div class="container">
+    <div style="margin-bottom:3rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;"><%= String(sn).padStart(2,'0') %></div>
+      <p class="label reveal" style="margin-bottom:.5rem;">Também em aberto para <%= proposal.client.company %></p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;">
+        <%= proposal.otherProjects.length > 1 ? 'Outros Projetos' : 'Outro Projeto' %>
+      </h2>
+    </div>
+
+    <div class="extra-svc-stack">
+      <% proposal.otherProjects.forEach((item, idx) => { %>
+        <div class="extra-svc-card" data-extra-idx="<%= idx %>">
+          <div class="extra-svc-header">
+            <div>
+              <p class="extra-svc-id">Projeto <%= item.id %></p>
+              <h3 class="extra-svc-name"><%= item.name %></h3>
+            </div>
+            <div class="extra-svc-price-col">
+              <% if (item.originalPrice) { %>
+                <div class="extra-svc-original"><%= item.originalPrice %></div>
+              <% } %>
+              <div class="extra-svc-price"><%= item.price %></div>
+              <% if (item.installments) { %>
+                <div class="extra-svc-price-label"><%= item.installments %></div>
+              <% } else { %>
+                <div class="extra-svc-price-label">Investimento total</div>
+              <% } %>
+            </div>
+          </div>
+          <div class="extra-svc-deliverables">
+            <% item.deliverables.forEach(d => { %>
+              <div class="extra-svc-item">
+                <span class="extra-svc-check">✓</span>
+                <span><%= d %></span>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- ════════════════════════════════════════════════
      8. CTA FINAL
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;text-align:center;">
