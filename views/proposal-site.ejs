@@ -227,6 +227,12 @@
     .plan-price-col{text-align:right;}
     @media(max-width:600px){.plan-price-col{text-align:left;}}
 
+    .plan-price-original{
+      font-size:clamp(1rem,2vw,1.3rem);font-weight:500;color:#666;
+      text-decoration:line-through;text-decoration-color:#666;
+      margin-bottom:.2rem;letter-spacing:.01em;
+    }
+
     .plan-price{
       font-size:clamp(2rem,4vw,2.8rem);
       font-weight:700;line-height:1;color:#fff;margin-bottom:.35rem;
@@ -763,6 +769,9 @@
                   <h3 class="plan-name"><%= plan.name %></h3>
                 </div>
                 <div class="plan-price-col">
+                  <% if (plan.investment.originalTotal) { %>
+                    <div class="plan-price-original"><%= plan.investment.originalTotal %></div>
+                  <% } %>
                   <div class="plan-price"><%= plan.investment.total %></div>
                   <div class="plan-installments"><%= plan.investment.installments.count %>× de <%= plan.investment.installments.value %> · <%= plan.investment.installments.method %></div>
                 </div>
@@ -809,7 +818,7 @@
 
       <% if (proposal.extras && proposal.extras.length) { %>
       <div class="proposal-col proposal-col--extra">
-        <p class="proposal-col-label">Serviço adicional</p>
+        <p class="proposal-col-label"><%= proposal.extras.length > 1 ? 'Serviços adicionais' : 'Serviço adicional' %></p>
         <div class="extra-svc-stack">
           <% proposal.extras.forEach((item, idx) => { %>
             <div class="extra-svc-card" data-extra-idx="<%= idx %>">

@@ -20,10 +20,11 @@
       "name": "Landing Page Profissional",
       "recommended": false,
       "investment": {
-        "total": "R$ 1.500",
+        "originalTotal": "R$ 2.500",
+        "total": "R$ 1.700",
         "installments": {
           "count": 3,
-          "value": "R$ 500",
+          "value": "R$ 566,67",
           "method": "Pix ou boleto"
         }
       },
@@ -63,6 +64,24 @@
         "Blocos de conteúdo personalizáveis",
         "CTA de agendamento",
         "Roda no domínio e na hospedagem já contratados no pacote principal, sem custo extra de infraestrutura"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Apresentação para o MAB",
+      "originalPrice": "R$ 2.000",
+      "price": "R$ 1.250",
+      "installments": "Valor de parceria para cliente",
+      "deliverables": [
+        "Direção visual da apresentação: conceito, paleta, tipografia e sistema de layout",
+        "Criação do slide-mestre e dos templates de página",
+        "Diagramação de 21 slides em formato 16:9",
+        "Geração de imagens por IA para os slides que exigem elemento visual próprio",
+        "Aquisição e adaptação de vetores e ilustrações de bibliotecas licenciadas",
+        "Tratamento e padronização cromática de imagens fornecidas pela cliente",
+        "Composição de diagramas e esquemas a partir de elementos gráficos",
+        "Marcação dos pontos de entrada de vídeo e das quebras de bloco",
+        "Animação dos builds e transições entre slides"
       ]
     }
   ],
