@@ -1,0 +1,45 @@
+{
+  "slug": "mariana-cruz-avulso",
+  "token": "mariana-cruz-avulso-2026",
+  "type": "conteudo",
+  "serviceType": "Criação de Conteúdo e Captação Audiovisual",
+  "client": {
+    "contact": "Mari",
+    "company": "Mariana Cruz"
+  },
+  "expiresAt": "2026-08-06",
+  "cards": [
+    {
+      "id": "01",
+      "icon": "social",
+      "name": "Criação de Conteúdo",
+      "price": "R$ 800",
+      "priceLabel": "Investimento único",
+      "badge": "Projeto pontual — não inclui social media dedicado nem acompanhamento estratégico mensal.",
+      "deliverables": [
+        "Planejamento de conteúdo e legenda para 4 publicações em carrossel",
+        "Criação das 4 publicações em carrossel para o perfil",
+        "Criação de 4 stories com CTA para as publicações",
+        "Roteirização de 4 vídeos + legenda"
+      ]
+    },
+    {
+      "id": "02",
+      "icon": "camera",
+      "name": "Captação de Vídeos",
+      "price": "R$ 700",
+      "priceLabel": "Investimento único",
+      "deliverables": [
+        "1 visita para captação de vídeos com duração de 3 horas",
+        "Equipamento profissional: câmera 4K, iluminação, captação de áudio e teleprompter",
+        "Edição de 4 vídeos com legenda, tratamento de luz e cor",
+        "Fotografia para capas dos vídeos"
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
