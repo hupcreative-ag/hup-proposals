@@ -243,6 +243,8 @@
     }
     .plan-installments{font-size:.78rem;color:#8a8a8a;white-space:nowrap;}
     .plan-card--rec .plan-installments{color:#aaa;}
+    .plan-installments-alt{font-size:.78rem;color:#666;white-space:nowrap;margin-top:.15rem;}
+    .plan-card--rec .plan-installments-alt{color:#888;}
 
     /* Feature rows */
     .plan-features{display:flex;flex-direction:column;gap:2px;margin-bottom:2.5rem;}
@@ -774,6 +776,9 @@
                   <% } %>
                   <div class="plan-price"><%= plan.investment.total %></div>
                   <div class="plan-installments"><%= plan.investment.installments.count %>× de <%= plan.investment.installments.value %> · <%= plan.investment.installments.method %></div>
+                  <% if (plan.investment.cardInstallments) { %>
+                    <div class="plan-installments-alt">ou <%= plan.investment.cardInstallments.count %>× de <%= plan.investment.cardInstallments.value %> no cartão</div>
+                  <% } %>
                 </div>
               </div>
 

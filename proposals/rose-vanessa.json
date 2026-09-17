@@ -1,0 +1,59 @@
+{
+  "slug": "rose-vanessa",
+  "token": "rose-vanessa-2026",
+  "type": "site",
+  "serviceType": "Criação de Landing Page",
+  "client": {
+    "contacts": ["Rose Vanessa"],
+    "company": "Rose Vanessa"
+  },
+  "expiresAt": "2026-10-17",
+  "heroTitleSub": "Rose Vanessa, uma landing page",
+  "heroWords": ["elegante", "profissional", "confiável", "exigente", "sua"],
+  "heroSubtitle": "estamos ansiosos<br>para transformar a sua apresentação profissional.",
+  "proposalTitle": "Landing Page para Rose Vanessa",
+  "proposalIntro": "Criamos landing pages que vão além do visual — são ferramentas de trabalho. Para você, fisioterapeuta, a página precisa transmitir confiança para um público mais exigente, apresentar seus serviços com clareza e facilitar o contato com quem mais importa: seus pacientes.",
+  "plans": [
+    {
+      "id": "01",
+      "name": "Landing Page Profissional",
+      "recommended": false,
+      "investment": {
+        "total": "R$ 1.800",
+        "installments": {
+          "count": 2,
+          "value": "R$ 900",
+          "method": "Pix"
+        },
+        "cardInstallments": {
+          "count": 7,
+          "value": "R$ 290"
+        }
+      },
+      "sections": [
+        {
+          "included": true,
+          "name": "Landing page completa",
+          "description": "Página única projetada do zero para a sua identidade profissional — hero com foto, apresentação com suporte a vídeo, seção de serviços, feedbacks de pacientes, seus diferenciais e um botão direto para agendamento.",
+          "chips": ["Hero com foto profissional", "Apresentação pessoal", "Seção de serviços", "Feedbacks de pacientes", "Diferenciais", "CTA de agendamento"]
+        },
+        {
+          "included": true,
+          "name": "Hospedagem inclusa",
+          "description": "O site fica hospedado no servidor da agência durante a vigência do plano — sem custo adicional de hospedagem para você."
+        },
+        {
+          "included": true,
+          "name": "Domínio .com.br",
+          "description": "Compramos e configuramos o seu domínio personalizado (ex: rosevanessa.com.br). Valor cobrado à parte, em média R$ 60/ano diretamente ao registrador.",
+          "chips": ["~R$ 60/ano cobrado à parte"]
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
