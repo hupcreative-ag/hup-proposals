@@ -21,13 +21,13 @@
       "investment": {
         "total": "R$ 1.800",
         "installments": {
-          "count": 2,
-          "value": "R$ 900",
+          "count": 3,
+          "value": "R$ 600",
           "method": "Pix"
         },
         "cardInstallments": {
-          "count": 7,
-          "value": "R$ 290"
+          "count": 10,
+          "value": "R$ 209,90"
         }
       },
       "sections": [

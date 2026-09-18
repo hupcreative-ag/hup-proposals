@@ -172,6 +172,16 @@
       .proposal-columns .site-map{grid-template-columns:1fr;}
     }
 
+    /* Sem serviços adicionais: o card único ganha a largura toda, centralizado e mais respirado */
+    .proposal-columns--single{grid-template-columns:1fr;max-width:800px;margin:0 auto;}
+    .proposal-columns--single .proposal-col-label{text-align:center;}
+    @media(min-width:901px){
+      .proposal-columns--single .plan-card{padding:3.25rem 3.75rem;}
+      .proposal-columns--single .plan-header{grid-template-columns:1fr auto;gap:2.5rem;}
+      .proposal-columns--single .plan-price-col{text-align:right;}
+      .proposal-columns--single .site-map{grid-template-columns:repeat(3,1fr);gap:.6rem;}
+    }
+
     .plan-stack{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:0;}
     .proposal-col{margin-bottom:4rem;}
 
@@ -753,9 +763,10 @@
       <p style="color:#888;font-size:.95rem;line-height:1.8;margin:0;max-width:720px;"><%= proposal.proposalIntro %></p>
     </div>
 
-    <div class="proposal-columns">
+    <% const hasExtras = proposal.extras && proposal.extras.length; %>
+    <div class="proposal-columns<%= hasExtras ? '' : ' proposal-columns--single' %>">
       <div class="proposal-col proposal-col--main">
-        <p class="proposal-col-label">Pacote principal</p>
+        <p class="proposal-col-label"><%= hasExtras ? 'Pacote principal' : 'Seu plano' %></p>
         <div class="plan-stack">
           <% proposal.plans.forEach((plan, planIdx) => {
                const includedSections = plan.sections.filter(s => s.included);
