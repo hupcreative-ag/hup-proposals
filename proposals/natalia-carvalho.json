@@ -3,17 +3,19 @@
   "token": "natalia-site-2026",
   "type": "site",
   "existingClient": true,
-  "serviceType": "Criação de sistema de Site",
+  "serviceType": "Pack de entregas",
   "client": {
     "contacts": ["Dra. Natália"],
     "company": "Dra. Natália Carvalho"
   },
-  "expiresAt": "2026-09-03",
-  "heroTitleSub": "Dra. Natália Carvalho, um site",
-  "heroWords": ["elegante", "acolhedor", "profissional", "confiável", "seu"],
+  "expiresAt": "2026-10-25",
+  "heroTitleSub": "Dra. Natália Carvalho, uma presença",
+  "heroWords": ["elegante", "acolhedora", "profissional", "confiável", "sua"],
   "heroSubtitle": "estamos ansiosos<br>para transformar a sua apresentação profissional.",
-  "proposalTitle": "Criação de sistema de Site",
-  "proposalIntro": "Criamos sites que vão além do visual — são ferramentas de trabalho. Para você, o site precisa transmitir confiança, apresentar seus serviços com clareza e facilitar o contato com quem mais importa: seus pacientes.",
+  "proposalTitle": "Pack de entregas",
+  "proposalIntro": "Criamos ferramentas de trabalho, não só peças visuais. Este pack reúne o site, a identidade digital e os materiais de apoio para que a sua presença profissional transmita confiança, apresente seus serviços com clareza e facilite o contato com quem mais importa: seus pacientes.",
+  "extrasLabel": "Entregas extras",
+  "extraTag": "Extra",
   "plans": [
     {
       "id": "01",
@@ -55,7 +57,7 @@
       "id": "A",
       "name": "Landing Pages de Serviço (avulsas)",
       "price": "R$ 400 a R$ 800",
-      "installments": "Por landing, conforme complexidade · disponível a qualquer momento",
+      "installments": "Por landing, conforme complexidade · a partir da criação da landing page principal",
       "deliverables": [
         "Hero com título e imagens do serviço",
         "Apresentação dinâmica do serviço",
@@ -65,25 +67,60 @@
         "CTA de agendamento",
         "Roda no domínio e na hospedagem já contratados no pacote principal, sem custo extra de infraestrutura"
       ]
+    },
+    {
+      "id": "B",
+      "name": "Criação de logo e identidade digital",
+      "originalPrice": "R$ 2.000",
+      "price": "R$ 1.000",
+      "deliverables": [
+        "Conceito criativo da marca",
+        "Logotipo principal + variações (reduzida, horizontal, monocromática)",
+        "Paleta de cores com valores exatos",
+        "Tipografia oficial da marca",
+        "Elementos gráficos de apoio (texturas, formas, ícones)",
+        "Entrega em guia de marca",
+        "Papel timbrado"
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Lâmina de apresentação do teste SIBO e IMO em casa",
+      "originalPrice": "R$ 700",
+      "price": "R$ 350",
+      "deliverables": [
+        "Arte do cartão do teste SIBO e IMO"
+      ]
     }
   ],
+  "extrasPayment": {
+    "label": "Forma de pagamento das entregas extras",
+    "count": 4,
+    "value": "R$ 840",
+    "frequency": "parcelas mensais"
+  },
+  "timeline": {
+    "label": "Plano de entrega",
+    "title": "Linha do tempo",
+    "steps": [
+      { "name": "Criação de logo e identidade visual", "days": 15 },
+      { "name": "Criação da landing page principal ou secundária", "days": 20 },
+      { "name": "Criação da arte do cartão SIBO e IMO + lâmina de apresentação", "days": 5 }
+    ]
+  },
   "otherProjects": [
     {
       "id": "01",
-      "name": "Apresentação para o MAB",
-      "originalPrice": "R$ 2.000",
-      "price": "R$ 1.250",
-      "installments": "Valor de parceria para cliente",
+      "name": "Redes sociais — escopo mensal",
+      "price": "R$ 1.750/mês",
+      "installments": "Valor atualizado para 2027",
+      "intro": "Planejamento mensal com acompanhamento diário, contemplando:",
       "deliverables": [
-        "Direção visual da apresentação: conceito, paleta, tipografia e sistema de layout",
-        "Criação do slide-mestre e dos templates de página",
-        "Diagramação de 21 slides em formato 16:9",
-        "Geração de imagens por IA para os slides que exigem elemento visual próprio",
-        "Aquisição e adaptação de vetores e ilustrações de bibliotecas licenciadas",
-        "Tratamento e padronização cromática de imagens fornecidas pela cliente",
-        "Composição de diagramas e esquemas a partir de elementos gráficos",
-        "Marcação dos pontos de entrada de vídeo e das quebras de bloco",
-        "Animação dos builds e transições entre slides"
+        "12 publicações para Instagram em formatos variados (8 cards e carrosséis + 4 reels)",
+        "Criação de stories adaptados da publicação, com interações e desdobramentos",
+        "Criação de 1 arte extra para utilização geral (materiais digitais e impressos), contemplando as necessidades offline ou online de relacionamento e institucional",
+        "Captação e edição de vídeos + fotografia para uso geral — captação em uma visita de 3h, com câmera 4K, teleprompter, áudio e iluminação profissional",
+        "Social media para publicações"
       ]
     }
   ],

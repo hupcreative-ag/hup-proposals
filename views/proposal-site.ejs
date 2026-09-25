@@ -379,6 +379,36 @@
       color:rgba(0,207,255,.65);font-size:.6rem;
     }
 
+    .extra-svc-intro{font-size:.88rem;font-weight:600;color:#dcdcdc;line-height:1.6;margin:0 0 1.1rem;}
+
+    /* Forma de pagamento das entregas extras */
+    .extras-payment{
+      margin-top:1.5rem;padding:1.4rem 1.75rem;border-radius:12px;
+      border:1px solid rgba(0,207,255,.25);background:rgba(0,207,255,.04);
+    }
+    .extras-payment-label{font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,207,255,.8);margin:0 0 .5rem;}
+    .extras-payment-value{font-size:1rem;color:#c8c8c8;margin:0;line-height:1.4;}
+    .extras-payment-value strong{font-family:'Poppins',sans-serif;font-size:1.5rem;color:#fff;font-weight:700;}
+
+    /* ── Linha do tempo (plano de entrega) ── */
+    .tl{max-width:960px;}
+    .tl-bar{display:flex;gap:4px;height:8px;margin-bottom:2rem;}
+    .tl-bar-seg{border-radius:4px;min-width:6px;}
+    .tl-bar-seg--0{background:var(--blue);}
+    .tl-bar-seg--1{background:linear-gradient(90deg,var(--blue),var(--cyan));}
+    .tl-bar-seg--2{background:var(--cyan);}
+    .tl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+    .tl-step{position:relative;border:1px solid #1c1c1c;border-radius:12px;padding:1.6rem 1.5rem;background:rgba(255,255,255,.015);transition:border-color 300ms;}
+    .tl-step:hover{border-color:#2a2a2a;}
+    .tl-step-num{font-family:'Poppins',sans-serif;font-size:2.2rem;font-weight:700;line-height:1;color:var(--cyan);margin-bottom:1rem;}
+    .tl-step-name{font-size:.95rem;font-weight:600;color:#e2e2e2;line-height:1.45;margin:0 0 1.1rem;}
+    .tl-step-days{display:flex;flex-direction:column;gap:.15rem;margin:0;}
+    .tl-step-days strong{font-size:1.15rem;color:#fff;font-weight:700;}
+    .tl-step-days span{font-size:.75rem;color:#8a8a8a;letter-spacing:.04em;}
+    .tl-total{margin:1.5rem 0 0;font-size:.85rem;color:#8a8a8a;}
+    .tl-total strong{color:#fff;font-weight:700;}
+    @media(max-width:768px){.tl-steps{grid-template-columns:1fr;gap:.9rem;}.tl-step{padding:1.3rem 1.25rem;}.tl-step-num{font-size:1.8rem;margin-bottom:.7rem;}}
+
     /* ── CTA final ── */
     .cta-btn{display:inline-block;background:var(--blue);color:#fff;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:1rem 2.5rem;border-radius:4px;transition:filter 200ms,transform 200ms;}
     .cta-btn:hover{filter:brightness(1.2);transform:scale(1.02);}
@@ -834,13 +864,13 @@
 
       <% if (proposal.extras && proposal.extras.length) { %>
       <div class="proposal-col proposal-col--extra">
-        <p class="proposal-col-label"><%= proposal.extras.length > 1 ? 'Serviços adicionais' : 'Serviço adicional' %></p>
+        <p class="proposal-col-label"><%= proposal.extrasLabel || (proposal.extras.length > 1 ? 'Serviços adicionais' : 'Serviço adicional') %></p>
         <div class="extra-svc-stack">
           <% proposal.extras.forEach((item, idx) => { %>
             <div class="extra-svc-card" data-extra-idx="<%= idx %>">
               <div class="extra-svc-header">
                 <div>
-                  <p class="extra-svc-id">Adicional <%= item.id %></p>
+                  <p class="extra-svc-id"><%= proposal.extraTag || 'Adicional' %> <%= item.id %></p>
                   <h3 class="extra-svc-name"><%= item.name %></h3>
                 </div>
                 <div class="extra-svc-price-col">
@@ -866,11 +896,58 @@
             </div>
           <% }) %>
         </div>
+        <% if (proposal.extrasPayment) { %>
+          <div class="extras-payment">
+            <p class="extras-payment-label"><%= proposal.extrasPayment.label %></p>
+            <p class="extras-payment-value"><%= proposal.extrasPayment.count %> <%= proposal.extrasPayment.frequency %> de <strong><%= proposal.extrasPayment.value %></strong></p>
+          </div>
+        <% } %>
       </div>
       <% } %>
     </div>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════
+     6b. LINHA DO TEMPO — plano de entrega
+════════════════════════════════════════════════ -->
+<% if (proposal.timeline && proposal.timeline.steps && proposal.timeline.steps.length) { sn++;
+     const tlSteps = proposal.timeline.steps;
+     const tlTotal = tlSteps.reduce((a, s) => a + s.days, 0);
+     let tlAcc = 0;
+%>
+<section class="section" style="border-top:1px solid #111;">
+  <div class="container">
+    <div style="margin-bottom:3rem;">
+      <div class="sec-num reveal" style="float:left;margin-right:1.5rem;line-height:.85;"><%= String(sn).padStart(2,'0') %></div>
+      <p class="label reveal" style="margin-bottom:.5rem;"><%= proposal.timeline.label || 'Plano de entrega' %></p>
+      <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;"><%= proposal.timeline.title || 'Linha do tempo' %></h2>
+    </div>
+
+    <div class="tl reveal">
+      <div class="tl-bar" aria-hidden="true">
+        <% tlSteps.forEach((s, i) => { %>
+          <span class="tl-bar-seg tl-bar-seg--<%= i % 3 %>" style="flex:<%= s.days %>"></span>
+        <% }) %>
+      </div>
+      <div class="tl-steps">
+        <% tlSteps.forEach((s, i) => {
+             const from = tlAcc + 1; tlAcc += s.days;
+        %>
+          <div class="tl-step">
+            <div class="tl-step-num"><%= String(i + 1).padStart(2, '0') %></div>
+            <div class="tl-step-body">
+              <p class="tl-step-name"><%= s.name %></p>
+              <p class="tl-step-days"><strong><%= s.days %> dias</strong><span>Dia <%= from %> ao <%= tlAcc %></span></p>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+      <p class="tl-total">Prazo total do pack: <strong><%= tlTotal %> dias</strong></p>
+    </div>
+  </div>
+</section>
+<% } %>
 
 <!-- ════════════════════════════════════════════════
      7. OUTROS PROJETOS EM ABERTO (orçamentos independentes,
@@ -907,6 +984,9 @@
               <% } %>
             </div>
           </div>
+          <% if (item.intro) { %>
+            <p class="extra-svc-intro"><%= item.intro %></p>
+          <% } %>
           <div class="extra-svc-deliverables">
             <% item.deliverables.forEach(d => { %>
               <div class="extra-svc-item">
