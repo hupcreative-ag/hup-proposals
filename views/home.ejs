@@ -248,15 +248,15 @@
     .pkg-bento-wrap::-webkit-scrollbar{height:4px;}
     .pkg-bento-wrap::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px;}
     .pkg-bento-wrap.grabbing{cursor:grabbing;user-select:none;}
-    .pkg-bento{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);grid-template-rows:repeat(2,240px);gap:8px;width:max-content;min-width:100%;}
-    .pkg-bento-card{position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;transition:box-shadow 300ms;}
+    .pkg-bento{display:grid;grid-auto-flow:column;grid-auto-columns:220px;grid-template-rows:repeat(2,240px);gap:8px;width:max-content;}
+    .pkg-bento-card{position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;transition:box-shadow 300ms;min-width:0;min-height:0;}
     .pkg-bento-card.tall{grid-row:span 2;}
-    .pkg-bento-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
+    .pkg-bento-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 500ms ease;}
     .pkg-bento-card:hover img{transform:scale(1.06);}
     .pkg-bento-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.1) 50%,transparent 100%);opacity:0;transition:opacity 400ms;}
     .pkg-bento-card:hover .pkg-bento-overlay{opacity:1;}
     .pkg-bento-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.5);}
-    @media(max-width:768px){.pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:minmax(160px,1fr);}}
+    @media(max-width:768px){.pkg-bento{grid-template-rows:repeat(2,180px);grid-auto-columns:160px;}}
 
     /* ── Logo wall (clientes) ── */
     .clients-section{background:#f0f0f0;}
