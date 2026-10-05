@@ -436,8 +436,10 @@
   <div class="hero-line"></div>
 
   <!-- Validade -->
-  <div style="position:absolute;top:2rem;right:2rem;color:#444;font-size:.78rem;letter-spacing:.06em;z-index:2;">
-    Válida até <span style="color:#666;"><%= proposal.expiresAt %></span>
+  <% const fmtDate = d => /^\d{4}-\d{2}-\d{2}$/.test(d||'') ? d.split('-').reverse().join('/') : d; %>
+  <div style="position:absolute;top:2rem;right:2rem;color:#444;font-size:.78rem;letter-spacing:.06em;z-index:2;text-align:right;line-height:1.8;">
+    <% if (proposal.issuedAt) { %><div>Emitida em <span style="color:#666;"><%= fmtDate(proposal.issuedAt) %></span></div><% } %>
+    <div>Válida até <span style="color:#666;"><%= fmtDate(proposal.expiresAt) %></span></div>
   </div>
 
   <div style="text-align:center;max-width:860px;width:100%;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">

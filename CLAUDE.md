@@ -122,6 +122,7 @@ O `slug` vira a URL: `/neurobiota` → `proposals/neurobiota.json`
     "contact": "Nome do Contato",
     "company": "Nome da Empresa"
   },
+  "issuedAt": "AAAA-MM-DD",
   "expiresAt": "AAAA-MM-DD",
   "packages": [
     {
@@ -145,6 +146,8 @@ O `slug` vira a URL: `/neurobiota` → `proposals/neurobiota.json`
   }
 }
 ```
+
+`"issuedAt"` é opcional: quando presente, mostra "Emitida em DD/MM/AAAA" no topo do hero.
 
 ---
 
@@ -221,6 +224,7 @@ Para atualizar fotos novas:
 | `tratdent`   | redes      | Equipe Tratdent  | `d12da616-41c6-...` |
 | `neurobiota` | branding   | Natalia, Aiêsca, Rodrigo | `nb-brand-2026` |
 | `natalia-carvalho` | site | Dra. Natália Carvalho | `natalia-site-2026` |
+| `stelina-schettini` | redes | Stelina Schettini | `stelina-redes-2026` |
 
 ---
 

@@ -1,0 +1,59 @@
+{
+  "slug": "stelina-schettini",
+  "token": "stelina-redes-2026",
+  "serviceType": "Gestão de Redes Sociais",
+  "client": {
+    "contact": "Stelina",
+    "company": "Stelina Schettini"
+  },
+  "issuedAt": "2026-09-20",
+  "expiresAt": "2026-11-04",
+  "packages": [
+    {
+      "id": "01",
+      "name": "Plano 01",
+      "price": "R$ 1.300/mês",
+      "minMonths": 3,
+      "recommended": true,
+      "groups": [
+        {
+          "title": "Publicações mensais",
+          "items": [
+            "Planejamento mensal de perfil com acompanhamento diário",
+            "08 publicações mensais em formatos variados",
+            "Edição de 02 a 04 vídeos + criação de legendas",
+            "Planejamento e criação de 08 publicações estáticas + criação de legendas"
+          ]
+        },
+        {
+          "title": "Social media",
+          "items": [
+            "Profissional dedicado a programar publicações e responder comentários",
+            "Atendimento de segunda à sexta, das 09h às 17h"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Plano 02",
+      "price": "R$ 1.250/mês",
+      "minMonths": 3,
+      "recommended": false,
+      "groups": [
+        {
+          "title": "Publicações mensais",
+          "items": [
+            "Edição de 04 vídeos + criação de legendas",
+            "Planejamento e criação de 08 publicações estáticas + criação de legendas"
+          ]
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
