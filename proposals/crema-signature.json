@@ -1,0 +1,140 @@
+{
+  "slug": "crema-signature",
+  "token": "crema-signature-2026",
+  "type": "serie",
+  "serviceType": "Audiovisual e Fotografia",
+  "pageTitle": "Proposta HUP Creative | Crema Signature",
+  "pdfTitle": "Orcamento-HUP-Crema-Signature",
+  "client": {
+    "contacts": ["Crema"],
+    "company": "Crema Signature"
+  },
+  "expiresAt": "2026-11-13",
+  "heroTitle": "Crema Signature",
+  "heroSubtitle": "Série documental com chefs de Salvador",
+  "aboutLast": "Na HUP, audiovisual e fotografia nascem juntos, no mesmo set e com a mesma direção. Filmamos, fotografamos, editamos e entregamos tudo pronto para publicar.",
+  "services": [
+    "Produção audiovisual",
+    "Fotografia",
+    "Edição e finalização",
+    "Direção de arte para redes sociais"
+  ],
+  "project": {
+    "text": "Uma série documental para as redes sociais da Crema. Cada episódio apresenta um chef de Salvador, sua história e seu processo criativo, e termina num sabor de gelato exclusivo criado com a Crema. São 5 chefs, com 1 episódio publicado por mês.",
+    "cards": [
+      { "big": "5", "label": "episódios, 1 por mês" },
+      { "big": "5h", "label": "Meia diária de captação, até 5h" },
+      { "big": "9:16", "label": "Vídeo vertical para Reels e Stories" }
+    ]
+  },
+  "budget": {
+    "episodes": { "default": 5, "min": 1, "max": 10 },
+    "paymentNote": "Pagamento por episódio: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
+    "groups": [
+      {
+        "name": "Audiovisual",
+        "items": [
+          {
+            "id": "edicao",
+            "name": "Edição e finalização",
+            "desc": "1 filme principal vertical de 60 a 90 segundos, 1 teaser de 10 a 15 segundos e 2 a 4 cortes curtos para Stories e Reels. Inclui legendas, trilha licenciada para redes sociais, tratamento de cor e de áudio, e versões sem texto na tela.",
+            "short": "Filme principal (60–90s), teaser (10–15s) e 2 a 4 cortes, com legendas, trilha licenciada, cor e áudio.",
+            "value": 1100,
+            "fixed": true
+          },
+          {
+            "id": "captacao",
+            "name": "Captação audiovisual",
+            "desc": "Filmmaker com 1 câmera Sony Cinema Line FX2 (gravação em 4K, 10-bit), gimbal estabilizador, microfones sem fio Hollyland, gravador Zoom H5 e kit de iluminação LED. Meia diária de até 5h.",
+            "short": "Filmmaker com Sony FX2 (4K 10-bit), gimbal, áudio e luz. Meia diária de até 5h.",
+            "value": 1500,
+            "fixed": true
+          },
+          {
+            "id": "cam-fixa",
+            "name": "Câmera adicional fixa",
+            "desc": "Segunda Sony FX2 em tripé no plano da entrevista, enquanto a câmera principal filma em movimento. Operada pelo mesmo filmmaker.",
+            "short": "Segunda Sony FX2 em tripé no plano da entrevista, operada pelo mesmo filmmaker.",
+            "value": 650,
+            "fixed": false,
+            "on": false,
+            "exclusive": "cam-extra"
+          },
+          {
+            "id": "cam-filmmaker",
+            "name": "Câmera adicional com segundo filmmaker",
+            "desc": "Segunda Sony FX2 operada por um filmmaker dedicado: uma câmera parada e outra em movimento, com dois olhares sobre o mesmo set.",
+            "short": "Segunda Sony FX2 com filmmaker dedicado: dois olhares sobre o mesmo set.",
+            "value": 1000,
+            "fixed": false,
+            "on": false,
+            "exclusive": "cam-extra",
+            "after": "Escolha uma das opções de câmera adicional, se quiser."
+          },
+          {
+            "id": "capas",
+            "name": "Capas dos vídeos",
+            "desc": "4 capas com tipografia e arte no padrão visual da série.",
+            "short": "4 capas no padrão visual da série.",
+            "value": 300,
+            "fixed": true
+          }
+        ]
+      },
+      {
+        "name": "Fotografia",
+        "items": [
+          {
+            "id": "foto",
+            "name": "Fotografia profissional",
+            "desc": "Fotógrafo <a href=\"https://www.instagram.com/caiodiniz1/\" target=\"_blank\" rel=\"noopener\">Caio Diniz</a> durante a meia diária: retratos do chef, ingredientes, gelato em destaque e imagens de produto com enquadramento comercial. Fotos tratadas, sem limite de quantidade.",
+            "short": "Fotógrafo Caio Diniz na meia diária: chef, ingredientes, gelato e produto. Fotos tratadas, sem limite.",
+            "value": 750,
+            "fixed": true
+          }
+        ]
+      }
+    ]
+  },
+  "equipment": [
+    "1 câmera Sony Cinema Line FX2",
+    "Kit de microfones lapela Hollyland",
+    "Gravador profissional Zoom H5",
+    "Gimbal estabilizador para câmera",
+    "1 LED tocha 60W com difusores",
+    "1 LED tocha 100W com difusores",
+    "1 LED tocha 200W com difusores",
+    "1 LED bastão RGBW",
+    "2 tripés hidráulicos para câmera",
+    "2 tripés de 3m para iluminação",
+    "3 tripés de 2m para suporte"
+  ],
+  "editing": [
+    "Tratamento de luz e cor",
+    "Trilha sonora licenciada com direito de uso em redes sociais",
+    "Inserção de textos e legendas",
+    "Tratamento de áudio"
+  ],
+  "deliverables": [
+    "1 filme principal vertical (60 a 90s)",
+    "1 teaser (10 a 15s)",
+    "2 a 4 cortes para Stories e Reels",
+    "4 capas para os vídeos",
+    "Versões dos vídeos sem texto na tela",
+    "Fotos tratadas do chef, ingredientes e gelato",
+    "Arquivos finais organizados em pastas no Google Drive"
+  ],
+  "conditions": [
+    "Validade da proposta: 13/11/2026",
+    "Captação em meia diária de até 5h, em Salvador",
+    "Seleção, convite e agendamento dos chefs ficam por conta da Crema",
+    "Não incluso: pesquisa e roteiro, produção do gelato e ingredientes, termo de uso de imagem dos chefs",
+    "2 rodadas de ajuste por peça; ajustes extras orçados à parte"
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "approveWhatsapp": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}

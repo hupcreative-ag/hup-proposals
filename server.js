@@ -131,6 +131,7 @@ app.get('/:slug', (req, res) => {
     'site': 'proposal-site',
     'foto': 'proposal-foto',
     'audiovisual': 'proposal-audiovisual',
+    'serie': 'proposal-serie',
   };
   const view = VIEWS[proposal.type] || 'proposal';
   res.render(view, { proposal, assets });

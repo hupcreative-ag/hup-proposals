@@ -225,6 +225,7 @@ Para atualizar fotos novas:
 | `neurobiota` | branding   | Natalia, Aiêsca, Rodrigo | `nb-brand-2026` |
 | `natalia-carvalho` | site | Dra. Natália Carvalho | `natalia-site-2026` |
 | `stelina-schettini` | redes | Stelina Schettini | `stelina-redes-2026` |
+| `crema-signature` | serie (audiovisual + foto, orçamento interativo) | Crema Signature | `crema-signature-2026` |
 
 ---
 
