@@ -95,7 +95,8 @@
       0%,100%{border-color:#222;background:transparent;box-shadow:none;}
       50%{border-color:var(--blue);background:rgba(20,0,255,.07);box-shadow:inset 0 0 24px rgba(20,0,255,.08),0 0 12px rgba(20,0,255,.08);}
     }
-    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;}
+    .services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;}
+    @media(max-width:1000px){.services-grid{grid-template-columns:repeat(3,1fr);}}
     .service-item{
       border:1px solid #222;padding:1.5rem;cursor:default;
       clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
@@ -104,6 +105,12 @@
     .service-item:nth-child(2){animation-delay:.6s;}
     .service-item:nth-child(3){animation-delay:1.2s;}
     .service-item:nth-child(4){animation-delay:1.8s;}
+    .service-item:nth-child(5){animation-delay:2.4s;}
+    .service-item:nth-child(6){animation-delay:3s;}
+    .service-item:nth-child(7){animation-delay:3.6s;}
+    .service-item:nth-child(8){animation-delay:4.2s;}
+    .service-item:nth-child(9){animation-delay:4.8s;}
+    .service-item:nth-child(10){animation-delay:5.4s;}
     .service-item:hover{background:var(--blue);border-color:var(--blue);animation:none;}
     .service-item:hover .service-arrow line,.service-item:hover .service-arrow polyline{stroke:#fff;}
 
@@ -192,6 +199,23 @@
     .h-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
     .h-grid .vcard:first-child{grid-column:1 / -1;}
     @media(max-width:700px){.h-grid{grid-template-columns:1fr;}}
+
+    /* Banner de playlists */
+    .pl-banner{
+      margin-top:2.5rem;position:relative;overflow:hidden;border:1px solid #1e1e1e;border-radius:12px;padding:1.6rem 1.8rem;
+      display:flex;align-items:center;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap;
+      background:radial-gradient(ellipse at 0% 0%,rgba(20,0,255,.35),transparent 55%),radial-gradient(ellipse at 100% 100%,rgba(0,207,255,.12),transparent 50%),#0d0d0d;
+    }
+    .pl-tag{display:flex;align-items:center;gap:.5rem;margin:0 0 .4rem;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);}
+    .pl-title{margin:0;font-size:clamp(1.05rem,2vw,1.35rem);font-weight:700;line-height:1.25;}
+    .pl-links{display:flex;gap:.75rem;flex-wrap:wrap;}
+    .pl-link{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;border:1px solid #2a2a2a;border-radius:8px;background:rgba(10,10,10,.6);color:#fff;text-decoration:none;transition:border-color 200ms,background 200ms,transform 200ms;}
+    .pl-link:hover{border-color:var(--blue);background:rgba(20,0,255,.18);transform:translateY(-2px);}
+    .pl-link strong{display:block;font-size:.82rem;letter-spacing:.04em;}
+    .pl-link small{display:block;font-size:.72rem;color:#888;margin-top:.15rem;}
+    .pl-icon{width:30px;height:30px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding-left:2px;}
+    .pl-arrow{color:var(--cyan);margin-left:.3rem;}
+    @media(max-width:700px){.pl-links{width:100%;flex-direction:column;}.pl-link{width:100%;}.pl-arrow{margin-left:auto;}}
 
     /* ── Ticker (fotografia) ── */
     .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
@@ -284,6 +308,15 @@
     .sum-total{border-top:1px solid rgba(0,207,255,.25);margin-top:.2rem;padding-top:1.25rem;}
     .sum-total .sum-label{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);}
     .sum-total-val{display:block;margin-top:.45rem;font-size:clamp(2rem,4vw,2.5rem);font-weight:700;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(135deg,#fff 40%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .disc-hint{margin:-.35rem 0 .2rem;font-size:.72rem;line-height:1.5;color:var(--cyan);}
+    .disc-hint.max{color:#6b7280;}
+    .sum-disc .sum-val{color:var(--cyan);}
+    .sum-disc.none .sum-val{color:#555;}
+    .disc-chip{display:inline-block;margin-left:.35rem;padding:.12rem .45rem;border-radius:3px;background:var(--blue);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.06em;vertical-align:1px;}
+    .disc-chip.pop{animation:chip-pop 350ms ease-out;}
+    @keyframes chip-pop{0%{transform:scale(.6);opacity:.3;}70%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+    .sum-disc.none .disc-chip{display:none;}
+    .sum-per{display:block;margin-top:.5rem;font-size:.74rem;color:#888;}
     .sum-pay{font-size:.76rem;color:#777;line-height:1.6;margin:1.1rem 0 1.4rem;}
     .btn-primary,.btn-secondary{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;font-family:inherit;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.95rem 1rem;border-radius:4px;cursor:pointer;transition:filter 200ms,transform 200ms,background 200ms,border-color 200ms;}
     .btn-primary{background:var(--blue);border:1px solid var(--blue);color:#fff;animation:blue-pulse 2s ease-in-out infinite;}
@@ -344,31 +377,33 @@
       .ps-layout > thead td,.ps-layout > tfoot td,.ps-layout > tbody > tr > td{padding:0;}
       .ps-foot-space{height:16mm;}
       .ps-footer{position:fixed;left:0;right:0;bottom:0;height:11mm;display:flex;align-items:center;justify-content:center;font-size:7.5pt;letter-spacing:.04em;color:#666;border-top:.4pt solid #ddd;background:#fff;}
-      .ps-header{background:#0a0a0a!important;color:#fff;padding:9mm 16mm 8mm;display:flex;align-items:center;justify-content:space-between;gap:10mm;-webkit-print-color-adjust:exact;print-color-adjust:exact;border-bottom:1.2mm solid #1400FF;}
-      .ps-header img{height:13mm;width:auto;display:block;}
+      .ps-header{background:#0a0a0a!important;color:#fff;padding:7mm 16mm 6mm;display:flex;align-items:center;justify-content:space-between;gap:10mm;-webkit-print-color-adjust:exact;print-color-adjust:exact;border-bottom:1.2mm solid #1400FF;}
+      .ps-header img{height:12mm;width:auto;display:block;}
       .ps-header-r{text-align:right;}
       .ps-header h1{margin:0 0 1.5mm;font-size:16pt;font-weight:700;letter-spacing:-.01em;color:#fff;}
       .ps-meta{font-size:8pt;color:#9a9a9a;line-height:1.6;}
       .ps-meta b{color:#00CFFF;font-weight:500;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-      .ps-body{padding:7mm 16mm 0;}
-      .ps-intro{font-size:9pt;color:#555;margin:0 0 5mm;}
+      .ps-body{padding:5.5mm 16mm 0;}
+      .ps-intro{font-size:9pt;color:#555;margin:0 0 4mm;}
       .ps-h{font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:#1400FF;font-weight:700;margin:0 0 2.2mm;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-      .ps-table{width:100%;border-collapse:collapse;break-inside:avoid;page-break-inside:avoid;margin-bottom:5mm;}
+      .ps-table{width:100%;border-collapse:collapse;break-inside:avoid;page-break-inside:avoid;margin-bottom:4mm;}
       .ps-table th{text-align:left;font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:#888;font-weight:500;padding:0 2mm 2mm;border-bottom:.8pt solid #1400FF;}
-      .ps-table td{padding:2.4mm 2mm;border-bottom:.4pt solid #e3e3e3;vertical-align:top;}
-      .ps-table .ps-grp td{padding-top:3.2mm;font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:#1400FF;font-weight:700;border-bottom:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      .ps-table td{padding:1.9mm 2mm;border-bottom:.4pt solid #e3e3e3;vertical-align:top;}
+      .ps-table .ps-grp td{padding-top:2.6mm;font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:#1400FF;font-weight:700;border-bottom:0;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       .ps-table .c-item{width:30%;font-weight:700;}
       .ps-table .c-val{width:22mm;text-align:right;white-space:nowrap;font-weight:700;}
       .ps-table .c-desc{color:#555;font-size:8.5pt;}
-      .ps-totals{break-inside:avoid;page-break-inside:avoid;border:.8pt solid #1400FF;border-radius:2mm;padding:4mm 5mm;display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:4mm;align-items:end;margin-bottom:2.5mm;}
+      .ps-totals{break-inside:avoid;page-break-inside:avoid;border:.8pt solid #1400FF;border-radius:2mm;padding:4mm 5mm;display:grid;grid-template-columns:1.05fr .7fr 1fr 1.05fr 1.35fr;gap:3.5mm;align-items:end;margin-bottom:2.5mm;}
+      .ps-tv--disc{color:#1400FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      .ps-tsub{font-size:7.5pt;color:#777;margin-top:.6mm;}
       .ps-tl{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-bottom:1mm;}
       .ps-tv{font-size:12pt;font-weight:700;}
       .ps-tv--big{font-size:17pt;color:#1400FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-      .ps-pay{font-size:8pt;color:#666;margin:0 0 6mm;}
+      .ps-pay{font-size:8pt;color:#666;margin:0 0 5mm;}
       .ps-cols{display:grid;grid-template-columns:1fr 1fr;gap:5mm 9mm;}
-      .ps-block{break-inside:avoid;page-break-inside:avoid;margin-bottom:4mm;}
+      .ps-block{break-inside:avoid;page-break-inside:avoid;margin-bottom:3.5mm;}
       .ps-block ul{margin:0;padding:0;list-style:none;}
-      .ps-block li{position:relative;padding-left:3.5mm;font-size:8.5pt;color:#333;margin-bottom:.9mm;}
+      .ps-block li{position:relative;padding-left:3.5mm;font-size:8.5pt;color:#333;margin-bottom:.6mm;}
       .ps-block li::before{content:'';position:absolute;left:0;top:1.9mm;width:1.4mm;height:1.4mm;border-radius:50%;background:#1400FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       
     }
@@ -502,16 +537,35 @@
         <div class="av-block-title"><h4>Institucional e eventos</h4></div>
         <div class="h-grid" id="h-grid"></div>
       </div>
+
+      <% if (proposal.playlists && proposal.playlists.length) { %>
+      <div class="pl-banner">
+        <div class="pl-text">
+          <p class="pl-tag"><span class="hero-badge-dot"></span>Quer ver mais?</p>
+          <p class="pl-title">Assista às playlists completas no YouTube</p>
+        </div>
+        <div class="pl-links">
+          <% proposal.playlists.forEach(pl=>{ %>
+            <a class="pl-link" href="<%= pl.url %>" target="_blank" rel="noopener">
+              <span class="pl-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 3.5v17L20 12z" fill="#0a0a0a"/></svg></span>
+              <span><strong><%= pl.name %></strong><small><%= pl.desc %></small></span>
+              <span class="pl-arrow" aria-hidden="true">↗</span>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
     </div>
 
     <div class="port-section reveal">
       <div class="port-heading">
         <div><div class="port-tag">Portfólio</div><h3>Fotografia</h3></div>
-        <div class="port-desc">Captação profissional em 4k —<br>alimentação e produto.</div>
+        <div class="port-desc">Captação profissional em 4k — alimentação,<br>produto e institucional.</div>
       </div>
       <div class="filter-bar" id="photo-filter-bar">
         <button class="filter-btn" data-pcat="all">Todos</button>
         <% if(assets.fotografiaAlimentacao.length){%><button class="filter-btn active" data-pcat="alimentacao">Alimentação</button><%}%>
+        <% if(assets.fotografiaInstitucional.length){%><button class="filter-btn" data-pcat="institucional">Institucional</button><%}%>
         <% if(assets.fotografiaProduto.length){%><button class="filter-btn" data-pcat="produto">Produto</button><%}%>
       </div>
       <div id="photo-gallery"></div>
@@ -617,9 +671,19 @@
             <button type="button" id="ep-plus" aria-label="Mais um episódio">+</button>
           </div>
         </div>
+        <p class="disc-hint" id="disc-hint"></p>
+        <div class="sum-row">
+          <span class="sum-label">Subtotal</span>
+          <span class="sum-val" id="sum-subtotal">—</span>
+        </div>
+        <div class="sum-row sum-disc" id="sum-disc-row">
+          <span class="sum-label">Desconto <span class="disc-chip" id="disc-chip"></span></span>
+          <span class="sum-val" id="sum-disc">—</span>
+        </div>
         <div class="sum-total">
           <span class="sum-label">Total da série</span>
           <span class="sum-total-val" id="sum-total">—</span>
+          <span class="sum-per" id="sum-per"></span>
         </div>
         <p class="sum-pay"><%= proposal.budget.paymentNote %></p>
         <button type="button" class="btn-primary" id="btn-pdf">
@@ -761,7 +825,7 @@
     { url: "https://youtu.be/Y5jq7w22POc", formato: "horizontal", legenda: "BN Hall · Pós-venda", preview: "" }
   ];
 
-  // Zoom aplicado às imagens hqdefault/hq1-3 nos cards verticais.
+  // Zoom aplicado às thumbs 4:3/16:9 (maxres1-3, sd, hq) nos cards verticais.
   // O object-fit:cover já corta as laterais desfocadas dos Shorts; 1.05 só garante as bordas.
   // Para cortar mais, aumente (ex.: 1.35).
   const HQ_ZOOM_VERTICAL = 1.05;
@@ -779,8 +843,9 @@
     approveWhatsapp: proposal.cta.approveWhatsapp,
   }) %>;
   const FOTOS = {
-    alimentacao: <%- JSON.stringify(assets.fotografiaAlimentacao) %>,
-    produto:     <%- JSON.stringify(assets.fotografiaProduto) %>,
+    alimentacao:   <%- JSON.stringify(assets.fotografiaAlimentacao) %>,
+    institucional: <%- JSON.stringify(assets.fotografiaInstitucional) %>,
+    produto:       <%- JSON.stringify(assets.fotografiaProduto) %>,
   };
 
   // ── Scroll reveal ──────────────────────────────
@@ -868,8 +933,8 @@
   async function loadCover(fig){
     const id = fig._id;
     const chain = fig._vertical
-      ? [['oar2',false],['hqdefault',true],['hq1',true]]
-      : [['maxresdefault',false],['hqdefault',false],['hq1',false]];
+      ? [['oar2',false],['maxres1',true],['sddefault',true],['hqdefault',true]]
+      : [['maxresdefault',false],['sddefault',false],['hqdefault',false]];
     for (const [name, zoom] of chain) {
       const ok = await loadImg(thumb(id, name));
       if (ok) {
@@ -881,7 +946,7 @@
     return false;
   }
 
-  // Prévia: MP4 (se houver) ou frames automáticos hq1/hq2/hq3 em crossfade.
+  // Prévia: MP4 (se houver) ou frames automáticos (1/2/3) em crossfade.
   async function preparePreview(fig){
     if (fig._previewReady) return fig._previewReady;
     fig._previewReady = (async ()=>{
@@ -895,7 +960,9 @@
         fig._video = vid;
         return;
       }
-      const srcs = (await Promise.all(['hq1','hq2','hq3'].map(n=>loadImg(thumb(fig._id,n))))).filter(Boolean);
+      // Frames em HD (1280px) quando existirem; senão 640px; senão 480px.
+      const frameSrc = async n => (await loadImg(thumb(fig._id,'maxres'+n))) || (await loadImg(thumb(fig._id,'sd'+n))) || (await loadImg(thumb(fig._id,'hq'+n)));
+      const srcs = (await Promise.all([1,2,3].map(frameSrc))).filter(Boolean);
       fig._frames = srcs.map(src=>{
         const im = document.createElement('img');
         im.className = 'vcard-frame'; im.alt = ''; im.src = src;
@@ -940,7 +1007,7 @@
     if (playingCard) resetCard(playingCard);
     stopPreview(fig);
     const ifr = document.createElement('iframe');
-    ifr.src = `https://www.youtube-nocookie.com/embed/${fig._id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
+    ifr.src = `https://www.youtube-nocookie.com/embed/${fig._id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&vq=hd1080`;
     ifr.title = fig._v.legenda || 'Vídeo HUP Creative';
     ifr.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     ifr.allowFullscreen = true;
@@ -1015,11 +1082,12 @@
   //  FOTOGRAFIA — ticker montado via JS (cada foto 1x no HTML; o clone do loop é gerado aqui)
   // ════════════════════════════════════════════════
   FOTOS.all = (()=>{
-    const out = [], a = FOTOS.alimentacao, b = FOTOS.produto;
-    for (let i = 0; i < Math.max(a.length, b.length); i++) { if (a[i]) out.push(a[i]); if (b[i]) out.push(b[i]); }
+    const out = [], cats = [FOTOS.alimentacao, FOTOS.institucional, FOTOS.produto];
+    const max = Math.max(...cats.map(c=>c.length));
+    for (let i = 0; i < max; i++) cats.forEach(c=>{ if (c[i]) out.push(c[i]); });
     return out;
   })();
-  const SPEEDS = { all:[187,210,152], alimentacao:[105,88,128], produto:[117,140,99] };
+  const SPEEDS = { all:[187,210,152], alimentacao:[105,88,128], institucional:[128,111,152], produto:[117,140,99] };
   const gallery = document.getElementById('photo-gallery');
   let currentFotos = [];
 
@@ -1091,9 +1159,15 @@
     on: Object.fromEntries(ITEMS.map(it=>[it.id, it.fixed ? true : !!it.on])),
     episodes: EP.default,
   };
-  const activeItems = () => ITEMS.filter(it=>state.on[it.id]);
-  const perEpisode  = () => activeItems().reduce((s,it)=>s + it.value, 0);
-  const seriesTotal = () => perEpisode() * state.episodes;
+  // Desconto por quantidade de episódios (maior faixa atingida vale)
+  const DISCOUNTS = (PROPOSAL.budget.discounts || []).slice().sort((a,b)=>b.min - a.min);
+  const activeItems   = () => ITEMS.filter(it=>state.on[it.id]);
+  const perEpisode    = () => activeItems().reduce((s,it)=>s + it.value, 0);
+  const subtotal      = () => perEpisode() * state.episodes;
+  const discountPct   = () => (DISCOUNTS.find(d=>state.episodes >= d.min) || {pct:0}).pct;
+  const discountValue = () => Math.round(subtotal() * discountPct()) / 100;
+  const seriesTotal   = () => subtotal() - discountValue();
+  const nextDiscount  = () => DISCOUNTS.filter(d=>d.min > state.episodes).sort((a,b)=>a.min - b.min)[0];
 
   document.querySelectorAll('[data-money]').forEach(el=>{ el.textContent = money(+el.dataset.money); });
 
@@ -1103,6 +1177,13 @@
   const btnMinus  = document.getElementById('ep-minus');
   const btnPlus   = document.getElementById('ep-plus');
   const btnWa     = document.getElementById('btn-wa');
+  const elSubtotal = document.getElementById('sum-subtotal');
+  const elDisc     = document.getElementById('sum-disc');
+  const elDiscRow  = document.getElementById('sum-disc-row');
+  const elChip     = document.getElementById('disc-chip');
+  const elHint     = document.getElementById('disc-hint');
+  const elPer      = document.getElementById('sum-per');
+  let shownPct = null;
   let shownTotal = null, countRaf = null;
 
   function animateTotal(to){
@@ -1133,6 +1214,7 @@
       '',
       `Valor por episódio: ${money(perEpisode())}`,
       `Episódios: ${state.episodes}`,
+      ...(discountPct() ? [`Subtotal: ${money(subtotal())}`, `Desconto (${discountPct()}%): -${money(discountValue())}`] : []),
       `Total da série: ${money(seriesTotal())}`,
     ];
     return lines.join('\n');
@@ -1149,6 +1231,21 @@
     elCount.textContent = state.episodes;
     btnMinus.disabled = state.episodes <= EP.min;
     btnPlus.disabled  = state.episodes >= EP.max;
+    const pct = discountPct(), next = nextDiscount();
+    elSubtotal.textContent = money(subtotal());
+    elDisc.textContent = pct ? '−' + money(discountValue()) : 'Sem desconto';
+    elDiscRow.classList.toggle('none', !pct);
+    elChip.textContent = '−' + pct + '%';
+    if (shownPct !== null && pct !== shownPct && pct) { elChip.classList.remove('pop'); void elChip.offsetWidth; elChip.classList.add('pop'); }
+    shownPct = pct;
+    if (next) {
+      const falta = next.min - state.episodes;
+      elHint.textContent = `+${falta} episódio${falta > 1 ? 's' : ''} e o desconto ${pct ? 'sobe' : 'vai'} para ${next.pct}%.`;
+    } else {
+      elHint.textContent = `Desconto máximo de ${pct}% aplicado.`;
+    }
+    elHint.classList.toggle('max', !next);
+    elPer.textContent = pct ? `Equivale a ${money(seriesTotal() / state.episodes)} por episódio` : '';
     animateTotal(seriesTotal());
     btnWa.href = PROPOSAL.approveWhatsapp + '?text=' + encodeURIComponent(waMessage());
   }
@@ -1209,7 +1306,9 @@
             <div class="ps-totals">
               <div><div class="ps-tl">Valor por episódio</div><div class="ps-tv">${money(perEpisode())}</div></div>
               <div><div class="ps-tl">Episódios</div><div class="ps-tv">${state.episodes}</div></div>
-              <div><div class="ps-tl">Total da série</div><div class="ps-tv ps-tv--big">${money(seriesTotal())}</div></div>
+              <div><div class="ps-tl">Subtotal</div><div class="ps-tv">${money(subtotal())}</div></div>
+              <div><div class="ps-tl">Desconto${discountPct() ? ' ' + discountPct() + '%' : ''}</div><div class="ps-tv ps-tv--disc">${discountPct() ? '−' + money(discountValue()) : '—'}</div></div>
+              <div><div class="ps-tl">Total da série</div><div class="ps-tv ps-tv--big">${money(seriesTotal())}</div>${discountPct() ? `<div class="ps-tsub">${money(seriesTotal() / state.episodes)} por episódio</div>` : ''}</div>
             </div>
             <p class="ps-pay">${esc(PROPOSAL.budget.paymentNote)}</p>
             <div class="ps-cols">
