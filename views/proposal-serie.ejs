@@ -311,11 +311,12 @@
     .disc-hint{margin:-.35rem 0 .2rem;font-size:.72rem;line-height:1.5;color:var(--cyan);}
     .disc-hint.max{color:#6b7280;}
     .sum-disc .sum-val{color:var(--cyan);}
-    .sum-disc.none .sum-val{color:#555;}
+    .sum-disc-only.none{display:none;}
+    .sum-disc-only{animation:disc-in 300ms ease-out;}
+    @keyframes disc-in{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
     .disc-chip{display:inline-block;margin-left:.35rem;padding:.12rem .45rem;border-radius:3px;background:var(--blue);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.06em;vertical-align:1px;}
     .disc-chip.pop{animation:chip-pop 350ms ease-out;}
     @keyframes chip-pop{0%{transform:scale(.6);opacity:.3;}70%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
-    .sum-disc.none .disc-chip{display:none;}
     .sum-per{display:block;margin-top:.5rem;font-size:.74rem;color:#888;}
     .sum-pay{font-size:.76rem;color:#777;line-height:1.6;margin:1.1rem 0 1.4rem;}
     .btn-primary,.btn-secondary{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;font-family:inherit;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.95rem 1rem;border-radius:4px;cursor:pointer;transition:filter 200ms,transform 200ms,background 200ms,border-color 200ms;}
@@ -394,6 +395,7 @@
       .ps-table .c-val{width:22mm;text-align:right;white-space:nowrap;font-weight:700;}
       .ps-table .c-desc{color:#555;font-size:8.5pt;}
       .ps-totals{break-inside:avoid;page-break-inside:avoid;border:.8pt solid #1400FF;border-radius:2mm;padding:4mm 5mm;display:grid;grid-template-columns:1.05fr .7fr 1fr 1.05fr 1.35fr;gap:3.5mm;align-items:end;margin-bottom:2.5mm;}
+      .ps-totals--nodisc{grid-template-columns:1fr 1fr 1.3fr;}
       .ps-tv--disc{color:#1400FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       .ps-tsub{font-size:7.5pt;color:#777;margin-top:.6mm;}
       .ps-tl{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-bottom:1mm;}
@@ -672,11 +674,11 @@
           </div>
         </div>
         <p class="disc-hint" id="disc-hint"></p>
-        <div class="sum-row">
+        <div class="sum-row sum-disc-only" id="sum-subtotal-row">
           <span class="sum-label">Subtotal</span>
           <span class="sum-val" id="sum-subtotal">—</span>
         </div>
-        <div class="sum-row sum-disc" id="sum-disc-row">
+        <div class="sum-row sum-disc sum-disc-only" id="sum-disc-row">
           <span class="sum-label">Desconto <span class="disc-chip" id="disc-chip"></span></span>
           <span class="sum-val" id="sum-disc">—</span>
         </div>
@@ -796,7 +798,7 @@
 </section>
 
 <footer style="border-top:1px solid #111;padding:2rem;text-align:center;color:#222;font-size:.72rem;letter-spacing:.06em;">
-  © <%= new Date().getFullYear() %> HUP Creative — hupcreative.cloud
+  © <%= new Date().getFullYear() %> HUP Creative — hup.com.br
 </footer>
 
 <!-- Bloco exclusivo para impressão (montado via JS) -->
@@ -1180,6 +1182,7 @@
   const elSubtotal = document.getElementById('sum-subtotal');
   const elDisc     = document.getElementById('sum-disc');
   const elDiscRow  = document.getElementById('sum-disc-row');
+  const elSubtotalRow = document.getElementById('sum-subtotal-row');
   const elChip     = document.getElementById('disc-chip');
   const elHint     = document.getElementById('disc-hint');
   const elPer      = document.getElementById('sum-per');
@@ -1233,8 +1236,9 @@
     btnPlus.disabled  = state.episodes >= EP.max;
     const pct = discountPct(), next = nextDiscount();
     elSubtotal.textContent = money(subtotal());
-    elDisc.textContent = pct ? '−' + money(discountValue()) : 'Sem desconto';
+    elDisc.textContent = '−' + money(discountValue());
     elDiscRow.classList.toggle('none', !pct);
+    elSubtotalRow.classList.toggle('none', !pct);
     elChip.textContent = '−' + pct + '%';
     if (shownPct !== null && pct !== shownPct && pct) { elChip.classList.remove('pop'); void elChip.offsetWidth; elChip.classList.add('pop'); }
     shownPct = pct;
@@ -1303,11 +1307,11 @@
               <thead><tr><th>Item</th><th>Descrição</th><th style="text-align:right">Valor</th></tr></thead>
               <tbody>${rows}</tbody>
             </table>
-            <div class="ps-totals">
+            <div class="ps-totals${discountPct() ? '' : ' ps-totals--nodisc'}">
               <div><div class="ps-tl">Valor por episódio</div><div class="ps-tv">${money(perEpisode())}</div></div>
               <div><div class="ps-tl">Episódios</div><div class="ps-tv">${state.episodes}</div></div>
-              <div><div class="ps-tl">Subtotal</div><div class="ps-tv">${money(subtotal())}</div></div>
-              <div><div class="ps-tl">Desconto${discountPct() ? ' ' + discountPct() + '%' : ''}</div><div class="ps-tv ps-tv--disc">${discountPct() ? '−' + money(discountValue()) : '—'}</div></div>
+              ${discountPct() ? `<div><div class="ps-tl">Subtotal</div><div class="ps-tv">${money(subtotal())}</div></div>
+              <div><div class="ps-tl">Desconto ${discountPct()}%</div><div class="ps-tv ps-tv--disc">−${money(discountValue())}</div></div>` : ''}
               <div><div class="ps-tl">Total da série</div><div class="ps-tv ps-tv--big">${money(seriesTotal())}</div>${discountPct() ? `<div class="ps-tsub">${money(seriesTotal() / state.episodes)} por episódio</div>` : ''}</div>
             </div>
             <p class="ps-pay">${esc(PROPOSAL.budget.paymentNote)}</p>
