@@ -308,8 +308,6 @@
     .sum-total{border-top:1px solid rgba(0,207,255,.25);margin-top:.2rem;padding-top:1.25rem;}
     .sum-total .sum-label{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);}
     .sum-total-val{display:block;margin-top:.45rem;font-size:clamp(2rem,4vw,2.5rem);font-weight:700;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(135deg,#fff 40%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .disc-hint{margin:-.35rem 0 .2rem;font-size:.72rem;line-height:1.5;color:var(--cyan);}
-    .disc-hint.max{color:#6b7280;}
     .sum-disc .sum-val{color:var(--cyan);}
     .sum-disc-only.none{display:none;}
     .sum-disc-only{animation:disc-in 300ms ease-out;}
@@ -673,7 +671,6 @@
             <button type="button" id="ep-plus" aria-label="Mais um episódio">+</button>
           </div>
         </div>
-        <p class="disc-hint" id="disc-hint"></p>
         <div class="sum-row sum-disc-only" id="sum-subtotal-row">
           <span class="sum-label">Subtotal</span>
           <span class="sum-val" id="sum-subtotal">—</span>
@@ -1169,7 +1166,6 @@
   const discountPct   = () => (DISCOUNTS.find(d=>state.episodes >= d.min) || {pct:0}).pct;
   const discountValue = () => Math.round(subtotal() * discountPct()) / 100;
   const seriesTotal   = () => subtotal() - discountValue();
-  const nextDiscount  = () => DISCOUNTS.filter(d=>d.min > state.episodes).sort((a,b)=>a.min - b.min)[0];
 
   document.querySelectorAll('[data-money]').forEach(el=>{ el.textContent = money(+el.dataset.money); });
 
@@ -1184,7 +1180,6 @@
   const elDiscRow  = document.getElementById('sum-disc-row');
   const elSubtotalRow = document.getElementById('sum-subtotal-row');
   const elChip     = document.getElementById('disc-chip');
-  const elHint     = document.getElementById('disc-hint');
   const elPer      = document.getElementById('sum-per');
   let shownPct = null;
   let shownTotal = null, countRaf = null;
@@ -1234,7 +1229,7 @@
     elCount.textContent = state.episodes;
     btnMinus.disabled = state.episodes <= EP.min;
     btnPlus.disabled  = state.episodes >= EP.max;
-    const pct = discountPct(), next = nextDiscount();
+    const pct = discountPct();
     elSubtotal.textContent = money(subtotal());
     elDisc.textContent = '−' + money(discountValue());
     elDiscRow.classList.toggle('none', !pct);
@@ -1242,13 +1237,6 @@
     elChip.textContent = '−' + pct + '%';
     if (shownPct !== null && pct !== shownPct && pct) { elChip.classList.remove('pop'); void elChip.offsetWidth; elChip.classList.add('pop'); }
     shownPct = pct;
-    if (next) {
-      const falta = next.min - state.episodes;
-      elHint.textContent = `+${falta} episódio${falta > 1 ? 's' : ''} e o desconto ${pct ? 'sobe' : 'vai'} para ${next.pct}%.`;
-    } else {
-      elHint.textContent = `Desconto máximo de ${pct}% aplicado.`;
-    }
-    elHint.classList.toggle('max', !next);
     elPer.textContent = pct ? `Equivale a ${money(seriesTotal() / state.episodes)} por episódio` : '';
     animateTotal(seriesTotal());
     btnWa.href = PROPOSAL.approveWhatsapp + '?text=' + encodeURIComponent(waMessage());
