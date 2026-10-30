@@ -272,8 +272,9 @@
     .budget-main{min-width:0;}
     .team{margin-top:2rem;}
     .team-tag{display:flex;align-items:center;gap:.5rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#777;margin:0 0 .9rem;}
-    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;}
     @media(max-width:700px){.team-grid{grid-template-columns:1fr;}}
+    .team-item[hidden]{display:none;}
     .team-item{background:var(--surface);border:1px solid #1e1e1e;border-left:3px solid var(--cyan);padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.3rem;}
     .team-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.02rem;color:#fff;text-decoration:none;}
     a.team-name:hover{color:var(--cyan);}
@@ -548,7 +549,7 @@
           <p class="team-tag"><span class="hero-badge-dot"></span>Equipe no set</p>
           <div class="team-grid">
             <% proposal.budget.team.forEach(m=>{ %>
-              <div class="team-item">
+              <div class="team-item"<% if (m.item) { %> data-team-item="<%= m.item %>"<% } %>>
                 <% if (m.url) { %><a class="team-name" href="<%= m.url %>" target="_blank" rel="noopener"><%= m.name %> ↗</a><% } else { %><span class="team-name"><%= m.name %></span><% } %>
                 <span class="team-role"><%= m.role %></span>
               </div>
@@ -1275,6 +1276,7 @@
       sw.setAttribute('aria-checked', state.on[it.id] ? 'true' : 'false');
       sw.closest('.brow').classList.toggle('off', !state.on[it.id]);
     });
+    document.querySelectorAll('[data-team-item]').forEach(el=>{ el.hidden = !state.on[el.dataset.teamItem]; });
     elEpisode.textContent = money(perEpisode());
     elCount.textContent = state.episodes;
     btnMinus.disabled = state.episodes <= EP.min;
@@ -1327,6 +1329,7 @@
       g.items.map(it=>`<tr><td class="c-item">${esc(it.name)}</td><td class="c-desc">${esc(it.short || '')}</td><td class="c-val">${money(it.value)}</td></tr>`).join('')
     ).join('');
     const li = arr => arr.map(x=>`<li>${esc(x)}</li>`).join('');
+    const team = (PROPOSAL.budget.team || []).filter(m=>!m.item || state.on[m.item]);
 
     printSheet.innerHTML = `
       <table class="ps-layout">
@@ -1340,7 +1343,7 @@
           </header>
           <div class="ps-body">
             <p class="ps-intro">${esc(PROPOSAL.subtitle)} · Orçamento por episódio</p>
-            ${(PROPOSAL.budget.team || []).length ? `<p class="ps-team"><b>Equipe no set:</b> ${PROPOSAL.budget.team.map(m=>`${esc(m.name)} <span>(${esc(m.short || m.role)})</span>`).join(' &nbsp;·&nbsp; ')}</p>` : ''}
+            ${team.length ? `<p class="ps-team"><b>Equipe no set:</b> ${team.map(m=>`${esc(m.name)} <span>(${esc(m.short || m.role)})</span>`).join(' &nbsp;·&nbsp; ')}</p>` : ''}
             <p class="ps-h">Itens por episódio</p>
             <table class="ps-table">
               <thead><tr><th>Item</th><th>Descrição</th><th style="text-align:right">Valor</th></tr></thead>

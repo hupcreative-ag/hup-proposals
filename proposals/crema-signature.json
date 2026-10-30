@@ -62,7 +62,8 @@
         "name": "Caio Diniz",
         "role": "Fotógrafo",
         "url": "https://www.instagram.com/caioexp1/",
-        "short": "fotografia"
+        "short": "fotografia",
+        "item": "foto"
       },
       {
         "name": "Produtora audiovisual",
@@ -132,7 +133,8 @@
             "desc": "Fotógrafo <a href=\"https://www.instagram.com/caioexp1/\" target=\"_blank\" rel=\"noopener\">Caio Diniz</a> no set durante a meia diária: retratos do chef, ingredientes, o gelato em destaque e fotos de produto com enquadramento comercial. Fotos tratadas, sem limite de quantidade.",
             "short": "Fotógrafo Caio Diniz na meia diária: chef, ingredientes, gelato e produto. Fotos tratadas, sem limite.",
             "value": 750,
-            "fixed": true
+            "fixed": false,
+            "on": true
           }
         ]
       }
