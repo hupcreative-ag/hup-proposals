@@ -80,7 +80,7 @@
             "name": "Edição e finalização",
             "desc": "Montagem e finalização de cada episódio: 1 filme principal vertical de 60 a 90 segundos, 1 teaser de 10 a 15 segundos e 2 a 4 cortes para Stories e Reels. Inclui legendas, trilha licenciada para redes sociais, correção de cor, tratamento de áudio e versões sem texto na tela.",
             "short": "Filme principal (60–90s), teaser (10–15s) e 2 a 4 cortes para Stories e Reels, com legendas, trilha licenciada, cor e áudio.",
-            "value": 1200,
+            "value": 1250,
             "fixed": true
           },
           {
@@ -117,7 +117,7 @@
             "name": "Capas dos vídeos",
             "desc": "4 capas com tipografia e arte no padrão visual da série, prontas para o feed e para os Reels.",
             "short": "4 capas no padrão visual da série.",
-            "value": 300,
+            "value": 250,
             "fixed": false,
             "on": true
           }
@@ -143,11 +143,11 @@
         "pct": 10
       },
       {
-        "min": 3,
+        "min": 4,
         "pct": 5
       }
     ],
-    "discountNote": "Com 3 ou 4 episódios, 5% de desconto. Com 5 ou mais, 10%."
+    "discountNote": "Com 4 episódios, 5% de desconto. Com 5 ou mais, 10%."
   },
   "equipment": [
     "1 câmera Sony Cinema Line FX2",
