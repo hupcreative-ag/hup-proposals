@@ -269,7 +269,8 @@
     @media(max-width:520px){.intro-btns{width:100%;flex-direction:column;}.intro-btn{width:100%;}}
 
     /* ── 07 Orçamento ── */
-    .team{margin-bottom:2rem;}
+    .budget-main{min-width:0;}
+    .team{margin-top:2rem;}
     .team-tag{display:flex;align-items:center;gap:.5rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#777;margin:0 0 .9rem;}
     .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
     @media(max-width:700px){.team-grid{grid-template-columns:1fr;}}
@@ -419,11 +420,11 @@
       .ps-tl{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-bottom:1mm;}
       .ps-tv{font-size:12pt;font-weight:700;}
       .ps-tv--big{font-size:17pt;color:#1400FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-      .ps-pay{font-size:8pt;color:#666;margin:0 0 5mm;}
+      .ps-pay{font-size:8pt;color:#666;margin:0 0 4mm;}
       .ps-cols{display:grid;grid-template-columns:1fr 1fr;gap:5mm 9mm;}
       .ps-block{break-inside:avoid;page-break-inside:avoid;margin-bottom:3.5mm;}
       .ps-block ul{margin:0;padding:0;list-style:none;}
-      .ps-block li{position:relative;padding-left:3.5mm;font-size:8.5pt;color:#333;margin-bottom:.6mm;}
+      .ps-block li{position:relative;padding-left:3.5mm;font-size:8.3pt;line-height:1.38;color:#333;margin-bottom:.5mm;}
       .ps-block li::before{content:'';position:absolute;left:0;top:1.9mm;width:1.4mm;height:1.4mm;border-radius:50%;background:#1400FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       
     }
@@ -516,21 +517,8 @@
       <h2 class="reveal">Orçamento por episódio</h2>
     </div>
 
-    <% if (proposal.budget.team && proposal.budget.team.length) { %>
-    <div class="team reveal">
-      <p class="team-tag"><span class="hero-badge-dot"></span>Equipe no set</p>
-      <div class="team-grid">
-        <% proposal.budget.team.forEach(m=>{ %>
-          <div class="team-item">
-            <% if (m.url) { %><a class="team-name" href="<%= m.url %>" target="_blank" rel="noopener"><%= m.name %> ↗</a><% } else { %><span class="team-name"><%= m.name %></span><% } %>
-            <span class="team-role"><%= m.role %></span>
-          </div>
-        <% }) %>
-      </div>
-    </div>
-    <% } %>
-
     <div class="budget-layout">
+      <div class="budget-main">
       <div class="btable reveal" role="table" aria-label="Orçamento por episódio">
         <div class="brow brow--head" role="row">
           <span role="columnheader">Item</span><span role="columnheader">Descrição</span><span role="columnheader" class="b-value">Valor</span><span role="columnheader" class="b-status">Status</span>
@@ -553,6 +541,21 @@
             <% if (it.after) { %><p class="b-note"><%= it.after %></p><% } %>
           <% }) %>
         <% }) %>
+      </div>
+
+        <% if (proposal.budget.team && proposal.budget.team.length) { %>
+        <div class="team reveal">
+          <p class="team-tag"><span class="hero-badge-dot"></span>Equipe no set</p>
+          <div class="team-grid">
+            <% proposal.budget.team.forEach(m=>{ %>
+              <div class="team-item">
+                <% if (m.url) { %><a class="team-name" href="<%= m.url %>" target="_blank" rel="noopener"><%= m.name %> ↗</a><% } else { %><span class="team-name"><%= m.name %></span><% } %>
+                <span class="team-role"><%= m.role %></span>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
       </div>
 
       <aside class="summary reveal" aria-live="polite">
@@ -657,7 +660,7 @@
     <div class="sec-head">
       <div class="sec-num reveal">07</div>
       <p class="label reveal">Para ficar claro</p>
-      <h2 class="reveal">Condições</h2>
+      <h2 class="reveal">Condições gerais</h2>
     </div>
     <ul class="cond-list reveal" style="max-width:860px;">
       <% proposal.conditions.forEach(c=>{
@@ -1337,7 +1340,7 @@
           </header>
           <div class="ps-body">
             <p class="ps-intro">${esc(PROPOSAL.subtitle)} · Orçamento por episódio</p>
-            ${(PROPOSAL.budget.team || []).length ? `<p class="ps-team"><b>Equipe no set:</b> ${PROPOSAL.budget.team.map(m=>`${esc(m.name)} <span>(${esc(m.role)})</span>`).join(' &nbsp;·&nbsp; ')}</p>` : ''}
+            ${(PROPOSAL.budget.team || []).length ? `<p class="ps-team"><b>Equipe no set:</b> ${PROPOSAL.budget.team.map(m=>`${esc(m.name)} <span>(${esc(m.short || m.role)})</span>`).join(' &nbsp;·&nbsp; ')}</p>` : ''}
             <p class="ps-h">Itens por episódio</p>
             <table class="ps-table">
               <thead><tr><th>Item</th><th>Descrição</th><th style="text-align:right">Valor</th></tr></thead>
@@ -1354,7 +1357,7 @@
             <div class="ps-cols">
               <div>
                 <div class="ps-block"><p class="ps-h">Entregáveis por episódio</p><ul>${li(PROPOSAL.deliverables)}</ul></div>
-                <div class="ps-block"><p class="ps-h">Condições</p><ul>${li(PROPOSAL.conditions)}</ul></div>
+                <div class="ps-block"><p class="ps-h">Condições gerais</p><ul>${li(PROPOSAL.conditions.filter(c=>!/^(Validade|Pagamento)\b/.test(c)))}</ul></div>
               </div>
               <div class="ps-block"><p class="ps-h">Equipamentos inclusos</p><ul>${li(PROPOSAL.equipment)}</ul></div>
             </div>

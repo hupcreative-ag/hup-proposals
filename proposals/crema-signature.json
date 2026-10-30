@@ -48,14 +48,27 @@
   },
   "budget": {
     "episodes": {
-      "default": 5,
+      "default": 1,
       "min": 1,
       "max": 10
     },
     "team": [
-      { "name": "José", "role": "HUP Creative · direção e acompanhamento no set" },
-      { "name": "Caio Diniz", "role": "Fotógrafo", "url": "https://www.instagram.com/caiodiniz1/" },
-      { "name": "Produtora audiovisual", "role": "Equipe de captação audiovisual" }
+      {
+        "name": "José",
+        "role": "HUP Creative · direção e acompanhamento no set",
+        "short": "HUP Creative"
+      },
+      {
+        "name": "Caio Diniz",
+        "role": "Fotógrafo",
+        "url": "https://www.instagram.com/caioexp1/",
+        "short": "fotografia"
+      },
+      {
+        "name": "Produtora audiovisual",
+        "role": "Equipe de captação audiovisual",
+        "short": "captação audiovisual"
+      }
     ],
     "paymentNote": "Pagamento por episódio: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
     "groups": [
@@ -65,23 +78,23 @@
           {
             "id": "edicao",
             "name": "Edição e finalização",
-            "desc": "1 filme principal vertical de 60 a 90 segundos, 1 teaser de 10 a 15 segundos e 2 a 4 cortes curtos para Stories e Reels. Inclui legendas, trilha licenciada para redes sociais, tratamento de cor e de áudio, e versões sem texto na tela.",
-            "short": "Filme principal (60–90s), teaser (10–15s) e 2 a 4 cortes, com legendas, trilha licenciada, cor e áudio.",
+            "desc": "Montagem e finalização de cada episódio: 1 filme principal vertical de 60 a 90 segundos, 1 teaser de 10 a 15 segundos e 2 a 4 cortes para Stories e Reels. Inclui legendas, trilha licenciada para redes sociais, correção de cor, tratamento de áudio e versões sem texto na tela.",
+            "short": "Filme principal (60–90s), teaser (10–15s) e 2 a 4 cortes para Stories e Reels, com legendas, trilha licenciada, cor e áudio.",
             "value": 1200,
             "fixed": true
           },
           {
             "id": "captacao",
             "name": "Captação audiovisual",
-            "desc": "Filmmaker com 1 câmera Sony Cinema Line FX2 (gravação em 4K, 10-bit), gimbal estabilizador, microfones sem fio Hollyland, gravador Zoom H5 e kit de iluminação LED. Meia diária de até 5h.",
-            "short": "Filmmaker com Sony FX2 (4K 10-bit), gimbal, áudio e luz. Meia diária de até 5h.",
-            "value": 1700,
+            "desc": "Filmmaker no set durante a meia diária de até 5h, gravando a entrevista, a cozinha e o processo do chef. Equipamento: câmera Sony Cinema Line FX2 (4K, 10-bit), gimbal estabilizador, microfones sem fio Hollyland, gravador Zoom H5 e kit de iluminação LED.",
+            "short": "Filmmaker na meia diária de até 5h, com Sony FX2 (4K 10-bit), gimbal, áudio sem fio e luz LED.",
+            "value": 1850,
             "fixed": true
           },
           {
             "id": "cam-fixa",
             "name": "Câmera adicional fixa",
-            "desc": "Segunda Sony FX2 em tripé no plano da entrevista, enquanto a câmera principal filma em movimento. Operada pelo mesmo filmmaker.",
+            "desc": "Segunda Sony FX2 fixa em tripé no plano da entrevista, enquanto a câmera principal grava em movimento. Dá mais opções de corte na edição, com o mesmo filmmaker.",
             "short": "Segunda Sony FX2 em tripé no plano da entrevista, operada pelo mesmo filmmaker.",
             "value": 650,
             "fixed": false,
@@ -91,7 +104,7 @@
           {
             "id": "cam-filmmaker",
             "name": "Câmera adicional com segundo filmmaker",
-            "desc": "Segunda Sony FX2 operada por um filmmaker dedicado: uma câmera parada e outra em movimento, com dois olhares sobre o mesmo set.",
+            "desc": "Segunda Sony FX2 com um filmmaker dedicado: uma câmera cuida da entrevista e a outra acompanha o chef em movimento. Dois olhares sobre o mesmo set.",
             "short": "Segunda Sony FX2 com filmmaker dedicado: dois olhares sobre o mesmo set.",
             "value": 1000,
             "fixed": false,
@@ -102,7 +115,7 @@
           {
             "id": "capas",
             "name": "Capas dos vídeos",
-            "desc": "4 capas com tipografia e arte no padrão visual da série.",
+            "desc": "4 capas com tipografia e arte no padrão visual da série, prontas para o feed e para os Reels.",
             "short": "4 capas no padrão visual da série.",
             "value": 300,
             "fixed": false,
@@ -116,7 +129,7 @@
           {
             "id": "foto",
             "name": "Fotografia profissional",
-            "desc": "Fotógrafo <a href=\"https://www.instagram.com/caiodiniz1/\" target=\"_blank\" rel=\"noopener\">Caio Diniz</a> durante a meia diária: retratos do chef, ingredientes, gelato em destaque e imagens de produto com enquadramento comercial. Fotos tratadas, sem limite de quantidade.",
+            "desc": "Fotógrafo <a href=\"https://www.instagram.com/caioexp1/\" target=\"_blank\" rel=\"noopener\">Caio Diniz</a> no set durante a meia diária: retratos do chef, ingredientes, o gelato em destaque e fotos de produto com enquadramento comercial. Fotos tratadas, sem limite de quantidade.",
             "short": "Fotógrafo Caio Diniz na meia diária: chef, ingredientes, gelato e produto. Fotos tratadas, sem limite.",
             "value": 750,
             "fixed": true
@@ -166,10 +179,12 @@
   ],
   "conditions": [
     "Validade da proposta: 13/11/2026",
-    "Captação em meia diária de até 5h, em Salvador",
-    "Seleção, convite e agendamento dos chefs ficam por conta da Crema",
-    "Não incluso: pesquisa e roteiro, produção do gelato e ingredientes, termo de uso de imagem dos chefs",
-    "2 rodadas de ajuste por peça; ajustes extras orçados à parte"
+    "Pagamento: por episódio, 50% na confirmação da data de captação e 50% na entrega, via Pix ou boleto",
+    "Captação: meia diária de até 5h por episódio, em Salvador. Horas extras e gravações fora da cidade são orçadas à parte",
+    "Ajustes: 2 rodadas de ajuste por peça. Ajustes extras são orçados à parte",
+    "Por conta da Crema: seleção, convite e agendamento dos chefs, o gelato e os ingredientes, e o termo de uso de imagem dos chefs",
+    "Não incluso: pesquisa e roteiro dos episódios",
+    "Uso das peças: trilhas licenciadas para redes sociais. Outros usos, como TV ou mídia externa, são combinados à parte"
   ],
   "cta": {
     "meetingLink": "https://wa.me/5571993386304",
