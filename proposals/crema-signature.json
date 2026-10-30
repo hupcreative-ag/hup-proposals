@@ -55,8 +55,8 @@
     "team": [
       {
         "name": "José",
-        "role": "HUP Creative · direção e acompanhamento no set",
-        "short": "HUP Creative"
+        "role": "HUP Creative · filmmaker: grava e edita os episódios",
+        "short": "HUP Creative, captação e edição"
       },
       {
         "name": "Caio Diniz",
@@ -66,9 +66,9 @@
         "item": "foto"
       },
       {
-        "name": "Produtora audiovisual",
-        "role": "Equipe de captação audiovisual",
-        "short": "captação audiovisual"
+        "name": "Produtora assistente",
+        "role": "Cuida da produção no set: organiza o cronograma do dia, prepara o espaço e acompanha o chef durante a gravação",
+        "short": "apoio de produção no set"
       }
     ],
     "paymentNote": "Pagamento por episódio: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
