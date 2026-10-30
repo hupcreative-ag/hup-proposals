@@ -28,6 +28,8 @@
     "Experiência de Marca"
   ],
   "project": {
+    "hello": "Olá, equipe Crema!",
+    "next": "Logo abaixo está o orçamento. Escolha os opcionais e a quantidade de episódios, e o valor se atualiza na hora.",
     "text": "Uma série documental para as redes sociais da Crema. Cada episódio apresenta um chef de Salvador, sua história e seu processo criativo, e termina num sabor de gelato exclusivo criado com a Crema. São 5 chefs, com 1 episódio publicado por mês.",
     "cards": [
       {

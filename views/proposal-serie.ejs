@@ -257,6 +257,16 @@
     .fact:hover{border-color:var(--blue);}
     .fact-big{font-family:'Poppins',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:var(--cyan);min-width:3.2rem;}
     .fact-label{font-size:.88rem;color:#bbb;line-height:1.45;}
+    .intro-hello{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:#fff !important;margin:0 0 .75rem !important;}
+    .intro-ctas{margin-top:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap;}
+    .intro-next{color:#777;font-size:.92rem;line-height:1.7;margin:0;max-width:520px;}
+    .intro-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
+    .intro-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:inherit;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.95rem 1.6rem;border-radius:4px;transition:filter 200ms,transform 200ms,background 200ms,border-color 200ms,color 200ms;}
+    .intro-btn--primary{background:var(--blue);border:1px solid var(--blue);color:#fff;box-shadow:0 0 24px rgba(20,0,255,.35);}
+    .intro-btn--primary:hover{filter:brightness(1.2);transform:translateY(2px);}
+    .intro-btn--ghost{background:transparent;border:1px solid rgba(0,207,255,.45);color:var(--cyan);}
+    .intro-btn--ghost:hover{background:rgba(0,207,255,.08);border-color:var(--cyan);}
+    @media(max-width:520px){.intro-btns{width:100%;flex-direction:column;}.intro-btn{width:100%;}}
 
     /* ── 07 Orçamento ── */
     .budget-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:2rem;align-items:start;}
@@ -454,180 +464,44 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     02. QUEM SOMOS
+     02. APRESENTAÇÃO DO PROJETO
 ════════════════════════════════════════════════ -->
-<section class="section" style="border-top:1px solid #111;overflow:hidden;">
-  <div class="container">
-    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
-      <div>
-        <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;">
-          <div class="sec-num reveal">02</div>
-          <p class="label reveal" style="margin:0;">Quem somos</p>
-        </div>
-        <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 2rem;line-height:1.1;">
-          We Make it<br><span style="color:var(--cyan);">Happen!</span>
-        </h2>
-        <div style="color:#aaa;line-height:1.9;font-size:.92rem;">
-          <p class="reveal" style="margin:0 0 1.25rem;">Somos a nova geração que não conhece o mundo sem internet e acredita na sinergia entre on e off. Somos ligados no 220, múltiplos e simultâneos.</p>
-          <p class="reveal" style="margin:0 0 1.25rem;">A HUP nasceu da necessidade em saber se comunicar numa realidade cada vez mais dinâmica e multimidiática, unindo estratégia e criatividade na personalidade de cada marca.</p>
-          <p class="reveal" style="margin:0;"><%= proposal.aboutLast %></p>
-        </div>
-      </div>
-      <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
-        <% const holoSrc = assets.logoHup.find(l=>l.toLowerCase().includes('holo')) || assets.logoHup[0]; %>
-        <img class="holo-logo" src="<%= holoSrc %>" alt="HUP Holográfica" style="max-width:340px;width:100%;height:auto;">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
-     03. SERVIÇOS
-════════════════════════════════════════════════ -->
-<section class="section">
+<section class="section" id="projeto" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">03</div>
-      <p class="label reveal">O que fazemos</p>
-      <h2 class="reveal">Serviços</h2>
-    </div>
-    <div class="services-grid reveal">
-      <% proposal.services.forEach(s=>{ %>
-        <div class="service-item">
-          <div class="service-arrow" style="margin-bottom:.75rem;line-height:1;">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="4" y1="18" x2="18" y2="4" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round"/>
-              <polyline points="8,4 18,4 18,14" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-          </div>
-          <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;"><%= s %></div>
-        </div>
-      <% }) %>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
-     04. PORTFÓLIO — Audiovisual e Fotografia
-════════════════════════════════════════════════ -->
-<section class="section" style="border-top:1px solid #111;">
-  <div class="container">
-    <div class="sec-head" style="margin-bottom:3.5rem;">
-      <div class="sec-num reveal">04</div>
-      <p class="label reveal">Portfólio</p>
-      <h2 class="reveal">Nosso Trabalho</h2>
-    </div>
-
-    <div class="port-section reveal">
-      <div class="port-heading">
-        <div><div class="port-tag">Portfólio</div><h3>Audiovisual</h3></div>
-        <div class="port-desc">Produção completa, da captação à edição —<br>para redes sociais e tela grande.</div>
-      </div>
-
-      <div class="av-block">
-        <div class="av-block-title"><h4>Para redes sociais</h4></div>
-        <div class="v-carousel">
-          <button class="v-arrow v-arrow--prev" id="v-prev" aria-label="Vídeos anteriores">‹</button>
-          <div class="v-track" id="v-track"></div>
-          <button class="v-arrow v-arrow--next" id="v-next" aria-label="Próximos vídeos">›</button>
-        </div>
-      </div>
-
-      <div class="av-block">
-        <div class="av-block-title"><h4>Institucional e eventos</h4></div>
-        <div class="h-grid" id="h-grid"></div>
-      </div>
-
-      <% if (proposal.playlists && proposal.playlists.length) { %>
-      <div class="pl-banner">
-        <div class="pl-text">
-          <p class="pl-tag"><span class="hero-badge-dot"></span>Quer ver mais?</p>
-          <p class="pl-title">Assista às playlists completas no YouTube</p>
-        </div>
-        <div class="pl-links">
-          <% proposal.playlists.forEach(pl=>{ %>
-            <a class="pl-link" href="<%= pl.url %>" target="_blank" rel="noopener">
-              <span class="pl-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 3.5v17L20 12z" fill="#0a0a0a"/></svg></span>
-              <span><strong><%= pl.name %></strong><small><%= pl.desc %></small></span>
-              <span class="pl-arrow" aria-hidden="true">↗</span>
-            </a>
-          <% }) %>
-        </div>
-      </div>
-      <% } %>
-    </div>
-
-    <div class="port-section reveal">
-      <div class="port-heading">
-        <div><div class="port-tag">Portfólio</div><h3>Fotografia</h3></div>
-        <div class="port-desc">Captação profissional em 4k — alimentação,<br>produto e institucional.</div>
-      </div>
-      <div class="filter-bar" id="photo-filter-bar">
-        <button class="filter-btn" data-pcat="all">Todos</button>
-        <% if(assets.fotografiaAlimentacao.length){%><button class="filter-btn active" data-pcat="alimentacao">Alimentação</button><%}%>
-        <% if(assets.fotografiaInstitucional.length){%><button class="filter-btn" data-pcat="institucional">Institucional</button><%}%>
-        <% if(assets.fotografiaProduto.length){%><button class="filter-btn" data-pcat="produto">Produto</button><%}%>
-      </div>
-      <div id="photo-gallery"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════
-     05. CLIENTES
-════════════════════════════════════════════════ -->
-<% if (assets.logosClientes.length) { %>
-<section class="section clients-section">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-num reveal">05</div>
-      <p class="label reveal" style="margin-bottom:.4rem;">Confiança</p>
-      <h2 class="reveal" style="margin-bottom:.5rem;">Clientes</h2>
-      <p class="reveal" style="color:#666;font-size:.95rem;margin:0;max-width:560px;">Marcas que confiam na HUP para uma solução 360° — da estratégia digital à produção criativa.</p>
-    </div>
-    <div class="logo-grid reveal">
-      <%
-        const _lastKeys = ['flat cambuci','cmsa','gustavo sisant'];
-        const _sorted = assets.logosClientes.slice().sort((a,b)=>{
-          const aL=_lastKeys.some(k=>a.toLowerCase().includes(k));
-          const bL=_lastKeys.some(k=>b.toLowerCase().includes(k));
-          return aL===bL?0:aL?1:-1;
-        });
-      %>
-      <% _sorted.forEach((logo,i)=>{ %>
-        <div class="logo-item"><img src="<%= logo %>" alt="Cliente <%= i+1 %>" loading="lazy"></div>
-      <% }) %>
-    </div>
-  </div>
-</section>
-<% } %>
-
-<!-- ════════════════════════════════════════════════
-     06. O PROJETO
-════════════════════════════════════════════════ -->
-<section class="section" style="border-top:1px solid #111;">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-num reveal">06</div>
+      <div class="sec-num reveal">02</div>
       <p class="label reveal">Proposta para <%= proposal.client.company %></p>
       <h2 class="reveal">O projeto</h2>
     </div>
-    <div class="proposal-intro reveal"><p><%= proposal.project.text %></p></div>
+    <div class="proposal-intro reveal">
+      <% if (proposal.project.hello) { %><p class="intro-hello"><%= proposal.project.hello %></p><% } %>
+      <p><%= proposal.project.text %></p>
+    </div>
     <div class="facts reveal">
       <% proposal.project.cards.forEach(c=>{ %>
         <div class="fact"><span class="fact-big"><%= c.big %></span><span class="fact-label"><%= c.label %></span></div>
       <% }) %>
     </div>
+    <div class="intro-ctas reveal">
+      <% if (proposal.project.next) { %><p class="intro-next"><%= proposal.project.next %></p><% } %>
+      <div class="intro-btns">
+        <a href="#orcamento" class="intro-btn intro-btn--primary">
+          Ver orçamento
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M6.5 1.5v10M2 8l4.5 4.5L11 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#agencia" class="intro-btn intro-btn--ghost">Conhecer a HUP</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════
-     07. ORÇAMENTO POR EPISÓDIO
+     03. ORÇAMENTO POR EPISÓDIO
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;" id="orcamento">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">07</div>
+      <div class="sec-num reveal">03</div>
       <p class="label reveal">Monte o seu episódio</p>
       <h2 class="reveal">Orçamento por episódio</h2>
     </div>
@@ -696,12 +570,12 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     08. EQUIPAMENTOS INCLUSOS
+     04. EQUIPAMENTOS INCLUSOS
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">08</div>
+      <div class="sec-num reveal">04</div>
       <p class="label reveal">No set</p>
       <h2 class="reveal">Equipamentos inclusos</h2>
     </div>
@@ -718,12 +592,12 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     09. O QUE A EDIÇÃO INCLUI
+     05. O QUE A EDIÇÃO INCLUI
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">09</div>
+      <div class="sec-num reveal">05</div>
       <p class="label reveal">Pós-produção</p>
       <h2 class="reveal">O que a edição inclui</h2>
     </div>
@@ -736,12 +610,12 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     10. ENTREGÁVEIS POR EPISÓDIO
+     06. ENTREGÁVEIS POR EPISÓDIO
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">10</div>
+      <div class="sec-num reveal">06</div>
       <p class="label reveal">A cada episódio</p>
       <h2 class="reveal">Entregáveis por episódio</h2>
     </div>
@@ -752,12 +626,12 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
-     11. CONDIÇÕES
+     07. CONDIÇÕES
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">11</div>
+      <div class="sec-num reveal">07</div>
       <p class="label reveal">Para ficar claro</p>
       <h2 class="reveal">Condições</h2>
     </div>
@@ -770,6 +644,155 @@
     </ul>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════
+     08. QUEM SOMOS
+════════════════════════════════════════════════ -->
+<section class="section" id="agencia" style="border-top:1px solid #111;overflow:hidden;">
+  <div class="container">
+    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <div>
+        <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;">
+          <div class="sec-num reveal">08</div>
+          <p class="label reveal" style="margin:0;">Quem somos</p>
+        </div>
+        <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 2rem;line-height:1.1;">
+          We Make it<br><span style="color:var(--cyan);">Happen!</span>
+        </h2>
+        <div style="color:#aaa;line-height:1.9;font-size:.92rem;">
+          <p class="reveal" style="margin:0 0 1.25rem;">Somos a nova geração que não conhece o mundo sem internet e acredita na sinergia entre on e off. Somos ligados no 220, múltiplos e simultâneos.</p>
+          <p class="reveal" style="margin:0 0 1.25rem;">A HUP nasceu da necessidade em saber se comunicar numa realidade cada vez mais dinâmica e multimidiática, unindo estratégia e criatividade na personalidade de cada marca.</p>
+          <p class="reveal" style="margin:0;"><%= proposal.aboutLast %></p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;align-items:center;justify-content:center;">
+        <% const holoSrc = assets.logoHup.find(l=>l.toLowerCase().includes('holo')) || assets.logoHup[0]; %>
+        <img class="holo-logo" src="<%= holoSrc %>" alt="HUP Holográfica" style="max-width:340px;width:100%;height:auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     09. SERVIÇOS
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num reveal">09</div>
+      <p class="label reveal">O que fazemos</p>
+      <h2 class="reveal">Serviços</h2>
+    </div>
+    <div class="services-grid reveal">
+      <% proposal.services.forEach(s=>{ %>
+        <div class="service-item">
+          <div class="service-arrow" style="margin-bottom:.75rem;line-height:1;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="4" y1="18" x2="18" y2="4" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round"/>
+              <polyline points="8,4 18,4 18,14" stroke="#00CFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div style="font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;"><%= s %></div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     10. PORTFÓLIO — Audiovisual e Fotografia
+════════════════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid #111;">
+  <div class="container">
+    <div class="sec-head" style="margin-bottom:3.5rem;">
+      <div class="sec-num reveal">10</div>
+      <p class="label reveal">Portfólio</p>
+      <h2 class="reveal">Nosso Trabalho</h2>
+    </div>
+
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Audiovisual</h3></div>
+        <div class="port-desc">Produção completa, da captação à edição —<br>para redes sociais e tela grande.</div>
+      </div>
+
+      <div class="av-block">
+        <div class="av-block-title"><h4>Para redes sociais</h4></div>
+        <div class="v-carousel">
+          <button class="v-arrow v-arrow--prev" id="v-prev" aria-label="Vídeos anteriores">‹</button>
+          <div class="v-track" id="v-track"></div>
+          <button class="v-arrow v-arrow--next" id="v-next" aria-label="Próximos vídeos">›</button>
+        </div>
+      </div>
+
+      <div class="av-block">
+        <div class="av-block-title"><h4>Institucional e eventos</h4></div>
+        <div class="h-grid" id="h-grid"></div>
+      </div>
+
+      <% if (proposal.playlists && proposal.playlists.length) { %>
+      <div class="pl-banner">
+        <div class="pl-text">
+          <p class="pl-tag"><span class="hero-badge-dot"></span>Quer ver mais?</p>
+          <p class="pl-title">Assista às playlists completas no YouTube</p>
+        </div>
+        <div class="pl-links">
+          <% proposal.playlists.forEach(pl=>{ %>
+            <a class="pl-link" href="<%= pl.url %>" target="_blank" rel="noopener">
+              <span class="pl-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 3.5v17L20 12z" fill="#0a0a0a"/></svg></span>
+              <span><strong><%= pl.name %></strong><small><%= pl.desc %></small></span>
+              <span class="pl-arrow" aria-hidden="true">↗</span>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <div class="port-section reveal">
+      <div class="port-heading">
+        <div><div class="port-tag">Portfólio</div><h3>Fotografia</h3></div>
+        <div class="port-desc">Captação profissional em 4k — alimentação,<br>produto e institucional.</div>
+      </div>
+      <div class="filter-bar" id="photo-filter-bar">
+        <button class="filter-btn" data-pcat="all">Todos</button>
+        <% if(assets.fotografiaAlimentacao.length){%><button class="filter-btn active" data-pcat="alimentacao">Alimentação</button><%}%>
+        <% if(assets.fotografiaInstitucional.length){%><button class="filter-btn" data-pcat="institucional">Institucional</button><%}%>
+        <% if(assets.fotografiaProduto.length){%><button class="filter-btn" data-pcat="produto">Produto</button><%}%>
+      </div>
+      <div id="photo-gallery"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     11. CLIENTES
+════════════════════════════════════════════════ -->
+<% if (assets.logosClientes.length) { %>
+<section class="section clients-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-num reveal">11</div>
+      <p class="label reveal" style="margin-bottom:.4rem;">Confiança</p>
+      <h2 class="reveal" style="margin-bottom:.5rem;">Clientes</h2>
+      <p class="reveal" style="color:#666;font-size:.95rem;margin:0;max-width:560px;">Marcas que confiam na HUP para uma solução 360° — da estratégia digital à produção criativa.</p>
+    </div>
+    <div class="logo-grid reveal">
+      <%
+        const _lastKeys = ['flat cambuci','cmsa','gustavo sisant'];
+        const _sorted = assets.logosClientes.slice().sort((a,b)=>{
+          const aL=_lastKeys.some(k=>a.toLowerCase().includes(k));
+          const bL=_lastKeys.some(k=>b.toLowerCase().includes(k));
+          return aL===bL?0:aL?1:-1;
+        });
+      %>
+      <% _sorted.forEach((logo,i)=>{ %>
+        <div class="logo-item"><img src="<%= logo %>" alt="Cliente <%= i+1 %>" loading="lazy"></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
 
 <!-- ════════════════════════════════════════════════
      CTA FINAL
