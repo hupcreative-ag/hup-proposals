@@ -269,6 +269,14 @@
     @media(max-width:520px){.intro-btns{width:100%;flex-direction:column;}.intro-btn{width:100%;}}
 
     /* ── 07 Orçamento ── */
+    .team{margin-bottom:2rem;}
+    .team-tag{display:flex;align-items:center;gap:.5rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#777;margin:0 0 .9rem;}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+    @media(max-width:700px){.team-grid{grid-template-columns:1fr;}}
+    .team-item{background:var(--surface);border:1px solid #1e1e1e;border-left:3px solid var(--cyan);padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.3rem;}
+    .team-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.02rem;color:#fff;text-decoration:none;}
+    a.team-name:hover{color:var(--cyan);}
+    .team-role{font-size:.82rem;color:#999;line-height:1.45;}
     .budget-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:2rem;align-items:start;}
     @media(max-width:1000px){.budget-layout{grid-template-columns:1fr;}}
     .btable{border:1px solid #1e1e1e;background:#0d0d0d;}
@@ -394,6 +402,8 @@
       .ps-meta b{color:#00CFFF;font-weight:500;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       .ps-body{padding:5.5mm 16mm 0;}
       .ps-intro{font-size:9pt;color:#555;margin:0 0 4mm;}
+      .ps-team{font-size:8.5pt;color:#222;margin:-2mm 0 4mm;}
+      .ps-team span{color:#777;}
       .ps-h{font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:#1400FF;font-weight:700;margin:0 0 2.2mm;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       .ps-table{width:100%;border-collapse:collapse;break-inside:avoid;page-break-inside:avoid;margin-bottom:4mm;}
       .ps-table th{text-align:left;font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:#888;font-weight:500;padding:0 2mm 2mm;border-bottom:.8pt solid #1400FF;}
@@ -505,6 +515,20 @@
       <p class="label reveal">Monte o seu episódio</p>
       <h2 class="reveal">Orçamento por episódio</h2>
     </div>
+
+    <% if (proposal.budget.team && proposal.budget.team.length) { %>
+    <div class="team reveal">
+      <p class="team-tag"><span class="hero-badge-dot"></span>Equipe no set</p>
+      <div class="team-grid">
+        <% proposal.budget.team.forEach(m=>{ %>
+          <div class="team-item">
+            <% if (m.url) { %><a class="team-name" href="<%= m.url %>" target="_blank" rel="noopener"><%= m.name %> ↗</a><% } else { %><span class="team-name"><%= m.name %></span><% } %>
+            <span class="team-role"><%= m.role %></span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <% } %>
 
     <div class="budget-layout">
       <div class="btable reveal" role="table" aria-label="Orçamento por episódio">
@@ -1313,6 +1337,7 @@
           </header>
           <div class="ps-body">
             <p class="ps-intro">${esc(PROPOSAL.subtitle)} · Orçamento por episódio</p>
+            ${(PROPOSAL.budget.team || []).length ? `<p class="ps-team"><b>Equipe no set:</b> ${PROPOSAL.budget.team.map(m=>`${esc(m.name)} <span>(${esc(m.role)})</span>`).join(' &nbsp;·&nbsp; ')}</p>` : ''}
             <p class="ps-h">Itens por episódio</p>
             <table class="ps-table">
               <thead><tr><th>Item</th><th>Descrição</th><th style="text-align:right">Valor</th></tr></thead>

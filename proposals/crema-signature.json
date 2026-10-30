@@ -52,6 +52,11 @@
       "min": 1,
       "max": 10
     },
+    "team": [
+      { "name": "José", "role": "HUP Creative · direção e acompanhamento no set" },
+      { "name": "Caio Diniz", "role": "Fotógrafo", "url": "https://www.instagram.com/caiodiniz1/" },
+      { "name": "Produtora audiovisual", "role": "Equipe de captação audiovisual" }
+    ],
     "paymentNote": "Pagamento por episódio: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
     "groups": [
       {
