@@ -67,7 +67,7 @@
             "name": "Edição e finalização",
             "desc": "1 filme principal vertical de 60 a 90 segundos, 1 teaser de 10 a 15 segundos e 2 a 4 cortes curtos para Stories e Reels. Inclui legendas, trilha licenciada para redes sociais, tratamento de cor e de áudio, e versões sem texto na tela.",
             "short": "Filme principal (60–90s), teaser (10–15s) e 2 a 4 cortes, com legendas, trilha licenciada, cor e áudio.",
-            "value": 1100,
+            "value": 1200,
             "fixed": true
           },
           {
@@ -75,7 +75,7 @@
             "name": "Captação audiovisual",
             "desc": "Filmmaker com 1 câmera Sony Cinema Line FX2 (gravação em 4K, 10-bit), gimbal estabilizador, microfones sem fio Hollyland, gravador Zoom H5 e kit de iluminação LED. Meia diária de até 5h.",
             "short": "Filmmaker com Sony FX2 (4K 10-bit), gimbal, áudio e luz. Meia diária de até 5h.",
-            "value": 1500,
+            "value": 1700,
             "fixed": true
           },
           {
