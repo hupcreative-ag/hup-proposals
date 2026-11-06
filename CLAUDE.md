@@ -226,6 +226,7 @@ Para atualizar fotos novas:
 | `natalia-carvalho` | site | Dra. Natália Carvalho | `natalia-site-2026` |
 | `stelina-schettini` | redes | Stelina Schettini | `stelina-redes-2026` |
 | `crema-signature` | serie (audiovisual + foto, orçamento interativo) | Crema Signature | `crema-signature-2026` |
+| `davi-castillo` | serie (vídeo único, sem `budget.episodes`, captação à escolha) | Davi Castillo | `davi-castillo-2026` |
 
 ---
 

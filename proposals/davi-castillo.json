@@ -1,0 +1,162 @@
+{
+  "slug": "davi-castillo",
+  "token": "davi-castillo-2026",
+  "type": "serie",
+  "serviceType": "Produção Audiovisual",
+  "pageTitle": "Proposta HUP Creative | Davi Castillo",
+  "pdfTitle": "Orcamento-HUP-Davi-Castillo",
+  "client": {
+    "contacts": [
+      "Davi Castillo"
+    ],
+    "company": "Davi Castillo"
+  },
+  "expiresAt": "2026-11-12",
+  "heroTitle": "Verão no Pelourinho",
+  "heroSubtitle": "Vídeo de humor baiano para a data de reinauguração",
+  "aboutLast": "Na HUP, a captação e a edição ficam com a mesma direção. Gravamos, editamos e entregamos o vídeo pronto para publicar.",
+  "services": [
+    "Produção Audiovisual",
+    "Fotografia",
+    "Edição e Finalização",
+    "Direção de Arte para Redes Sociais",
+    "Criação de Conteúdo",
+    "Gestão de Redes Sociais",
+    "Planejamento On e Off",
+    "Identidade Visual",
+    "Criação de Embalagens",
+    "Experiência de Marca"
+  ],
+  "project": {
+    "hello": "Olá, equipe Davi Castillo!",
+    "next": "Logo abaixo está o orçamento. Escolha o tempo de captação e o valor se atualiza na hora.",
+    "text": "Um vídeo para anunciar a data de reinauguração, gravado no Pelourinho, com tema de verão e humor baiano. A referência é o filme Ó Paí, Ó, e a gravação segue o roteiro construído pela marca.",
+    "cards": [
+      {
+        "big": "1",
+        "label": "vídeo com a data de reinauguração"
+      },
+      {
+        "big": "4h",
+        "label": "ou 8h de captação no Pelourinho, à sua escolha"
+      },
+      {
+        "big": "5",
+        "label": "dias para a entrega, após a captação"
+      }
+    ]
+  },
+  "budget": {
+    "labels": {
+      "budgetTag": "Monte o seu orçamento",
+      "budgetTitle": "Orçamento do vídeo",
+      "total": "Total do vídeo",
+      "delivTag": "Na entrega",
+      "delivTitle": "Entregáveis",
+      "items": "Itens do vídeo",
+      "approve": "o orçamento do vídeo para"
+    },
+    "team": [
+      {
+        "name": "José",
+        "role": "HUP Creative · filmmaker: grava e edita o vídeo",
+        "short": "HUP Creative, captação e edição"
+      }
+    ],
+    "paymentNote": "Pagamento: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
+    "groups": [
+      {
+        "name": "Captação",
+        "items": [
+          {
+            "id": "meia-diaria",
+            "name": "Meia diária",
+            "desc": "Filmmaker no Pelourinho por até 4h, gravando as cenas do roteiro com Sony FX2 (4K, 10-bit), gimbal, áudio sem fio e luz LED.",
+            "short": "Filmmaker no Pelourinho por até 4h, com Sony FX2 (4K 10-bit), gimbal, áudio sem fio e luz LED.",
+            "value": 750,
+            "fixed": false,
+            "on": true,
+            "exclusive": "captacao",
+            "required": true
+          },
+          {
+            "id": "diaria",
+            "name": "Diária inteira",
+            "desc": "Filmmaker no Pelourinho por até 8h, com mais tempo para cenas e repetições. Mesmo equipamento da meia diária.",
+            "short": "Filmmaker no Pelourinho por até 8h, com Sony FX2 (4K 10-bit), gimbal, áudio sem fio e luz LED.",
+            "value": 1250,
+            "fixed": false,
+            "on": false,
+            "exclusive": "captacao",
+            "required": true,
+            "after": "Escolha uma das opções de captação."
+          }
+        ]
+      },
+      {
+        "name": "Pós-produção",
+        "items": [
+          {
+            "id": "edicao",
+            "name": "Edição e finalização",
+            "desc": "Montagem do vídeo seguindo o roteiro, com ritmo de comédia. Inclui correção de cor, tratamento de áudio, efeitos sonoros, trilha licenciada para redes sociais, legendas e a data de reinauguração na tela.",
+            "short": "Montagem com ritmo de comédia, cor, áudio, efeitos sonoros, trilha licenciada, legendas e data de reinauguração na tela.",
+            "value": 700,
+            "fixed": true
+          }
+        ]
+      }
+    ]
+  },
+  "equipment": [
+    "1 câmera Sony Cinema Line FX2",
+    "Kit de microfones lapela Hollyland",
+    "Gravador profissional Zoom H5",
+    "Gimbal estabilizador para câmera",
+    "1 LED tocha 60W com difusores",
+    "1 LED tocha 100W com difusores",
+    "1 LED bastão RGBW",
+    "2 tripés hidráulicos para câmera",
+    "2 tripés de 3m para iluminação",
+    "3 tripés de 2m para suporte"
+  ],
+  "editing": [
+    "Montagem seguindo o roteiro, com ritmo de comédia",
+    "Tratamento de luz, cor e áudio, com efeitos sonoros",
+    "Trilha sonora licenciada com direito de uso em redes sociais",
+    "Textos, legendas e encerramento com a data de reinauguração"
+  ],
+  "deliverables": [
+    "1 vídeo vertical (9:16) para Reels, Stories e TikTok, de até 90s",
+    "Legendas e data de reinauguração na tela",
+    "Arquivo final organizado no Google Drive"
+  ],
+  "conditions": [
+    "Validade da proposta: 12/11/2026",
+    "Pagamento: 50% na confirmação da data de captação e 50% na entrega, via Pix ou boleto",
+    "Captação: no Pelourinho, em Salvador, entre sábado e terça, com data a definir. Horas extras são orçadas à parte",
+    "Prazo: entrega em até 5 dias após a captação",
+    "Ajustes: 2 rodadas de ajuste. Ajustes extras são orçados à parte",
+    "Por conta da marca: roteiro, elenco, figurino, autorizações de gravação no local e termos de uso de imagem",
+    "Referência: o filme entra como inspiração. O uso de trechos, músicas ou personagens do filme não está incluso",
+    "Uso do vídeo: trilha licenciada para redes sociais. Outros usos, como TV ou mídia externa, são combinados à parte"
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "approveWhatsapp": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  },
+  "playlists": [
+    {
+      "name": "Redes Sociais",
+      "desc": "Vídeos verticais para Instagram e TikTok",
+      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjEOI2IH5-_GqUoVyWm-qt4h"
+    },
+    {
+      "name": "Institucionais e Eventos",
+      "desc": "O bom e velho horizontal, das apresentações à TV",
+      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjGlNHhRgibzSKpus5ICzB5J"
+    }
+  ]
+}

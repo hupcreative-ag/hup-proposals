@@ -8,6 +8,17 @@
     const _fmtDate = iso => { const [y,m,d] = String(iso).split('-'); return d && m && y ? `${d}/${m}/${y}` : iso; };
     const _expires = _fmtDate(proposal.expiresAt);
     const _logoWhite = assets.logoHup.find(l=>l.toLowerCase().includes('branca')) || assets.logoHup[0];
+    // Sem budget.episodes a proposta é de peça única: some a quantidade e os textos vêm de budget.labels.
+    const _single = !proposal.budget.episodes;
+    const _labels = Object.assign({
+      budgetTag: 'Monte o seu episódio',
+      budgetTitle: 'Orçamento por episódio',
+      total: 'Total da série',
+      delivTag: 'A cada episódio',
+      delivTitle: 'Entregáveis por episódio',
+      items: 'Itens por episódio',
+      approve: 'o orçamento da série',
+    }, proposal.budget.labels || {});
   %>
   <title><%= _title %></title>
   <meta property="og:type" content="website">
@@ -416,6 +427,7 @@
       .ps-table .c-desc{color:#555;font-size:8.5pt;}
       .ps-totals{break-inside:avoid;page-break-inside:avoid;border:.8pt solid #1400FF;border-radius:2mm;padding:4mm 5mm;display:grid;grid-template-columns:1.05fr .7fr 1fr 1.05fr 1.35fr;gap:3.5mm;align-items:end;margin-bottom:2.5mm;}
       .ps-totals--nodisc{grid-template-columns:1fr 1fr 1.3fr;}
+      .ps-totals--single{grid-template-columns:1fr;}
       .ps-tv--disc{color:#1400FF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
       .ps-tsub{font-size:7.5pt;color:#777;margin-top:.6mm;}
       .ps-tl{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-bottom:1mm;}
@@ -514,13 +526,13 @@
   <div class="container">
     <div class="sec-head">
       <div class="sec-num reveal">03</div>
-      <p class="label reveal">Monte o seu episódio</p>
-      <h2 class="reveal">Orçamento por episódio</h2>
+      <p class="label reveal"><%= _labels.budgetTag %></p>
+      <h2 class="reveal"><%= _labels.budgetTitle %></h2>
     </div>
 
     <div class="budget-layout">
       <div class="budget-main">
-      <div class="btable reveal" role="table" aria-label="Orçamento por episódio">
+      <div class="btable reveal" role="table" aria-label="<%= _labels.budgetTitle %>">
         <div class="brow brow--head" role="row">
           <span role="columnheader">Item</span><span role="columnheader">Descrição</span><span role="columnheader" class="b-value">Valor</span><span role="columnheader" class="b-status">Status</span>
         </div>
@@ -561,6 +573,7 @@
 
       <aside class="summary reveal" aria-live="polite">
         <p class="sum-tag"><span class="hero-badge-dot"></span>Resumo do orçamento</p>
+        <% if (!_single) { %>
         <div class="sum-row">
           <span class="sum-label">Valor por episódio</span>
           <span class="sum-val" id="sum-episode">—</span>
@@ -573,6 +586,7 @@
             <button type="button" id="ep-plus" aria-label="Mais um episódio">+</button>
           </div>
         </div>
+        <% } %>
         <div class="sum-row sum-disc-only" id="sum-subtotal-row">
           <span class="sum-label">Subtotal</span>
           <span class="sum-val" id="sum-subtotal">—</span>
@@ -582,7 +596,7 @@
           <span class="sum-val" id="sum-disc">—</span>
         </div>
         <div class="sum-total">
-          <span class="sum-label">Total da série</span>
+          <span class="sum-label"><%= _labels.total %></span>
           <span class="sum-total-val" id="sum-total">—</span>
           <span class="sum-per" id="sum-per"></span>
         </div>
@@ -644,8 +658,8 @@
   <div class="container">
     <div class="sec-head">
       <div class="sec-num reveal">06</div>
-      <p class="label reveal">A cada episódio</p>
-      <h2 class="reveal">Entregáveis por episódio</h2>
+      <p class="label reveal"><%= _labels.delivTag %></p>
+      <h2 class="reveal"><%= _labels.delivTitle %></h2>
     </div>
     <ul class="deliv-list reveal">
       <% proposal.deliverables.forEach(d=>{ %><li><span class="check">✓</span><span><%= d %></span></li><% }) %>
@@ -887,6 +901,8 @@
     pdfTitle: proposal.pdfTitle || 'Orcamento-HUP',
     logo: _logoWhite,
     budget: proposal.budget,
+    single: _single,
+    labels: _labels,
     deliverables: proposal.deliverables,
     equipment: proposal.equipment,
     conditions: proposal.conditions,
@@ -1204,7 +1220,9 @@
   const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
   const money = n => BRL.format(n).replace(/ /g,' ');
   const ITEMS = PROPOSAL.budget.groups.flatMap(g=>g.items.map(it=>({...it, group:g.name})));
-  const EP = PROPOSAL.budget.episodes;
+  const EP = PROPOSAL.budget.episodes || { default:1, min:1, max:1 };
+  const SINGLE = PROPOSAL.single;
+  const LABELS = PROPOSAL.labels;
   const state = {
     on: Object.fromEntries(ITEMS.map(it=>[it.id, it.fixed ? true : !!it.on])),
     episodes: EP.default,
@@ -1256,15 +1274,14 @@
 
   function waMessage(){
     const lines = [
-      `Olá, José! Quero aprovar o orçamento da série ${PROPOSAL.company}.`,
+      `Olá, José! Quero aprovar ${LABELS.approve} ${PROPOSAL.company}.`,
       '',
-      'Itens por episódio:',
+      `${LABELS.items}:`,
       ...activeItems().map(it=>`• ${it.name}: ${money(it.value)}`),
       '',
-      `Valor por episódio: ${money(perEpisode())}`,
-      `Episódios: ${state.episodes}`,
+      ...(SINGLE ? [] : [`Valor por episódio: ${money(perEpisode())}`, `Episódios: ${state.episodes}`]),
       ...(discountPct() ? [`Subtotal: ${money(subtotal())}`, `Desconto (${discountPct()}%): -${money(discountValue())}`] : []),
-      `Total da série: ${money(seriesTotal())}`,
+      `${LABELS.total}: ${money(seriesTotal())}`,
     ];
     return lines.join('\n');
   }
@@ -1277,10 +1294,12 @@
       sw.closest('.brow').classList.toggle('off', !state.on[it.id]);
     });
     document.querySelectorAll('[data-team-item]').forEach(el=>{ el.hidden = !state.on[el.dataset.teamItem]; });
-    elEpisode.textContent = money(perEpisode());
-    elCount.textContent = state.episodes;
-    btnMinus.disabled = state.episodes <= EP.min;
-    btnPlus.disabled  = state.episodes >= EP.max;
+    if (!SINGLE) {
+      elEpisode.textContent = money(perEpisode());
+      elCount.textContent = state.episodes;
+      btnMinus.disabled = state.episodes <= EP.min;
+      btnPlus.disabled  = state.episodes >= EP.max;
+    }
     const pct = discountPct();
     elSubtotal.textContent = money(subtotal());
     elDisc.textContent = '−' + money(discountValue());
@@ -1299,6 +1318,8 @@
       const id = sw.dataset.toggle;
       const item = ITEMS.find(it=>it.id === id);
       const next = !state.on[id];
+      // Item "required" dentro de um grupo exclusivo: troca de opção, mas nunca fica sem nenhuma.
+      if (!next && item.required) return;
       // Itens com o mesmo "exclusive" são excludentes: ligar um desliga os outros.
       if (next && item.exclusive) {
         ITEMS.forEach(o=>{ if (o.exclusive === item.exclusive && o.id !== id) state.on[o.id] = false; });
@@ -1307,8 +1328,10 @@
       render();
     });
   });
-  btnMinus.addEventListener('click', ()=>{ if (state.episodes > EP.min) { state.episodes--; render(); } });
-  btnPlus.addEventListener('click',  ()=>{ if (state.episodes < EP.max) { state.episodes++; render(); } });
+  if (!SINGLE) {
+    btnMinus.addEventListener('click', ()=>{ if (state.episodes > EP.min) { state.episodes--; render(); } });
+    btnPlus.addEventListener('click',  ()=>{ if (state.episodes < EP.max) { state.episodes++; render(); } });
+  }
   render();
 
   // ════════════════════════════════════════════════
@@ -1342,24 +1365,24 @@
             </div>
           </header>
           <div class="ps-body">
-            <p class="ps-intro">${esc(PROPOSAL.subtitle)} · Orçamento por episódio</p>
+            <p class="ps-intro">${esc(PROPOSAL.subtitle)} · ${esc(LABELS.budgetTitle)}</p>
             ${team.length ? `<p class="ps-team"><b>Equipe no set:</b> ${team.map(m=>`${esc(m.name)} <span>(${esc(m.short || m.role)})</span>`).join(' &nbsp;·&nbsp; ')}</p>` : ''}
-            <p class="ps-h">Itens por episódio</p>
+            <p class="ps-h">${esc(LABELS.items)}</p>
             <table class="ps-table">
               <thead><tr><th>Item</th><th>Descrição</th><th style="text-align:right">Valor</th></tr></thead>
               <tbody>${rows}</tbody>
             </table>
-            <div class="ps-totals${discountPct() ? '' : ' ps-totals--nodisc'}">
-              <div><div class="ps-tl">Valor por episódio</div><div class="ps-tv">${money(perEpisode())}</div></div>
-              <div><div class="ps-tl">Episódios</div><div class="ps-tv">${state.episodes}</div></div>
+            <div class="ps-totals${SINGLE ? ' ps-totals--single' : discountPct() ? '' : ' ps-totals--nodisc'}">
+              ${SINGLE ? '' : `<div><div class="ps-tl">Valor por episódio</div><div class="ps-tv">${money(perEpisode())}</div></div>
+              <div><div class="ps-tl">Episódios</div><div class="ps-tv">${state.episodes}</div></div>`}
               ${discountPct() ? `<div><div class="ps-tl">Subtotal</div><div class="ps-tv">${money(subtotal())}</div></div>
               <div><div class="ps-tl">Desconto ${discountPct()}%</div><div class="ps-tv ps-tv--disc">−${money(discountValue())}</div></div>` : ''}
-              <div><div class="ps-tl">Total da série</div><div class="ps-tv ps-tv--big">${money(seriesTotal())}</div>${discountPct() ? `<div class="ps-tsub">${money(seriesTotal() / state.episodes)} por episódio</div>` : ''}</div>
+              <div><div class="ps-tl">${esc(LABELS.total)}</div><div class="ps-tv ps-tv--big">${money(seriesTotal())}</div>${discountPct() ? `<div class="ps-tsub">${money(seriesTotal() / state.episodes)} por episódio</div>` : ''}</div>
             </div>
             <p class="ps-pay">${esc(PROPOSAL.budget.paymentNote)}</p>
             <div class="ps-cols">
               <div>
-                <div class="ps-block"><p class="ps-h">Entregáveis por episódio</p><ul>${li(PROPOSAL.deliverables)}</ul></div>
+                <div class="ps-block"><p class="ps-h">${esc(LABELS.delivTitle)}</p><ul>${li(PROPOSAL.deliverables)}</ul></div>
                 <div class="ps-block"><p class="ps-h">Condições gerais</p><ul>${li(PROPOSAL.conditions.filter(c=>!/^(Validade|Pagamento)\b/.test(c)))}</ul></div>
               </div>
               <div class="ps-block"><p class="ps-h">Equipamentos inclusos</p><ul>${li(PROPOSAL.equipment)}</ul></div>
