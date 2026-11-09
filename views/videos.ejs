@@ -433,6 +433,7 @@
   function cover(v){
     if (!coverCache.has(v.id)) {
       const names = v.vert ? ['oar2','maxres1','sddefault','hqdefault'] : ['maxresdefault','sddefault','hqdefault'];
+      if (v.capa) names.unshift(v.capa);   // frame escolhido à mão (ex.: "maxres3")
       coverCache.set(v.id, firstOk(names.map(n => yt(v.id, n))));
     }
     return coverCache.get(v.id);

@@ -989,11 +989,13 @@
   }
 
   // Capa: verticais tentam oar2 → hqdefault (com zoom); horizontais maxresdefault → hqdefault.
+  // v.capa (ex.: "maxres3") escolhe um frame específico do YouTube, tentado antes da cadeia.
   async function loadCover(fig){
     const id = fig._id;
     const chain = fig._vertical
       ? [['oar2',false],['maxres1',true],['sddefault',true],['hqdefault',true]]
       : [['maxresdefault',false],['sddefault',false],['hqdefault',false]];
+    if (fig._v.capa) chain.unshift([fig._v.capa, fig._vertical && fig._v.capa !== 'oar2']);
     for (const [name, zoom] of chain) {
       const ok = await loadImg(thumb(id, name));
       if (ok) {
