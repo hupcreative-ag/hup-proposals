@@ -206,6 +206,17 @@ res.render(view, { proposal, assets });
 
 ---
 
+## Vídeos do portfólio (YouTube)
+
+A lista fica em `videos.json` (raiz) e é usada pelas propostas `serie` e pela página pública `/videos` (portfólio institucional de vídeo, sem token).
+
+- Cada item: `url`, `formato` (`vertical` ou `horizontal`), `legenda`, `categoria` (vira filtro em `/videos`), `preview` (MP4 opcional).
+- A ordem do arquivo é a ordem padrão da fila.
+- Numa proposta, `"videosFirst": ["<id do YouTube>", ...]` puxa esses vídeos para o início, nessa ordem.
+- O `Dockerfile` copia `videos.json`; sem ele a lista não vai para produção.
+
+---
+
 ## Sincronizar assets (imagens do portfólio)
 
 As imagens ficam num volume persistente no VPS — **não são** rebuiltadas no deploy.

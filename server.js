@@ -50,6 +50,15 @@ function writeTracking(entries) {
   fs.writeFileSync(TRACKING_FILE, JSON.stringify(entries, null, 2));
 }
 
+// Vídeos do portfólio (YouTube), compartilhados pelas propostas "serie" e pela página /videos
+function readVideos() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(__dirname, 'videos.json'), 'utf8'));
+  } catch {
+    return [];
+  }
+}
+
 function readProposal(slug) {
   const file = path.join(__dirname, 'proposals', slug + '.json');
   try {
@@ -77,6 +86,15 @@ app.get('/hup', (req, res) => {
     packaging:                readAssets('assets/packaging'),
   };
   res.render('home', { assets });
+});
+
+// Portfólio de vídeos — página institucional pública (sem token)
+app.get('/videos', (req, res) => {
+  const assets = {
+    logoHup:       readAssets('assets/Logo_hup'),
+    logosClientes: readAssets('assets/Logos_clientes'),
+  };
+  res.render('videos', { assets, videos: readVideos() });
 });
 
 // Proposal page — suporta /:slug e /proposta/:slug
@@ -134,7 +152,7 @@ app.get('/:slug', (req, res) => {
     'serie': 'proposal-serie',
   };
   const view = VIEWS[proposal.type] || 'proposal';
-  res.render(view, { proposal, assets });
+  res.render(view, { proposal, assets, videos: readVideos() });
 });
 
 // Admin tracking

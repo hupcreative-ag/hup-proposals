@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm install --omit=dev
 
 # Copia código e views
-COPY server.js ./
+COPY server.js videos.json ./
 COPY views/ ./views/
 COPY proposals/ ./proposals/
 

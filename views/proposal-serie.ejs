@@ -870,24 +870,17 @@
      JS
 ════════════════════════════════════════════════ -->
 <script>
-  // ── Vídeos do portfólio (edite aqui para trocar ou adicionar) ──────────────
+  // ── Vídeos do portfólio ─────────────────────────────────────────────────
+  // A lista fica em videos.json (compartilhada com a página /videos).
   // formato: "vertical" (Shorts/Reels) ou "horizontal"
   // preview: caminho opcional de um MP4 curto e mudo para a prévia em movimento
-  const videos = [
-    // Verticais
-    { url: "https://youtube.com/shorts/sDXe3dnhD3c", formato: "vertical", legenda: "Lançamento linha Real Retrô", preview: "" },
-    { url: "https://youtube.com/shorts/SkAdlKkRb3M", formato: "vertical", legenda: "Dia dos Pais Solar", preview: "" },
-    { url: "https://youtube.com/shorts/Xpr1Aly4Hk0", formato: "vertical", legenda: "Saltenha", preview: "" },
-    { url: "https://youtube.com/shorts/Zzp5PolFRmg", formato: "vertical", legenda: "Produção de jujuba", preview: "" },
-    { url: "https://youtube.com/shorts/uELqHbcBTjc", formato: "vertical", legenda: "Frango Esse · Receita", preview: "" },
-    { url: "https://youtube.com/shorts/i-JN6owarLc", formato: "vertical", legenda: "Frango Esse · Institucional", preview: "" },
-    // Horizontais
-    { url: "https://youtu.be/Sd2sb1EdnDw", formato: "horizontal", legenda: "C6 Bank · Jornada Financeira", preview: "" },
-    { url: "https://youtu.be/rhkIwlXJXNY", formato: "horizontal", legenda: "TrioDaCultura · Josyara", preview: "" },
-    { url: "https://youtu.be/aoCaJO2HoGs", formato: "horizontal", legenda: "Carnaval O Sarapa 2026", preview: "" },
-    { url: "https://youtu.be/M89L-h3klVo", formato: "horizontal", legenda: "O Varejão · Inauguração Largo do Tanque", preview: "" },
-    { url: "https://youtu.be/Y5jq7w22POc", formato: "horizontal", legenda: "BN Hall · Pós-venda", preview: "" }
-  ];
+  // proposal.videosFirst: IDs do YouTube que esta proposta mostra primeiro, nessa ordem
+  const videos = (() => {
+    const all   = <%- JSON.stringify(videos || []) %>;
+    const first = <%- JSON.stringify(proposal.videosFirst || []) %>;
+    const rank  = v => { const i = first.findIndex(id => v.url.includes(id)); return i < 0 ? first.length : i; };
+    return all.map((v,i)=>({v,i})).sort((a,b)=>rank(a.v)-rank(b.v) || a.i-b.i).map(x=>x.v);
+  })();
 
   // Zoom aplicado às thumbs 4:3/16:9 (maxres1-3, sd, hq) nos cards verticais.
   // O object-fit:cover já corta as laterais desfocadas dos Shorts; 1.05 só garante as bordas.
