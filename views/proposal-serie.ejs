@@ -881,8 +881,10 @@
   // preview: caminho opcional de um MP4 curto e mudo para a prévia em movimento
   // proposal.videosFirst: IDs do YouTube que esta proposta mostra primeiro, nessa ordem
   // proposal.videosLast: IDs que vão para o fim da fila, nessa ordem
+  // proposal.videosHide: IDs que esta proposta não mostra
   const videos = (() => {
-    const all   = <%- JSON.stringify(videos || []) %>;
+    const hide  = <%- JSON.stringify(proposal.videosHide || []) %>;
+    const all   = <%- JSON.stringify(videos || []) %>.filter(v => !hide.some(id => v.url.includes(id)));
     const first = <%- JSON.stringify(proposal.videosFirst || []) %>;
     const last  = <%- JSON.stringify(proposal.videosLast || []) %>;
     const rank  = v => {
