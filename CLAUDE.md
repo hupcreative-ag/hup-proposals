@@ -213,6 +213,8 @@ A lista fica em `videos.json` (raiz) e é usada pelas propostas `serie` e pela p
 - Cada item: `url`, `formato` (`vertical` ou `horizontal`), `legenda`, `categoria` (vira filtro em `/videos`), `preview` (MP4 opcional).
 - A ordem do arquivo é a ordem padrão da fila.
 - Numa proposta, `"videosFirst": ["<id do YouTube>", ...]` puxa esses vídeos para o início, nessa ordem.
+- `"videosLast": [...]` manda vídeos para o fim da fila. `"capa": "maxres1"` (ou `maxres2`/`maxres3`) escolhe outro frame do YouTube como capa.
+- Na proposta, os horizontais mostram 5 e o resto fica no "Ver mais".
 - O `Dockerfile` copia `videos.json`; sem ele a lista não vai para produção.
 
 ---

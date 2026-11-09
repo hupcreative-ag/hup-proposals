@@ -210,6 +210,10 @@
     .h-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
     .h-grid .vcard:first-child{grid-column:1 / -1;}
     @media(max-width:700px){.h-grid{grid-template-columns:1fr;}}
+    .h-grid.collapsed .vcard:nth-child(n+6){display:none;}
+    .h-more{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;margin-top:18px;padding:1rem;background:transparent;border:1px solid #2a2a2a;color:#aaa;font-family:inherit;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s;}
+    .h-more:hover{border-color:var(--cyan);color:var(--cyan);}
+    .h-more[hidden]{display:none;}
 
     /* Banner de playlists */
     .pl-banner{
@@ -770,6 +774,7 @@
       <div class="av-block">
         <div class="av-block-title"><h4>Institucional e eventos</h4></div>
         <div class="h-grid" id="h-grid"></div>
+        <button type="button" class="h-more" id="h-more" hidden><span>Ver mais vídeos</span> ↓</button>
       </div>
 
       <% if (proposal.playlists && proposal.playlists.length) { %>
@@ -875,10 +880,16 @@
   // formato: "vertical" (Shorts/Reels) ou "horizontal"
   // preview: caminho opcional de um MP4 curto e mudo para a prévia em movimento
   // proposal.videosFirst: IDs do YouTube que esta proposta mostra primeiro, nessa ordem
+  // proposal.videosLast: IDs que vão para o fim da fila, nessa ordem
   const videos = (() => {
     const all   = <%- JSON.stringify(videos || []) %>;
     const first = <%- JSON.stringify(proposal.videosFirst || []) %>;
-    const rank  = v => { const i = first.findIndex(id => v.url.includes(id)); return i < 0 ? first.length : i; };
+    const last  = <%- JSON.stringify(proposal.videosLast || []) %>;
+    const rank  = v => {
+      const f = first.findIndex(id => v.url.includes(id)); if (f >= 0) return f;
+      const l = last.findIndex(id => v.url.includes(id));  if (l >= 0) return first.length + 1 + l;
+      return first.length;
+    };
     return all.map((v,i)=>({v,i})).sort((a,b)=>rank(a.v)-rank(b.v) || a.i-b.i).map(x=>x.v);
   })();
 
@@ -1096,8 +1107,16 @@
     entries.forEach(e=>{ e.isIntersecting ? startPreview(e.target) : stopPreview(e.target); });
   },{threshold:0.6});
 
+  // Capas carregam só quando o card chega perto da área visível (são dezenas de vídeos)
   function mountCard(fig, parent){
     parent.appendChild(fig);
+    (parent === vTrack ? coverObsV : coverObsH).observe(fig);
+    fig._media.addEventListener('click', ()=>playVideo(fig));
+    fig._media.addEventListener('keydown', e=>{
+      if ((e.key === 'Enter' || e.key === ' ') && fig !== playingCard) { e.preventDefault(); playVideo(fig); }
+    });
+  }
+  function activateCard(fig){
     loadCover(fig).then(ok=>{
       if (!ok) { fig.remove(); updateArrows(); return; }
       nearObs.observe(fig);
@@ -1108,18 +1127,35 @@
         visObs.observe(fig);
       }
     });
-    fig._media.addEventListener('click', ()=>playVideo(fig));
-    fig._media.addEventListener('keydown', e=>{
-      if ((e.key === 'Enter' || e.key === ' ') && fig !== playingCard) { e.preventDefault(); playVideo(fig); }
-    });
   }
 
   const vTrack = document.getElementById('v-track');
   const hGrid  = document.getElementById('h-grid');
+  const lazyCover = (root, margin) => new IntersectionObserver((entries, obs)=>entries.forEach(e=>{
+    if (!e.isIntersecting) return;
+    obs.unobserve(e.target);
+    activateCard(e.target);
+  }), {root, rootMargin: margin});
+  const coverObsV = lazyCover(vTrack, '0px 1200px');
+  const coverObsH = lazyCover(null, '600px 0px');
   videos.forEach(v=>{
     const fig = buildCard(v);
     if (fig) mountCard(fig, v.formato === 'vertical' ? vTrack : hGrid);
   });
+
+  // Horizontais: destaque + 4 visíveis; o resto abre no "Ver mais"
+  const H_VISIBLE = 5;
+  const hMore = document.getElementById('h-more');
+  const hHidden = Math.max(0, hGrid.children.length - H_VISIBLE);
+  if (hHidden) {
+    hGrid.classList.add('collapsed');
+    hMore.hidden = false;
+    hMore.querySelector('span').textContent = `Ver mais ${hHidden} vídeos`;
+    hMore.addEventListener('click', ()=>{
+      hGrid.classList.remove('collapsed');
+      hMore.remove();
+    });
+  }
 
   // Setas do carrossel vertical
   const vPrev = document.getElementById('v-prev');
