@@ -1263,7 +1263,13 @@
   // Desconto por quantidade de episódios (maior faixa atingida vale)
   const DISCOUNTS = (PROPOSAL.budget.discounts || []).slice().sort((a,b)=>b.min - a.min);
   const activeItems   = () => ITEMS.filter(it=>state.on[it.id]);
-  const perEpisode    = () => activeItems().reduce((s,it)=>s + it.value, 0);
+  // "valueBy": { "<id de outro item>": valor } faz o valor seguir a opção ligada (ex.: edição por pacote).
+  const val = it => {
+    if (!it.valueBy) return it.value;
+    const k = Object.keys(it.valueBy).find(id=>state.on[id]);
+    return k ? it.valueBy[k] : it.value;
+  };
+  const perEpisode    = () => activeItems().reduce((s,it)=>s + val(it), 0);
   const subtotal      = () => perEpisode() * state.episodes;
   const discountPct   = () => (DISCOUNTS.find(d=>state.episodes >= d.min) || {pct:0}).pct;
   const discountValue = () => Math.round(subtotal() * discountPct()) / 100;
@@ -1310,7 +1316,7 @@
       `Olá, José! Quero aprovar ${LABELS.approve} ${PROPOSAL.company}.`,
       '',
       `${LABELS.items}:`,
-      ...activeItems().map(it=>`• ${it.name}: ${money(it.value)}`),
+      ...activeItems().map(it=>`• ${it.name}: ${money(val(it))}`),
       '',
       ...(SINGLE ? [] : [`Valor por episódio: ${money(perEpisode())}`, `Episódios: ${state.episodes}`]),
       ...(discountPct() ? [`Subtotal: ${money(subtotal())}`, `Desconto (${discountPct()}%): -${money(discountValue())}`] : []),
@@ -1320,6 +1326,9 @@
   }
 
   function render(){
+    ITEMS.filter(it=>it.valueBy).forEach(it=>{
+      document.querySelector(`[data-item="${it.id}"] .b-value`).textContent = money(val(it));
+    });
     ITEMS.forEach(it=>{
       if (it.fixed) return;
       const sw = document.querySelector(`[data-toggle="${it.id}"]`);
@@ -1382,7 +1391,7 @@
       .filter(g=>g.items.length);
     const rows = groups.map(g=>
       `<tr class="ps-grp"><td colspan="3">${esc(g.name)}</td></tr>` +
-      g.items.map(it=>`<tr><td class="c-item">${esc(it.name)}</td><td class="c-desc">${esc(it.short || '')}</td><td class="c-val">${money(it.value)}</td></tr>`).join('')
+      g.items.map(it=>`<tr><td class="c-item">${esc(it.name)}</td><td class="c-desc">${esc(it.short || '')}</td><td class="c-val">${money(val(it))}</td></tr>`).join('')
     ).join('');
     const li = arr => arr.map(x=>`<li>${esc(x)}</li>`).join('');
     const team = (PROPOSAL.budget.team || []).filter(m=>!m.item || state.on[m.item]);

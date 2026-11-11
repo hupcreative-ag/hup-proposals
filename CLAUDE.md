@@ -240,6 +240,7 @@ Para atualizar fotos novas:
 | `stelina-schettini` | redes | Stelina Schettini | `stelina-redes-2026` |
 | `crema-signature` | serie (audiovisual + foto, orçamento interativo) | Crema Signature | `crema-signature-2026` |
 | `davi-castillo` | serie (vídeo único, sem `budget.episodes`, captação à escolha) | Davi Castillo | `davi-castillo-2026` |
+| `matheus-cohim` | serie (pacotes 4/6/8 vídeos com teleprompter; edição opcional com `valueBy` por pacote) | Matheus Cohim | `matheus-cohim-2026` |
 
 ---
 

@@ -1,0 +1,176 @@
+{
+  "slug": "matheus-cohim",
+  "token": "matheus-cohim-2026",
+  "type": "serie",
+  "serviceType": "Produção Audiovisual",
+  "pageTitle": "Proposta HUP Creative | Matheus Cohim",
+  "pdfTitle": "Orcamento-HUP-Matheus-Cohim",
+  "client": {
+    "contacts": [
+      "Matheus Cohim"
+    ],
+    "company": "Matheus Cohim"
+  },
+  "expiresAt": "2026-11-18",
+  "heroTitle": "Matheus Cohim",
+  "heroSubtitle": "Pacotes de captação de vídeo com teleprompter",
+  "aboutLast": "Na HUP, a captação e a edição ficam com a mesma direção. Gravamos, tratamos e, se você quiser, editamos e entregamos os vídeos prontos para publicar.",
+  "services": [
+    "Produção Audiovisual",
+    "Fotografia",
+    "Edição e Finalização",
+    "Direção de Arte para Redes Sociais",
+    "Criação de Conteúdo",
+    "Gestão de Redes Sociais",
+    "Planejamento On e Off",
+    "Identidade Visual",
+    "Criação de Embalagens",
+    "Experiência de Marca"
+  ],
+  "project": {
+    "hello": "Olá, Matheus!",
+    "next": "Logo abaixo está o orçamento. Escolha o pacote e, se quiser, adicione a edição. O valor se atualiza na hora.",
+    "text": "Uma sessão de gravação com teleprompter: você lê o roteiro olhando direto para a lente, sem decorar texto e sem perder o contato com quem assiste. Os vídeos são gravados em 4K, com áudio de lapela e iluminação profissional, e você recebe os arquivos tratados, prontos para edição. A edição é opcional.",
+    "cards": [
+      {
+        "big": "3",
+        "label": "pacotes: 4, 6 ou 8 vídeos"
+      },
+      {
+        "big": "2–4h",
+        "label": "de gravação com teleprompter"
+      },
+      {
+        "big": "4K",
+        "label": "Sony FX2 em 10-bit, áudio de lapela e luz LED"
+      }
+    ]
+  },
+  "budget": {
+    "labels": {
+      "budgetTag": "Monte o seu orçamento",
+      "budgetTitle": "Orçamento dos vídeos",
+      "total": "Total",
+      "delivTag": "Na entrega",
+      "delivTitle": "Entregáveis",
+      "items": "Itens",
+      "approve": "o orçamento dos vídeos para"
+    },
+    "team": [
+      {
+        "name": "José",
+        "role": "HUP Creative · filmmaker: grava, trata e edita os vídeos",
+        "short": "HUP Creative, captação e edição"
+      }
+    ],
+    "paymentNote": "Pagamento: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
+    "groups": [
+      {
+        "name": "Captação com teleprompter",
+        "items": [
+          {
+            "id": "pacote-4",
+            "name": "4 vídeos · 2h",
+            "desc": "Até 2h de gravação com teleprompter para 4 vídeos. Câmera Sony FX2 (4K, 10-bit), lapela sem fio e luz LED. Entrega dos arquivos tratados, prontos para edição.",
+            "short": "Até 2h com teleprompter, Sony FX2 (4K 10-bit), lapela e luz LED. Arquivos tratados.",
+            "value": 600,
+            "fixed": false,
+            "on": false,
+            "exclusive": "pacote",
+            "required": true
+          },
+          {
+            "id": "pacote-6",
+            "name": "6 vídeos · 3h",
+            "desc": "Até 3h de gravação com teleprompter para 6 vídeos. Mesmo equipamento, com arquivos tratados, prontos para edição.",
+            "short": "Até 3h com teleprompter, Sony FX2 (4K 10-bit), lapela e luz LED. Arquivos tratados.",
+            "value": 700,
+            "fixed": false,
+            "on": true,
+            "exclusive": "pacote",
+            "required": true
+          },
+          {
+            "id": "pacote-8",
+            "name": "8 vídeos · 4h",
+            "desc": "Até 4h de gravação com teleprompter para 8 vídeos. Mesmo equipamento, com arquivos tratados, prontos para edição.",
+            "short": "Até 4h com teleprompter, Sony FX2 (4K 10-bit), lapela e luz LED. Arquivos tratados.",
+            "value": 1000,
+            "fixed": false,
+            "on": false,
+            "exclusive": "pacote",
+            "required": true,
+            "after": "Escolha um dos pacotes."
+          }
+        ]
+      },
+      {
+        "name": "Pós-produção (opcional)",
+        "items": [
+          {
+            "id": "edicao",
+            "name": "Edição dos vídeos",
+            "desc": "Edição de todos os vídeos do pacote: cortes, legendas, trilha licenciada para redes sociais, correção de cor e tratamento de áudio. O valor acompanha o pacote escolhido: R$ 260 (4 vídeos), R$ 390 (6) ou R$ 470 (8).",
+            "short": "Todos os vídeos do pacote editados, com legendas, trilha licenciada, cor e áudio.",
+            "value": 390,
+            "valueBy": {
+              "pacote-4": 260,
+              "pacote-6": 390,
+              "pacote-8": 470
+            },
+            "fixed": false,
+            "on": false
+          }
+        ]
+      }
+    ]
+  },
+  "equipment": [
+    "Teleprompter",
+    "1 câmera Sony Cinema Line FX2 (4K, 10-bit)",
+    "Kit de microfones lapela Hollyland",
+    "Gravador profissional Zoom H5",
+    "1 LED tocha 60W com difusores",
+    "1 LED tocha 100W com difusores",
+    "1 LED bastão RGBW",
+    "2 tripés hidráulicos para câmera",
+    "2 tripés de 3m para iluminação"
+  ],
+  "editing": [
+    "Cortes e montagem de cada vídeo",
+    "Tratamento de luz, cor e áudio",
+    "Trilha sonora licenciada com direito de uso em redes sociais",
+    "Inserção de textos e legendas"
+  ],
+  "deliverables": [
+    "Arquivos de cada vídeo em 4K, com cor e áudio tratados, prontos para edição",
+    "Com a edição: os vídeos finalizados, com legendas e trilha, prontos para publicar",
+    "Tudo organizado em pastas no Google Drive"
+  ],
+  "conditions": [
+    "Validade da proposta: 18/11/2026",
+    "Pagamento: 50% na confirmação da data de captação e 50% na entrega, via Pix ou boleto",
+    "Captação: em Salvador, em local e data a combinar. Horas extras são orçadas à parte",
+    "Roteiros: por conta do cliente, enviados até 2 dias antes da captação para entrar no teleprompter",
+    "Ajustes na edição: 2 rodadas de ajuste por vídeo. Ajustes extras são orçados à parte",
+    "Uso dos vídeos: trilha licenciada para redes sociais. Outros usos, como TV ou mídia externa, são combinados à parte"
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "approveWhatsapp": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  },
+  "playlists": [
+    {
+      "name": "Redes Sociais",
+      "desc": "Vídeos verticais para Instagram e TikTok",
+      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjEOI2IH5-_GqUoVyWm-qt4h"
+    },
+    {
+      "name": "Institucionais e Eventos",
+      "desc": "O bom e velho horizontal, das apresentações à TV",
+      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjGlNHhRgibzSKpus5ICzB5J"
+    }
+  ]
+}
