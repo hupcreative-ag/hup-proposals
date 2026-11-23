@@ -2,6 +2,20 @@
   "slug": "bahia-noticias",
   "token": "bahia-noticias-dez-2026",
   "type": "serie",
+  "pdfLayout": "classico",
+  "pdf": {
+    "subtitle": "Audiovisual",
+    "date": "Dez, 2026",
+    "number": "1",
+    "infos": [
+      "Esse orçamento contempla captação na quinta-feira (03/12) das 18h30 às 22h30.",
+      "Este orçamento contempla 01 filmmaker com 01 câmera + Assistente.",
+      "O prazo para entrega do material editado é de até 4 dias corridos após a captação e envio das informações necessárias.",
+      "O material de decupagem é enviado após o fechamento do vídeo, em link de download.",
+      "Pagamento: 50% na confirmação da data e 50% na entrega, via Pix ou boleto.",
+      "Validade da proposta: 02/12/2026."
+    ]
+  },
   "serviceType": "Produção Audiovisual",
   "pageTitle": "Proposta HUP Creative | Bahia Notícias",
   "pdfTitle": "Orcamento-HUP-Bahia-Noticias-Dez-2026",
@@ -86,7 +100,11 @@
             "short": "Filmmaker + assistente, das 18h30 às 22h30, com câmera 4K, microfone, iluminação e gimbal.",
             "value": 1450,
             "fixed": true,
-            "hideValue": true
+            "hideValue": true,
+            "bullets": [
+              "Câmera 4K + microfone + iluminação",
+              "Gimbal estabilizador + suporte geral"
+            ]
           },
           {
             "id": "drone",
@@ -95,7 +113,11 @@
             "short": "2 voos, até 40 min de voo total, drone em 4K.",
             "value": 200,
             "fixed": false,
-            "on": false
+            "on": false,
+            "bullets": [
+              "2 voos, até 40 min. de voo total.",
+              "Drone de última geração, qualidade 4K"
+            ]
           }
         ]
       },
@@ -109,7 +131,13 @@
             "short": "Luz e cor, trilha licenciada para redes, textos, legendas, transições e logo no final.",
             "value": 0,
             "fixed": true,
-            "hideValue": true
+            "hideValue": true,
+            "bullets": [
+              "Tratamento de luz e cor;",
+              "Aquisição de trilha sonora com direito de uso reservado em redes sociais;",
+              "Inserção de textos e legendas;",
+              "Edição dinâmica com transições e finalização com logo (caso solicitado)."
+            ]
           },
           {
             "id": "brutas",
@@ -118,7 +146,13 @@
             "short": "Cenas tratadas e decupadas, áudio dos depoimentos melhorado, 2 vídeos em alta qualidade.",
             "value": 0,
             "fixed": true,
-            "hideValue": true
+            "hideValue": true,
+            "bullets": [
+              "Tratamento de luz e cor;",
+              "Decupagem de cenas;",
+              "Melhoramento de áudio em depoimentos;",
+              "Renderização de dois vídeos das cenas decupadas em qualidade alta."
+            ]
           }
         ]
       }

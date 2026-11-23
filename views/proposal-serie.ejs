@@ -8,6 +8,9 @@
     const _fmtDate = iso => { const [y,m,d] = String(iso).split('-'); return d && m && y ? `${d}/${m}/${y}` : iso; };
     const _expires = _fmtDate(proposal.expiresAt);
     const _logoWhite = assets.logoHup.find(l=>l.toLowerCase().includes('branca')) || assets.logoHup[0];
+    const _logoBlack = assets.logoHup.find(l=>l.toLowerCase().includes('preta')) || _logoWhite;
+    // "pdfLayout": "classico" troca o PDF pelo modelo de orçamento em papel (logo preta, tabela Nº/Descrição/Qt./Valor, Infos importantes)
+    const _pdfClassic = proposal.pdfLayout === 'classico';
     // Sem budget.episodes a proposta é de peça única: some a quantidade e os textos vêm de budget.labels.
     const _single = !proposal.budget.episodes;
     const _labels = Object.assign({
@@ -33,6 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://i.ytimg.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Poppins:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+  <% if (_pdfClassic) { %><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600;700&display=swap" rel="stylesheet"><% } %>
 
   <style>
     :root{--blue:#1400FF;--cyan:#00CFFF;--bg:#0a0a0a;--surface:#111111;--muted:#888;}
@@ -400,6 +404,40 @@
 
     /* ════════ PDF (impressão) ════════ */
     #print-sheet{display:none;}
+    /* ════════ PDF clássico (pdfLayout: "classico") ════════ */
+    @media print{
+      #print-sheet.pc{font-family:'Montserrat',Arial,sans-serif;color:#000;font-size:10.5pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      .pc-page{padding:10mm 21mm 8mm;}
+      .pc-logo{width:23mm;height:auto;display:block;margin-left:.5mm;}
+      .pc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2.5mm;}
+      .pc-t1{font-weight:700;font-size:36pt;line-height:1;letter-spacing:-.2pt;}
+      .pc-t2{font-weight:600;font-size:25.5pt;line-height:1.15;margin-top:1mm;}
+      .pc-client{text-align:right;padding-bottom:3.5mm;font-size:15.4pt;}
+      .pc-client b{font-weight:700;display:block;}
+      .pc-client span{font-weight:400;display:block;margin-top:1mm;}
+      .pc-row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:6mm;}
+      .pc-contact{font-weight:300;font-size:11.6pt;line-height:1.4;margin-left:.5mm;}
+      .pc-num{font-weight:200;font-size:34.5pt;line-height:1;}
+      .pc-table{width:100%;border-collapse:collapse;margin-top:4mm;}
+      .pc-table th{background:#000!important;color:#fff;font-weight:300;font-size:11.25pt;height:10mm;text-align:left;}
+      .pc-table td{font-size:10.6pt;vertical-align:middle;padding:2.4mm 0;}
+      .pc-table tbody tr{break-inside:avoid;page-break-inside:avoid;}
+      .pc-table tbody tr:nth-child(odd) td{background:#f7f7f7!important;}
+      .pc-table .n{width:19mm;text-align:center;}
+      .pc-table .q{width:20mm;text-align:center;}
+      .pc-table .v{width:29.6mm;text-align:center;}
+      .pc-table td.n{font-weight:700;}
+      .pc-table td.q{font-weight:300;}
+      .pc-table td.v{font-weight:700;font-size:11.25pt;}
+      .pc-it{font-weight:700;display:block;line-height:1.35;}
+      .pc-table ul{margin:0;padding-left:7.4mm;list-style:disc;line-height:1.32;}
+      .pc-total-row{display:flex;justify-content:flex-end;break-inside:avoid;page-break-inside:avoid;}
+      .pc-total{background:#000!important;color:#fff;font-weight:700;font-size:11.25pt;width:29.6mm;height:10.6mm;display:flex;align-items:center;justify-content:center;}
+      .pc-infos-wrap{break-inside:avoid;page-break-inside:avoid;}
+      .pc-h2{font-weight:700;font-size:23pt;margin:4.5mm 0 0 -2.4mm;}
+      .pc-infos{list-style:disc;padding-left:3.4mm;margin:2.8mm 0 0;font-size:10.5pt;line-height:1.45;max-width:156mm;}
+      .pc-infos li{padding-left:.5mm;}
+    }
     @media print{
       @page{size:A4;margin:10mm 0 0 0;}
       @page :first{margin-top:0;}
@@ -906,6 +944,10 @@
     expires: _expires,
     pdfTitle: proposal.pdfTitle || 'Orcamento-HUP',
     logo: _logoWhite,
+    logoBlack: _logoBlack,
+    classic: _pdfClassic,
+    pdf: proposal.pdf || {},
+    email: proposal.cta.email,
     budget: proposal.budget,
     single: _single,
     labels: _labels,
@@ -1384,7 +1426,47 @@
   const printSheet = document.getElementById('print-sheet');
   let savedTitle = null;
 
+  // PDF clássico: mesmo desenho do orçamento em papel da HUP.
+  // Opcionais em "pdf": subtitle, date ("Dez, 2026"), number, phone, infos[]. Nos itens: bullets[], qty.
+  function buildPrintSheetClassic(){
+    const P = PROPOSAL.pdf || {};
+    const short = n => money(n).replace(/,00$/, '');
+    const MONTHS = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    const now = new Date();
+    const date = P.date || `${MONTHS[now.getMonth()]}, ${now.getFullYear()}`;
+    const act = activeItems();
+    const rows = act.map((it,i)=>{
+      const bullets = it.bullets || [it.short || it.desc || ''];
+      return `<tr><td class="n">${i+1}</td><td><span class="pc-it">${esc(it.name)}</span><ul>${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></td><td class="q">${esc(it.qty || 1)}</td><td class="v">${it.hideValue ? '' : short(val(it))}</td></tr>`;
+    }).join('');
+    const infos = P.infos || PROPOSAL.conditions;
+    printSheet.className = 'pc';
+    printSheet.innerHTML = `
+      <div class="pc-page">
+        <img class="pc-logo" src="${esc(PROPOSAL.logoBlack)}" alt="HUP Creative">
+        <div class="pc-head">
+          <div><div class="pc-t1">Orçamento</div><div class="pc-t2">${esc(P.subtitle || 'Audiovisual')}</div></div>
+          <div class="pc-client"><b>Cliente: ${esc(PROPOSAL.company)}</b><span>${esc(date)}</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-contact">${esc(PROPOSAL.email)}<br>${esc(P.phone || '(71) 99338-6304')}</div>
+          ${P.number ? `<div class="pc-num">nº${esc(P.number)}</div>` : ''}
+        </div>
+        <table class="pc-table">
+          <thead><tr><th class="n">Nº</th><th>Descrição</th><th class="q">Qt.</th><th class="v">Valor</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <div class="pc-total-row"><div class="pc-total">${short(seriesTotal())}</div></div>
+        <div class="pc-infos-wrap">
+          <h2 class="pc-h2">Infos importantes</h2>
+          <ul class="pc-infos">${infos.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+        </div>
+      </div>`;
+  }
+
   function buildPrintSheet(){
+    if (PROPOSAL.classic) return buildPrintSheetClassic();
+    printSheet.className = '';
     const today = new Date().toLocaleDateString('pt-BR');
     const act = activeItems();
     const groups = PROPOSAL.budget.groups
@@ -1450,7 +1532,10 @@
     beforePrint();
     // Garante que a logo do PDF já carregou antes de abrir a impressão.
     const logo = printSheet.querySelector('img');
-    const go = ()=>{ window.print(); };
+    const fontsReady = (PROPOSAL.classic && document.fonts)
+      ? Promise.all(['200','300','400','600','700'].map(w=>document.fonts.load(`${w} 12px Montserrat`))).catch(()=>{})
+      : Promise.resolve();
+    const go = ()=>{ fontsReady.then(()=>window.print()); };
     if (logo && !logo.complete) { logo.onload = logo.onerror = go; } else { go(); }
   });
 </script>
