@@ -1,0 +1,175 @@
+{
+  "slug": "bahia-noticias",
+  "token": "bahia-noticias-dez-2026",
+  "type": "serie",
+  "serviceType": "Produção Audiovisual",
+  "pageTitle": "Proposta HUP Creative | Bahia Notícias",
+  "pdfTitle": "Orcamento-HUP-Bahia-Noticias-Dez-2026",
+  "client": {
+    "contacts": [
+      "Bahia Notícias"
+    ],
+    "company": "Bahia Notícias"
+  },
+  "expiresAt": "2026-12-02",
+  "heroTitle": "Captação 03 de dezembro",
+  "heroSubtitle": "Filmagem, edição e imagens brutas para a noite de quinta, das 18h30 às 22h30",
+  "aboutLast": "Na HUP, a captação e a edição ficam com a mesma direção. Gravamos, editamos e entregamos o vídeo pronto para publicar.",
+  "videosFirst": [
+    "uvgDY2hLwYo",
+    "07B6qInzcL4",
+    "Y5jq7w22POc",
+    "jgF8O7k7owM"
+  ],
+  "services": [
+    "Produção Audiovisual",
+    "Fotografia",
+    "Edição e Finalização",
+    "Direção de Arte para Redes Sociais",
+    "Criação de Conteúdo",
+    "Gestão de Redes Sociais",
+    "Planejamento On e Off",
+    "Identidade Visual",
+    "Criação de Embalagens",
+    "Experiência de Marca"
+  ],
+  "project": {
+    "hello": "Olá, equipe Bahia Notícias!",
+    "next": "Logo abaixo está o orçamento. A filmagem com drone é opcional: ligue o item e o valor se atualiza na hora.",
+    "text": "Uma meia diária de captação na quinta-feira, 03/12, das 18h30 às 22h30, com filmmaker e assistente. Depois, a edição de um vídeo de até 3 minutos e o envio das imagens brutas tratadas e decupadas.",
+    "cards": [
+      {
+        "big": "4h",
+        "label": "de captação, das 18h30 às 22h30"
+      },
+      {
+        "big": "1",
+        "label": "vídeo editado de até 3 minutos"
+      },
+      {
+        "big": "4",
+        "label": "dias corridos para a entrega, após a captação"
+      }
+    ]
+  },
+  "budget": {
+    "labels": {
+      "budgetTag": "Monte o seu orçamento",
+      "budgetTitle": "Orçamento da captação",
+      "total": "Total",
+      "delivTag": "Na entrega",
+      "delivTitle": "Entregáveis",
+      "items": "Itens",
+      "approve": "o orçamento da captação para"
+    },
+    "team": [
+      {
+        "name": "José",
+        "role": "HUP Creative · filmmaker: grava e edita o vídeo",
+        "short": "HUP Creative, captação e edição"
+      },
+      {
+        "name": "Assistente",
+        "role": "Apoio na captação: equipamento, luz e áudio",
+        "short": "Apoio na captação"
+      }
+    ],
+    "paymentNote": "Pagamento: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
+    "groups": [
+      {
+        "name": "Captação",
+        "items": [
+          {
+            "id": "meia-diaria",
+            "name": "Filmagem em meia diária (até 4h)",
+            "desc": "Filmmaker e assistente na quinta, 03/12, das 18h30 às 22h30. Câmera 4K, microfone, iluminação, gimbal estabilizador e suporte geral.",
+            "short": "Filmmaker + assistente, das 18h30 às 22h30, com câmera 4K, microfone, iluminação e gimbal.",
+            "value": 750,
+            "fixed": true
+          },
+          {
+            "id": "drone",
+            "name": "Filmagem com drone (opcional)",
+            "desc": "2 voos, até 40 min de voo total. Drone de última geração, com imagens em 4K.",
+            "short": "2 voos, até 40 min de voo total, drone em 4K.",
+            "value": 200,
+            "fixed": false,
+            "on": false
+          }
+        ]
+      },
+      {
+        "name": "Pós-produção",
+        "items": [
+          {
+            "id": "edicao",
+            "name": "Edição de 01 vídeo de até 3 min",
+            "desc": "Tratamento de luz e cor, trilha sonora com direito de uso em redes sociais, textos e legendas, edição dinâmica com transições e finalização com logo (caso solicitado).",
+            "short": "Luz e cor, trilha licenciada para redes, textos, legendas, transições e logo no final.",
+            "value": 550,
+            "fixed": true
+          },
+          {
+            "id": "brutas",
+            "name": "Imagens brutas",
+            "desc": "Tratamento de luz e cor, decupagem das cenas, melhoria do áudio dos depoimentos e renderização de dois vídeos com as cenas decupadas, em alta qualidade.",
+            "short": "Cenas tratadas e decupadas, áudio dos depoimentos melhorado, 2 vídeos em alta qualidade.",
+            "value": 150,
+            "fixed": true
+          }
+        ]
+      }
+    ]
+  },
+  "equipment": [
+    "1 câmera Sony Cinema Line FX2 (4K)",
+    "Kit de microfones lapela Hollyland",
+    "Gravador profissional Zoom H5",
+    "Gimbal estabilizador para câmera",
+    "1 LED tocha 60W com difusores",
+    "1 LED tocha 100W com difusores",
+    "1 LED bastão RGBW",
+    "2 tripés hidráulicos para câmera",
+    "2 tripés de 3m para iluminação",
+    "3 tripés de 2m para suporte"
+  ],
+  "editing": [
+    "Tratamento de luz e cor",
+    "Trilha sonora com direito de uso em redes sociais",
+    "Inserção de textos e legendas",
+    "Edição dinâmica com transições e finalização com logo (caso solicitado)"
+  ],
+  "deliverables": [
+    "1 vídeo editado de até 3 minutos",
+    "2 vídeos com as cenas decupadas, em alta qualidade",
+    "Imagens brutas tratadas, enviadas por link de download após o fechamento do vídeo",
+    "Imagens de drone, se o item for contratado"
+  ],
+  "conditions": [
+    "Validade da proposta: 02/12/2026",
+    "Pagamento: 50% na confirmação da data de captação e 50% na entrega, via Pix ou boleto",
+    "Captação: quinta-feira, 03/12, das 18h30 às 22h30. Horas extras são orçadas à parte",
+    "Equipe: 01 filmmaker com 01 câmera + assistente",
+    "Prazo: o vídeo editado é entregue em até 4 dias corridos após a captação e o envio das informações necessárias",
+    "Imagens brutas: o material decupado é enviado após o fechamento do vídeo, em link de download",
+    "Drone: opcional. Se contratado, acrescenta R$ 200 ao total"
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "approveWhatsapp": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  },
+  "playlists": [
+    {
+      "name": "Redes Sociais",
+      "desc": "Vídeos verticais para Instagram e TikTok",
+      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjEOI2IH5-_GqUoVyWm-qt4h"
+    },
+    {
+      "name": "Institucionais e Eventos",
+      "desc": "O bom e velho horizontal, das apresentações à TV",
+      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjGlNHhRgibzSKpus5ICzB5J"
+    }
+  ]
+}

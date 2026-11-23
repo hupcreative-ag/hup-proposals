@@ -241,6 +241,7 @@ Para atualizar fotos novas:
 | `crema-signature` | serie (audiovisual + foto, orçamento interativo) | Crema Signature | `crema-signature-2026` |
 | `davi-castillo` | serie (vídeo único, sem `budget.episodes`, captação à escolha) | Davi Castillo | `davi-castillo-2026` |
 | `matheus-cohim` | serie (pacotes 4/6/8 vídeos com teleprompter; edição opcional com `valueBy` por pacote) | Matheus Cohim | `matheus-cohim-2026` |
+| `bahia-noticias` | serie (meia diária 03/12/2026 + edição + brutas; drone opcional) | Bahia Notícias | `bahia-noticias-dez-2026` |
 
 ---
 
