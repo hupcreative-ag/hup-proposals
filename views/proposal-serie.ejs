@@ -546,7 +546,7 @@
             <div class="brow<%= (!it.fixed && !it.on) ? ' off' : '' %>" role="row" data-item="<%= it.id %>">
               <span class="b-name" role="cell"><%= it.name %></span>
               <span class="b-desc" role="cell"><%- it.desc %></span>
-              <span class="b-value" role="cell" data-money="<%= it.value %>"></span>
+              <span class="b-value" role="cell"<% if (!it.hideValue) { %> data-money="<%= it.value %>"<% } %>></span>
               <span class="b-status" role="cell">
                 <% if (it.fixed) { %>
                   <span class="badge-in">✓ Incluso</span>
@@ -1263,6 +1263,7 @@
   // Desconto por quantidade de episódios (maior faixa atingida vale)
   const DISCOUNTS = (PROPOSAL.budget.discounts || []).slice().sort((a,b)=>b.min - a.min);
   const activeItems   = () => ITEMS.filter(it=>state.on[it.id]);
+  // "hideValue": true esconde o preço do item (site, WhatsApp e PDF); o valor continua somando no total.
   // "valueBy": { "<id de outro item>": valor } faz o valor seguir a opção ligada (ex.: edição por pacote).
   const val = it => {
     if (!it.valueBy) return it.value;
@@ -1316,7 +1317,7 @@
       `Olá, José! Quero aprovar ${LABELS.approve} ${PROPOSAL.company}.`,
       '',
       `${LABELS.items}:`,
-      ...activeItems().map(it=>`• ${it.name}: ${money(val(it))}`),
+      ...activeItems().map(it=>it.hideValue ? `• ${it.name}` : `• ${it.name}: ${money(val(it))}`),
       '',
       ...(SINGLE ? [] : [`Valor por episódio: ${money(perEpisode())}`, `Episódios: ${state.episodes}`]),
       ...(discountPct() ? [`Subtotal: ${money(subtotal())}`, `Desconto (${discountPct()}%): -${money(discountValue())}`] : []),
@@ -1391,7 +1392,7 @@
       .filter(g=>g.items.length);
     const rows = groups.map(g=>
       `<tr class="ps-grp"><td colspan="3">${esc(g.name)}</td></tr>` +
-      g.items.map(it=>`<tr><td class="c-item">${esc(it.name)}</td><td class="c-desc">${esc(it.short || '')}</td><td class="c-val">${money(val(it))}</td></tr>`).join('')
+      g.items.map(it=>`<tr><td class="c-item">${esc(it.name)}</td><td class="c-desc">${esc(it.short || '')}</td><td class="c-val">${it.hideValue ? 'Incluso' : money(val(it))}</td></tr>`).join('')
     ).join('');
     const li = arr => arr.map(x=>`<li>${esc(x)}</li>`).join('');
     const team = (PROPOSAL.budget.team || []).filter(m=>!m.item || state.on[m.item]);

@@ -35,7 +35,7 @@
   ],
   "project": {
     "hello": "Olá, equipe Bahia Notícias!",
-    "next": "Logo abaixo está o orçamento. A filmagem com drone é opcional: ligue o item e o valor se atualiza na hora.",
+    "next": "Logo abaixo está o orçamento. O pacote completo sai por R$ 1.450, e a filmagem com drone é opcional: ligue o item e o valor se atualiza na hora.",
     "text": "Uma meia diária de captação na quinta-feira, 03/12, das 18h30 às 22h30, com filmmaker e assistente. Depois, a edição de um vídeo de até 3 minutos e o envio das imagens brutas tratadas e decupadas.",
     "cards": [
       {
@@ -84,8 +84,9 @@
             "name": "Filmagem em meia diária (até 4h)",
             "desc": "Filmmaker e assistente na quinta, 03/12, das 18h30 às 22h30. Câmera 4K, microfone, iluminação, gimbal estabilizador e suporte geral.",
             "short": "Filmmaker + assistente, das 18h30 às 22h30, com câmera 4K, microfone, iluminação e gimbal.",
-            "value": 750,
-            "fixed": true
+            "value": 1450,
+            "fixed": true,
+            "hideValue": true
           },
           {
             "id": "drone",
@@ -106,16 +107,18 @@
             "name": "Edição de 01 vídeo de até 3 min",
             "desc": "Tratamento de luz e cor, trilha sonora com direito de uso em redes sociais, textos e legendas, edição dinâmica com transições e finalização com logo (caso solicitado).",
             "short": "Luz e cor, trilha licenciada para redes, textos, legendas, transições e logo no final.",
-            "value": 550,
-            "fixed": true
+            "value": 0,
+            "fixed": true,
+            "hideValue": true
           },
           {
             "id": "brutas",
             "name": "Imagens brutas",
             "desc": "Tratamento de luz e cor, decupagem das cenas, melhoria do áudio dos depoimentos e renderização de dois vídeos com as cenas decupadas, em alta qualidade.",
             "short": "Cenas tratadas e decupadas, áudio dos depoimentos melhorado, 2 vídeos em alta qualidade.",
-            "value": 150,
-            "fixed": true
+            "value": 0,
+            "fixed": true,
+            "hideValue": true
           }
         ]
       }
