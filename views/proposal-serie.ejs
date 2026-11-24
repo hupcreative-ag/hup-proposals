@@ -52,8 +52,8 @@
     }
 
     /* ── Layout ── */
-    .section{padding:6rem 0;}
-    @media(max-width:768px){.section{padding:4rem 0;}}
+    .section{padding:3.75rem 0;}
+    @media(max-width:768px){.section{padding:2.75rem 0;}}
     .container{max-width:1200px;margin:0 auto;padding:0 2rem;}
     @media(max-width:480px){.container{padding:0 1.25rem;}}
 
@@ -99,11 +99,11 @@
     @media(max-width:480px){.hero-valid{top:1.25rem;right:1.25rem;}}
 
     /* ── Sec number / headings ── */
-    .sec-num{font-size:clamp(5rem,15vw,10rem);font-weight:700;color:#1a1a1a;line-height:1;user-select:none;}
-    .sec-head{margin-bottom:3rem;}
-    .sec-head .sec-num{float:left;margin-right:1.5rem;line-height:.85;}
-    .sec-head h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;margin:0;line-height:1.1;clear:both;}
-    .label{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin:0 0 .5rem;}
+    .sec-num{display:inline-flex;align-items:center;justify-content:center;min-width:2.3rem;height:1.55rem;padding:0 .5rem;font-size:.76rem;font-weight:700;letter-spacing:.08em;line-height:1;color:#fff;background:var(--blue);border-radius:3px;box-shadow:0 0 16px rgba(20,0,255,.35);user-select:none;}
+    .sec-head{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;margin-bottom:2rem !important;}
+    .sec-head .label{margin:0;}
+    .sec-head h2{flex-basis:100%;font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:700;text-transform:uppercase;margin:.2rem 0 0;line-height:1.1;}
+    .label{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin:0 0 .5rem;}
 
     /* ── Services ── */
     @keyframes svc-pulse{
@@ -139,13 +139,13 @@
     }
 
     /* ── Portfolio ── */
-    .port-section{margin-bottom:5rem;}
+    .port-section{margin-bottom:3rem;}
     .port-section:last-child{margin-bottom:0;}
     .port-heading{display:flex;align-items:flex-end;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #1a1a1a;flex-wrap:wrap;}
     .port-heading h3{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0;line-height:1;}
     .port-desc{font-size:.8rem;color:#888;letter-spacing:.04em;line-height:1.5;}
     .port-tag{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem;}
-    .av-block{margin-top:2.5rem;}
+    .av-block{margin-top:2rem;}
     .av-block:first-of-type{margin-top:0;}
     .av-block-title{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0 0 1rem;}
     .av-block-title h4{margin:0;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#ddd;display:flex;align-items:center;gap:.6rem;}
@@ -255,7 +255,7 @@
 
     /* ── Logo wall ── */
     .clients-section{background:#f0f0f0;}
-    .clients-section .sec-num{color:#ddd;}
+    .clients-section .sec-num{box-shadow:none;}
     .clients-section h2{color:#111;}
     .clients-section .label{color:var(--blue);}
     .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;align-items:center;justify-items:center;}
@@ -266,7 +266,7 @@
     .logo-item:hover img{transform:scale(1.1);}
 
     /* ── 06 Projeto ── */
-    .proposal-intro{position:relative;margin-bottom:2rem;padding:2rem 2.5rem;background:#0d0d0d;}
+    .proposal-intro{position:relative;margin-bottom:0;padding:2rem 2.5rem;background:#0d0d0d;}
     .proposal-intro::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--blue),var(--cyan));}
     .proposal-intro p{color:#aaa;font-size:1.02rem;line-height:1.85;margin:0;max-width:760px;}
     @media(max-width:480px){.proposal-intro{padding:1.5rem 1.4rem;}}
@@ -543,21 +543,6 @@
       <% if (proposal.project.hello) { %><p class="intro-hello"><%= proposal.project.hello %></p><% } %>
       <p><%= proposal.project.text %></p>
     </div>
-    <div class="facts reveal">
-      <% proposal.project.cards.forEach(c=>{ %>
-        <div class="fact"><span class="fact-big"><%= c.big %></span><span class="fact-label"><%= c.label %></span></div>
-      <% }) %>
-    </div>
-    <div class="intro-ctas reveal">
-      <% if (proposal.project.next) { %><p class="intro-next"><%= proposal.project.next %></p><% } %>
-      <div class="intro-btns">
-        <a href="#orcamento" class="intro-btn intro-btn--primary">
-          Ver orçamento
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M6.5 1.5v10M2 8l4.5 4.5L11 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#agencia" class="intro-btn intro-btn--ghost">Conhecer a HUP</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -734,13 +719,13 @@
 ════════════════════════════════════════════════ -->
 <section class="section" id="agencia" style="border-top:1px solid #111;overflow:hidden;">
   <div class="container">
-    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;">
       <div>
-        <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem;">
           <div class="sec-num reveal">08</div>
           <p class="label reveal" style="margin:0;">Quem somos</p>
         </div>
-        <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;text-transform:uppercase;margin:0 0 2rem;line-height:1.1;">
+        <h2 class="reveal" style="font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:700;text-transform:uppercase;margin:0 0 1.5rem;line-height:1.1;">
           We Make it<br><span style="color:var(--cyan);">Happen!</span>
         </h2>
         <div style="color:#aaa;line-height:1.9;font-size:.92rem;">
