@@ -56,7 +56,7 @@
   ],
   "project": {
     "hello": "Olá, equipe Bahia Notícias!",
-    "next": "Logo abaixo está o orçamento. O pacote completo sai por R$ 1.450, e a filmagem com drone é opcional: ligue o item e o valor se atualiza na hora.",
+    "next": "Logo abaixo está o orçamento. O pacote completo, com drone, sai por R$ 1.650. O drone é opcional: se desligar o item, o valor cai para R$ 1.450.",
     "text": "Uma meia diária de captação na quinta-feira, 03/12, das 18h30 às 22h30, com filmmaker e assistente. Depois, a edição de um vídeo de até 3 minutos e o envio das imagens brutas tratadas e decupadas.",
     "cards": [
       {
@@ -120,7 +120,7 @@
             "short": "2 voos, até 40 min de voo total, drone em 4K.",
             "value": 200,
             "fixed": false,
-            "on": false,
+            "on": true,
             "bullets": [
               "2 voos, até 40 min. de voo total.",
               "Drone de última geração, qualidade 4K"
