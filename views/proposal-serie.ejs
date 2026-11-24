@@ -22,6 +22,11 @@
       items: 'Itens por episódio',
       approve: 'o orçamento da série',
     }, proposal.budget.labels || {});
+    // portfolio.afterBudget: os vídeos sobem para logo depois do orçamento
+    const _vidAfter = !!(proposal.portfolio && proposal.portfolio.afterBudget);
+    // Numeração das seções (a capa é a 01); acompanha seções que somem ou mudam de lugar
+    let _sec = 1;
+    const _num = () => String(++_sec).padStart(2,'0');
   %>
   <title><%= _title %></title>
   <meta property="og:type" content="website">
@@ -235,6 +240,16 @@
     .pl-icon{width:30px;height:30px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding-left:2px;}
     .pl-arrow{color:var(--cyan);margin-left:.3rem;}
     @media(max-width:700px){.pl-links{width:100%;flex-direction:column;}.pl-link{width:100%;}.pl-arrow{margin-left:auto;}}
+
+    /* Banner do portfólio completo */
+    .pf-banner{margin-top:3rem;}
+    .pf-lead{margin:-.5rem 0 2rem;color:#888;font-size:.95rem;line-height:1.7;max-width:560px;}
+    .pf-text{margin:.5rem 0 0;color:#888;font-size:.85rem;line-height:1.6;max-width:460px;}
+    .pf-btn{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 1.6rem;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 0 0 0 rgba(20,0,255,.6);animation:pfPulse 2.4s ease-in-out infinite;transition:transform 200ms,background 200ms;}
+    .pf-btn:hover{transform:translateY(-2px);background:#2a17ff;}
+    @keyframes pfPulse{0%,100%{box-shadow:0 0 0 0 rgba(20,0,255,.55),0 0 24px rgba(20,0,255,.35);}50%{box-shadow:0 0 0 10px rgba(20,0,255,0),0 0 36px rgba(20,0,255,.55);}}
+    @media(prefers-reduced-motion:reduce){.pf-btn{animation:none;}}
+    @media(max-width:700px){.pf-btn{width:100%;justify-content:center;}}
 
     /* ── Ticker (fotografia) ── */
     .ticker-wrap{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 2%,black 98%,transparent);}
@@ -535,7 +550,7 @@
 <section class="section" id="projeto" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">02</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal">Proposta para <%= proposal.client.company %></p>
       <h2 class="reveal">O projeto</h2>
     </div>
@@ -552,7 +567,7 @@
 <section class="section" style="border-top:1px solid #111;" id="orcamento">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">03</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal"><%= _labels.budgetTag %></p>
       <h2 class="reveal"><%= _labels.budgetTitle %></h2>
     </div>
@@ -639,12 +654,28 @@
 </section>
 
 <!-- ════════════════════════════════════════════════
+     PORTFÓLIO DE VÍDEO LOGO APÓS O ORÇAMENTO (portfolio.afterBudget)
+════════════════════════════════════════════════ -->
+<% if (_vidAfter) { %>
+<section class="section" style="border-top:1px solid #111;" id="portfolio">
+  <div class="container">
+    <div class="sec-head" style="margin-bottom:3.5rem;">
+      <div class="sec-num reveal"><%= _num() %></div>
+      <p class="label reveal"><%= (proposal.portfolio && proposal.portfolio.label) || 'Portfólio' %></p>
+      <h2 class="reveal"><%= (proposal.portfolio && proposal.portfolio.title) || 'Nosso Trabalho' %></h2>
+    </div>
+    <%- include('partials/serie-videos') %>
+  </div>
+</section>
+<% } %>
+
+<!-- ════════════════════════════════════════════════
      04. EQUIPAMENTOS INCLUSOS
 ════════════════════════════════════════════════ -->
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">04</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal">No set</p>
       <h2 class="reveal">Equipamentos inclusos</h2>
     </div>
@@ -666,7 +697,7 @@
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">05</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal">Pós-produção</p>
       <h2 class="reveal">O que a edição inclui</h2>
     </div>
@@ -684,7 +715,7 @@
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">06</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal"><%= _labels.delivTag %></p>
       <h2 class="reveal"><%= _labels.delivTitle %></h2>
     </div>
@@ -700,7 +731,7 @@
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">07</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal">Para ficar claro</p>
       <h2 class="reveal">Condições gerais</h2>
     </div>
@@ -722,7 +753,7 @@
     <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;">
       <div>
         <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem;">
-          <div class="sec-num reveal">08</div>
+          <div class="sec-num reveal"><%= _num() %></div>
           <p class="label reveal" style="margin:0;">Quem somos</p>
         </div>
         <h2 class="reveal" style="font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:700;text-transform:uppercase;margin:0 0 1.5rem;line-height:1.1;">
@@ -748,7 +779,7 @@
 <section class="section">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">09</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal">O que fazemos</p>
       <h2 class="reveal">Serviços</h2>
     </div>
@@ -771,54 +802,18 @@
 <!-- ════════════════════════════════════════════════
      10. PORTFÓLIO — Audiovisual e Fotografia
 ════════════════════════════════════════════════ -->
+<% if (!_vidAfter || !proposal.hidePhotos) { %>
 <section class="section" style="border-top:1px solid #111;">
   <div class="container">
     <div class="sec-head" style="margin-bottom:3.5rem;">
-      <div class="sec-num reveal">10</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal">Portfólio</p>
       <h2 class="reveal">Nosso Trabalho</h2>
     </div>
 
-    <div class="port-section reveal">
-      <div class="port-heading">
-        <div><div class="port-tag">Portfólio</div><h3>Audiovisual</h3></div>
-        <div class="port-desc">Produção completa, da captação à edição —<br>para redes sociais e tela grande.</div>
-      </div>
+    <% if (!_vidAfter) { %><%- include('partials/serie-videos') %><% } %>
 
-      <div class="av-block">
-        <div class="av-block-title"><h4>Para redes sociais</h4></div>
-        <div class="v-carousel">
-          <button class="v-arrow v-arrow--prev" id="v-prev" aria-label="Vídeos anteriores">‹</button>
-          <div class="v-track" id="v-track"></div>
-          <button class="v-arrow v-arrow--next" id="v-next" aria-label="Próximos vídeos">›</button>
-        </div>
-      </div>
-
-      <div class="av-block">
-        <div class="av-block-title"><h4>Institucional e eventos</h4></div>
-        <div class="h-grid" id="h-grid"></div>
-        <button type="button" class="h-more" id="h-more" hidden><span>Ver mais vídeos</span> ↓</button>
-      </div>
-
-      <% if (proposal.playlists && proposal.playlists.length) { %>
-      <div class="pl-banner">
-        <div class="pl-text">
-          <p class="pl-tag"><span class="hero-badge-dot"></span>Quer ver mais?</p>
-          <p class="pl-title">Assista às playlists completas no YouTube</p>
-        </div>
-        <div class="pl-links">
-          <% proposal.playlists.forEach(pl=>{ %>
-            <a class="pl-link" href="<%= pl.url %>" target="_blank" rel="noopener">
-              <span class="pl-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 3.5v17L20 12z" fill="#0a0a0a"/></svg></span>
-              <span><strong><%= pl.name %></strong><small><%= pl.desc %></small></span>
-              <span class="pl-arrow" aria-hidden="true">↗</span>
-            </a>
-          <% }) %>
-        </div>
-      </div>
-      <% } %>
-    </div>
-
+    <% if (!proposal.hidePhotos) { %>
     <div class="port-section reveal">
       <div class="port-heading">
         <div><div class="port-tag">Portfólio</div><h3>Fotografia</h3></div>
@@ -832,8 +827,10 @@
       </div>
       <div id="photo-gallery"></div>
     </div>
+    <% } %>
   </div>
 </section>
+<% } %>
 
 <!-- ════════════════════════════════════════════════
      11. CLIENTES
@@ -842,7 +839,7 @@
 <section class="section clients-section">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-num reveal">11</div>
+      <div class="sec-num reveal"><%= _num() %></div>
       <p class="label reveal" style="margin-bottom:.4rem;">Confiança</p>
       <h2 class="reveal" style="margin-bottom:.5rem;">Clientes</h2>
       <p class="reveal" style="color:#666;font-size:.95rem;margin:0;max-width:560px;">Marcas que confiam na HUP para uma solução 360° — da estratégia digital à produção criativa.</p>
@@ -907,8 +904,10 @@
   // proposal.videosHide: IDs que esta proposta não mostra
   const videos = (() => {
     const hide  = <%- JSON.stringify(proposal.videosHide || []) %>;
-    const all   = <%- JSON.stringify(videos || []) %>.filter(v => !hide.some(id => v.url.includes(id)));
-    const first = <%- JSON.stringify(proposal.videosFirst || []) %>;
+    const only  = <%- JSON.stringify(proposal.videosOnly || []) %>;
+    const all   = <%- JSON.stringify(videos || []) %>.filter(v => !hide.some(id => v.url.includes(id)) && (!only.length || only.some(id => v.url.includes(id))));
+    // videosOnly: mostra só esses vídeos, na ordem da lista
+    const first = <%- JSON.stringify(proposal.videosOnly || proposal.videosFirst || []) %>;
     const last  = <%- JSON.stringify(proposal.videosLast || []) %>;
     const rank  = v => {
       const f = first.findIndex(id => v.url.includes(id)); if (f >= 0) return f;
@@ -1214,7 +1213,7 @@
     return out;
   })();
   const SPEEDS = { all:[187,210,152], alimentacao:[105,88,128], institucional:[128,111,152], produto:[117,140,99] };
-  const gallery = document.getElementById('photo-gallery');
+  const gallery = document.getElementById('photo-gallery') || document.createElement('div');
   let currentFotos = [];
 
   function renderGallery(cat){

@@ -1,0 +1,63 @@
+<%
+  // Bloco de vídeos do portfólio (carrossel vertical + grade horizontal).
+  // Opções em proposal.portfolio: afterBudget, tag, heading, desc, verticalTitle, horizontalTitle, link{url,label,title,text,tag}
+  const _pf = proposal.portfolio || {};
+%>
+    <div class="port-section reveal">
+      <% if (_pf.afterBudget) { %>
+      <% if (_pf.desc) { %><p class="pf-lead"><%- _pf.desc %></p><% } %>
+      <% } else { %>
+      <div class="port-heading">
+        <div><div class="port-tag"><%= _pf.tag || 'Portfólio' %></div><h3><%= _pf.heading || 'Audiovisual' %></h3></div>
+        <div class="port-desc"><%- _pf.desc || 'Produção completa, da captação à edição —<br>para redes sociais e tela grande.' %></div>
+      </div>
+      <% } %>
+
+      <div class="av-block">
+        <div class="av-block-title"><h4><%= _pf.verticalTitle || 'Para redes sociais' %></h4></div>
+        <div class="v-carousel">
+          <button class="v-arrow v-arrow--prev" id="v-prev" aria-label="Vídeos anteriores">‹</button>
+          <div class="v-track" id="v-track"></div>
+          <button class="v-arrow v-arrow--next" id="v-next" aria-label="Próximos vídeos">›</button>
+        </div>
+      </div>
+
+      <div class="av-block">
+        <div class="av-block-title"><h4><%= _pf.horizontalTitle || 'Institucional e eventos' %></h4></div>
+        <div class="h-grid" id="h-grid"></div>
+        <button type="button" class="h-more" id="h-more" hidden><span>Ver mais vídeos</span> ↓</button>
+      </div>
+
+      <% if (_pf.link) { %>
+      <div class="pl-banner pf-banner">
+        <div class="pl-text">
+          <p class="pl-tag"><span class="hero-badge-dot"></span><%= _pf.link.tag || 'Quer ver mais?' %></p>
+          <p class="pl-title"><%= _pf.link.title || 'Veja o portfólio completo de vídeo da HUP' %></p>
+          <% if (_pf.link.text) { %><p class="pf-text"><%= _pf.link.text %></p><% } %>
+        </div>
+        <a class="pf-btn" href="<%= _pf.link.url %>" target="_blank" rel="noopener">
+          <span class="pl-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 3.5v17L20 12z" fill="#0a0a0a"/></svg></span>
+          <%= _pf.link.label || 'Ver portfólio completo' %>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <% } %>
+
+      <% if (proposal.playlists && proposal.playlists.length) { %>
+      <div class="pl-banner">
+        <div class="pl-text">
+          <p class="pl-tag"><span class="hero-badge-dot"></span>Quer ver mais?</p>
+          <p class="pl-title">Assista às playlists completas no YouTube</p>
+        </div>
+        <div class="pl-links">
+          <% proposal.playlists.forEach(pl=>{ %>
+            <a class="pl-link" href="<%= pl.url %>" target="_blank" rel="noopener">
+              <span class="pl-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 3.5v17L20 12z" fill="#0a0a0a"/></svg></span>
+              <span><strong><%= pl.name %></strong><small><%= pl.desc %></small></span>
+              <span class="pl-arrow" aria-hidden="true">↗</span>
+            </a>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
+    </div>

@@ -214,7 +214,10 @@ A lista fica em `videos.json` (raiz) e é usada pelas propostas `serie` e pela p
 - A ordem do arquivo é a ordem padrão da fila.
 - Numa proposta, `"videosFirst": ["<id do YouTube>", ...]` puxa esses vídeos para o início, nessa ordem.
 - `"videosLast": [...]` manda vídeos para o fim da fila; `"videosHide": [...]` esconde vídeos naquela proposta. `"capa": "maxres1"` (ou `maxres2`/`maxres3`) escolhe outro frame do YouTube como capa.
+- `"videosOnly": [...]` mostra só esses vídeos, nessa ordem (seleção curta para o cliente).
 - Na proposta, os horizontais mostram 5 e o resto fica no "Ver mais".
+- `"portfolio": { "afterBudget": true, "title", "desc", "verticalTitle", "horizontalTitle", "link": { "url", "label", "title", "text" } }` sobe os vídeos para logo depois do orçamento e mostra um banner com botão para o portfólio completo (`/videos`). `"hidePhotos": true` tira a fotografia. Os números das seções se ajustam sozinhos.
+- O bloco de vídeos fica em `views/partials/serie-videos.ejs`.
 - O `Dockerfile` copia `videos.json`; sem ele a lista não vai para produção.
 
 ---
@@ -241,6 +244,7 @@ Para atualizar fotos novas:
 | `crema-signature` | serie (audiovisual + foto, orçamento interativo) | Crema Signature | `crema-signature-2026` |
 | `davi-castillo` | serie (vídeo único, sem `budget.episodes`, captação à escolha) | Davi Castillo | `davi-castillo-2026` |
 | `matheus-cohim` | serie (pacotes 4/6/8 vídeos com teleprompter; edição opcional com `valueBy` por pacote) | Matheus Cohim | `matheus-cohim-2026` |
+| `formatura-abc` | serie (cobertura de evento, câmera extra opcional, portfólio logo após o orçamento) | Formatura do ABC | `formatura-abc-2026` |
 | `bahia-noticias` | serie (meia diária 03/12/2026 + edição + brutas; drone opcional) | Bahia Notícias | `bahia-noticias-dez-2026` |
 
 ---

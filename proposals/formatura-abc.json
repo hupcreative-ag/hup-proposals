@@ -1,0 +1,209 @@
+{
+  "slug": "formatura-abc",
+  "token": "formatura-abc-2026",
+  "type": "serie",
+  "pdfLayout": "classico",
+  "pdf": {
+    "subtitle": "Audiovisual",
+    "date": "Nov, 2026",
+    "infos": [
+      "Esse orçamento contempla captação no domingo (13/12) das 10h às 15h.",
+      "Este orçamento contempla 01 filmmaker com 01 câmera. A câmera adicional, se contratada, inclui mais 01 operador.",
+      "O prazo para entrega do material editado é de até 7 dias corridos após o evento.",
+      "Pagamento: 50% na confirmação da data e 50% na entrega, via Pix ou boleto.",
+      "Validade da proposta: 03/12/2026."
+    ]
+  },
+  "serviceType": "Produção Audiovisual",
+  "pageTitle": "Proposta HUP Creative | Formatura do ABC",
+  "pdfTitle": "Orcamento-HUP-Formatura-ABC",
+  "client": {
+    "contacts": [
+      "ABC"
+    ],
+    "company": "Formatura do ABC"
+  },
+  "expiresAt": "2026-12-03",
+  "heroTitle": "Formatura do ABC",
+  "heroSubtitle": "Cobertura em vídeo da formatura · 13 de dezembro, das 10h às 15h",
+  "aboutLast": "Na HUP, a captação e a edição ficam com a mesma direção. Filmamos o evento do começo ao fim e entregamos o vídeo pronto para publicar.",
+  "services": [
+    "Produção Audiovisual",
+    "Cobertura de Eventos",
+    "Edição e Finalização",
+    "Fotografia",
+    "Criação de Conteúdo",
+    "Direção de Arte para Redes Sociais",
+    "Gestão de Redes Sociais",
+    "Planejamento On e Off",
+    "Identidade Visual",
+    "Experiência de Marca"
+  ],
+  "project": {
+    "hello": "Olá, equipe da Formatura do ABC!",
+    "next": "Logo abaixo está o orçamento. O pacote completo sai por R$ 2.100, e a câmera adicional é opcional: ligue o item e o valor se atualiza na hora.",
+    "text": "Uma formatura acontece uma vez só. Vamos registrar o dia inteiro, da chegada dos formandos à comemoração final, e transformar tudo num vídeo vertical de até 2 minutos, com ritmo, emoção e trilha, pronto para circular nas redes da turma, das famílias e da instituição.",
+    "cards": [
+      {
+        "big": "13/12",
+        "label": "domingo, data da formatura"
+      },
+      {
+        "big": "5h",
+        "label": "de cobertura, das 10h às 15h"
+      },
+      {
+        "big": "2min",
+        "label": "de vídeo vertical, pronto para Reels, Stories e TikTok"
+      }
+    ]
+  },
+  "budget": {
+    "labels": {
+      "budgetTag": "Monte o seu orçamento",
+      "budgetTitle": "Orçamento da cobertura",
+      "total": "Total",
+      "delivTag": "Na entrega",
+      "delivTitle": "Entregáveis",
+      "items": "Itens",
+      "approve": "o orçamento da cobertura da"
+    },
+    "team": [
+      {
+        "name": "José",
+        "role": "HUP Creative · filmmaker: filma o evento e edita o vídeo",
+        "short": "HUP Creative, captação e edição"
+      },
+      {
+        "name": "2º filmmaker",
+        "role": "HUP Creative · câmera adicional: segundo ângulo durante todo o evento",
+        "short": "HUP Creative, câmera adicional",
+        "item": "camera-extra"
+      }
+    ],
+    "paymentNote": "Pagamento: 50% na confirmação da data e 50% na entrega. Pix ou boleto.",
+    "groups": [
+      {
+        "name": "Captação",
+        "items": [
+          {
+            "id": "cobertura",
+            "name": "Filmagem do evento (até 5h)",
+            "desc": "1 filmmaker no domingo, 13/12, das 10h às 15h. Câmera 4K, microfone, iluminação, gimbal estabilizador e suporte geral.",
+            "short": "1 filmmaker, das 10h às 15h, com câmera 4K, microfone, iluminação e gimbal.",
+            "value": 2100,
+            "fixed": true,
+            "hideValue": true,
+            "bullets": [
+              "Câmera 4K + microfone + iluminação",
+              "Gimbal estabilizador + suporte geral"
+            ]
+          },
+          {
+            "id": "camera-extra",
+            "name": "Câmera adicional (opcional)",
+            "desc": "Mais uma câmera, com operador, durante todo o evento. Dois ângulos ao mesmo tempo: palco e plateia, quem recebe o diploma e a família que comemora.",
+            "short": "Segunda câmera com operador durante todo o evento, para dois ângulos simultâneos.",
+            "value": 1000,
+            "fixed": false,
+            "on": false,
+            "bullets": [
+              "01 câmera 4K + 01 operador durante todo o evento",
+              "Segundo ângulo: palco, plateia e reações das famílias"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pós-produção",
+        "items": [
+          {
+            "id": "edicao",
+            "name": "Edição de 01 vídeo vertical de até 2 min",
+            "desc": "Seleção dos melhores momentos, edição dinâmica em ritmo de aftermovie, tratamento de luz e cor, trilha sonora com direito de uso em redes sociais, textos e encerramento com o nome da turma.",
+            "short": "Melhores momentos, ritmo de aftermovie, luz e cor, trilha licenciada para redes, textos e nome da turma.",
+            "value": 0,
+            "fixed": true,
+            "hideValue": true,
+            "bullets": [
+              "Seleção dos melhores momentos do evento;",
+              "Tratamento de luz e cor;",
+              "Aquisição de trilha sonora com direito de uso reservado em redes sociais;",
+              "Edição dinâmica em formato vertical (9:16), com textos e encerramento com o nome da turma."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "equipment": [
+    "1 câmera Sony Cinema Line FX2 (4K, 10-bit)",
+    "Kit de microfones lapela Hollyland",
+    "Gravador profissional Zoom H5",
+    "Gimbal estabilizador para câmera",
+    "1 LED tocha 60W com difusores",
+    "1 LED tocha 100W com difusores",
+    "1 LED bastão RGBW",
+    "2 tripés hidráulicos para câmera"
+  ],
+  "editing": [
+    "Seleção dos melhores momentos: chegada, cerimônia, entrega dos diplomas, homenagens e comemoração",
+    "Montagem em ritmo de aftermovie, pensada para prender a atenção nos primeiros segundos",
+    "Tratamento de cor e áudio, com trechos dos discursos quando fizer sentido",
+    "Trilha sonora licenciada para redes sociais, textos e encerramento com o nome da turma"
+  ],
+  "deliverables": [
+    "1 vídeo vertical (9:16) de até 2 minutos, para Reels, Stories e TikTok",
+    "Textos na tela e encerramento com o nome da turma e a data",
+    "Arquivo final em alta resolução no Google Drive"
+  ],
+  "conditions": [
+    "Validade da proposta: 03/12/2026",
+    "Pagamento: 50% na confirmação da data de captação e 50% na entrega, via Pix ou boleto",
+    "Captação: domingo, 13/12, das 10h às 15h, no local da formatura. Horas extras são orçadas à parte",
+    "Equipe: 01 filmmaker com 01 câmera",
+    "Prazo: o vídeo editado é entregue em até 7 dias corridos após o evento",
+    "Câmera adicional: opcional. Se contratada, acrescenta R$ 1.000 ao total e inclui mais 01 operador",
+    "Ajustes: 2 rodadas de ajuste. Ajustes extras são orçados à parte",
+    "Por conta da organização: acesso ao local, autorizações de gravação e de uso de imagem dos formandos e convidados",
+    "Uso do vídeo: trilha licenciada para redes sociais. Outros usos, como TV ou telão, são combinados à parte"
+  ],
+  "portfolio": {
+    "afterBudget": true,
+    "label": "Portfólio",
+    "title": "Eventos que filmamos",
+    "heading": "Audiovisual",
+    "desc": "Eventos, festas e momentos que não se repetem, filmados e editados pela HUP. Dê o play para ver.",
+    "verticalTitle": "Vídeos verticais",
+    "horizontalTitle": "Aftermovies e coberturas",
+    "link": {
+      "url": "https://proposta.hup.com.br/videos",
+      "tag": "Quer ver mais?",
+      "title": "Portfólio completo de vídeo da HUP",
+      "text": "Campanhas, institucionais, eventos e conteúdo para redes, todos num lugar só.",
+      "label": "Ver portfólio completo"
+    }
+  },
+  "hidePhotos": true,
+  "videosOnly": [
+    "u6Y3d54TuG8",
+    "ejl0lM2tAiE",
+    "jax021vPiQo",
+    "hE56CNAdHuE",
+    "kX5fHwjk5RQ",
+    "5Qc-d6Wb2qc",
+    "51ztcsH3r10",
+    "0PV_sguaDbM",
+    "yK6jrK6y7bI",
+    "uvgDY2hLwYo",
+    "DcJEqYu_nCQ",
+    "aoCaJO2HoGs",
+    "okfeetSg9MU"
+  ],
+  "cta": {
+    "meetingLink": "https://wa.me/5571993386304",
+    "approveWhatsapp": "https://wa.me/5571993386304",
+    "whatsapp": "71 9 9338-6304",
+    "email": "jose@hup.com.br"
+  }
+}
