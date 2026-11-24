@@ -202,16 +202,13 @@
     "whatsapp": "71 9 9338-6304",
     "email": "jose@hup.com.br"
   },
-  "playlists": [
-    {
-      "name": "Redes Sociais",
-      "desc": "Vídeos verticais para Instagram e TikTok",
-      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjEOI2IH5-_GqUoVyWm-qt4h"
-    },
-    {
-      "name": "Institucionais e Eventos",
-      "desc": "O bom e velho horizontal, das apresentações à TV",
-      "url": "https://youtube.com/playlist?list=PLkVpdYag8wjGlNHhRgibzSKpus5ICzB5J"
+  "portfolio": {
+    "link": {
+      "url": "https://proposta.hup.com.br/videos",
+      "tag": "Quer ver mais?",
+      "title": "Portfólio completo de vídeo da HUP",
+      "text": "Campanhas, institucionais, eventos e conteúdo para redes, todos num lugar só.",
+      "label": "Ver portfólio completo"
     }
-  ]
+  }
 }
