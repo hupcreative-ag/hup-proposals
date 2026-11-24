@@ -8,7 +8,7 @@
     "date": "Nov, 2026",
     "infos": [
       "Esse orçamento contempla captação no domingo (13/12) das 10h às 15h.",
-      "Este orçamento contempla 01 filmmaker com 01 câmera. A câmera adicional, se contratada, inclui mais 01 operador.",
+      "Este orçamento contempla 01 filmmaker com 01 câmera + assistente de gravação. A câmera adicional, se contratada, inclui mais 01 operador.",
       "O prazo para entrega do material editado é de até 7 dias corridos após o evento.",
       "Pagamento: 50% na confirmação da data e 50% na entrega, via Pix ou boleto.",
       "Validade da proposta: 03/12/2026."
@@ -75,6 +75,11 @@
         "short": "HUP Creative, captação e edição"
       },
       {
+        "name": "Assistente",
+        "role": "Assistente de gravação: apoio com equipamento, luz e áudio",
+        "short": "Assistente de gravação"
+      },
+      {
         "name": "2º filmmaker",
         "role": "HUP Creative · câmera adicional: segundo ângulo durante todo o evento",
         "short": "HUP Creative, câmera adicional",
@@ -89,12 +94,13 @@
           {
             "id": "cobertura",
             "name": "Filmagem do evento (até 5h)",
-            "desc": "1 filmmaker no domingo, 13/12, das 10h às 15h. Câmera 4K, microfone, iluminação, gimbal estabilizador e suporte geral.",
-            "short": "1 filmmaker, das 10h às 15h, com câmera 4K, microfone, iluminação e gimbal.",
+            "desc": "Filmmaker e assistente de gravação no domingo, 13/12, das 10h às 15h. Câmera 4K, microfone, iluminação, gimbal estabilizador e suporte geral.",
+            "short": "Filmmaker + assistente de gravação, das 10h às 15h, com câmera 4K, microfone, iluminação e gimbal.",
             "value": 2100,
             "fixed": true,
             "hideValue": true,
             "bullets": [
+              "Filmmaker + assistente de gravação",
               "Câmera 4K + microfone + iluminação",
               "Gimbal estabilizador + suporte geral"
             ]
@@ -161,7 +167,7 @@
     "Validade da proposta: 03/12/2026",
     "Pagamento: 50% na confirmação da data de captação e 50% na entrega, via Pix ou boleto",
     "Captação: domingo, 13/12, das 10h às 15h, no local da formatura. Horas extras são orçadas à parte",
-    "Equipe: 01 filmmaker com 01 câmera",
+    "Equipe: 01 filmmaker com 01 câmera + assistente de gravação",
     "Prazo: o vídeo editado é entregue em até 7 dias corridos após o evento",
     "Câmera adicional: opcional. Se contratada, acrescenta R$ 1.000 ao total e inclui mais 01 operador",
     "Ajustes: 2 rodadas de ajuste. Ajustes extras são orçados à parte",
@@ -187,18 +193,21 @@
   "hidePhotos": true,
   "videosOnly": [
     "u6Y3d54TuG8",
-    "ejl0lM2tAiE",
     "jax021vPiQo",
-    "hE56CNAdHuE",
     "kX5fHwjk5RQ",
     "5Qc-d6Wb2qc",
     "51ztcsH3r10",
     "0PV_sguaDbM",
     "yK6jrK6y7bI",
-    "uvgDY2hLwYo",
+    "TdFaaClcZLY",
     "DcJEqYu_nCQ",
     "aoCaJO2HoGs",
-    "okfeetSg9MU"
+    "uvgDY2hLwYo",
+    "okfeetSg9MU",
+    "M89L-h3klVo",
+    "ZJwMsPCFe9M",
+    "O9G-8uOecrs",
+    "h9M4a8a-BRw"
   ],
   "cta": {
     "meetingLink": "https://wa.me/5571993386304",
